@@ -2,7 +2,7 @@ import os, sqlite3, hashlib, hmac, secrets, time, csv, io, json
 from pathlib import Path
 from datetime import datetime
 from fastapi import FastAPI, Request, HTTPException, UploadFile, File
-from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse, Response, FileResponse
 from pydantic import BaseModel, Field
 
 app=FastAPI(docs_url=None,redoc_url=None)
@@ -49,6 +49,27 @@ class Price(BaseModel):
 class Source(BaseModel):title:str;url:str="";kind:str="";date:str="";claim:str=""
 @app.get("/",response_class=HTMLResponse)
 def home():return Path(__file__).with_name("index.html").read_text()
+EVIDENCE_FILES = [
+ "13 июль алматы.png",
+ "13 июль астана.png",
+ "19 окт алматы.jpg",
+ "19 окт астана.png",
+ "28 авг алматы.png",
+ "28 авг астана.png",
+ "29 апрель алматы.png",
+ "29 апрель астана.png",
+ "29 май алматы.png",
+ "29 май астана.png"
+]
+@app.get("/evidence/{filename}")
+def evidence(filename: str):
+ if filename not in EVIDENCE_FILES:
+  raise HTTPException(404, "Image not found")
+ path = Path(__file__).parent / filename
+ if not path.is_file():
+  raise HTTPException(404, "Image missing on server")
+ return FileResponse(path, media_type="image/jpeg" if filename.lower().endswith(".jpg") else "image/png", headers={"Cache-Control":"public, max-age=3600"})
+
 @app.get("/api/health")
 def health():return {"ok":True,"app":"TASSAY Market Monitor"}
 @app.get("/api/prices")

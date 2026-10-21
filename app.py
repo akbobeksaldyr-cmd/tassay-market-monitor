@@ -77,6 +77,13 @@ def product_image():
   raise HTTPException(404, "Product photo not found")
  return FileResponse(path, media_type="image/webp", headers={"Cache-Control":"public, max-age=3600"})
 
+@app.get("/download/offline")
+def download_offline():
+ path=Path(__file__).with_name("offline.html")
+ if not path.is_file():
+  raise HTTPException(404, "Offline file not found")
+ return FileResponse(path, media_type="text/html; charset=utf-8", filename="TASSAY_MARKET_MONITOR_OFFLINE.html", headers={"Cache-Control":"no-store"})
+
 @app.get("/api/health")
 def health():return {"ok":True,"app":"TASSAY Market Monitor"}
 @app.get("/api/prices")

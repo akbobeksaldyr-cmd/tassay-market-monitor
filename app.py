@@ -70,6 +70,13 @@ def evidence(filename: str):
   raise HTTPException(404, "Image missing on server")
  return FileResponse(path, media_type="image/jpeg" if filename.lower().endswith(".jpg") else "image/png", headers={"Cache-Control":"public, max-age=3600"})
 
+@app.get("/product-image")
+def product_image():
+ path = Path(__file__).parent / "i (6).webp"
+ if not path.is_file():
+  raise HTTPException(404, "Product photo not found")
+ return FileResponse(path, media_type="image/webp", headers={"Cache-Control":"public, max-age=3600"})
+
 @app.get("/api/health")
 def health():return {"ok":True,"app":"TASSAY Market Monitor"}
 @app.get("/api/prices")

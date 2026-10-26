@@ -220,11 +220,11 @@ function tassayDayEvidence(day,location){
   return record&&source.shown&&source.shown[shop]!=null&&Number(source.shown[shop])!==Number(record.price);
  });
  const other=!!secondary&&!primary;
- const note=other?'Файл GitHub-та бар, бірақ скриншоттағы сомалар TURAN кестесіне сәйкес келеді және TASSAY бағаларын растамайды. Өнімнің нақты атауын бастапқы дереккөзден бөлек тексеру керек.':
+ const note=other?'Бұл файлдағы сомалар TURAN бағаларына сәйкес келеді. Осы күнгі TASSAY бағасының нақты скриншоты GitHub-та табылмады. Файл тек анықтама ретінде ашылады, TASSAY бағасын растамайды.':
  errors.length?'Скриншот пен TASSAY кестесі арасындағы баға айырмашылығы: '+errors.join(', ')+'. Соманы бастапқы дереккөзбен қайта тексеру қажет.':
  'Скриншоттағы тауар атауы сурет қиындысында көрінбеуі мүмкін; бренд пен өлшемді бастапқы көзден растау қажет.';
  return {url:'/evidence/'+encodeURIComponent(source.file),
- label:(other?'Сәйкестендірілмеген файл':'TASSAY')+' · '+fmt(day)+' · '+location,
+ label:(other?'TURAN файлы — TASSAY-ға дәлел емес':'TASSAY')+' · '+fmt(day)+' · '+location,
  note,issues:other||errors.length>0,other,file:source.file};
 }
 function openTassayDayEvidence(day,location){
@@ -248,8 +248,8 @@ function priceTable(){
  const row=ds.map(day=>{
   const evidence=tassayDayEvidence(day,location);
   let action=evidence?
-   '<button class="evidence-button" onclick="openTassayDayEvidence(\''+day+'\',\''+location+'\')" title="'+esc(evidence.file)+'">📷 '+(evidence.other?'Файлды ашу':'Қарау')+'</button>'+
-   (evidence.issues?'<small class="evidence-warning">⚠ Баға сәйкес емес</small>':''):
+   '<button class="evidence-button" onclick="openTassayDayEvidence(\''+day+'\',\''+location+'\')" title="'+esc(evidence.file)+'">📷 '+(evidence.other?'TURAN файлы':'Қарау')+'</button>'+
+   (evidence.issues?'<small class="evidence-warning">⚠ '+(evidence.other?'TASSAY дәлелі жоқ':'Сома айырмасы')+'</small>':''):
    '<span class="muted">Файл жоқ</span>';
   return '<tr><td>'+fmt(day)+'</td>'+shops.map(shop=>{
    const v=get(day,shop);return '<td>'+(v?val(v.price):'—')+'</td>';
@@ -264,8 +264,8 @@ function priceTable(){
   return '<tr><td>'+fmt(x.day)+'</td><td>'+esc(x.shop)+'</td><td>'+val(x.price)+'</td><td>'+esc(x.notes||'').slice(0,95)+'</td><td>'+(admin?'<button class="btn outline" onclick="edit('+Number(x.id)+')">Өңдеу</button>':'—')+'</td></tr>';
  }).join('');
  const note=location==='Астана'?
-  '<p class="km2-muted">29 сәуір, 29 мамыр және 1 қыркүйек бойынша GitHub файлдары бар. Бірақ ондағы сомалар TURAN деректеріне сәйкес келеді, TASSAY бағаларымен сәйкес келмейді. Файлдарды «⚠ Баға сәйкес емес» белгісі арқылы ашуға болады; олар TASSAY үшін расталған дәлел ретінде белгіленбейді.</p>':
-  '<p class="km2-muted">Алматыдағы кейбір күндер бойынша скриншоттар жоқ немесе баға сәйкес келмейді. Әр күнге қатысты ескертулер кестеде көрсетілген.</p>';
+  '<p class="km2-muted">29 сәуір, 29 мамыр және 1 қыркүйекке GitHub-та скриншоттар бар, бірақ олардағы сомалар TURAN деректеріне сәйкес келеді. Бұл файлдарды көруге болады, алайда TASSAY бағасын растауға болмайды: «⚠ TASSAY дәлелі жоқ».</p>':
+  '<p class="km2-muted">Алматыдағы кейбір күндерде скриншот жоқ. 13 шілдеде Galmart скриншотында 500 ₸, ал TASSAY кестесінде 560 ₸ көрсетілген: «⚠ Сома айырмасы». Мұны тексермей бағаны өзгертпейміз.</p>';
  return '<div class="km2-lead"><div class="kicker">TASSAY · БАҒА МОНИТОРИНГІ</div><h2>TASSAY · Бағалар және дәлелдемелер</h2><p>Газдалған TASSAY, 1 литр · '+location+'. Бір күн — бір қатар; үш дүкеннің бағасы мен сәйкес скриншот көрсетіледі.</p></div>'+
  btnCity()+
  '<section class="panel"><div class="row" style="justify-content:space-between"><h3>Бағалар кестесі</h3><div class="row"><button class="btn outline" onclick="location.href=\'/api/export.csv\'">↓ CSV жүктеу</button>'+adminButtons+'</div></div>'+

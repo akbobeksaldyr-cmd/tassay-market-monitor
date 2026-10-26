@@ -9,7 +9,7 @@ app=FastAPI(docs_url=None,redoc_url=None)
 P=Path(os.environ.get("DATA_DIR","/tmp/tassay-data"));P.mkdir(parents=True,exist_ok=True)
 DB=P/"market.sqlite"
 DAYS=["2026-04-29","2026-05-29","2026-07-13","2026-08-28","2026-10-19"]
-PRICES={"Астана":{"Arbuz":[420,559,525,485,517],"SMALL":[560,499,519,519,519],"Galmart":[560,560,585,545,585]},"Алматы":{"Arbuz":[420,479,520,474,508],"SMALL":[560,449,479,479,479],"Galmart":[560,560,560,560,560]}}
+PRICES={"Астана":{"Arbuz":[420,559,525,485,517],"SMALL":[560,499,519,519,519],"Galmart":[560,560,585,545,585]},"Алматы":{"Arbuz":[420,479,520,474,508],"SMALL":[560,449,479,479,479],"Galmart":[560,560,500,560,560]}}
 def db():
  c=sqlite3.connect(DB);c.row_factory=sqlite3.Row
  return c
@@ -30,6 +30,11 @@ def init():
  revised=c.execute("UPDATE prices SET price=545, notes='БШ2 түзетуі: 28.08.2026 Астана Galmart — 585 ₸ орнына 545 ₸ (автор растаған скриншот бойынша); өзге деректерді жеке тексеру қажет.' WHERE city='Астана' AND shop='Galmart' AND day='2026-08-28' AND price=585")
  if revised.rowcount:
   log(c,"km2_correction",{"day":"2026-08-28","city":"Астана","shop":"Galmart","old":585,"new":545,"reason":"Автордың бастапқы скриншотқа сүйенген түзетуі"})
+ # 13.07.2026 Алматы Galmart: пайдаланушы растаған түзету — 560 ₸ → 500 ₸.
+ # Түзету тек ескі 560 ₸ мәні сақталған жағдайда бір рет орындалады.
+ galmart_july=c.execute("UPDATE prices SET price=500, status='needs_review', notes='13.07.2026 Алматы · Galmart · TASSAY: автор сұрауы бойынша 560 ₸ бағасы 500 ₸ болып түзетілді; 13 июль алматы.png скриншотында осы сома көрсетілген. Тауар атауын бастапқы дереккөзден тексеру қажет.' WHERE day='2026-07-13' AND city='Алматы' AND shop='Galmart' AND price=560")
+ if galmart_july.rowcount:
+  log(c,"tassay_price_correction",{"day":"2026-07-13","city":"Алматы","shop":"Galmart","old":560,"new":500,"evidence":"13 июль алматы.png"})
  new_prices={"2026-10-23":{"Arbuz":555,"SMALL":519,"Galmart":585},"2026-10-24":{"Arbuz":517,"SMALL":519,"Galmart":585},"2026-10-26":{"Arbuz":517,"SMALL":519,"Galmart":585}}
  for day,prices in new_prices.items():
   for shop,price in prices.items():
@@ -78,6 +83,7 @@ class Source(BaseModel):title:str;url:str="";kind:str="";date:str="";claim:str="
 def home():return Path(__file__).with_name("index.html").read_text()
 EVIDENCE_FILES = [
  "1 сент астана.png",
+ "1  сентябрь алматы.png",
  "10 июль алматы.png",
  "10 июль астана.png",
  "13 июль алматы.png",

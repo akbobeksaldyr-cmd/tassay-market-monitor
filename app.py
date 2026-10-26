@@ -77,16 +77,36 @@ class Source(BaseModel):title:str;url:str="";kind:str="";date:str="";claim:str="
 @app.get("/",response_class=HTMLResponse)
 def home():return Path(__file__).with_name("index.html").read_text()
 EVIDENCE_FILES = [
+ "1 сент астана.png",
+ "10 июль алматы.png",
+ "10 июль астана.png",
  "13 июль алматы.png",
  "13 июль астана.png",
+ "15 окт алматы.png",
+ "15 окт астана.png",
  "19 окт алматы.jpg",
  "19 окт астана.png",
+ "22 авг алматы.png",
+ "23 авг астана.png",
+ "23 октябрь алматы.png",
+ "23 октябрь астана.png",
+ "24 октябрь алматы.png",
+ "24 октябрь астана.png",
+ "24 сентябрь алматы.png",
+ "26 октябрь алматы.png",
+ "26 октябрь астана.png",
+ "26 сентябрь астана.png",
  "28 авг алматы.png",
  "28 авг астана.png",
  "29 апрель алматы.png",
  "29 апрель астана.png",
+ "29 июнь алматы.png",
+ "29 июнь астана.png",
  "29 май алматы.png",
- "29 май астана.png"
+ "29 май астана.png",
+ "30 апрель алматы.png",
+ "7 сент алматы.png",
+ "7 сентябрь астана.png"
 ]
 @app.get("/evidence/{filename}")
 def evidence(filename: str):
@@ -106,8 +126,8 @@ def product_image():
 
 PRODUCT_MEDIA = {
  "mnu-logo": "Mnu_logo.jpg",
- "tassay-author": "photo_2026-10-26_21-08-20.jpg",
- "turan-author": "photo_2026-10-26_21-08-20 (2).jpg",
+ "tassay-card": "тассай карточка.png",
+ "turan-card": "туран карточка.png",
 }
 @app.get("/media/{item}")
 def product_media(item: str):
@@ -117,7 +137,7 @@ def product_media(item: str):
  path = Path(__file__).parent / filename
  if not path.is_file():
   raise HTTPException(404, "Image missing")
- return FileResponse(path, media_type="image/jpeg", headers={"Cache-Control":"public, max-age=3600"})
+ return FileResponse(path, media_type="image/png" if filename.endswith(".png") else "image/jpeg", headers={"Cache-Control":"public, max-age=3600"})
 
 @app.get("/download/offline")
 def download_offline():

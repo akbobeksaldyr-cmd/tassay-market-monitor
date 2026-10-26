@@ -36,6 +36,23 @@ def init():
    cur=c.execute("INSERT OR IGNORE INTO prices(day,city,shop,price,status,notes) VALUES(?,?,?,?,?,?)",(day,"Астана",shop,price,"needs_review","БШ2: зерттеу авторы ұсынған баға. Дербес скриншот немесе чек әлі берілмеген."))
    if cur.rowcount:
     log(c,"km2_new_observation",{"day":day,"city":"Астана","shop":shop,"price":price,"verification":"needs_review"})
+ # БШ2 толықтыруы: қыркүйектің ортақ күні және Алматының қазан айындағы бағалары.
+ # Көрсетілген мәндер зерттеу авторынан алынды; скриншот/чек дербес тексеруді талап етеді.
+ supplement={
+  "Астана":{"2026-09-01":{"Arbuz":485,"SMALL":519,"Galmart":585}},
+  "Алматы":{
+   "2026-09-01":{"Arbuz":545,"SMALL":479,"Galmart":560},
+   "2026-10-23":{"Arbuz":545,"SMALL":479,"Galmart":560},
+   "2026-10-24":{"Arbuz":508,"SMALL":479,"Galmart":560},
+   "2026-10-26":{"Arbuz":508,"SMALL":479,"Galmart":560}
+  }
+ }
+ for city,days in supplement.items():
+  for day,entries in days.items():
+   for shop,price in entries.items():
+    cur=c.execute("INSERT OR IGNORE INTO prices(day,city,shop,price,status,notes) VALUES(?,?,?,?,?,?)",(day,city,shop,price,"needs_review","БШ2 толықтыруы: автор берген баға; нақты скриншот/чек және акция мәртебесі қосымша тексеріледі."))
+    if cur.rowcount:
+     log(c,"km2_new_observation",{"day":day,"city":city,"shop":shop,"price":price,"verification":"needs_review","dataset":"2026-09-01-and-almaty-october"})
  if not c.execute("SELECT COUNT(*) FROM sources").fetchone()[0]:
   for t,u,k in [("ҚР Кәсіпкерлік кодексі","https://adilet.zan.kz/kaz/docs/K1500000375","заң"),("ҚР Бәсекелестікті қорғау агенттігі","https://www.gov.kz/memleket/entities/zk","ресми"),("TASSAY ресми каталогы","https://www.tassay.kz/en/catalog/gazirovannaya-vodak/","тауар")]:
    c.execute("INSERT INTO sources(title,url,kind) VALUES(?,?,?)",(t,u,k))

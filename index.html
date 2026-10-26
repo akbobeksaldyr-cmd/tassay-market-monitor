@@ -115,7 +115,14 @@ body.light .comparison-shop-title{color:#275f70}body.light .comparison-exact{col
 .single-product-tile .km2-tile{max-width:920px}
 .single-product-tile .km2-product-photo img{max-height:330px}
 @media(max-width:660px){.turan-supplement{grid-template-columns:1fr}.turan-supplement-cover img{height:125px}}
-</style></head><body><div class="app"><aside id="sidebar"><div class="brand">◈ TASSAY<small>MARKET MONITOR</small></div><div id="nav"></div><p class="muted" style="padding:12px;font-size:11px">ҚР бәсекелестік құқығы • 2026</p></aside><main><div class="top"><div class="row"><button class="btn outline menu" onclick="document.querySelector('aside').classList.toggle('open')">☰</button><span class="kicker">RESEARCH LAB / KAZAKHSTAN</span></div><div class="row"><button class="btn outline" onclick="document.body.classList.toggle('light')">☀ Тақырып</button><button class="btn outline" onclick="window.print()">◩ Қорғау</button><button class="btn" id="loginBtn" onclick="login()">Әкімші кіру</button></div></div><div class="header"><div class="university-identity"><img src="/media/mnu-logo" alt="Maqsut Narikbayev University (MNU) логотипі" loading="eager"><span>Maqsut Narikbayev University.<small class="university-researcher">Салдырова Ақбөбек</small></span></div><p class="kicker">TASSAY · TURAN · АКАДЕМИЯЛЫҚ ЗЕРТТЕУ</p><h1 id="title">TASSAY MARKET MONITOR</h1><p class="muted" id="subtitle">Бөтелкедегі су нарығындағы баға мониторингі және бәсекелестік-құқықтық талдау</p></div><div id="content"></div></main></div><div id="toast"></div><dialog id="evidenceDialog" class="evidence-modal" aria-labelledby="evidenceModalTitle" onclick="if(event.target===this)this.close()"><div class="modal-top"><b id="evidenceModalTitle">Скриншот</b><button class="btn outline" onclick="document.getElementById('evidenceDialog').close()" aria-label="Жабу">✕ Жабу</button></div><div class="modal-image"><img id="evidenceModalImage" alt="Бастапқы баға скриншоты"></div><p>Скриншот күн, қала және зерттелген бренд бойынша байланыстырылды. Өнім атауы суретте көрінбеуі мүмкін; дүкен мен соманың сәйкестігін бөлек тексеріңіз.</p><a id="evidenceModalLink" target="_blank" rel="noopener" href="#">Суретті толық өлшемде ашу ↗</a></dialog>
+.evidence-warning{display:block;color:#f4c27c;margin-top:5px;font-size:11px;line-height:1.35;font-weight:600}
+.evidence-change-detail{display:block;color:#9fc3cc;font-size:11px;margin-top:4px}
+.evidence-details{margin-top:14px}
+.evidence-details summary{cursor:pointer;font-weight:650;padding:5px 0}
+.evidence-details[open] summary{margin-bottom:13px}
+body.light .evidence-warning{color:#87551f}
+body.light .evidence-change-detail{color:#355968}
+</style></head><body><div class="app"><aside id="sidebar"><div class="brand">◈ TASSAY<small>MARKET MONITOR</small></div><div id="nav"></div><p class="muted" style="padding:12px;font-size:11px">ҚР бәсекелестік құқығы • 2026</p></aside><main><div class="top"><div class="row"><button class="btn outline menu" onclick="document.querySelector('aside').classList.toggle('open')">☰</button><span class="kicker">RESEARCH LAB / KAZAKHSTAN</span></div><div class="row"><button class="btn outline" onclick="document.body.classList.toggle('light')">☀ Тақырып</button><button class="btn outline" onclick="window.print()">◩ Қорғау</button><button class="btn" id="loginBtn" onclick="login()">Әкімші кіру</button></div></div><div class="header"><div class="university-identity"><img src="/media/mnu-logo" alt="Maqsut Narikbayev University (MNU) логотипі" loading="eager"><span>Maqsut Narikbayev University.<small class="university-researcher">Салдырова Ақбөбек</small></span></div><p class="kicker">TASSAY · TURAN · АКАДЕМИЯЛЫҚ ЗЕРТТЕУ</p><h1 id="title">TASSAY MARKET MONITOR</h1><p class="muted" id="subtitle">Бөтелкедегі су нарығындағы баға мониторингі және бәсекелестік-құқықтық талдау</p></div><div id="content"></div></main></div><div id="toast"></div><dialog id="evidenceDialog" class="evidence-modal" aria-labelledby="evidenceModalTitle" onclick="if(event.target===this)this.close()"><div class="modal-top"><b id="evidenceModalTitle">Скриншот</b><button class="btn outline" onclick="document.getElementById('evidenceDialog').close()" aria-label="Жабу">✕ Жабу</button></div><div class="modal-image"><img id="evidenceModalImage" alt="Бастапқы баға скриншоты"></div><p><span id="evidenceDetailNote">Скриншот күн, қала және зерттелген бренд бойынша байланыстырылды. Өнім атауы суретте көрінбеуі мүмкін; дүкен мен соманың сәйкестігін бөлек тексеріңіз.</span></p><a id="evidenceModalLink" target="_blank" rel="noopener" href="#">Суретті толық өлшемде ашу ↗</a></dialog>
 <script>
 let data=[], sources=[],admin=false,city='Астана',page=0,shopFilter='Барлығы',selectedDate='2026-10-19';
 const sections=["Басты панель","Баға динамикасы","Бағалар және дәлелдемелер","Зерттеу әдістемесі","Астана нарығы","Нарық үлесі","Сыртқы факторлар","Қалаларды салыстыру","Ғылыми қорытындылар","Дереккөздер","TASSAY · Өнім туралы","TURAN · Өнім туралы","TURAN · Бағалар және дәлелдемелер","TURAN · Баға динамикасы","TASSAY × TURAN · Салыстыру","TASSAY × TURAN · Нарық үлестері","Құқықтық IRAC","ЖИ қолданылуы туралы қорытынды"];
@@ -183,6 +190,7 @@ function evidenceFor(record,brand='TASSAY'){
 function showEvidenceModal(ref){
  const dialog=document.getElementById('evidenceDialog');
  document.getElementById('evidenceModalTitle').textContent=ref.label+' · Скриншот';
+ const hint=document.getElementById('evidenceDetailNote');if(hint)hint.textContent=ref.note||'Скриншоттағы тауар атауы көрінбеуі мүмкін. Баға, күн және дүкен сәйкестігін бөлек тексеру керек.';
  document.getElementById('evidenceModalImage').src=ref.url;
  document.getElementById('evidenceModalLink').href=ref.url;
  if(dialog.showModal)dialog.showModal();else window.open(ref.url,'_blank','noopener');
@@ -202,7 +210,71 @@ function openTuranEvidence(day){
  showEvidenceModal(ref);
 }
 
-function priceTable(){let rr=data.filter(x=>shopFilter==='Барлығы'||x.shop===shopFilter);return '<div class="panel"><div class="row"><select onchange="shopFilter=this.value;render()">'+['Барлығы',...shops].map(s=>'<option '+(shopFilter===s?'selected':'')+'>'+s+'</option>')+'</select><button class="btn outline" onclick="location.href=\'/api/export.csv\'">↓ CSV жүктеу</button>'+(admin?'<button class="btn" onclick="edit()">+ Бақылау қосу</button>':'<span class="pill">Өзгерту үшін әкімші режимі керек</span>')+'</div><div class="tablewrap"><table><thead><tr><th>Күні</th><th>Қала</th><th>Дүкен</th><th>Баға</th><th>Дерек</th><th>Скриншот</th><th></th></tr></thead><tbody>'+rr.map(x=>'<tr><td>'+fmt(x.day)+'</td><td>'+x.city+'</td><td>'+x.shop+'</td><td><b>'+val(x.price)+'</b></td><td>'+esc(x.notes.replace(/БШ2\s*[:—-]?\s*/g,'')).slice(0,55)+'</td><td>'+(evidenceFor(x)?'<button class="evidence-button" onclick="openEvidence('+Number(x.id)+')" title="TASSAY күн мен қала скриншоты">📷 Қарау</button>'+(evidenceFor(x).mismatch?'<span class="km2-promo-signal">⚠ Баға сәйкес емес</span>':''):'<span class="muted">Файл жоқ</span>')+'</td><td>'+(admin?'<button class="btn outline" onclick="edit('+x.id+')">Өзгерту</button>':'')+'</td></tr>').join('')+'</tbody></table></div><p class="evidence-explainer">📷 Скриншоттар тек күн мен қалаға сәйкес байланыстырылған; нақты дүкенді және тауар бағасын суреттен бөлек тексеріңіз.</p></div>'}
+function tassayDayEvidence(day,location){
+ const primary=evidenceImages.find(x=>x.brand==='TASSAY'&&x.day===day&&x.city===location);
+ const secondary=evidenceImages.find(x=>x.brand==='TURAN'&&x.day===day&&x.city===location);
+ const source=primary||secondary;
+ if(!source)return null;
+ const errors=shops.filter(shop=>{
+  const record=data.find(x=>x.city===location&&x.day===day&&x.shop===shop);
+  return record&&source.shown&&source.shown[shop]!=null&&Number(source.shown[shop])!==Number(record.price);
+ });
+ const other=!!secondary&&!primary;
+ const note=other?'Файл GitHub-та бар, бірақ скриншоттағы сомалар TURAN кестесіне сәйкес келеді және TASSAY бағаларын растамайды. Өнімнің нақты атауын бастапқы дереккөзден бөлек тексеру керек.':
+ errors.length?'Скриншот пен TASSAY кестесі арасындағы баға айырмашылығы: '+errors.join(', ')+'. Соманы бастапқы дереккөзбен қайта тексеру қажет.':
+ 'Скриншоттағы тауар атауы сурет қиындысында көрінбеуі мүмкін; бренд пен өлшемді бастапқы көзден растау қажет.';
+ return {url:'/evidence/'+encodeURIComponent(source.file),
+ label:(other?'Сәйкестендірілмеген файл':'TASSAY')+' · '+fmt(day)+' · '+location,
+ note,issues:other||errors.length>0,other,file:source.file};
+}
+function openTassayDayEvidence(day,location){
+ const ref=tassayDayEvidence(day,location);
+ if(!ref){toast('Бұл күн мен қала үшін файл жоқ');return}
+ showEvidenceModal(ref);
+}
+function pctChange(a,b){
+ if(a===null||a===undefined||b===null||b===undefined||!(Number(a)>0))return null;
+ return ((Number(b)-Number(a))/Number(a))*100;
+}
+function pctDisplay(p){
+ return p===null?'—':(p>0?'+':'')+p.toFixed(1).replace('.',',')+'%';
+}
+function priceTable(){
+ const location=city;
+ const rr=data.filter(x=>x.city===location);
+ const ds=[...new Set(rr.map(x=>x.day))].sort();
+ const first=ds[0],last=ds.at(-1);
+ const get=(day,shop)=>rr.find(x=>x.day===day&&x.shop===shop);
+ const row=ds.map(day=>{
+  const evidence=tassayDayEvidence(day,location);
+  let action=evidence?
+   '<button class="evidence-button" onclick="openTassayDayEvidence(\''+day+'\',\''+location+'\')" title="'+esc(evidence.file)+'">📷 '+(evidence.other?'Файлды ашу':'Қарау')+'</button>'+
+   (evidence.issues?'<small class="evidence-warning">⚠ Баға сәйкес емес</small>':''):
+   '<span class="muted">Файл жоқ</span>';
+  return '<tr><td>'+fmt(day)+'</td>'+shops.map(shop=>{
+   const v=get(day,shop);return '<td>'+(v?val(v.price):'—')+'</td>';
+  }).join('')+'<td>'+action+'</td></tr>';
+ }).join('');
+ const summary=shops.map(shop=>{
+  const a=get(first,shop),b=get(last,shop),change=pctChange(a?.price,b?.price);
+  return '<td><strong>'+pctDisplay(change)+'</strong>'+(a&&b?'<small class="evidence-change-detail">'+(Number(b.price)-Number(a.price)>=0?'+':'')+(Number(b.price)-Number(a.price))+' ₸</small>':'')+'</td>';
+ }).join('');
+ const adminButtons=admin?'<button class="btn" onclick="edit()">+ Бақылау қосу</button>':'';
+ const rawRows=[...rr].sort((a,b)=>a.day.localeCompare(b.day)||shops.indexOf(a.shop)-shops.indexOf(b.shop)).map(x=>{
+  return '<tr><td>'+fmt(x.day)+'</td><td>'+esc(x.shop)+'</td><td>'+val(x.price)+'</td><td>'+esc(x.notes||'').slice(0,95)+'</td><td>'+(admin?'<button class="btn outline" onclick="edit('+Number(x.id)+')">Өңдеу</button>':'—')+'</td></tr>';
+ }).join('');
+ const note=location==='Астана'?
+  '<p class="km2-muted">29 сәуір, 29 мамыр және 1 қыркүйек бойынша GitHub файлдары бар. Бірақ ондағы сомалар TURAN деректеріне сәйкес келеді, TASSAY бағаларымен сәйкес келмейді. Файлдарды «⚠ Баға сәйкес емес» белгісі арқылы ашуға болады; олар TASSAY үшін расталған дәлел ретінде белгіленбейді.</p>':
+  '<p class="km2-muted">Алматыдағы кейбір күндер бойынша скриншоттар жоқ немесе баға сәйкес келмейді. Әр күнге қатысты ескертулер кестеде көрсетілген.</p>';
+ return '<div class="km2-lead"><div class="kicker">TASSAY · БАҒА МОНИТОРИНГІ</div><h2>TASSAY · Бағалар және дәлелдемелер</h2><p>Газдалған TASSAY, 1 литр · '+location+'. Бір күн — бір қатар; үш дүкеннің бағасы мен сәйкес скриншот көрсетіледі.</p></div>'+
+ btnCity()+
+ '<section class="panel"><div class="row" style="justify-content:space-between"><h3>Бағалар кестесі</h3><div class="row"><button class="btn outline" onclick="location.href=\'/api/export.csv\'">↓ CSV жүктеу</button>'+adminButtons+'</div></div>'+
+ '<div class="km2-table"><table><thead><tr><th>Күні</th><th>Arbuz</th><th>SMALL</th><th>Galmart</th><th>Скриншот</th></tr></thead><tbody>'+row+
+ '<tr class="turan-change-row"><td><strong>Жалпы өзгеріс · '+fmt(first)+' → '+fmt(last)+'</strong></td>'+summary+'<td>—</td></tr></tbody></table></div>'+
+ '<p class="km2-muted">Соңғы қатар — 29 сәуірден 26 қазанға дейінгі өзгеріс. Формула: (соңғы баға − бастапқы баға) / бастапқы баға × 100%. Теңгедегі айырма пайыздың астында көрсетілген.</p>'+note+'</section>'+
+ '<details class="panel evidence-details"><summary>Жеке баға жазбалары мен дереккөз түсіндірмелері ('+rr.length+')</summary><div class="km2-table"><table><thead><tr><th>Күні</th><th>Дүкен</th><th>Баға</th><th>Бастапқы түсіндірме</th><th></th></tr></thead><tbody>'+rawRows+'</tbody></table></div></details>';
+}
+
 function edit(id){let x=data.find(y=>y.id===id)||{day:'2026-10-21',city:'Астана',shop:'Arbuz',price:0,status:'needs_review',source:'',notes:''};let body='<div class="panel"><h3>'+ (id?'Бақылауды өңдеу':'Бақылау қосу')+'</h3><div class="row"><input id="ed-day" type="date" value="'+x.day+'"><select id="ed-city">'+['Астана','Алматы'].map(s=>'<option '+(x.city===s?'selected':'')+'>'+s+'</option>')+'</select><select id="ed-shop">'+shops.map(s=>'<option '+(x.shop===s?'selected':'')+'>'+s+'</option>')+'</select><input id="ed-price" type="number" min="0" value="'+x.price+'"></div><p><select id="ed-status">'+['needs_review','verified','missing'].map(s=>'<option '+(x.status===s?'selected':'')+' value="'+s+'">'+s+'</option>')+'</select></p><p><input id="ed-source" placeholder="Дереккөз URL" style="width:100%" value="'+esc(x.source)+'"></p><textarea style="width:100%;min-height:100px" id="ed-notes">'+esc(x.notes)+'</textarea><p class="row"><button class="btn" onclick="save('+ (id||'null') +')">Сақтау</button><button class="btn outline" onclick="render()">Жабу</button></p></div>';document.getElementById('content').innerHTML=body}
 async function save(id){let b={day:document.getElementById('ed-day').value,city:document.getElementById('ed-city').value,shop:document.getElementById('ed-shop').value,price:+document.getElementById('ed-price').value,status:document.getElementById('ed-status').value,source:document.getElementById('ed-source').value,notes:document.getElementById('ed-notes').value,channel:'online',discount:'',captured:''};try{await api('/api/prices'+(id?'/'+id:''),{method:id?'PUT':'POST',body:JSON.stringify(b)});toast('Сақталды');refresh()}catch(e){toast(e.message)}}
 function generic(title,paras){return '<div class="panel"><h3>'+title+'</h3>'+paras.map(x=>'<p class="sectionText">'+x+'</p>').join('')+'</div>'}

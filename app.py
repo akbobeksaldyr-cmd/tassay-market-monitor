@@ -40,7 +40,6 @@ def init():
   for t,u,k in [("ҚР Кәсіпкерлік кодексі","https://adilet.zan.kz/kaz/docs/K1500000375","заң"),("ҚР Бәсекелестікті қорғау агенттігі","https://www.gov.kz/memleket/entities/zk","ресми"),("TASSAY ресми каталогы","https://www.tassay.kz/en/catalog/gazirovannaya-vodak/","тауар")]:
    c.execute("INSERT INTO sources(title,url,kind) VALUES(?,?,?)",(t,u,k))
  c.commit();c.close()
-init()
 PASSWORD=os.getenv("ADMIN_PASSWORD","")
 def access(req):
  token=req.cookies.get("tassay_token","")
@@ -53,6 +52,7 @@ def protect(req):
  origin=req.headers.get("origin","")
  if origin and origin.split("://")[-1]!=req.headers.get("host"):raise HTTPException(403,"Origin rejected")
 def log(c,action,data):c.execute("INSERT INTO history(at,action,data) VALUES(?,?,?)",(datetime.utcnow().isoformat(),action,json.dumps(data,ensure_ascii=False)))
+init()
 class Login(BaseModel):password:str
 class Price(BaseModel):
  day:str;city:str;shop:str;price:int=Field(ge=0);status:str="needs_review";discount:str="";channel:str="online";source:str="";notes:str="";captured:str=""

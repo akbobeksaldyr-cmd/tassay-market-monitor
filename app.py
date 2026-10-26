@@ -106,7 +106,11 @@ EVIDENCE_FILES = [
  "29 май астана.png",
  "30 апрель алматы.png",
  "7 сент алматы.png",
- "7 сентябрь астана.png"
+ "7 сентябрь астана.png",
+ "turan-2026-04-29-astana.png",
+ "turan-2026-05-29-astana.png",
+ "turan-2026-09-01-astana.png",
+ "turan-2026-05-29-almaty.png"
 ]
 @app.get("/evidence/{filename}")
 def evidence(filename: str):

@@ -9,7 +9,7 @@ app=FastAPI(docs_url=None,redoc_url=None)
 P=Path(os.environ.get("DATA_DIR","/tmp/tassay-data"));P.mkdir(parents=True,exist_ok=True)
 DB=P/"market.sqlite"
 DAYS=["2026-04-29","2026-05-29","2026-07-13","2026-08-28","2026-10-19"]
-PRICES={"Астана":{"Arbuz":[420,559,525,485,517],"SMALL":[560,499,519,519,519],"Galmart":[560,560,585,585,585]},"Алматы":{"Arbuz":[420,479,520,474,508],"SMALL":[560,449,479,479,479],"Galmart":[560,560,560,560,560]}}
+PRICES={"Астана":{"Arbuz":[420,559,525,485,517],"SMALL":[560,499,519,519,519],"Galmart":[560,560,585,545,585]},"Алматы":{"Arbuz":[420,479,520,474,508],"SMALL":[560,449,479,479,479],"Galmart":[560,560,560,560,560]}}
 def db():
  c=sqlite3.connect(DB);c.row_factory=sqlite3.Row
  return c
@@ -24,8 +24,18 @@ def init():
    for shop,values in shops.items():
     for day,price in zip(DAYS,values):
      note="Кестеден енгізілген. Тауардың атауы мен көлемі алғашқы материалмен толық дәлелденбеген."
-     if city=="Астана" and shop=="Galmart" and day=="2026-08-28":note+=" ЕСКЕРТУ: кестеде 585 ₸, скриншотта 545 ₸."
+     if city=="Астана" and shop=="Galmart" and day=="2026-08-28":note+=" БШ2: 585 ₸ мәні 545 ₸ болып түзетілді."
      c.execute("INSERT INTO prices(day,city,shop,price,notes) VALUES(?,?,?,?,?)",(day,city,shop,price,note))
+ # БШ2: түзету тек бастапқы 585 ₸ мәні тұрған жағдайда қолданылады.
+ revised=c.execute("UPDATE prices SET price=545, notes='БШ2 түзетуі: 28.08.2026 Астана Galmart — 585 ₸ орнына 545 ₸ (автор растаған скриншот бойынша); өзге деректерді жеке тексеру қажет.' WHERE city='Астана' AND shop='Galmart' AND day='2026-08-28' AND price=585")
+ if revised.rowcount:
+  log(c,"km2_correction",{"day":"2026-08-28","city":"Астана","shop":"Galmart","old":585,"new":545,"reason":"Автордың бастапқы скриншотқа сүйенген түзетуі"})
+ new_prices={"2026-10-23":{"Arbuz":555,"SMALL":519,"Galmart":585},"2026-10-24":{"Arbuz":517,"SMALL":519,"Galmart":585},"2026-10-26":{"Arbuz":517,"SMALL":519,"Galmart":585}}
+ for day,prices in new_prices.items():
+  for shop,price in prices.items():
+   cur=c.execute("INSERT OR IGNORE INTO prices(day,city,shop,price,status,notes) VALUES(?,?,?,?,?,?)",(day,"Астана",shop,price,"needs_review","БШ2: зерттеу авторы ұсынған баға. Дербес скриншот немесе чек әлі берілмеген."))
+   if cur.rowcount:
+    log(c,"km2_new_observation",{"day":day,"city":"Астана","shop":shop,"price":price,"verification":"needs_review"})
  if not c.execute("SELECT COUNT(*) FROM sources").fetchone()[0]:
   for t,u,k in [("ҚР Кәсіпкерлік кодексі","https://adilet.zan.kz/kaz/docs/K1500000375","заң"),("ҚР Бәсекелестікті қорғау агенттігі","https://www.gov.kz/memleket/entities/zk","ресми"),("TASSAY ресми каталогы","https://www.tassay.kz/en/catalog/gazirovannaya-vodak/","тауар")]:
    c.execute("INSERT INTO sources(title,url,kind) VALUES(?,?,?)",(t,u,k))

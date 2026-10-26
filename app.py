@@ -87,6 +87,21 @@ def product_image():
   raise HTTPException(404, "Product photo not found")
  return FileResponse(path, media_type="image/webp", headers={"Cache-Control":"public, max-age=3600"})
 
+PRODUCT_MEDIA = {
+ "mnu-logo": "Mnu_logo.jpg",
+ "tassay-author": "photo_2026-10-26_21-08-20.jpg",
+ "turan-author": "photo_2026-10-26_21-08-20 (2).jpg",
+}
+@app.get("/media/{item}")
+def product_media(item: str):
+ filename = PRODUCT_MEDIA.get(item)
+ if not filename:
+  raise HTTPException(404, "Image not found")
+ path = Path(__file__).parent / filename
+ if not path.is_file():
+  raise HTTPException(404, "Image missing")
+ return FileResponse(path, media_type="image/jpeg", headers={"Cache-Control":"public, max-age=3600"})
+
 @app.get("/download/offline")
 def download_offline():
  path=Path(__file__).with_name("offline.html")

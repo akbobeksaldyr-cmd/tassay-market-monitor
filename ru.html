@@ -1,0 +1,507 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TASSAY Market Monitor — Русская версия</title><style>
+:root{font-family:Inter,system-ui,Arial;background:#071726;color:#ebf5ff}*{box-sizing:border-box}body{margin:0}.app{display:flex;min-height:100vh}aside{width:250px;background:#0b2235;border-right:1px solid #254457;padding:23px 14px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-size:22px;color:#fff;font-weight:900;letter-spacing:1px;padding:14px}.brand small{font-size:10px;color:#4ed6ce;display:block;letter-spacing:3px}.nav{width:100%;background:transparent;color:#c0d6e6;border:0;text-align:left;border-radius:10px;padding:12px;margin:2px 0;cursor:pointer;font-size:13px}.nav:hover,.nav.active{background:#113e54;color:#5fe9df}main{flex:1;min-width:0;padding:24px 32px;max-width:1500px;margin:auto}.top{display:flex;align-items:center;gap:14px;justify-content:space-between;flex-wrap:wrap;border-bottom:1px solid #284357;padding-bottom:16px}.muted{color:#8aaabb}.kicker{color:#4ae0d5;letter-spacing:2px;font-weight:700;font-size:11px}.header h1{font-size:clamp(24px,3vw,36px);margin-bottom:7px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card,.panel{background:#10293e;border:1px solid #21455c;border-radius:14px;padding:20px}.metric{font-size:32px;font-weight:800;margin:8px 0;color:#f5ffff}.card small{color:#a0bacb}.panel{margin:18px 0}.panel h3{margin-top:0}select,input,textarea,button{font:inherit}select,input,textarea{color:inherit;background:#092134;border:1px solid #356078;border-radius:8px;padding:10px;max-width:100%}button.btn{background:#1cb9b2;color:#062c32;border:0;border-radius:9px;padding:10px 15px;font-weight:750;cursor:pointer}button.outline{background:#183a51;color:#d5f4ff}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{border-bottom:1px solid #284559;text-align:left;padding:12px 9px}th{color:#9ab9c9}tr:hover td{background:#15344b}.good{color:#4ce3be}.warn{color:#efc16e}.bad{color:#ff8d95}.pill{padding:5px 9px;background:#24475a;border-radius:20px;font-size:12px}svg{max-width:100%;height:auto}.legend{display:flex;gap:20px;flex-wrap:wrap;margin:15px 0}.sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.split{display:grid;grid-template-columns:2fr 1fr;gap:18px}.note{background:#18394d;padding:18px;border-radius:10px;line-height:1.7}.sectionText{line-height:1.85;color:#c6dce9}a{color:#63e4df}body.light{background:#eef5f8;color:#163047}body.light aside{background:#e4eff3}body.light .card,body.light .panel{background:#fff}body.light .nav{color:#174258}body.light .muted,body.light .sectionText{color:#37556a}body.light input,body.light select,body.light textarea{color:#17374a;background:#f7fbff}body.light .brand{color:#173c51}.menu{display:none}#toast{position:fixed;right:20px;bottom:20px;background:#185e63;padding:14px;border-radius:9px;display:none}@media(max-width:850px){aside{display:none;position:fixed;z-index:12;left:0;top:0;box-shadow:0 0 0 999px #0008}aside.open{display:block}.menu{display:inline-block}main{padding:16px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.split{grid-template-columns:1fr}}@media(max-width:500px){.grid{grid-template-columns:1fr 1fr}.metric{font-size:24px}}@media print{aside,.top button,.controls{display:none!important}main{padding:0}.panel,.card{break-inside:avoid}body{background:#fff;color:#000}}
+.evidence-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.evidence-item{display:flex;flex-direction:column;padding:12px;border-radius:12px;border:1px solid #295063;background:#123147;color:inherit;text-decoration:none;transition:transform .18s,border-color .18s}.evidence-item:hover{transform:translateY(-3px);border-color:#48cfc5}.evidence-item img{display:block;width:100%;height:174px;object-fit:contain;background:#f6f8fa;border-radius:9px}.evidence-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 4px 0;font-size:14px}.evidence-meta span{font-size:12px;color:#a1bbca}body.light .evidence-item{background:#f6fbfe}body.light .evidence-meta span{color:#506b7c}
+.product-feature{display:grid;grid-template-columns:minmax(190px,265px) minmax(0,1fr);gap:24px;align-items:center;padding:22px;background:linear-gradient(117deg,#103a4b,#10293e 55%,#142b46);border:1px solid #2c6376;border-radius:16px;margin:17px 0 18px;box-shadow:0 10px 28px #00000016}.product-feature-image{min-height:224px;background:#f4fafc;border-radius:12px;display:flex;justify-content:center;align-items:center;padding:12px;overflow:hidden}.product-feature-image img{max-width:100%;max-height:236px;width:auto;height:auto;object-fit:contain}.product-feature h2{font-size:clamp(23px,2.6vw,30px);margin:10px 0;color:#f5ffff}.product-feature p{color:#c9e0ed;line-height:1.75;margin:11px 0}.product-feature a{color:#54e1d8;font-weight:650}.product-feature .product-tag{display:inline-block;border:1px solid #3b7786;background:#153f52;padding:7px 12px;border-radius:99px;font-size:12px;color:#a8e8e5;margin:4px 7px 4px 0}body.light .product-feature{background:linear-gradient(117deg,#fff,#e7f5f8);border-color:#bedce4}body.light .product-feature h2{color:#143349}body.light .product-feature p{color:#3a5a6c}body.light .product-feature .product-tag{color:#195966;background:#dcf7f5;border-color:#b4dad6}@media(max-width:670px){.product-feature{grid-template-columns:1fr;gap:15px;padding:15px}.product-feature-image{min-height:160px}.product-feature-image img{max-height:220px}}
+
+/* Price comparison and research insight cards */
+.price-compare{margin-top:18px;background:linear-gradient(135deg,#12354b,#123246 63%,#134354);border:1px solid #2e6379}
+.price-compare .compare-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.price-compare .compare-top h3{margin:6px 0 10px;font-size:21px}
+.price-compare .compare-body{display:grid;grid-template-columns:1.15fr 1fr;gap:15px;margin-top:12px}
+.compare-winner{padding:21px;border-radius:12px;background:linear-gradient(135deg,#0f756d,#134b61);border:1px solid #36b5a6}
+.compare-winner .metric{color:#fff}
+.compare-winner p{margin:5px 0;color:#dcfffa}
+.compare-stores{display:flex;flex-direction:column;gap:9px}
+.compare-shop{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #285165;border-radius:10px;padding:13px 14px;background:#0b263a}
+.compare-shop.first{border-color:#44c7b9;background:#143c44}
+.compare-shop .price{font-weight:800;font-size:19px;white-space:nowrap}
+.compare-gap{padding:12px 14px;border-radius:10px;background:#18394b;line-height:1.5}
+.research-results{margin:20px 0}
+.research-results h3{margin:0 0 12px}
+.insight-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.insight-card{padding:17px;min-height:145px;border-radius:14px;border:1px solid #2b5570;background:linear-gradient(160deg,#16374f,#102c44)}
+.insight-card .insight-label{font-size:12px;color:#b4d2df}
+.insight-card strong{display:block;font-size:clamp(24px,2.4vw,32px);margin:10px 0 5px}
+.insight-card small{color:#b8d1dd;line-height:1.5;display:block}
+.insight-card.up strong{color:#ffca8c}
+.insight-card.down strong{color:#70e0c9}
+.insight-card.cross strong{color:#a8c3ff}
+.insight-card.range strong{color:#e2d0ff}
+.evidence-button{padding:7px 10px;border:1px solid #44aea9;border-radius:8px;background:#12444c;color:#cbfff5;cursor:pointer;white-space:nowrap}
+.evidence-button:hover{background:#16646a}
+.evidence-explainer{color:#a8c5d3;font-size:12px;margin:14px 0 0;line-height:1.55}
+.evidence-modal{border:1px solid #4a738b;border-radius:14px;color:#e7f4fc;background:#122b41;padding:16px;width:min(900px,94vw);max-height:92vh;box-shadow:0 15px 60px #0007}
+.evidence-modal::backdrop{background:rgba(1,12,24,.81)}
+.evidence-modal img{max-width:100%;max-height:65vh;object-fit:contain;border-radius:9px;background:#fff}
+.evidence-modal .modal-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.evidence-modal .modal-image{text-align:center}
+.evidence-modal p{font-size:13px;line-height:1.55;color:#c5deec}
+body.light .price-compare{background:#fff}
+body.light .compare-shop{background:#f4fbfd;color:#194359}
+body.light .compare-shop.first{background:#e2f8f3}
+body.light .compare-gap{background:#e8f3f9}
+body.light .insight-card{background:#fff}
+body.light .insight-label,body.light .insight-card small{color:#45647a}
+body.light .evidence-modal{background:#fff;color:#153747}
+body.light .evidence-modal p{color:#4f6976}
+@media(max-width:1040px){.insight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.price-compare .compare-body{grid-template-columns:1fr}.insight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.insight-card{min-height:135px}.evidence-modal{padding:12px}}
+
+.km2-lead{background:linear-gradient(125deg,#183e50,#0b263c);border:1px solid #397486;border-radius:15px;padding:21px;margin:17px 0}
+.km2-lead h2{margin:5px 0 10px;font-size:24px}.km2-lead p{line-height:1.65;color:#cde7f3}
+.km2-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:15px 0}
+.km2-stat{background:#123a50;border:1px solid #376279;border-radius:12px;padding:16px}
+.km2-stat strong{display:block;font-size:27px;color:#73e9dc;margin:5px 0}.km2-stat small{color:#bbd5df}
+.km2-table{overflow-x:auto;margin-top:16px}.km2-table table{min-width:650px}.km2-table tr.near td{background:rgba(211,155,50,.08)}
+.km2-warn{padding:13px 16px;border-left:4px solid #e2ae5f;background:#343825;color:#ffe6bd;border-radius:8px;line-height:1.6;margin:13px 0}
+.km2-good{padding:12px 16px;border-left:4px solid #42c9ac;background:#134239;color:#d3fbec;border-radius:8px;line-height:1.55;margin:12px 0}
+.km2-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px}.km2-tile{border:1px solid #28546b;background:#13334a;border-radius:14px;padding:18px}.km2-tile h3{font-size:16px;margin:4px 0 10px}.km2-tile p{color:#d2e2eb;line-height:1.6}
+.km2-section h3{margin-top:0}.km2-muted{color:#a9c5d3;font-size:12px;line-height:1.55}
+.km2-graph svg{width:100%;height:auto;display:block;max-height:355px}
+.km2-legends{display:flex;gap:18px;flex-wrap:wrap;padding:10px 0;font-size:13px}
+.km2-legends span:before{content:"";width:11px;height:11px;display:inline-block;border-radius:50%;margin-right:6px;background:#51d8dc}.km2-legends .turan:before{background:#ffd073}
+.km2-source{font-size:12px;color:#8bdacf}.km2-source a{color:#8aece3}
+.km2-missing{background:#1a3449;border:1px dashed #638299;border-radius:13px;text-align:center;padding:28px 18px}
+.km2-share-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;margin:12px 0}.km2-share-fields label{display:flex;flex-direction:column;gap:7px;font-size:12px}
+.km2-profile{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.km2-avatar{height:86px;width:86px;border-radius:15px;background:#1f5264;border:1px solid #55a6a6;display:flex;align-items:center;justify-content:center;font-size:31px}
+body.light .km2-lead,body.light .km2-stat,body.light .km2-tile{background:#f3fbfd;color:#214458}
+body.light .km2-lead p,body.light .km2-tile p{color:#375667}
+body.light .km2-warn{background:#fff7e9;color:#704a14}
+body.light .km2-good{background:#e9faf3;color:#1e6057}
+body.light .km2-muted{color:#486579}
+@media(max-width:650px){.km2-lead{padding:14px}.km2-table table{font-size:12px}.km2-stat strong{font-size:23px}}
+
+/* University and researcher photos — visible in the introduction and product chapters */
+.university-identity{display:none;gap:12px;align-items:center;max-width:max-content;margin:0 0 22px;padding:9px 15px 9px 9px;border:1px solid #38637a;border-radius:14px;background:linear-gradient(110deg,#14384c,#102b40)}
+.is-home .university-identity{display:flex}
+.university-identity img{height:57px;width:57px;object-fit:contain;background:#fff;border-radius:9px;padding:3px;display:block}
+.university-identity span{font-size:clamp(12px,1.3vw,14px);color:#d9eafa;font-weight:650;letter-spacing:.15px;line-height:1.4}
+.product-photo-stack{display:grid;gap:12px;align-content:start}
+.author-product-photo,.km2-product-photo{margin:0;overflow:hidden;border-radius:13px;border:1px solid #2c6275;background:#15374a}
+.author-product-photo img{display:block;width:100%;height:270px;object-fit:contain;background:#ebf4f7}
+.author-product-photo figcaption,.km2-product-photo figcaption{padding:9px 11px;color:#d2e5f0;font-size:11px;line-height:1.45}
+.product-photo-stack .product-feature-image{min-height:130px}
+.product-photo-stack .product-feature-image img{max-height:142px}
+.km2-product-photo{margin:9px 0 17px}
+.km2-product-photo img{display:block;width:100%;height:320px;object-fit:contain;background:#edf5f8}
+body.light .university-identity{background:#eef7fa;border-color:#c1dbe4}
+body.light .university-identity span{color:#24465b}
+body.light .author-product-photo,body.light .km2-product-photo{background:#f3fafb}
+body.light .author-product-photo figcaption,body.light .km2-product-photo figcaption{color:#284b61}
+@media(max-width:650px){.university-identity{margin:0 0 16px}.university-identity img{width:49px;height:49px}.author-product-photo img{height:260px}.km2-product-photo img{height:280px}}
+
+.km2-promo-note{margin:14px 0;padding:14px 16px;border:1px solid #3d7580;border-radius:11px;background:#113c4e;line-height:1.6;color:#d5edf6}
+.km2-promo-note strong{color:#9bf1e0}.km2-promo-signal{display:block;margin-top:4px;color:#f6d69b;font-size:11px;line-height:1.35}
+body.light .km2-promo-note{background:#e8f8fc;color:#264355}body.light .km2-promo-signal{color:#8c5723}
+.university-researcher{display:block;font-size:12px;font-weight:500;color:#8adfdf;margin-top:5px}
+.home-brand-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:16px 0 22px}
+.home-brand-card{border:1px solid #315e77;border-radius:16px;background:#123247;padding:16px;overflow:hidden}
+.home-brand-card img{display:block;width:100%;height:210px;object-fit:contain;background:#f2f6f9;border-radius:11px}
+.home-brand-card h2{font-size:23px;margin:12px 0 4px;color:#e9ffff}
+.home-brand-card p{color:#c5deea;line-height:1.55;margin:5px 0 12px}
+.home-brand-card a{color:#79e9e0;font-weight:650}
+body.light .home-brand-card{background:#edf8fb;color:#1a3748}body.light .home-brand-card p{color:#385b6c}
+body.light .home-brand-card h2{color:#123347}body.light .university-researcher{color:#356b77}
+@media(max-width:760px){.home-brand-grid{grid-template-columns:1fr}.home-brand-card img{height:180px}}
+.turan-change-row td{background:rgba(66,201,172,.10);border-top:2px solid #4bc7bd}.turan-change-row b{color:#78e4d4}body.light .turan-change-row b{color:#246d66}.comparison-shop-title{font-size:15px;margin:16px 0 4px;color:#c6ebeb}
+.comparison-comment{display:block;color:#94b6c4;font-size:11px;margin-top:4px;font-weight:400}
+.comparison-exact{font-size:11px;font-weight:650;color:#7cddcc}.comparison-approx{font-size:11px;color:#d8ba86}
+body.light .comparison-shop-title{color:#275f70}body.light .comparison-exact{color:#21685b}body.light .comparison-approx{color:#785321}
+.turan-supplement{display:grid;grid-template-columns:minmax(150px,200px) minmax(0,1fr);gap:18px;align-items:center;margin:0 0 20px}
+.turan-supplement-cover{border-radius:10px;background:#eef5f8;overflow:hidden;padding:8px}
+.turan-supplement-cover img{display:block;width:100%;height:110px;object-fit:contain}
+.turan-supplement h3{margin:4px 0 8px}
+.turan-supplement p{margin:8px 0}
+.single-product-tile .km2-tile{max-width:920px}
+.single-product-tile .km2-product-photo img{max-height:330px}
+@media(max-width:660px){.turan-supplement{grid-template-columns:1fr}.turan-supplement-cover img{height:125px}}
+.evidence-warning{display:block;color:#f4c27c;margin-top:5px;font-size:11px;line-height:1.35;font-weight:600}
+.evidence-change-detail{display:block;color:#9fc3cc;font-size:11px;margin-top:4px}
+.evidence-details{margin-top:14px}
+.evidence-details summary{cursor:pointer;font-weight:650;padding:5px 0}
+.evidence-details[open] summary{margin-bottom:13px}
+body.light .evidence-warning{color:#87551f}
+body.light .evidence-change-detail{color:#355968}
+.share-fact{display:flex;align-items:center;gap:16px;margin-bottom:12px}
+.share-fact>div{min-width:0;flex:1}.share-fact h3{margin:0 0 7px}
+.share-fact p{line-height:1.6}.share-big-number{font-size:clamp(28px,4vw,42px);font-weight:800;color:#83e6d4;white-space:nowrap}
+.share-money{font-size:clamp(18px,2.4vw,27px)}
+.share-limitation{border-left:3px solid #e3b976;padding:8px 12px;background:rgba(225,176,99,.07);font-size:12px;line-height:1.6}
+.brand-share-calc summary{cursor:pointer;font-weight:650}
+.brand-share-calc .row{margin:12px 0}.brand-share-calc label{display:flex;flex-direction:column;gap:6px;min-width:135px;font-size:12px}
+.brand-share-calc input{max-width:260px}.brand-share-output{padding:10px 0;font-weight:650}
+body.light .share-big-number{color:#23786e}
+@media(max-width:640px){.share-fact{flex-direction:column;align-items:flex-start}}
+.change-percent-cell{min-width:150px}.change-percent-list{display:grid;grid-template-columns:1fr;gap:4px;min-width:138px}
+.change-percent-item{display:flex;justify-content:space-between;align-items:center;gap:10px;white-space:nowrap;font-size:11px}
+.change-percent-item>span{color:#b5ceda}.change-percent-item strong{font-size:12px}
+.change-increase{color:#f3b6a0}.change-decrease{color:#80dbc1}.change-constant{color:#c1d2da}
+.change-first{font-size:11px;color:#adbdca}
+body.light .change-increase{color:#b44731}body.light .change-decrease{color:#1b8061}
+body.light .change-constant,body.light .change-percent-item>span{color:#516775}
+.legal-hero{background:linear-gradient(125deg,#124356,#102c46);border-color:#38bdb1}.legal-hero h2{font-size:clamp(23px,2.7vw,33px);line-height:1.25}.legal-hero .row{margin-top:14px}body.light .legal-hero{background:#e5f7f5}.language-picker{display:inline-flex;gap:2px;border:1px solid #396a73;padding:4px;border-radius:9px}.language-picker a{color:#d5f0f4;text-decoration:none;font-weight:750;padding:5px 8px;font-size:12px;border-radius:6px}.language-picker a:hover{background:#1a6068}body.light .language-picker a{color:#1c6074}</style></head><body><div class="app"><aside id="sidebar"><div class="brand">◈ TASSAY<small>MARKET MONITOR</small></div><div id="nav"></div><p class="muted" style="padding:12px;font-size:11px">ҚР бәсекелестік құқығы • 2026</p></aside><main><div class="top"><div class="row"><button class="btn outline menu" onclick="document.querySelector('aside').classList.toggle('open')">☰</button><span class="kicker">RESEARCH LAB / KAZAKHSTAN</span></div><div class="row"><span class="row language-picker"><a href="/kk" title="Қазақша">ҚАЗ</a><a href="/ru" title="Русский">РУС</a></span><button class="btn outline" onclick="document.body.classList.toggle('light')">☀ Тема</button><button class="btn outline" onclick="window.print()">◩ Печать</button><button class="btn" id="loginBtn" onclick="login()">Вход администратора</button></div></div><div class="header"><div class="university-identity"><img src="/media/mnu-logo" alt="Maqsut Narikbayev University (MNU) логотипі" loading="eager"><span>Maqsut Narikbayev University.<small class="university-researcher">Салдырова Ақбөбек</small></span></div><p class="kicker">TASSAY · TURAN · АКАДЕМИЯЛЫҚ ЗЕРТТЕУ</p><h1 id="title">TASSAY MARKET MONITOR</h1><p class="muted" id="subtitle">Бөтелкедегі су нарығындағы баға мониторингі және бәсекелестік-құқықтық талдау</p></div><div id="content"></div></main></div><div id="toast"></div><dialog id="evidenceDialog" class="evidence-modal" aria-labelledby="evidenceModalTitle" onclick="if(event.target===this)this.close()"><div class="modal-top"><b id="evidenceModalTitle">Скриншот</b><button class="btn outline" onclick="document.getElementById('evidenceDialog').close()" aria-label="Жабу">✕ Жабу</button></div><div class="modal-image"><img id="evidenceModalImage" alt="Бастапқы баға скриншоты"></div><p><span id="evidenceDetailNote">Скриншот күн, қала және зерттелген бренд бойынша байланыстырылды. Өнім атауы суретте көрінбеуі мүмкін; дүкен мен соманың сәйкестігін бөлек тексеріңіз.</span></p><a id="evidenceModalLink" target="_blank" rel="noopener" href="#">Суретті толық өлшемде ашу ↗</a></dialog>
+<script>
+let data=[], sources=[],admin=false,city='Астана',page=0,shopFilter='Барлығы',selectedDate='2026-10-19';
+const sections=["Басты панель","Баға динамикасы","Бағалар және дәлелдемелер","Зерттеу әдістемесі","Астана нарығы","TASSAY · Нарық үлесі","Сыртқы факторлар","Қалаларды салыстыру","Ғылыми қорытындылар","Дереккөздер","TASSAY · Өнім туралы","TURAN · Өнім туралы","TURAN · Бағалар және дәлелдемелер","TURAN · Баға динамикасы","TASSAY × TURAN · Салыстыру","TURAN · Нарық үлесі","Құқықтық IRAC","ЖИ қолданылуы туралы қорытынды","Халықаралық сот тәжірибесі","Брошюра және ғылыми мақала"];
+const shops=['Arbuz','SMALL','Galmart'],colors=['#51d8dc','#ffd073','#9e8efd'];
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function val(n){return Number(n).toLocaleString('kk-KZ')+' ₸'}
+function fmt(d){return new Date(d+'T00:00:00').toLocaleDateString('kk-KZ',{day:'2-digit',month:'short',year:'numeric'})}
+function toast(s){let e=document.getElementById('toast');e.textContent=s;e.style.display='block';setTimeout(()=>e.style.display='none',2800)}
+function nav(i){page=i;document.querySelector('aside').classList.remove('open');render()}
+async function api(url,opt={}){let r=await fetch(url,{...opt,headers:{'Content-Type':'application/json','X-Tassay-Request':'1',...(opt.headers||{})}});if(!r.ok)throw new Error((await r.json().catch(()=>({detail:r.status}))).detail);return r.json()}
+async function refresh(){try{[data,sources]=await Promise.all([api('/api/prices'),api('/api/sources')]);admin=(await api('/api/session')).admin;render()}catch(e){toast('Деректерді жүктеу қатесі: '+e.message)}}
+function render(){document.body.classList.toggle('is-home',page===0);document.getElementById('nav').innerHTML=sections.map((s,i)=>'<button class="nav '+(page===i?'active':'')+'" onclick="nav('+i+')">'+['◫','⌁','▤','☷','◈','▥','◴','⌖','✧','▣','◆','◆','▤','⌁','◉','▦','⚖','✦','⚖','▣'][i]+' &nbsp;'+s+'</button>').join('');document.getElementById('loginBtn').textContent=admin?'Әкімші ✓':'Әкімші кіру';document.getElementById('title').textContent=page===0?'TASSAY MARKET MONITOR':sections[page];document.getElementById('content').innerHTML=pages[page]()}
+function btnCity(){return '<div class="row controls"><span class="muted">Қала:</span><select onchange="city=this.value;render()"><option '+(city==='Астана'?'selected':'')+'>Астана</option><option '+(city==='Алматы'?'selected':'')+'>Алматы</option></select><span class="pill">29.04–26.10.2026</span></div>'}
+function rows(c=city){return data.filter(x=>x.city===c)}
+function avg(a){return a.length?a.reduce((x,y)=>x+y,0)/a.length:0}
+function metric(t,v,sub=''){return '<div class="card"><small>'+t+'</small><div class="metric">'+v+'</div><small>'+sub+'</small></div>'}
+function graph(c=city,mode='abs',brand='TASSAY'){let obs=brand==='TURAN'?turanRows.filter(x=>x.city===c):rows(c), dates=[...new Set(obs.map(x=>x.day))].sort(),values=obs.map(x=>x.price);if(!dates.length)return '';let max=mode==='abs'?Math.max(...values)+35:50,min=mode==='abs'?Math.max(0,Math.min(...values)-35):-50,w=850,h=320,left=54,top=25,r=22,b=45,plotW=w-left-r,plotH=h-top-b;let y=p=>top+(max-p)/(max-min)*plotH,x=i=>left+(dates.length<2?0:i/(dates.length-1)*plotW);let paths=shops.map((s,j)=>{let rs=dates.map(d=>obs.find(z=>z.day===d&&z.shop===s)).filter(Boolean);let first=rs[0]?.price||1;let points=rs.map(z=>({d:z.day,p:mode==='abs'?z.price:(z.price-first)/first*100}));return '<polyline points="'+points.map(z=>x(dates.indexOf(z.d))+','+y(z.p)).join(' ')+'" fill="none" stroke="'+colors[j]+'" stroke-width="3" stroke-linejoin="round"/>'+points.map(z=>'<circle cx="'+x(dates.indexOf(z.d))+'" cy="'+y(z.p)+'" r="5" fill="'+colors[j]+'"><title>'+s+' — '+fmt(z.d)+': '+(mode==='abs'?val(z.p):z.p.toFixed(1)+'%')+'</title></circle>').join('')}).join('');return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Баға динамикасы">'+Array.from({length:5},(_,i)=>{let v=min+(max-min)*i/4;return '<line x1="'+left+'" x2="'+(w-r)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="#3a5567" stroke-dasharray="4 5"/><text fill="#a0bacb" font-size="11" x="4" y="'+(y(v)+4)+'">'+v.toFixed(0)+'</text>'}).join('')+dates.map((d,i)=>'<text fill="#a0bacb" font-size="11" text-anchor="middle" x="'+x(i)+'" y="'+(h-10)+'">'+d.substring(5).replace('-','.')+'</text>').join('')+paths+'</svg><div class="legend">'+shops.map((s,i)=>'<span><span class="sw" style="background:'+colors[i]+'"></span>'+s+'</span>').join('')+'</div>'}
+function productIntro(){return "<section class=\"product-feature\" aria-label=\"TASSAY бренді туралы ақпарат\"><div class=\"product-feature-image\"><img src=\"/media/tassay-card\" alt=\"TASSAY · 1 литр газдалған суының өнім карточкасы\" loading=\"eager\"></div><div><div class=\"kicker\">БРЕНД ТУРАЛЫ ҚЫСҚАША</div><h2>TASSAY — Қазақстанның табиғи су бренді</h2><p>TASSAY — Қазақстанда өндірілетін бөтелкедегі ауыз су және минералды су бренді. Ассортиментінде газдалған және газдалмаған су түрлері бар.</p><p><strong>Зерттеу нысаны:</strong> TASSAY газдалған суы, 1 литр. 2026 жылғы сәуір–қазан аралығында Астана мен Алматы қалаларындағы Arbuz, SMALL және Galmart дүкендерінің бағалары салыстырылды.</p><div class=\"product-tag\">Газдалған су · 1 л</div><div class=\"product-tag\">Астана · Алматы</div><p><a href=\"https://www.tassay.kz/kz/about/\" target=\"_blank\" rel=\"noopener noreferrer\">TASSAY туралы ресми ақпарат ↗</a></p></div></section><section class=\"panel turan-supplement\"><div class=\"turan-supplement-cover\"><img src=\"/media/turan-card\" alt=\"TURAN 1 л газдалған суының карточкасы\" loading=\"lazy\"></div><div><span class=\"kicker\">ҚОСЫМША БӘСЕКЕЛЕС</span><h3>TURAN · газдалған су, 1 л</h3><p class=\"sectionText\">TASSAY зерттеуіне қосымша Астанадағы TURAN бағалары және оларды растайтын скриншоттар бөлек бөлімде көрсетілген. Бастапқы TASSAY мониторингі толық сақталған.</p><p><a href=\"#\" onclick=\"nav(11);return false\">TURAN туралы ↗</a> &nbsp;·&nbsp; <a href=\"#\" onclick=\"nav(12);return false\">TURAN бағалары мен дәлелдемелері ↗</a></p></div></section>"}
+
+function dateOptions(){
+  return [...new Set(rows().map(x=>x.day))].sort();
+}
+function priceCompareSection(){
+  const dates=dateOptions(), chosen=dates.includes(selectedDate)?selectedDate:dates.at(-1);
+  if(!chosen)return '<div class="panel">Бұл қала бойынша бағалар енгізілмеген.</div>';
+  selectedDate=chosen;
+  const found=rows().filter(x=>x.day===chosen&&Number.isFinite(+x.price)&&+x.price>=0).sort((a,b)=>a.price-b.price);
+  const opts=dates.map(x=>'<option value="'+esc(x)+'" '+(x===chosen?'selected':'')+'>'+fmt(x)+'</option>').join('');
+  if(!found.length)return '<section class="panel"><h3>Қай дүкенде арзан?</h3><p>Таңдалған күнге баға дерегі жоқ.</p></section>';
+  const low=+found[0].price,high=+found.at(-1).price,diff=high-low;
+  const cheap=found.filter(x=>+x.price===low).map(x=>esc(x.shop)).join(', ');
+  const increase=low>0?((diff/low)*100).toFixed(1)+'%':'—';
+  const lines=found.map((x,i)=>'<div class="compare-shop '+(+x.price===low?'first':'')+'"><div><b>'+esc(x.shop)+'</b>'+(+x.price===low?'<div class="good"><small>Ең төмен баға</small></div>':'')+'</div><span class="price">'+val(x.price)+'</span></div>').join('');
+  return '<section class="panel price-compare"><div class="compare-top"><div><div class="kicker">ИНТЕРАКТИВТІ САЛЫСТЫРУ</div><h3>Қай дүкенде арзан?</h3></div><label class="row">Күні: <select aria-label="Бағаларды салыстыру күні" onchange="selectedDate=this.value;render()">'+opts+'</select></label></div><p class="muted">Таңдалған қала: '+esc(city)+' · '+fmt(chosen)+'</p><div class="compare-body"><div class="compare-winner"><small>Ең тиімді тіркелген баға</small><div class="metric">'+val(low)+'</div><p><b>'+cheap+'</b></p><small>Осы күндегі бақылаулар бойынша</small></div><div class="compare-stores">'+lines+'</div></div><div class="compare-gap"><b>Ең жоғары және ең төмен бағаның айырмасы: '+val(diff)+'</b> ('+increase+'). '+(diff===0?'Дүкендердің тіркелген бағалары бірдей.':'Пайыз ең төменгі бағаға қатысты есептелген.')+'</div></section>';
+}
+function insightCards(){
+  const local=rows(), byShop=shops.map(shop=>local.filter(x=>x.shop===shop).sort((a,b)=>a.day.localeCompare(b.day)));
+  const moves=byShop.flatMap(series=>series.slice(1).map((x,i)=>({shop:x.shop,from:series[i].day,to:x.day,delta:+x.price-+series[i].price,initial:+series[i].price})));
+  const maxUp=moves.filter(m=>m.delta>0).sort((a,b)=>b.delta-a.delta)[0];
+  const maxDown=moves.filter(m=>m.delta<0).sort((a,b)=>a.delta-b.delta)[0];
+  const paired=[];
+  for(const r of rows('Астана')){const other=data.find(x=>x.city==='Алматы'&&x.shop===r.shop&&x.day===r.day);if(other)paired.push({shop:r.shop,day:r.day,diff:+r.price-(+other.price)})}
+  const maxCityGap=paired.sort((a,b)=>Math.abs(b.diff)-Math.abs(a.diff))[0];
+  const prices=local.map(x=>+x.price).filter(Number.isFinite);
+  const range=prices.length?Math.max(...prices)-Math.min(...prices):null;
+  const tile=(klass,label,v,detail)=>'<div class="insight-card '+klass+'"><div class="insight-label">'+label+'</div><strong>'+v+'</strong><small>'+detail+'</small></div>';
+  return '<section class="research-results"><h3>Зерттеудің негізгі нәтижелері</h3><div class="insight-grid">'+
+    tile('up','Ең үлкен тіркелген өсу',maxUp?'+'+val(maxUp.delta):'—',maxUp?esc(maxUp.shop)+' · '+fmt(maxUp.from)+' → '+fmt(maxUp.to):'Өсу тіркелмеді')+
+    tile('down','Ең үлкен тіркелген төмендеу',maxDown?val(maxDown.delta):'—',maxDown?esc(maxDown.shop)+' · '+fmt(maxDown.from)+' → '+fmt(maxDown.to):'Төмендеу тіркелмеді')+
+    tile('cross','Ең үлкен қалааралық айырма',maxCityGap?val(Math.abs(maxCityGap.diff)):'—',maxCityGap?esc(maxCityGap.shop)+' · '+fmt(maxCityGap.day)+' · Астана – Алматы':'Салыстыру дерегі жоқ')+
+    tile('range','Қала бағаларының диапазоны',range===null?'—':val(range),esc(city)+' · барлық '+local.length+' бақылау')+
+    '</div><p class="evidence-explainer">Өсу мен төмендеу тек бір дүкеннің қатарынан бақыланған күндері бойынша есептелді. Көрсеткіштер бағаның өзгеру себебін білдірмейді.</p></section>';
+}
+
+function dashboard(){let a=rows(),v=a.map(z=>z.price),last=shops.map(s=>a.filter(x=>x.shop===s).sort((x,y)=>y.day.localeCompare(x.day))[0]),changes=shops.map(s=>{let r=a.filter(x=>x.shop===s).sort((x,y)=>x.day.localeCompare(y.day));return {shop:s,delta:r.length?r.at(-1).price-r[0].price:0}});return '<section class="panel legal-hero"><div class="kicker">БӘСЕКЕЛЕСТІК ҚҰҚЫҚ · ЗЕРТТЕУ МАҚСАТЫ</div><h2>Бағалардың айырмашылығы бәсекелестік туралы қандай қорытынды жасауға мүмкіндік береді?</h2><p class="sectionText">Астанадағы TASSAY және TURAN газдалған суын (1 л) салыстыру, релевантты нарық шекарасын анықтау және құқықтық IRAC талдауын жүргізу. Бөлшек баға өздігінен монополияны немесе келісімді дәлелдемейді.</p><div class="row"><button class="btn" onclick="nav(14)">Екі брендті салыстыру</button><button class="btn outline" onclick="nav(16)">IRAC</button><button class="btn outline" onclick="nav(18)">ЕО / АҚШ / ҰБ кейстері</button><button class="btn outline" onclick="nav(19)">Ғылыми нәтижелер</button></div></section>'+btnCity()+productIntro()+priceCompareSection()+insightCards()+'<div class="panel"><div class="kicker">ЗЕРТТЕУ СҰРАҒЫ</div><h3>2026 жылғы бақылау кезеңінде TASSAY 1 л газдалған суының бағасы қалай өзгерді?</h3><p class="sectionText">Тауар: TASSAY, газдалған минералды су, 1 л. Негізгі географиялық нарық — Астана. Алматы тек салыстырмалы талдау үшін қолданылады. Бақылау бағалары бәсекелестік туралы заң бұзушылықты дәлелдемейді.</p></div><div class="grid">'+metric('Бақылаулар',a.length,'Барлығы '+data.length+' жазба')+metric('Орташа баға',val(Math.round(avg(v))),'Таңдалған қала')+metric('Ең төменгі баға',val(Math.min(...v)))+metric('Ең жоғарғы баға',val(Math.max(...v)))+'</div><div class="split"><section class="panel"><h3>Дүкендер бойынша баға динамикасы</h3>'+graph()+'</section><section class="panel"><h3>Соңғы тіркелген бағалар</h3>'+last.map(x=>'<div class="note" style="margin:10px 0"><b>'+x.shop+'</b><div class="metric">'+val(x.price)+'</div><small>'+fmt(x.day)+'</small></div>').join('')+'</section></div><div class="panel"><h3>Алғашқы және соңғы бақылау арасындағы өзгеріс</h3>'+changes.map(x=>'<p>'+x.shop+': <b class="'+(x.delta>0?'bad':x.delta<0?'good':'muted')+'">'+(x.delta>0?'+':'')+x.delta+' ₸</b></p>').join('')+'</div>'}
+function dynamics(){let a=rows();return btnCity()+'<section class="panel"><div class="row"><h3>Бағаның өзгерісі</h3><button class="btn outline" onclick="document.getElementById(\'dgraph\').innerHTML=graph(city,\'abs\')">₸</button><button class="btn outline" onclick="document.getElementById(\'dgraph\').innerHTML=graph(city,\'percent\')">%</button></div><div id="dgraph">'+graph()+'</div><p class="muted">Тіркелген бақылау күндері көрсетілді; бақыланбаған аралық күндер бойынша деректер жоқ.</p></section><div class="panel"><h3>Баға өзгерісін есептеу</h3><div class="row"><select id="calcshop">'+shops.map(s=>'<option>'+s+'</option>').join('')+'</select><select id="calcfrom">'+[...new Set(a.map(x=>x.day))].sort().map(s=>'<option>'+s+'</option>').join('')+'</select><select id="calcto">'+[...new Set(a.map(x=>x.day))].sort().map((s,i,all)=>'<option '+(i===all.length-1?'selected':'')+'>'+s+'</option>').join('')+'</select><button class="btn" onclick="calculate()">Есептеу</button></div><p id="calcresult" class="metric"></p></div>'}
+function calculate(){let shop=document.getElementById('calcshop').value,one=data.find(x=>x.city===city&&x.shop===shop&&x.day===document.getElementById('calcfrom').value),two=data.find(x=>x.city===city&&x.shop===shop&&x.day===document.getElementById('calcto').value);document.getElementById('calcresult').textContent=one&&two?(two.price-one.price)+' ₸ / '+((two.price-one.price)*100/one.price).toFixed(2)+'%':'Деректер жоқ'}
+
+function evidenceFor(record,brand='TASSAY'){
+ const img=evidenceImages.find(x=>x.brand===brand&&x.day===record.day&&x.city===record.city);
+ if(!img)return null;
+ const shownPrice=img.shown&&record.shop in img.shown?Number(img.shown[record.shop]):null;
+ return {url:'/evidence/'+encodeURIComponent(img.file),label:brand+' · '+fmt(record.day)+' · '+record.city,mismatch:shownPrice!==null&&shownPrice!==Number(record.price)};
+}
+function showEvidenceModal(ref){
+ const dialog=document.getElementById('evidenceDialog');
+ document.getElementById('evidenceModalTitle').textContent=ref.label+' · Скриншот';
+ const hint=document.getElementById('evidenceDetailNote');if(hint)hint.textContent=ref.note||'Скриншоттағы тауар атауы көрінбеуі мүмкін. Баға, күн және дүкен сәйкестігін бөлек тексеру керек.';
+ document.getElementById('evidenceModalImage').src=ref.url;
+ document.getElementById('evidenceModalLink').href=ref.url;
+ if(dialog.showModal)dialog.showModal();else window.open(ref.url,'_blank','noopener');
+}
+function openEvidence(id){
+ const record=data.find(x=>+x.id===+id);
+ if(!record){toast('Жазба табылмады');return}
+ const ref=evidenceFor(record);
+ if(!ref){toast('Бұл бренд, күн және қала үшін скриншот жоқ');return}
+ showEvidenceModal(ref);
+}
+function openTuranEvidence(day){
+ const record=turanRows.find(x=>x.city==='Астана'&&x.day===day);
+ if(!record){toast('TURAN бақылауы табылмады');return}
+ const ref=evidenceFor(record,'TURAN');
+ if(!ref){toast('TURAN скриншоты табылмады');return}
+ showEvidenceModal(ref);
+}
+
+function tassayDayEvidence(day,location){
+ const primary=evidenceImages.find(x=>x.brand==='TASSAY'&&x.day===day&&x.city===location);
+ const secondary=evidenceImages.find(x=>x.brand==='TURAN'&&x.day===day&&x.city===location);
+ const source=primary||secondary;
+ if(!source)return null;
+ const errors=shops.filter(shop=>{
+  const record=data.find(x=>x.city===location&&x.day===day&&x.shop===shop);
+  return record&&source.shown&&source.shown[shop]!=null&&Number(source.shown[shop])!==Number(record.price);
+ });
+ const other=!!secondary&&!primary;
+ const note=other?'Бұл файлдағы сомалар TURAN бағаларына сәйкес келеді. Осы күнгі TASSAY бағасының нақты скриншоты GitHub-та табылмады. Файл тек анықтама ретінде ашылады, TASSAY бағасын растамайды.':
+ errors.length?'Скриншот пен TASSAY кестесі арасындағы баға айырмашылығы: '+errors.join(', ')+'. Соманы бастапқы дереккөзбен қайта тексеру қажет.':
+ 'Скриншоттағы тауар атауы сурет қиындысында көрінбеуі мүмкін; бренд пен өлшемді бастапқы көзден растау қажет.';
+ return {url:'/evidence/'+encodeURIComponent(source.file),
+ label:(other?'TURAN файлы — TASSAY-ға дәлел емес':'TASSAY')+' · '+fmt(day)+' · '+location,
+ note,issues:other||errors.length>0,other,file:source.file};
+}
+function openTassayDayEvidence(day,location){
+ const ref=tassayDayEvidence(day,location);
+ if(!ref){toast('Бұл күн мен қала үшін файл жоқ');return}
+ showEvidenceModal(ref);
+}
+function pctChange(a,b){
+ if(a===null||a===undefined||b===null||b===undefined||!(Number(a)>0))return null;
+ return ((Number(b)-Number(a))/Number(a))*100;
+}
+function pctDisplay(p){
+ return p===null?'—':(p>0?'+':'')+p.toFixed(1).replace('.',',')+'%';
+}
+// Жеке дүкен бағасының алдыңғы тіркелген күнге қатысты пайыздық өзгерісі.
+// Бақыланбаған күндер үшін аралық мәндер есептелмейді.
+function priceChangeCell(previousDay,day,get){
+ if(!previousDay)return '<span class="change-first">— · Алғашқы бақылау</span>';
+ return '<div class="change-percent-list">'+shops.map(shop=>{
+  const previous=get(previousDay,shop),current=get(day,shop);
+  const pc=previous&&current&&previous.price>0?(current.price-previous.price)/previous.price*100:null;
+  const txt=pc===null?'—':(pc>0?'+':'')+pc.toFixed(1).replace('.',',')+'%';
+  const style=pc===null?'':pc>0?'change-increase':pc<0?'change-decrease':'change-constant';
+  return '<span class="change-percent-item"><span>'+esc(shop)+'</span><strong class="'+style+'">'+txt+'</strong></span>';
+ }).join('')+'</div>';
+}
+function priceTable(){
+ const location=city;
+ const rr=data.filter(x=>x.city===location);
+ const ds=[...new Set(rr.map(x=>x.day))].sort();
+ const first=ds[0],last=ds.at(-1);
+ const get=(day,shop)=>rr.find(x=>x.day===day&&x.shop===shop);
+ const row=ds.map((day,i)=>{
+  const evidence=tassayDayEvidence(day,location);
+  const change=priceChangeCell(i?ds[i-1]:null,day,get);
+  let action=evidence?
+   '<button class="evidence-button" onclick="openTassayDayEvidence(\''+day+'\',\''+location+'\')" title="'+esc(evidence.file)+'">📷 '+(evidence.other?'TURAN файлы':'Қарау')+'</button>'+
+   (evidence.issues?'<small class="evidence-warning">⚠ '+(evidence.other?'TASSAY дәлелі жоқ':'Сома айырмасы')+'</small>':''):
+   '<span class="muted">Файл жоқ</span>';
+  return '<tr><td>'+fmt(day)+'</td>'+shops.map(shop=>{
+   const v=get(day,shop);return '<td>'+(v?val(v.price):'—')+'</td>';
+  }).join('')+'<td class="change-percent-cell">'+change+'</td><td>'+action+'</td></tr>';
+ }).join('');
+ const summary=shops.map(shop=>{
+  const a=get(first,shop),b=get(last,shop),change=pctChange(a?.price,b?.price);
+  return '<td><strong>'+pctDisplay(change)+'</strong>'+(a&&b?'<small class="evidence-change-detail">'+(Number(b.price)-Number(a.price)>=0?'+':'')+(Number(b.price)-Number(a.price))+' ₸</small>':'')+'</td>';
+ }).join('');
+ const adminButtons=admin?'<button class="btn" onclick="edit()">+ Бақылау қосу</button>':'';
+ const rawRows=[...rr].sort((a,b)=>a.day.localeCompare(b.day)||shops.indexOf(a.shop)-shops.indexOf(b.shop)).map(x=>{
+  return '<tr><td>'+fmt(x.day)+'</td><td>'+esc(x.shop)+'</td><td>'+val(x.price)+'</td><td>'+esc(x.notes||'').slice(0,95)+'</td><td>'+(admin?'<button class="btn outline" onclick="edit('+Number(x.id)+')">Өңдеу</button>':'—')+'</td></tr>';
+ }).join('');
+ const note=location==='Астана'?
+  '<p class="km2-muted">29 сәуір, 29 мамыр және 1 қыркүйек үшін TASSAY бағаларына сәйкес келетін жаңа скриншоттар жүктелді. Бұрын сол атаумен тұрған TURAN суреттері жеке архивтік файлдармен сақталды. Скриншот үзінділерінде тауар бренді толық көрінбейтіндіктен, оның нақты тиесілігін бастапқы дереккөз арқылы растау қажет.</p>':
+  '<p class="km2-muted">Алматыдағы 29 мамыр және 1 қыркүйек скриншоттарындағы үш дүкеннің бағасы кестемен сәйкес келеді. 13 шілдеде Galmart-тың 560 ₸ бағасы автордың өтініші және 500 ₸ көрсетілген скриншот бойынша түзетілді. Скриншот үзінділерінде тауар бренді толық көрінбейтіндіктен, оны бастапқы дереккөзден тексеру қажет.</p>';
+ return '<div class="km2-lead"><div class="kicker">TASSAY · БАҒА МОНИТОРИНГІ</div><h2>TASSAY · Бағалар және дәлелдемелер</h2><p>Газдалған TASSAY, 1 литр · '+location+'. Бір күн — бір қатар; үш дүкеннің бағасы мен сәйкес скриншот көрсетіледі.</p></div>'+
+ btnCity()+
+ '<section class="panel"><div class="row" style="justify-content:space-between"><h3>Бағалар кестесі</h3><div class="row"><button class="btn outline" onclick="location.href=\'/api/export.csv\'">↓ CSV жүктеу</button>'+adminButtons+'</div></div>'+
+ '<div class="km2-table"><table><thead><tr><th>Күні</th><th>Arbuz</th><th>SMALL</th><th>Galmart</th><th>Өзгеріс, %</th><th>Скриншот</th></tr></thead><tbody>'+row+
+ '<tr class="turan-change-row"><td><strong>Жалпы өзгеріс · '+fmt(first)+' → '+fmt(last)+'</strong></td>'+summary+'<td>Алғашқы → соңғы</td><td>—</td></tr></tbody></table></div>'+
+ '<p class="km2-muted">Күндер өсу ретімен қойылған. «Өзгеріс, %» бағаны әр дүкеннің алдыңғы тіркелген күнге қатысты өзгерісін көрсетеді, алғашқы күн есепке алынбайды. Соңғы қатар — 29 сәуірден 26 қазанға дейінгі жалпы өзгеріс. Формула: (жаңа баға − алдыңғы баға) / алдыңғы баға × 100%. Теңгедегі жалпы айырма төменде көрсетілген.</p>'+note+'</section>'+
+ '<details class="panel evidence-details"><summary>Жеке баға жазбалары мен дереккөз түсіндірмелері ('+rr.length+')</summary><div class="km2-table"><table><thead><tr><th>Күні</th><th>Дүкен</th><th>Баға</th><th>Бастапқы түсіндірме</th><th></th></tr></thead><tbody>'+rawRows+'</tbody></table></div></details>';
+}
+
+function edit(id){let x=data.find(y=>y.id===id)||{day:'2026-10-21',city:'Астана',shop:'Arbuz',price:0,status:'needs_review',source:'',notes:''};let body='<div class="panel"><h3>'+ (id?'Бақылауды өңдеу':'Бақылау қосу')+'</h3><div class="row"><input id="ed-day" type="date" value="'+x.day+'"><select id="ed-city">'+['Астана','Алматы'].map(s=>'<option '+(x.city===s?'selected':'')+'>'+s+'</option>')+'</select><select id="ed-shop">'+shops.map(s=>'<option '+(x.shop===s?'selected':'')+'>'+s+'</option>')+'</select><input id="ed-price" type="number" min="0" value="'+x.price+'"></div><p><select id="ed-status">'+['needs_review','verified','missing'].map(s=>'<option '+(x.status===s?'selected':'')+' value="'+s+'">'+s+'</option>')+'</select></p><p><input id="ed-source" placeholder="Дереккөз URL" style="width:100%" value="'+esc(x.source)+'"></p><textarea style="width:100%;min-height:100px" id="ed-notes">'+esc(x.notes)+'</textarea><p class="row"><button class="btn" onclick="save('+ (id||'null') +')">Сақтау</button><button class="btn outline" onclick="render()">Жабу</button></p></div>';document.getElementById('content').innerHTML=body}
+async function save(id){let b={day:document.getElementById('ed-day').value,city:document.getElementById('ed-city').value,shop:document.getElementById('ed-shop').value,price:+document.getElementById('ed-price').value,status:document.getElementById('ed-status').value,source:document.getElementById('ed-source').value,notes:document.getElementById('ed-notes').value,channel:'online',discount:'',captured:''};try{await api('/api/prices'+(id?'/'+id:''),{method:id?'PUT':'POST',body:JSON.stringify(b)});toast('Сақталды');refresh()}catch(e){toast(e.message)}}
+function generic(title,paras){return '<div class="panel"><h3>'+title+'</h3>'+paras.map(x=>'<p class="sectionText">'+x+'</p>').join('')+'</div>'}
+function method(){return generic('Зерттеу әдістемесі',['Зерттеу нысаны — TASSAY газдалған минералды су, дәл 1 л; газдалмаған су, басқа көлем және брендтер араластырылмайды.','БШ1-де 2026 жылғы 29 сәуір – 19 қазан аралығындағы бес бақылау күні қаралды; Қосымша бақылауларда екі қалаға 1 қыркүйек, 23, 24 және 26 қазан бағалары қосылды. Негізгі A–B салыстыру аумағы — Астана; Алматыдағы TURAN бағалары белгісіз және ойдан толтырылмайды. Әр қалада Arbuz, SMALL және Galmart зерттеледі.','Баға тексеру алгоритмі: бірдей бренд, газдалған су, 1 л, қала, дүкен, күн және акция шартын сәйкестендіру; чек/скриншотты тіркеу; абсолюттік өзгерісті (жаңа баға − ескі баға) және пайыздық өзгерісті (өзгеріс / бастапқы баға × 100%) есептеу.','Бірінен кейін бірі тіркелген бағалардың шамамен 15–20% төмендеуі — тек ықтимал акция сигналы. 26 қазанда SMALL дүкенінде TURAN-ға 20% акция барын автор хабарлады, бірақ нақты баға мен фотодәлел әлі жоқ.','Астана бойынша TASSAY мен TURAN бағалары 29 сәуірде, 29 мамырда және 1 қыркүйекте бір күнге дәл сәйкес келеді (3 күн × 3 дүкен = 9 жұп). Шілде, тамыз және қазан салыстырулары 3–5 күн айырмасымен алынған жуық кезеңдер. Нарық көлемі мен сатылым деректері болмағандықтан, нақты нарық үлесі есептелмейді.','Шектеулер: жеңілдіктер, жеткізу ақысы, қордағы тауар қалдығы, ретроспективті деректер, аз үлгі және бақыланбаған аралық күндер. Бұл факторларды дәлелденген себептер деп көрсетуге болмайды.'])}
+function market(){return generic('Астана қаласының релевантты нарығы',['Негізгі географиялық шекара — Астана қаласы. Алматы салыстыру үшін ғана алынған; қалалардағы бағалар айырмасы бірыңғай нарықтың барын дәлелдемейді.','Балама тауар шекаралары: 1 литрге жуық газдалған минералды су; барлық газдалған бөтелкедегі су; минералды және ауыз су. Нарық шекарасы өзара алмастырылу, өнім сипаттары, баға, тұтынушының таңдауы зерттелген соң ғана нақтыланады.','Компания А ретінде TASSAY брендімен байланысты расталған заңды тұлға немесе таңдалған бөлшек сатушы қарастырылуы мүмкін. Брендтің атауы өндіруші заңды тұлғасының дәлелі емес.'])}
+
+function brandShareCalc(brand){
+ const id=brand==='TASSAY'?'shTassay':'shTuran';
+ return '<details class="panel brand-share-calc"><summary>Нақты сату көлемдері болғанда үлесті есептеу</summary><p class="km2-muted">Бір кезең, қала (Астана), тауар шекарасы және өлшем бірлігі бірдей болуы тиіс.</p><div class="row"><label>Бренд сатылымы<input type="number" min="0" id="'+id+'Num" placeholder="Литр"></label><label>Нарықтың жиынтық сатылымы<input type="number" min="0" id="'+id+'Den" placeholder="Литр"></label><label>Кезең<input id="'+id+'Period" placeholder="2026 ж. ..."></label><label>Дереккөз<input id="'+id+'Source" placeholder="Сату есебі / URL"></label></div><button class="btn" onclick="evaluateBrandShare(\''+id+'\')">Есептеу</button><div id="'+id+'Out" class="brand-share-output"></div></details>';
+}
+function evaluateBrandShare(id){
+ const a=document.getElementById(id+'Num').value,b=document.getElementById(id+'Den').value,p=document.getElementById(id+'Period').value.trim(),src=document.getElementById(id+'Source').value.trim(),out=document.getElementById(id+'Out');
+ if(a===''||b===''||!(+b>0)||!(+a>=0)||+a>+b||!p||!src){out.textContent='Салыстырмалы сатылым көлемі, бірдей кезең және дереккөз қажет.';return}
+ out.textContent='Деректерге тәуелді есеп: '+(100*+a/+b).toFixed(2).replace('.',',')+'%. Дереккөз бен тауар шекарасы тәуелсіз тексерілуі тиіс.';
+}
+function share(){
+ return '<div class="km2-lead"><div class="kicker">TASSAY · ЖАРИЯЛАНҒАН АҚПАРАТ</div><h2>TASSAY · Нарық үлесі</h2><p>2026 жылғы Астана қаласының газдалған 1 л су нарығындағы нақты үлес әзірше белгісіз. Төменде басқа жылдар мен тауар санаттарынан алынған жария деректер берілген.</p></div>'+
+ '<section class="panel"><div class="share-fact"><div class="share-big-number">28%</div><div><h3>2023 жыл · Дәмі бар су нарығы</h3><p>«RG Brands Kazakhstan» ЖШС-нің 2023 жылғы жылдық есебінде «Yuniks» ЖШС / Tassay үшін <b>дәмі бар су санатындағы нарық үлесі 28%</b> деп көрсетілген; A’SU VO үлесі 62% деп жазылған.</p></div></div><p class="share-limitation"><b>Түсіндіру:</b> бұл тек дәмі бар су санаты және тарихи Қазақстан дерегі. Газдалған TASSAY 1 л өнімінің Астанадағы 2026 жылғы үлесі емес. Өндіруші бәсекелестің есебіндегі жария мәлімет.</p><p class="km2-source"><a href="https://kase.kz/files/emitters/RGBK/rgbkp_2023_rus.pdf#page=13" target="_blank" rel="noopener">KASE · 2023 жылғы жылдық есеп, 13-бет ↗</a></p></section>'+
+ '<section class="panel"><h3>2008 жыл · Тарихи сұхбат</h3><p>Informburo басылымындағы сұхбатта TASSAY өкілі Қазақстандағы ауыз су сегментіндегі бренд үлесі <b>30%-ға дейін</b> жеткенін айтқан.</p><p class="share-limitation">Бұл компания өкілінің 2008 жылғы мәлімдемесі; 2026 жылғы тәуелсіз статистика емес және 28%-бен қосылмайды.</p><p class="km2-source"><a href="https://informburo.kz/sport/old/pili-pyut-i-budut-pit-vodu-tassay-1799.html" target="_blank" rel="noopener">Informburo · 29.12.2008 ↗</a></p></section>'+
+ '<section class="panel"><h3>2025 жыл · Бөтелкедегі су нарығы</h3><p>Euromonitor зерттеуінің ашық сипаттамасы бойынша RG Brands нарық көшбасшысы, ал Unix оған жақын бәсекелес. Компаниялар мен брендтердің үлестеріне арналған кестелер бар, бірақ нақты пайыздық мәндер ашық сипаттамада жоқ.</p><p class="km2-source"><a href="https://www.euromonitor.com/bottled-water-in-kazakhstan/report" target="_blank" rel="noopener">Euromonitor · желтоқсан 2025 ↗</a></p></section>'+
+ '<section class="panel"><h3>2025 жыл · Ұлттық өндіріс ауқымы</h3><p>EnergyProm жарияланымы бойынша, қаңтар–мамырда Қазақстандағы қантсыз және хош иістендірілмеген минералды және газдалған су өндірісі <b>301,6 млн литр</b> болды. Бұл TASSAY сатылымы емес және Астанадағы нарық көлемі емес.</p><p class="km2-source"><a href="https://energyprom.kz/articles-ru/markets-ru/chto-pyut-kazahstanczy-svoyo-ili-privoznoe/" target="_blank" rel="noopener">EnergyProm · 09.07.2025 ↗</a></p></section>'+
+ '<div class="km2-missing"><h3>Астана, 2026: нақты үлес есептелмейді</h3><p>Газдалған TASSAY 1 л өнімінің Астанадағы сату көлемі және барлық бәсекелес брендтерді қамтитын нарықтың жиынтық көлемі белгісіз. Бөлшек баға нарық үлесінің дәлелі емес.</p></div>'+brandShareCalc('TASSAY');
+}
+
+function factors(){return generic('Бағаға ықпал етуі мүмкін факторлар',['Инфляция, маусымдық сұраныс, көлік пен логистика, қаптаманың құны, теңге бағамы, өндірістік шығындар, акциялар, сауда желілерінің саясаты және салықтар ықтимал факторлар болып табылады.','Логистика, жеңілдіктер, қаптама шығындары және басқа ықтимал себептердің дәл осы өнім бағасына әсері бөлек дәлелдемелермен расталуы қажет.']) + "<div class=\"panel\"><div class=\"kicker\">ЖАҢАЛЫҚТАР ЖӘНЕ РЕСМИ ДЕРЕКТЕР</div><h3>2026 жылғы су нарығына әсер етуі мүмкін жағдайлар</h3><p class=\"sectionText\">Төмендегі жарияланымдар зерттеу кезеңіне жақын уақыттағы ел бойынша баға өзгерістерін, өндіріс пен сұранысты көрсетеді. <b>Бұл көрсеткіштер TASSAY 1 л өнімінің жеке баға өзгерісінің нақты себебін дәлелдемейді.</b></p><div class=\"grid\" style=\"grid-template-columns:repeat(auto-fit,minmax(245px,1fr))\"><article class=\"card\" style=\"display:flex;flex-direction:column;gap:9px\"><div class=\"row\"><span class=\"pill\">Баға өзгерісі</span><small>15.07.2026</small></div><div class=\"metric\" style=\"color:#4ed6ce;margin:0\">+17,7%</div><h3 style=\"margin:0;font-size:16px\">EnergyProm — Қазақстанда минералды су 17,7%-ға қымбаттады</h3><p class=\"sectionText\" style=\"margin:0;flex:1\">2026 жылғы маусымда минералды судың бағасы 2025 жылғы маусыммен салыстырғанда 17,7%-ға, ауыз судың бағасы 15%-ға өсті. Мақалада жазғы ыстық кезіндегі сұраныстың артуы және ішкі сұраныстың өндірістен жылдамырақ өсуі талқыланады.</p><small>Салалық талдау және баға статистикасы</small><a style=\"font-weight:750\" href=\"https://energyprom.kz/articles-ru/industries-ru/energetiki-podorozhali-na-20-pitevaya-voda-na-15/\" target=\"_blank\" rel=\"noopener noreferrer\">Дереккөзге өту ↗</a></article><article class=\"card\" style=\"display:flex;flex-direction:column;gap:9px\"><div class=\"row\"><span class=\"pill\">Өндіріс пен сұраныс</span><small>05.08.2026</small></div><div class=\"metric\" style=\"color:#4ed6ce;margin:0\">+21%</div><h3 style=\"margin:0;font-size:16px\">Ұлттық статистика бюросы — сусын өндірісі 17%-ға өсті</h3><p class=\"sectionText\" style=\"margin:0;flex:1\">2026 жылғы қаңтар–мамырда минералды су мен алкогольсіз сусындар өндірісі 17%-ға, ішкі нарықтағы өткізу көлемі 21%-ға өскені хабарланды. Бұл — су нарығына қатысты кең санат, тек TASSAY емес.</p><small>Ресми мемлекеттік ақпарат</small><a style=\"font-weight:750\" href=\"https://stat.gov.kz/ru/news/v-kazakhstane-proizvodstvo-bezalkogolnykh-napitkov-vyroslo-na-17/\" target=\"_blank\" rel=\"noopener noreferrer\">Дереккөзге өту ↗</a></article><article class=\"card\" style=\"display:flex;flex-direction:column;gap:9px\"><div class=\"row\"><span class=\"pill\">Инфляция</span><small>2026 жылғы шілде</small></div><div class=\"metric\" style=\"color:#4ed6ce;margin:0\">10,2%</div><h3 style=\"margin:0;font-size:16px\">Ұлттық статистика бюросы — 2026 жылғы шілдедегі инфляция</h3><p class=\"sectionText\" style=\"margin:0;flex:1\">2026 жылғы шілдеде Қазақстандағы жылдық инфляция 10,2%, алкогольсіз сусындар санатының жылдық өсімі 13,6% болды. Астанадағы жылдық инфляция — 9,8%. Бұл көрсеткіштер TASSAY бағасына тікелей қолданылмайды.</p><small>Ресми бағалар индексі</small><a style=\"font-weight:750\" href=\"https://stat.gov.kz/ru/industries/economy/prices/publications/509832/\" target=\"_blank\" rel=\"noopener noreferrer\">Дереккөзге өту ↗</a></article></div><div class=\"note\" style=\"margin-top:16px\"><b>Мүмкін ықпал ету тетігі:</b> жаз айларында суды тұтынудың артуы сұранысқа әсер етуі мүмкін; өндіріс, импорт және жалпы инфляция да нарықтық контексті сипаттайды. <b>Бірақ</b> осы жаңалықтар TASSAY бағасының өзгеруіне нақты қай фактор себеп болғанын көрсетпейді. Материалдардағы жылдық пайыздарды 29 сәуір – 19 қазан арасындағы TASSAY бағасының пайыздық өзгерісімен тікелей теңестіруге болмайды.</div></div>"}
+function compare(){let pairs=[];for(let d of [...new Set(data.map(x=>x.day))])for(let s of shops){let a=data.find(x=>x.day===d&&x.city==='Астана'&&x.shop===s),b=data.find(x=>x.day===d&&x.city==='Алматы'&&x.shop===s);if(a&&b)pairs.push({d,s,a:a.price,b:b.price,delta:a.price-b.price})}return '<div class="grid">'+metric('Астана орташа бағасы',val(Math.round(avg(rows('Астана').map(x=>x.price)))))+metric('Алматы орташа бағасы',val(Math.round(avg(rows('Алматы').map(x=>x.price)))))+metric('Ең үлкен қалааралық айырма',val(Math.max(...pairs.map(x=>Math.abs(x.delta)))))+metric('Салыстырылған жұп',pairs.length)+'</div><div class="panel"><h3>Қалалар бойынша айырмашылықтар</h3><div class="tablewrap"><table><tr><th>Күні</th><th>Дүкен</th><th>Астана</th><th>Алматы</th><th>Айырма</th></tr>'+pairs.map(x=>'<tr><td>'+fmt(x.d)+'</td><td>'+x.s+'</td><td>'+val(x.a)+'</td><td>'+val(x.b)+'</td><td>'+x.delta+' ₸</td></tr>').join('')+'</table></div></div>'}
+function conclusions(){let a=rows('Астана');return generic('Ғылыми қорытындылар',['Астанада бақыланған бағалардың ең төменгісі '+val(Math.min(...a.map(x=>x.price)))+', ең жоғарғысы '+val(Math.max(...a.map(x=>x.price)))+'. Нақты өзгерістер тек берілген күндерге қатысты.','Әр дүкеннің өзгеру траекториясы әртүрлі. Баға сәйкестігі заң бұзуды дәлелдемейді. Алматыдағы бақылаулар салыстыруға арналған, бірақ Астана нарығының үлесін есептеуге кірмейді.','Болжамдар: маусымдылық, аймақтық логистика, жеңілдіктер мен сатушы стратегиялары әсер етуі мүмкін, бірақ әсері расталмаған.','Қосымша қажет деректер: нақты сатылым көлемі, тауар нарығының шекарасы, заңды өндіруші, нарық үлестері, мемлекеттік қолдау туралы ресми деректер және акциялардың дәлелдері.'])}
+const evidenceImages=[{"brand":"TASSAY","city":"Алматы","day":"2026-04-29","file":"29 апрель алматы.png","shown":{"Arbuz":420,"SMALL":560,"Galmart":560}},{"brand":"TASSAY","city":"Алматы","day":"2026-07-13","file":"13 июль алматы.png","shown":{"Arbuz":520,"SMALL":479,"Galmart":500}},{"brand":"TASSAY","city":"Астана","day":"2026-07-13","file":"13 июль астана.png","shown":{"Arbuz":525,"SMALL":519,"Galmart":585}},{"brand":"TASSAY","city":"Алматы","day":"2026-08-28","file":"28 авг алматы.png","shown":{"Arbuz":474,"SMALL":479,"Galmart":560}},{"brand":"TASSAY","city":"Астана","day":"2026-08-28","file":"28 авг астана.png","shown":{"Arbuz":485,"SMALL":519,"Galmart":545}},{"brand":"TASSAY","city":"Алматы","day":"2026-10-19","file":"19 окт алматы.jpg","shown":{"Arbuz":508,"SMALL":479,"Galmart":560}},{"brand":"TASSAY","city":"Астана","day":"2026-10-19","file":"19 окт астана.png","shown":{"Arbuz":517,"SMALL":519,"Galmart":585}},{"brand":"TASSAY","city":"Алматы","day":"2026-10-23","file":"23 октябрь алматы.png","shown":{"Arbuz":545,"SMALL":479,"Galmart":560}},{"brand":"TASSAY","city":"Астана","day":"2026-10-23","file":"23 октябрь астана.png","shown":{"Arbuz":555,"SMALL":519,"Galmart":585}},{"brand":"TASSAY","city":"Алматы","day":"2026-10-24","file":"24 октябрь алматы.png","shown":{"Arbuz":508,"SMALL":479,"Galmart":560}},{"brand":"TASSAY","city":"Астана","day":"2026-10-24","file":"24 октябрь астана.png","shown":{"Arbuz":517,"SMALL":519,"Galmart":585}},{"brand":"TASSAY","city":"Алматы","day":"2026-10-26","file":"26 октябрь алматы.png","shown":{"Arbuz":508,"SMALL":479,"Galmart":560}},{"brand":"TASSAY","city":"Астана","day":"2026-10-26","file":"26 октябрь астана.png","shown":{"Arbuz":517,"SMALL":519,"Galmart":585}},{"brand":"TURAN","city":"Астана","day":"2026-04-29","file":"turan-2026-04-29-astana.png","shown":{"Arbuz":385,"SMALL":425,"Galmart":440}},{"brand":"TURAN","city":"Астана","day":"2026-05-29","file":"turan-2026-05-29-astana.png","shown":{"Arbuz":359,"SMALL":319,"Galmart":510}},{"brand":"TURAN","city":"Астана","day":"2026-06-29","file":"29 июнь астана.png","shown":{"Arbuz":423,"SMALL":338,"Galmart":510}},{"brand":"TURAN","city":"Астана","day":"2026-07-10","file":"10 июль астана.png","shown":{"Arbuz":365,"SMALL":465,"Galmart":455}},{"brand":"TURAN","city":"Астана","day":"2026-08-23","file":"23 авг астана.png","shown":{"Arbuz":480,"SMALL":325,"Galmart":510}},{"brand":"TURAN","city":"Астана","day":"2026-09-01","file":"turan-2026-09-01-astana.png","shown":{"Arbuz":409,"SMALL":325,"Galmart":510}},{"brand":"TURAN","city":"Астана","day":"2026-09-07","file":"7 сентябрь астана.png","shown":{"Arbuz":409,"SMALL":325,"Galmart":510}},{"brand":"TURAN","city":"Астана","day":"2026-09-26","file":"26 сентябрь астана.png","shown":{"Arbuz":409,"SMALL":325,"Galmart":510}},{"brand":"TURAN","city":"Астана","day":"2026-10-15","file":"15 окт астана.png","shown":{"Arbuz":435,"SMALL":369,"Galmart":510}},{"brand":"TURAN","city":"Алматы","day":"2026-04-30","file":"30 апрель алматы.png"},{"brand":"TURAN","city":"Алматы","day":"2026-05-29","file":"turan-2026-05-29-almaty.png"},{"brand":"TURAN","city":"Алматы","day":"2026-06-29","file":"29 июнь алматы.png"},{"brand":"TURAN","city":"Алматы","day":"2026-07-10","file":"10 июль алматы.png"},{"brand":"TURAN","city":"Алматы","day":"2026-08-22","file":"22 авг алматы.png"},{"brand":"TURAN","city":"Алматы","day":"2026-09-07","file":"7 сент алматы.png"},{"brand":"TURAN","city":"Алматы","day":"2026-09-24","file":"24 сентябрь алматы.png"},{"brand":"TURAN","city":"Алматы","day":"2026-10-15","file":"15 окт алматы.png"},{"brand":"TASSAY","city":"Астана","day":"2026-04-29","file":"29 апрель астана.png","shown":{"Arbuz":420,"SMALL":560,"Galmart":560}},{"brand":"TASSAY","city":"Астана","day":"2026-05-29","file":"29 май астана.png","shown":{"Arbuz":559,"SMALL":499,"Galmart":560}},{"brand":"TASSAY","city":"Астана","day":"2026-09-01","file":"1 сент астана.png","shown":{"Arbuz":485,"SMALL":519,"Galmart":585}},{"brand":"TASSAY","city":"Алматы","day":"2026-05-29","file":"29 май алматы.png","shown":{"Arbuz":479,"SMALL":449,"Galmart":560}},{"brand":"TASSAY","city":"Алматы","day":"2026-09-01","file":"1  сентябрь алматы.png","shown":{"Arbuz":545,"SMALL":479,"Galmart":560}}];
+function bibliography(){
+ const collection=brand=>{
+  const pics=evidenceImages.filter(x=>x.brand===brand).sort((a,b)=>a.day.localeCompare(b.day)||a.city.localeCompare(b.city));
+  return '<section class="panel"><h3>'+brand+' · Скриншоттар ('+pics.length+')</h3><p class="km2-muted">Скриншоттағы дүкен мен соманы кестемен салыстырыңыз. Тауар атауы кейбір кескіндерде көрінбеуі мүмкін.</p><div class="evidence-grid">'+pics.map(x=>{
+   const url='/evidence/'+encodeURIComponent(x.file);
+   return '<a class="evidence-item" href="'+url+'" target="_blank" rel="noopener" title="'+esc(x.file)+'"><img loading="lazy" src="'+url+'" alt="'+brand+', '+fmt(x.day)+', '+x.city+' скриншот"><span class="evidence-meta"><strong>'+fmt(x.day)+'</strong><span>'+x.city+'</span></span></a>'
+  }).join('')+'</div></section>';
+ };
+ return collection('TASSAY')+collection('TURAN');
+}
+async function addSource(){try{await api('/api/sources',{method:'POST',body:JSON.stringify({title:document.getElementById('srcTitle').value,url:document.getElementById('srcUrl').value})});refresh()}catch(e){toast(e.message)}}
+function aiSummary(){return "<section class=\"panel\">\n<div class=\"kicker\">АКАДЕМИЯЛЫҚ АШЫҚТЫҚ • AI DISCLOSURE</div>\n<h3>Жасанды интеллект зерттеуде қалай қолданылды?</h3>\n<p class=\"sectionText\">Бұл оқу-зерттеу жобасын әзірлеуде жасанды интеллект (ЖИ) көмекші құрал ретінде қолданылды. ЖИ зерттеу деректерінің бастапқы дереккөзі немесе құқықтық дәлелдеме болып саналмайды.</p>\n<div class=\"grid\" style=\"grid-template-columns:repeat(auto-fit,minmax(205px,1fr))\">\n<div class=\"card\"><small>01 / ЖОСПАРЛАУ</small><h3>Зерттеу құрылымы</h3><p class=\"sectionText\">Талдау бөлімдерінің логикасын жүйелеуге, зерттеу сұрағын, әдіснамалық шектеулерді және қорғау құрылымын тұжырымдауға көмектесті.</p></div>\n<div class=\"card\"><small>02 / ПЛАТФОРМА</small><h3>Цифрлық құралдар</h3><p class=\"sectionText\">Веб-интерфейс, графиктер, сүзгілер, баға айырмасын есептеу және деректерді көрсету механизмдерінің кодын дайындауға көмектесті.</p></div>\n<div class=\"card\"><small>03 / ДЕРЕКТЕРДІ ТАЛДАУ</small><h3>Есептеулер</h3><p class=\"sectionText\">Пайдаланушы ұсынған 54 TASSAY және 27 TURAN бағасын кестеге енгізу және олардың негізінде орташа мәндерді, абсолюттік және пайыздық өзгерістерді есептеу үшін пайдаланылды.</p></div>\n<div class=\"card\"><small>04 / МӘТІН</small><h3>Түсіндіру және редакциялау</h3><p class=\"sectionText\">Әдістеме, бәсекелестікке қатысты ұғымдар және қорытындылар мәтіндерінің бастапқы нұсқаларын құрылымдауға көмектесті.</p></div>\n</div>\n<div class=\"note\" style=\"margin-top:16px\"><b>ЖИ қолданудың шекарасы:</b> ЖИ баға бақылауларын тәуелсіз түрде растаған жоқ, жаңа сатылым көлемдерін немесе нарықтық үлестерді анықтаған жоқ. Құқықтық нормалардың өзектілігі ресми дереккөздерден тексерілуі тиіс. Ұсынылған скриншоттар мен кестедегі сәйкессіздіктер қосымша тексеруді талап етеді.</div>\n<h3 style=\"margin-top:22px\">Қорытынды</h3>\n<p class=\"sectionText\">Жасанды интеллект зерттеудің көрнекілігін, есептеулердің қайталану мүмкіндігін және материалды жүйелеуді жақсартатын құрал болды. Дегенмен ғылыми қорытындылардың негізі — берілген бақылаулар, ашық көрсетілген әдістеме және тексерілетін дереккөздер. ЖИ ұсынған жауаптар өздігінен дәлел болып есептелмейді; деректерді тексеру және қорытындыларға жауапкершілік зерттеу авторында қалады.</p>\n</section>"}
+
+const turanRows=[
+ ['2026-10-15',435,369,510],['2026-08-23',480,325,510],['2026-07-10',365,465,455],
+ ['2026-05-29',359,319,510],['2026-04-29',385,425,440],['2026-09-01',409,325,510],['2026-09-26',409,325,510],
+ ['2026-09-07',409,325,510],['2026-06-29',423,338,510]
+].flatMap(row=>shops.map((shop,i)=>({day:row[0],city:'Астана',shop,price:row[i+1],brand:'TURAN',proof:'Автор енгізген дерек; скриншот ұсынылмады'})));
+const km2Periods=[
+ {label:'29 сәуір',a:'2026-04-29',b:'2026-04-29',gap:0},
+ {label:'29 мамыр',a:'2026-05-29',b:'2026-05-29',gap:0},
+ {label:'Шілде (3 күн)',a:'2026-07-13',b:'2026-07-10',gap:3},
+ {label:'Тамыз (5 күн)',a:'2026-08-28',b:'2026-08-23',gap:5},
+ {label:'1 қыркүйек',a:'2026-09-01',b:'2026-09-01',gap:0},
+ {label:'Қазан (4 күн)',a:'2026-10-19',b:'2026-10-15',gap:4}
+];
+let km2Shop='Arbuz';
+function km2Pair(period,shop){
+ const a=data.find(x=>x.city==='Астана'&&x.shop===shop&&x.day===period.a);
+ const b=turanRows.find(x=>x.shop===shop&&x.day===period.b);
+ return a&&b?{...period,shop,A:+a.price,B:+b.price,diff:+a.price-(+b.price),pct:+b.price>0?((+a.price-(+b.price))/(+b.price)*100):null}:null;
+}
+
+function tassayProduct(){return "<div class=\"km2-lead\"><div class=\"kicker\">TASSAY · ЗЕРТТЕУ НЫСАНЫ</div><h2>TASSAY · 1 л газдалған су</h2><p>Бұл — зерттеудің бастапқы негізгі тауары. Астана мен Алматы қалаларындағы Arbuz, SMALL және Galmart бағалары бөлек TASSAY кестесінде сақталған.</p></div><div class=\"single-product-tile\"><article class=\"km2-tile\"><h3>TASSAY · 1 л газдалған</h3><figure class=\"km2-product-photo\"><img src=\"/media/tassay-card\" loading=\"lazy\" alt=\"TASSAY газдалған суы · 1 л, тауар карточкасы\"><figcaption>TASSAY · Газдалған су, 1 л</figcaption></figure><p>Зерттеу авторы берген сипаттама бойынша — Қазақстанның табиғи ауыз суы. Су көзі Арыс–Бадам жерасты су алабымен, Батыс Тянь-Шань бөктерімен байланыстырылады. Қолдану және минералдану сипаттамалары бастапқы тауар карточкасынан алынған, нақты бөтелкенің заттаңбасы әлі жеке тексерілген жоқ.</p><p><b>Сақтау:</b> құрғақ, қараңғы жерде +5...+20 °C.</p><p><b>Химиялық құрам (мг/л):</b> гидрокарбонаттар 130–320; калий 0–5; кальций 30–80; магний 16–35; натрий 4–18; сульфаттар 0–49; хлоридтер 2–88.</p><a href=\"https://www.tassay.kz/about/\" target=\"_blank\" rel=\"noopener\">TASSAY ресми сайты ↗</a></article></div><section class=\"panel\"><h3>TASSAY бойынша бастапқы мониторинг</h3><p class=\"sectionText\">Баға динамикасы, қалаларды салыстыру және әр күннің скриншоттары бұрынғы бөлімдерде сақталған. Тауар карточкасындағы сипаттаманы қаптама заттаңбасымен тексеру қажет.</p><p><a href=\"#\" onclick=\"nav(1);return false\">Баға динамикасы ↗</a> · <a href=\"#\" onclick=\"nav(2);return false\">Бағалар және дәлелдемелер ↗</a></p></section>"}
+function turanProduct(){return "<div class=\"km2-lead\"><div class=\"kicker\">TURAN · БӘСЕКЕЛЕС ТАУАР</div><h2>TURAN · 1 л газдалған су</h2><p>TASSAY зерттеуін толықтыратын жеке бәсекелес бренд. Баға деректері Астана қаласына қатысты және бөлек зерттеледі.</p></div><div class=\"single-product-tile\"><article class=\"km2-tile\"><h3>TURAN · 1 л газдалған</h3><figure class=\"km2-product-photo\"><img src=\"/media/turan-card\" loading=\"lazy\" alt=\"TURAN газдалған суы · 1 л, тауар карточкасы\"><figcaption>TURAN · Газдалған су, 1 л</figcaption></figure><p>Автор таңдаған ұқсас позиция: TURAN газдалған ауыз суы, 1 литр. Астанада дәл осы өнімнің қаптамасын, табиғи минералдану деңгейін, акциялары мен жеткізу шарттарын қосымша растау қажет.</p><p>Ашық дереккөз TURAN сауда белгісін <b>«Көкшетау минералды сулары» АҚ</b> компаниясымен байланыстырады. TASSAY ресми сайтында <b>«ЮНИКС» ЖШС</b> және <b>«ABELLA»</b> әріптестігі аталған; нақты заңды өндіруші заттаңба/тіркеу құжатымен нақтыланады.</p><a href=\"https://halal-kz.kz/ru/predpriyatiya/akcionernoe-obshchestvo-kokshetauskie-mineralnye-zavody\" target=\"_blank\" rel=\"noopener\">TURAN өндірушісі туралы мәлімет ↗</a></article></div><section class=\"panel\"><h3>Салыстыруға таңдау негізі</h3><p class=\"sectionText\">TASSAY және TURAN: Қазақстанда сатылатын 1 литрлік газдалған су. Екі өнімнің қаптамасы, дүкені және күні салыстыру үшін сәйкестендіріледі; минералдық құрам мен акция шарттары қосымша тексерілуі қажет.</p><p class=\"km2-muted\">TURAN өнімінің толық сипаттамасы бастапқы дерекпен расталғаннан кейін енгізіледі.</p><p><a href=\"#\" onclick=\"nav(12);return false\">TURAN · Бағалар және дәлелдемелер ↗</a> · <a href=\"#\" onclick=\"nav(13);return false\">TURAN · Баға динамикасы ↗</a> · <a href=\"#\" onclick=\"nav(14);return false\">TASSAY × TURAN салыстыруы ↗</a></p></section>"}
+function km2ABGraph(){
+ const series=km2Periods.map(p=>km2Pair(p,km2Shop));
+ const usable=series.filter(Boolean);
+ if(!usable.length)return '<p class="muted">График үшін дерек жеткіліксіз.</p>';
+ const w=790,h=320,left=54,right=24,top=32,bottom=72;
+ const values=usable.flatMap(x=>[x.A,x.B]);const lo=Math.floor((Math.min(...values)-30)/50)*50;const hi=Math.ceil((Math.max(...values)+30)/50)*50;
+ const X=i=>left+(w-left-right)*(usable.length===1?0.5:i/(usable.length-1));const Y=p=>top+(hi-p)*(h-top-bottom)/(hi-lo);
+ const grid=Array.from({length:5},(_,i)=>{const v=lo+(hi-lo)*i/4;return '<line x1="'+left+'" y1="'+Y(v)+'" x2="'+(w-right)+'" y2="'+Y(v)+'" stroke="#426174" stroke-dasharray="4 5"/><text x="3" y="'+(Y(v)+4)+'" fill="#9bc1d2" font-size="12">'+Math.round(v)+'</text>'}).join('');
+ const line=(key,color)=>'<polyline fill="none" stroke="'+color+'" stroke-width="4" stroke-linejoin="round" points="'+usable.map((p,i)=>X(i)+','+Y(p[key])).join(' ')+'"/>'+usable.map((p,i)=>'<circle cx="'+X(i)+'" cy="'+Y(p[key])+'" r="5" fill="'+color+'"><title>'+key+' '+p[key]+' ₸</title></circle>').join('');
+ const labels=usable.map((p,i)=>'<text text-anchor="middle" x="'+X(i)+'" y="'+(h-39)+'" fill="#bdcfda" font-size="12">'+p.label+'</text><text text-anchor="middle" x="'+X(i)+'" y="'+(h-19)+'" fill="#82a9b9" font-size="10">'+(p.gap?'±'+p.gap+' күн':'бір күн')+'</text>').join('');
+ return '<div class="km2-graph"><svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Астана қаласында TASSAY және TURAN бағаларын салыстыру">'+grid+line('A','#51d8dc')+line('B','#ffd073')+labels+'</svg><div class="km2-legends"><span>TASSAY (A)</span><span class="turan">TURAN (B)</span></div></div>';
+}
+
+function km2PromoSignals(){
+ const changes=new Map();
+ for(const s of shops){
+  const ordered=turanRows.filter(x=>x.shop===s).sort((a,b)=>a.day.localeCompare(b.day));
+  for(let i=1;i<ordered.length;i++){
+   const prev=ordered[i-1],current=ordered[i],delta=(current.price-prev.price)/prev.price*100;
+   changes.set(current.day+'|'+s,{delta,flag:delta<=-14&&delta>=-22,previous:prev.day});
+  }
+ }
+ return changes;
+}
+function km2SaleNote(){
+ return '<div class="km2-promo-note"><strong>26.10.2026 · SMALL · TURAN:</strong> автор дүкенде <b>20% акция</b> бар екенін хабарлады. Акция скриншоты, әдеттегі/жеңілдік бағасы және шарттары ұсынылмағандықтан, хабарлама жеке баға бақылауы ретінде енгізілмеді. <b>Автоматты белгі:</b> бір дүкендегі бірінен кейін бірі тіркелген бағалардың шамамен 15–20% төмендеуі «ықтимал акция — тексеру қажет» деп белгіленеді. Бұл акцияны растамайды; төмендеудің басқа себебі болуы мүмкін.</div>';
+}
+function turanPriceTable(){
+ const ds=[...new Set(turanRows.map(x=>x.day))].sort();
+ const match=(day,shop)=>turanRows.find(x=>x.day===day&&x.city==='Астана'&&x.shop===shop);
+ const first=ds[0],last=ds.at(-1);
+ const change=shop=>{const a=match(first,shop)?.price,b=match(last,shop)?.price;
+  return a>0&&b!=null?((b-a)/a*100):null};
+ const percentage=p=>p===null?'—':(p>0?'+':'')+p.toFixed(1).replace('.',',')+'%';
+ const rowsHtml=ds.map((day,i)=>'<tr><td>'+fmt(day)+'</td>'+shops.map(shop=>{
+  const item=match(day,shop),v=item?val(item.price):'—';
+  return '<td>'+v+'</td>';
+ }).join('')+'<td class="change-percent-cell">'+priceChangeCell(i?ds[i-1]:null,day,match)+'</td><td><button class="evidence-button" onclick="openTuranEvidence(\''+day+'\')" title="TURAN бағалары: '+day+'">📷 Қарау</button></td></tr>').join('');
+ return '<div class="km2-lead"><div class="kicker">TURAN · ЖЕКЕ БАҒА МОНИТОРИНГІ</div><h2>TURAN · Бағалар және дәлелдемелер</h2><p>Астана қаласындағы газдалған TURAN 1 л суының бағалары. Мұнда TASSAY бағалары араластырылмайды.</p></div>'+
+ '<section class="panel"><p><a href="#" onclick="nav(13);return false">TURAN графигі ↗</a></p><div class="km2-table"><table><thead><tr><th>Күні</th><th>Arbuz</th><th>SMALL</th><th>Galmart</th><th>Өзгеріс, %</th><th>Скриншот</th></tr></thead><tbody>'+rowsHtml+
+ '<tr class="turan-change-row"><td><b>Жалпы өзгеріс · '+fmt(first)+' → '+fmt(last)+'</b></td>'+
+ shops.map(s=>'<td><b>'+percentage(change(s))+'</b></td>').join('')+'<td>Алғашқы → соңғы</td><td>—</td></tr></tbody></table></div>'+
+ '<p class="km2-muted">Күндер өсу ретімен қойылған. «Өзгеріс, %» бағаны әр дүкеннің алдыңғы тіркелген күнімен салыстырғандағы пайыздық өзгерісін көрсетеді. Соңғы қатар — 29 сәуір мен 15 қазан арасындағы жалпы өзгеріс. Формула: (жаңа баға − бастапқы баға) / бастапқы баға × 100%. Акция туралы тұжырым бөлек тексеріледі.</p></section>'+
+ km2SaleNote()+
+ '<section class="panel"><h3>Тәуелсіз дәлелдемелер</h3><p class="sectionText">Астана бойынша тоғыз күнге арналған скриншоттар жүктелген. Кестедегі 📷 батырмасы тиісті күннің суретін ашады. Суретте баға мен дүкен көрсетілгенімен, тауардың атауы әрқашан көрінбеуі мүмкін.</p><p class="km2-muted">Алматы бойынша TURAN-ның толық расталған бірдей күндік баға қатары жоқ; осы бөлімге Алматы бағалары енгізілмеді.</p></section>';
+}
+
+function turanDynamics(){
+ const set=[...turanRows].sort((a,b)=>a.day.localeCompare(b.day));
+ const days=[...new Set(set.map(x=>x.day))];
+ return '<div class="km2-lead"><div class="kicker">TURAN · БАҒА ДИНАМИКАСЫ</div><h2>TURAN · Баға динамикасы</h2><p>Астана · 1 л газдалған су · Arbuz, SMALL және Galmart. График TASSAY кестесінен бөлек TURAN бағалары бойынша жасалады.</p></div>'+
+ '<section class="panel"><div class="row"><h3>Дүкендер бойынша бағаның өзгерісі</h3><button class="btn outline" onclick="document.getElementById(\'turanDGraph\').innerHTML=graph(\'Астана\',\'abs\',\'TURAN\')">₸</button><button class="btn outline" onclick="document.getElementById(\'turanDGraph\').innerHTML=graph(\'Астана\',\'percent\',\'TURAN\')">%</button></div><div id="turanDGraph">'+graph('Астана','abs','TURAN')+'</div><p class="km2-muted">Бағалар тек тіркелген күндерде көрсетіледі. Екі күннің арасындағы нүктелер тұрақты күнделікті баға дегенді білдірмейді; акция ықтималдығы бөлек тексеріледі.</p></section>'+
+ '<section class="panel"><h3>Баға өзгерісін есептеу</h3><div class="row"><select id="turanCalcShop">'+shops.map(x=>'<option>'+x+'</option>')+'</select><select id="turanCalcFrom">'+days.map(d=>'<option value="'+d+'">'+fmt(d)+'</option>').join('')+'</select><select id="turanCalcTo">'+days.map((d,i)=>'<option value="'+d+'" '+(i===days.length-1?'selected':'')+'>'+fmt(d)+'</option>').join('')+'</select><button class="btn" onclick="calculateTuran()">Есептеу</button></div><p id="turanCalcResult" class="metric"></p><p class="km2-muted">Айырма (₸) = кейінгі баға − бастапқы баға; өзгеріс (%) = айырма / бастапқы баға × 100%.</p></section>';
+}
+function calculateTuran(){
+ const shop=document.getElementById('turanCalcShop').value,first=document.getElementById('turanCalcFrom').value,last=document.getElementById('turanCalcTo').value;
+ const a=turanRows.find(x=>x.city==='Астана'&&x.shop===shop&&x.day===first);
+ const b=turanRows.find(x=>x.city==='Астана'&&x.shop===shop&&x.day===last);
+ document.getElementById('turanCalcResult').textContent=a&&b&&a.price>0?(b.price-a.price)+' ₸ / '+((b.price-a.price)*100/a.price).toFixed(2)+'%':'Көрсетілген күндер үшін деректер жоқ';
+}
+function km2Comparison(){
+ const found=km2Periods.map(period=>km2Pair(period,km2Shop)).filter(Boolean).sort((a,b)=>a.a.localeCompare(b.a));
+ const exact=found.filter(x=>x.gap===0),approx=found.filter(x=>x.gap>0);
+ const priceDiff=v=>(v>0?'+':'')+val(v);
+ const table=found.map(p=>{
+  const kind=p.gap?('<span class="comparison-approx">Жуық · '+p.gap+' күн айырма</span>'):'<span class="comparison-exact">Бір күндегі баға</span>';
+  return '<tr class="'+(p.gap?'near':'')+'"><td><b>'+esc(p.label)+'</b></td><td>'+fmt(p.a)+'</td><td>'+fmt(p.b)+'</td><td>'+val(p.A)+'</td><td>'+val(p.B)+'</td><td><b>'+priceDiff(p.diff)+'</b><small class="comparison-comment">'+(p.diff>0?'TASSAY қымбат':p.diff<0?'TURAN қымбат':'Бағалар тең')+'</small></td><td>'+kind+'</td></tr>';
+ }).join('');
+ return '<div class="km2-lead"><div class="kicker">TASSAY × TURAN · САЛЫСТЫРУ</div><h2>Астана · 1 л газдалған су</h2><p>Бір дүкен бойынша екі брендтің бағасын салыстырамыз. Бағалар арасындағы айырма теңгемен көрсетіледі; әртүрлі күндердің мәндері бөлек белгіленген.</p></div>'+
+ '<div class="km2-stats"><div class="km2-stat"><small>Дәл ортақ күндер</small><strong>3</strong><small>29 сәуір · 29 мамыр · 1 қыркүйек</small></div><div class="km2-stat"><small>Бір күндегі салыстырулар</small><strong>9</strong><small>3 күн × 3 дүкен</small></div><div class="km2-stat"><small>Жуық кезеңдер</small><strong>3</strong><small>Шілде, тамыз, қазан</small></div></div>'+
+ '<section class="panel"><div class="row" style="justify-content:space-between;align-items:center"><h3>Дүкенді таңдаңыз</h3><select aria-label="Салыстырылатын дүкен" onchange="km2Shop=this.value;render()">'+shops.map(s=>'<option '+(s===km2Shop?'selected':'')+'>'+s+'</option>').join('')+'</select></div>'+
+ '<h3 class="comparison-shop-title">'+esc(km2Shop)+' · Баға динамикасы</h3>'+km2ABGraph()+'</section>'+
+ '<section class="panel"><h3>'+esc(km2Shop)+' · Баға салыстыру кестесі</h3><div class="km2-table"><table><thead><tr><th>Кезең</th><th>TASSAY күні</th><th>TURAN күні</th><th>TASSAY</th><th>TURAN</th><th>Айырма</th><th>Сәйкестік</th></tr></thead><tbody>'+table+'</tbody></table></div>'+
+ '<p class="km2-muted">Айырма = TASSAY бағасы − TURAN бағасы. Екі бренд те бір күнге түскен үш кезең — сәуір, мамыр және қыркүйек. Басқа кезеңдегі 3–5 күндік айырма нақты бір мезгілдегі баға айырмасы емес; акциялар да қорытындыға әсер етуі мүмкін.</p></section>'+
+ '<div class="km2-promo-note"><strong>Бағаны дұрыс түсіндіру:</strong> бұл — дүкен сөресіндегі бағалар. Өндірушілер арасындағы келісім немесе нарық үлесі туралы дәлел емес. TASSAY мен TURAN-ның жеке баға скриншоттары өз бөлімдерінде сақталған.</div>';
+}
+
+function turanShare(){
+ return '<div class="km2-lead"><div class="kicker">TURAN · ЖАРИЯЛАНҒАН АҚПАРАТ</div><h2>TURAN · Нарық үлесі</h2><p>2026 жылғы Астана қаласының газдалған 1 л су нарығында TURAN-ның расталған пайыздық үлесі ашық дереккөздерден табылмады. Өндірушінің қаржылық көрсеткіштері нарық үлесіне тең емес.</p></div>'+
+ '<section class="panel"><div class="share-fact"><div class="share-big-number share-money">16,56 млрд ₸</div><div><h3>2025 жыл · Өндіруші компанияның жалпы түсімі</h3><p>Kursiv дерегі бойынша, «Көкшетау минералды сулары» АҚ-ның 2025 жылғы жалпы түсімі <b>16,56 млрд ₸</b>, 2024 жылы <b>13,72 млрд ₸</b> болған. Кәсіпорын TURAN-нан бөлек басқа алкогольді және алкогольсіз өнімдер шығарады.</p></div></div><p class="share-limitation"><b>Түсіндіру:</b> бұл компанияның барлық өнімдерінен түскен түсімі, TURAN суының жеке сатылымы емес; Астана нарығының үлесі ретінде есептелмейді.</p><p class="km2-source"><a href="https://kz.kursiv.media/2026-06-01/zhnb-kompaniya-byvshego-vicze-ministra-selskogo-hozyaistva-poluchila-milliardnuyu-pribyl/" target="_blank" rel="noopener">Kursiv · 01.06.2026 ↗</a></p></section>'+
+ '<section class="panel"><h3>2026 жыл · Өндіріс және тарату арналары</h3><p>«Даму» қорының жарияланымында TURAN өндірушісінің 350-ден астам қызметкері, Қазақстандағы сауда нүктелеріне жабдық орналастыруы және экспорт нарықтарын кеңейтуі көрсетілген.</p><p class="share-limitation">Компанияның ауқымы мен экспорт географиясы нарық үлесінің нақты пайызы емес.</p><p class="km2-source"><a href="https://damu.kz/ru/news/detail.php?ELEMENT_ID=284289" target="_blank" rel="noopener">«Даму» кәсіпкерлікті дамыту қоры · 2026 ↗</a></p></section>'+
+ '<section class="panel"><h3>2024 жыл · Бөтелкедегі су нарығы туралы шолу</h3><p>Shishkin_like TURAN брендін «Көкшетау минералды сулары» АҚ-мен байланыстырады; 2022 жылғы Қазақстандағы су құю және сату нарығын <b>шамамен 900 млн литр</b> деп сипаттайды.</p><p class="share-limitation">Бұл ескі жалпыұлттық екінші реттік бағалау; TURAN жеке сатылымы да, Астана 2026 нарығының көлемі де емес.</p><p class="km2-source"><a href="https://www.czhr.kz/post/%D0%BA%D1%82%D0%BE-%D0%B7%D0%B0%D1%80%D0%B0%D0%B1%D0%B0%D1%82%D1%8B%D0%B2%D0%B0%D0%B5%D1%82-%D0%BD%D0%B0-%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B5-%D0%BF%D0%B8%D1%82%D1%8C%D0%B5%D0%B2%D0%BE%D0%B9-%D0%B8-%D0%BC%D0%B8%D0%BD%D0%B5%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D0%B2%D0%BE%D0%B4%D1%8B-%D0%B2-%D0%BA%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%D0%B5" target="_blank" rel="noopener">Shishkin_like · 15.01.2024 ↗</a></p></section>'+
+ '<section class="panel"><h3>2025 жыл · Қосымша зерттеу көзі</h3><p>Euromonitor-дың толық «Bottled Water in Kazakhstan» есебінде брендтердің нарық үлесі кестелері бар, алайда ашық сипаттама TURAN үлесінің санын жарияламайды.</p><p class="km2-source"><a href="https://www.euromonitor.com/bottled-water-in-kazakhstan/report" target="_blank" rel="noopener">Euromonitor · желтоқсан 2025 ↗</a></p></section>'+
+ '<div class="km2-missing"><h3>Астана, 2026: нақты үлес есептелмейді</h3><p>TURAN 1 л газдалған суының Астанадағы сату көлемі, сол кезеңдегі нарықтың барлық қатысушылары бойынша жалпы сату көлемі және ортақ өлшем бірлігі жоқ. Жалпы түсімді нарық үлесі деп көрсетуге болмайды.</p></div>'+brandShareCalc('TURAN');
+}
+
+function km2IRAC(){return "<div class=\"km2-lead\"><div class=\"kicker\">ҚҰҚЫҚТЫҚ ҰСТАНЫМ · IRAC</div><h2>Бәсекелестік құқығы бойынша алдын ала қорытынды</h2><p>Талдау Қазақстан Республикасының құқығын қолданады. ЕО және АҚШ тәсілдері тек салыстырмалы құқықтық түсіндірме ретінде келтірілген.</p></div>\n<section class=\"panel\"><h3>I — Issue / Құқықтық сұрақ</h3><p class=\"sectionText\">TASSAY мен TURAN брендтерінің Астана дүкендеріндегі бөлшек бағалары олардың өндірушілері немесе сатушылары тарапынан бәсекелестікке қарсы келісім, келісілген әрекет немесе үстем жағдайды теріс пайдалану күдігін негіздей ме?</p></section>\n<section class=\"panel\"><h3>R — Rule / Құқықтық норма</h3><p class=\"sectionText\"><b>ҚР Кәсіпкерлік кодексінің 169-бабы</b> бәсекелестікке қарсы келісімдерді, оның ішінде бәсекелестердің бағаны белгілеуге немесе ұстап тұруға бағытталған көлденең келісімдерін реттейді. <b>170-бап</b> нарық субъектілерінің бәсекелестікке қарсы келісілген әрекеттеріне қатысты. <b>172 және 174-баптар</b> үстем жағдайды айқындау мен оны теріс пайдалануды реттейді.</p><p class=\"sectionText\">Тауар нарығын талдаудың әдістемелік негізі — Бәсекелестікті қорғау және дамыту агенттігі төрағасының <b>2022 жылғы 3 мамырдағы № 13 бұйрығы</b>, оның ішінде <b>2026 жылғы 6 қазандағы № 7 бұйрықпен</b> енгізілген өзгерістер. Нарық шекаралары, қатысушылар, нарық көлемі мен үлестер жүйелі бағалануы тиіс.</p><p class=\"km2-source\"><a href=\"https://adilet.zan.kz/kaz/docs/K1500000375\" target=\"_blank\" rel=\"noopener\">ҚР Кәсіпкерлік кодексі ↗</a> · <a href=\"https://adilet.zan.kz/kaz/docs/V2200027883\" target=\"_blank\" rel=\"noopener\">№ 13 әдістеме ↗</a> · <a href=\"https://adilet.zan.kz/kaz/docs/V2600040128\" target=\"_blank\" rel=\"noopener\">№ 7 өзгеріс ↗</a></p></section>\n<section class=\"panel\"><h3>A — Application / Фактілер және қарсы түсіндірмелер</h3><p class=\"sectionText\"><b>Бар факт:</b> Arbuz, SMALL және Galmart дүкендерінің әр күнгі бөлшек баға жазбалары; екі брендтің ұқсас газдалған 1 л су позициялары; 29 сәуірде, 29 мамырда және 1 қыркүйекте дәл ортақ күндер; шілде, тамыз және қазанда арасы 3–5 күн болатын кезеңдер; 28 тамыздағы бір бағаны түзету.</p><p class=\"sectionText\"><b>Расталмаған элементтер:</b> бәсекелестер арасындағы келісім, тікелей байланыс, баға туралы ақпарат алмасу, бірдей баға шешімінің көзі, өндірушінің бөлшек бағаны өзі белгілейтіні, нарық үлестері және үстем жағдай. Дүкен сөресіндегі бағалар өндірушінің келісімін емес, дүкеннің дербес шешімін көрсетуі мүмкін.</p><p class=\"sectionText\"><b>Баламалы себептер:</b> ортақ тасымалдау және қаптама шығындары, маусымдық сұраныс, дүкеннің үстеме бағасы, жеткізу шарттары, акцияның басталуы/аяқталуы (26.10.2026 күні SMALL дүкенінде TURAN-ға 20% акция туралы автор хабарлады; баға мен фото тексерілмеген), уақыт аралығының сәйкес келмеуі. Әзірге олардың нақты себептік үлесі өлшенбеген.</p><p class=\"sectionText\"><b>Қажетті дәлелдер:</b> уақыты бірдей фотолар мен чектер, тауардың этикеткасы, скидка шарттары, жеткізу бағалары, кәсіпорындар арасындағы құжаттық байланыстар және нарықтың нақты көлемі.</p></section>\n<section class=\"panel\"><h3>C — Conclusion / Қорытынды</h3><div class=\"km2-good\"><b>Алдын ала қорытынды:</b> ұсынылған бөлшек бағалар бойынша ҚР Кәсіпкерлік кодексінің 169, 170 немесе 174-баптарының бұзылуы туралы негізделген тұжырым жасауға дәлел жеткіліксіз. Бағалардың ұқсастығы не қатар өзгеруі келісімнің барын өздігінен дәлелдемейді. Қосымша тексеру қажет.</div></section>\n<section class=\"panel\"><h3>ЕО және АҚШ: салыстырмалы әдіс</h3><p class=\"sectionText\"><b>ЕО:</b> ЕО қызметі туралы шарттың 101-бабы бәсекелестікті шектейтін келісімдер мен келісілген тәжірибелерге қатысты. <b>АҚШ:</b> Sherman Act § 1 бәсекелестікті негізсіз шектейтін келісімдерді қарастырады; ұқсас бағалар келісімді өздігінен дәлелдемейді. Бұл тәсілдер Қазақстандағы фактілерді бағалауға түсіндірме ғана, Қазақстанда тікелей қолданылатын заң емес.</p><p class=\"km2-source\"><a href=\"https://competition-policy.ec.europa.eu/antitrust-and-cartels/legislation/competition-law-treaty-articles_en\" target=\"_blank\" rel=\"noopener\">ЕО 101-бап ↗</a> · <a href=\"https://www.justice.gov/atr/antitrust-laws-and-you\" target=\"_blank\" rel=\"noopener\">АҚШ әдісі ↗</a></p></section>"}
+
+function legalCases(){
+ const cases=[
+ ['ЕО · Coca-Cola (2005)','Эксклюзивті сату шарттары мен жеңілдіктер бойынша Комиссия бәсекелестікке қатысты қауіптерді бағалап, компанияның міндеттемелерін қабылдады. Құқық бұзушылық анықталды деген шешім емес.','Сусын өндірушілерінің дүкендермен эксклюзивті шарттары, жеткізу жеңілдіктері: қазіргі баға кестесі мұндай келісімдерді ашпайды.','https://eur-lex.europa.eu/eli/dec/2005/670/oj/eng'],
+ ['АҚШ · Leegin v PSKS (2007)','Sherman Act §1: өндірушінің бөлшек қайта сату үшін ең төмен баға белгілеуі және оны rule of reason арқылы бағалау.','Өндіруші мен сатушы арасындағы шарттар қажет; тек сөре бағасынан келісім бар деген қорытынды жасауға болмайды.','https://www.govinfo.gov/app/details/USREPORTS-551/USREPORTS-551-877'],
+ ['Ұлыбритания · Tesco / Dairy Retail Price Initiatives (2012)','Сауда желілерінің болашақ баға жоспарларын ортақ жеткізушілер арқылы жанама алмасуына қатысты тергеу және CAT шағымы.','Ұқсас бағаның өзі емес, байланыс пен хабарлама туралы нақты дәлелдер маңызды.','https://www.catribunal.org.uk/judgments/11881111-1-tesco-stores-ltd-2-tesco-holdings-ltd-3-tesco-plc-judgment-liability-2012-cat']
+ ];
+ return '<div class="km2-lead"><h2>Халықаралық сот тәжірибесі</h2><p>ЕО, АҚШ, Ұлыбритания; Қазақстандағы жағдайға салыстырмалы әдіс ретінде ғана қолданылады.</p></div>'+cases.map(x=>'<section class="panel"><h3>'+esc(x[0])+'</h3><p class="sectionText">'+esc(x[1])+'</p><p><b>Біздің зерттеуге қатысы:</b> '+esc(x[2])+'</p><a href="'+x[3]+'" target="_blank" rel="noopener">Ресми шешімді ашу ↗</a></section>').join('')+'<section class="panel"><h3>Қазақстан заңнамасы</h3><p>ҚР Кәсіпкерлік кодексінің 169, 170, 172 және 174-баптары қолданылады. Нарық үлесін, келісімнің бар-жоғын және үстем жағдайды бөлек дәлелдеу қажет.</p><a href="https://adilet.zan.kz/kaz/docs/K1500000375" target="_blank" rel="noopener">Кодекс ↗</a><p><button class="btn" onclick="nav(16)">Құқықтық IRAC</button></p></section>';
+}
+
+function researchSnapshot(){
+ const ast=data.filter(x=>x.city==='Астана'),tu=turanRows.filter(x=>x.city==='Астана');
+ const shared=['2026-04-29','2026-05-29','2026-09-01'];
+ const matches=shared.flatMap(day=>shops.map(shop=>{const a=ast.find(x=>x.day===day&&x.shop===shop),b=tu.find(x=>x.day===day&&x.shop===shop);return {day,shop,a:a?.price,b:b?.price,delta:a&&b?a.price-b.price:null}}));
+ return {ast,tu,matches};
+}
+function researchDocument(kind){
+ const d=researchSnapshot(),article=kind==='article',title=article?'TASSAY мен TURAN бағалары: салыстырмалы экономикалық және құқықтық зерттеу':'TASSAY × TURAN · Зерттеу брошюрасы';
+ const rows=d.matches.map(x=>'<tr><td>'+esc(x.day)+'</td><td>'+esc(x.shop)+'</td><td>'+((x.a??'—'))+' ₸</td><td>'+((x.b??'—'))+' ₸</td><td>'+((x.delta??'—'))+' ₸</td></tr>').join('');
+ const body='<div class="mast"><small>MAQSUT NARIKBAYEV UNIVERSITY · БӘСЕКЕЛЕСТІК ҚҰҚЫҚ</small><h1>'+title+'</h1><p>Астана · газдалған су, 1 л · '+new Date().toLocaleDateString('kk-KZ')+'</p></div>'+
+ (article?'<h2>Аннотация</h2><p>Бақыланған бөлшек бағалар негізінде TASSAY мен TURAN брендтерінің бағалық айырмашылықтары және олардың бәсекелестік құқық үшін дәлелдемелік маңызы зерттеледі.</p><p><b>Түйін сөздер:</b> бәсекелестік құқығы, баға, релевантты нарық, IRAC.</p>':'')+
+ '<h2>1. Мақсат және деректер</h2><p>Астанадағы бір литрлік газдалған TASSAY және TURAN өнімдерін үш дүкенде салыстыру. Платформада '+data.length+' TASSAY бақылауы және '+turanRows.length+' TURAN бақылауы бар. Бақылаулар үздіксіз күнделікті өлшем емес, нақты күндердегі баға жазбалары.</p>'+
+ '<h2>2. Ортақ күндердегі баға салыстыруы</h2><table><thead><tr><th>Күні</th><th>Дүкен</th><th>TASSAY</th><th>TURAN</th><th>Айырма</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+ '<h2>3. Нарық үлесі және шектеулер</h2><p>2023 жылғы RG Brands есебіндегі TASSAY-дың 28% үлесі дәмі бар су санатына жатады, Астанадағы 2026 жылғы 1 л газдалған су нарығына емес. TURAN өндірушісінің жалпы түсімі өнімнің жеке сату көлеміне тең емес. Нақты сату көлемдері болмағандықтан, екі брендтің 2026 жылғы Астанадағы үлесін есептеу мүмкін емес.</p>'+
+ '<h2>4. Құқықтық IRAC</h2><p><b>Issue:</b> бағаның ұқсастығы немесе айырмасы заң бұзушылыққа дәлел бола ма? <b>Rule:</b> ҚР Кәсіпкерлік кодексінің 169, 170, 172, 174-баптары. <b>Application:</b> бөлшек бағалар белгілі, бірақ нарық үлесі, байланыс және келісім құжаттары жоқ. <b>Conclusion:</b> заң бұзушылық туралы қорытынды жасауға деректер жеткіліксіз.</p>'+
+ (article?'<h2>5. Шетелдік тәжірибемен салыстыру</h2><p>ЕО Coca-Cola (2005) міндеттемелері, АҚШ Leegin v PSKS (2007) және Ұлыбритания Tesco v OFT (2012) істері жеткізу шарттары, тік шектеулер және баға ақпаратын алмасу туралы дәлелдемелердің маңызын көрсетеді. Бұл істер Қазақстандағы жағдайға тікелей қолданылмайды.</p>':'')+
+ '<h2>Қорытынды</h2><p>Бөлшек бағаны бақылау салыстырмалы баға айырмаларын дәлелдейді, бірақ баға саясатының себебін, нарық үлесін, үстем жағдайды немесе бәсекелестікке қарсы келісімді жеке дәлелдемейді. Талдаудың келесі кезеңінде нақты сатылым, жеткізу бағалары мен акция шарттары қажет.</p>'+
+ '<h2>Дереккөздер</h2><ol><li><a href="https://adilet.zan.kz/kaz/docs/K1500000375">ҚР Кәсіпкерлік кодексі</a></li><li><a href="https://kase.kz/files/emitters/RGBK/rgbkp_2023_rus.pdf">RG Brands, 2023 жылдық есеп</a></li><li><a href="https://www.euromonitor.com/bottled-water-in-kazakhstan/report">Euromonitor, Bottled Water in Kazakhstan</a></li><li><a href="https://eur-lex.europa.eu/eli/dec/2005/670/oj/eng">ЕО, Coca-Cola</a></li><li><a href="https://www.govinfo.gov/app/details/USREPORTS-551/USREPORTS-551-877">АҚШ, Leegin v PSKS</a></li><li><a href="https://www.catribunal.org.uk/judgments/11881111-1-tesco-stores-ltd-2-tesco-holdings-ltd-3-tesco-plc-judgment-liability-2012-cat">ҰБ, Tesco</a></li></ol>'+
+ '<p class="source-note">ЖИ арқылы автоматты жасалған бастапқы жоба; авторға деректер мен сілтемелерді тексеру қажет. Онлайн платформа: https://tassay-market-monitor.onrender.com</p>';
+ return '<!doctype html><html lang="kk"><head><meta charset="utf-8"><title>'+esc(title)+'</title><style>@page{size:A4;margin:17mm}body{font:14px/1.65 Arial,sans-serif;color:#16334a;max-width:830px;margin:30px auto}h1{font-size:29px}h2{font-size:19px;margin-top:30px;color:#15687a}h1,h2{break-after:avoid}p{margin:10px 0}table{border-collapse:collapse;width:100%;font-size:12px}td,th{border:1px solid #b3c8d5;padding:7px;text-align:left}tr{break-inside:avoid}.mast{border-top:7px solid #269d9e;padding:15px 0}small,.source-note{color:#597589}.source-note{font-size:11px;border-top:1px solid #ccd;padding-top:12px}a{color:#136989;overflow-wrap:anywhere}@media print{body{margin:0}}</style></head><body>'+body+'</body></html>';
+}
+function previewResearch(kind){
+ const w=window.open('','_blank');if(!w){toast('Жаңа терезеге рұқсат беріңіз');return}
+ w.document.open();w.document.write(researchDocument(kind));w.document.close();w.focus();
+}
+function downloadResearch(kind){
+ const b=new Blob(['\ufeff'+researchDocument(kind)],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(b),a=document.createElement('a');
+ a.href=url;a.download=(kind==='article'?'tassay-turan-article':'tassay-turan-brochure')+'.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function academicExports(){
+ return '<div class="km2-lead"><div class="kicker">ЗЕРТТЕУ НӘТИЖЕСІ</div><h2>Брошюра және ғылыми мақала</h2><p>Деректер өзгерген сайын құжат келесі рет ашылғанда жаңа мәндермен құрастырылады.</p></div>'+
+ '<section class="panel"><h3>Ақпараттық брошюра</h3><p>Бағалар, ортақ күндердегі салыстыру, дереккөздер, қорытынды және академиялық шектеулер.</p><button class="btn" onclick="previewResearch(\'brochure\')">Алдын ала қарау / PDF</button> <button class="btn outline" onclick="downloadResearch(\'brochure\')">HTML жүктеу</button></section>'+
+ '<section class="panel"><h3>Ғылыми мақаланың бастапқы жобасы</h3><p>Аннотация, салыстырмалы әдіс, IRAC, халықаралық істер және библиография.</p><button class="btn" onclick="previewResearch(\'article\')">Мақаланы қарау / PDF</button> <button class="btn outline" onclick="downloadResearch(\'article\')">Өңдеуге болатын HTML</button></section>'+
+ '<p class="km2-muted">PDF алу үшін ашылған құжатта Ctrl+P → «PDF түрінде сақтау» таңдаңыз. Бұл материалдар ғылыми журналға жіберер алдында авторлық редакцияны қажет етеді.</p>';
+}
+
+const pages=[dashboard,dynamics,priceTable,method,market,share,factors,compare,conclusions,bibliography,tassayProduct,turanProduct,turanPriceTable,turanDynamics,km2Comparison,turanShare,km2IRAC,aiSummary,legalCases,academicExports];
+async function login(){if(admin){if(!confirm('Әкімші режимінен шығу керек пе?'))return;await api('/api/logout',{method:'POST'});refresh();return}let password=prompt('Әкімші құпиясөзін енгізіңіз');if(!password)return;try{await api('/api/login',{method:'POST',body:JSON.stringify({password})});refresh()}catch(e){toast('Кіру мүмкін болмады')}}
+refresh();
+</script><script src="/ru.js"></script></body></html>

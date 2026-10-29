@@ -81,6 +81,12 @@ class Price(BaseModel):
 class Source(BaseModel):title:str;url:str="";kind:str="";date:str="";claim:str=""
 @app.get("/",response_class=HTMLResponse)
 def home():return Path(__file__).with_name("index.html").read_text()
+@app.get("/kk",response_class=HTMLResponse)
+def kazakh_home():return Path(__file__).with_name("index.html").read_text()
+@app.get("/ru",response_class=HTMLResponse)
+def russian_home():return Path(__file__).with_name("ru.html").read_text()
+@app.get("/ru.js")
+def russian_script():return FileResponse(Path(__file__).with_name("ru.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=300"})
 EVIDENCE_FILES = [
  "1 сент астана.png",
  "1  сентябрь алматы.png",

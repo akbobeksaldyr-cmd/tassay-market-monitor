@@ -69,6 +69,21 @@ const RU_PAGES=[
  ruLegalCases,
  ()=>rh('Брошюра и научная статья','Документы формируются из текущей базы платформы.')+rp('Экспорт','<button class="btn" onclick="previewResearch(\'brochure\')">Сформировать брошюру</button> <button class="btn outline" onclick="previewResearch(\'article\')">Сформировать статью</button><p>Предварительный просмотр открывается в отдельной вкладке; сохраните как PDF через Ctrl+P. Текст документа пока формируется на казахском языке.</p>')
 ];
+
+function ruPublication(kind){
+ const art=kind==='article',t=art?'Научная статья: TASSAY и TURAN':'Исследовательская брошюра: TASSAY × TURAN';
+ const ast=data.filter(x=>x.city==='Астана');
+ const rows=['2026-04-29','2026-05-29','2026-09-01'].flatMap(day=>shops.map(shop=>{const a=ast.find(x=>x.day===day&&x.shop===shop),b=turanRows.find(x=>x.day===day&&x.shop===shop);return '<tr><td>'+day+'</td><td>'+shop+'</td><td>'+(a?.price??'—')+'</td><td>'+(b?.price??'—')+'</td><td>'+(a&&b?a.price-b.price:'—')+'</td></tr>'})).join('');
+ return '<!doctype html><html lang="ru"><head><meta charset="utf-8"><title>'+t+'</title><style>@page{size:A4;margin:17mm}body{font:14px/1.65 Arial;max-width:800px;margin:30px auto;color:#183c48}h1,h2{color:#136978}table{border-collapse:collapse;width:100%}td,th{border:1px solid #abc;padding:7px}@media print{body{margin:0}}</style></head><body><small>Maqsut Narikbayev University</small><h1>'+t+'</h1>'+
+ (art?'<h2>Аннотация</h2><p>Сравнительный анализ розничных цен газированной воды TASSAY и TURAN объёмом 1 л в Астане и их конкурентно-правовое значение.</p>':'')+
+ '<h2>Цель исследования</h2><p>Сопоставление наблюдаемых цен и ограничений их юридической интерпретации. TASSAY: '+data.length+' наблюдения в двух городах; TURAN: '+turanRows.length+' наблюдений в Астане.</p><h2>Сравнение за общие даты</h2><table><tr><th>Дата</th><th>Магазин</th><th>TASSAY ₸</th><th>TURAN ₸</th><th>Разница ₸</th></tr>'+rows+'</table><h2>Рыночная доля</h2><p>Публикация 28% по TASSAY касается ароматизированной воды в 2023 году; выручка компании TURAN в 2025 году касается всех товаров. Доли газированной воды 1 л в Астане за 2026 год неизвестны.</p>'+
+ '<h2>IRAC</h2><p>Статьи 169, 170, 172 и 174 Предпринимательского кодекса РК. Наблюдаемые цены не подтверждают соглашение, доминирование или нарушение без дополнительных доказательств.</p><h2>Заключение</h2><p>Зафиксировано ценовое различие, однако его причина и юридическая квалификация не установлены.</p><h2>Источники</h2><p><a href="https://adilet.zan.kz/rus/docs/K1500000375">Кодекс РК</a>; <a href="https://kase.kz/files/emitters/RGBK/rgbkp_2023_rus.pdf">RG Brands, отчёт за 2023 год</a>.</p><p>Автоматически сформированный черновик; требует авторской проверки.</p></body></html>';
+}
+function ruOpenPublication(kind){const w=window.open('','_blank');if(w){w.document.write(ruPublication(kind));w.document.close()}else{toast('Разрешите всплывающие окна')}}
+RU_PAGES[19]=()=>rh('Брошюра и научная статья','Подготовка документов из фактических наблюдений платформы.')+
+ rp('Информационная брошюра','<button class="btn" onclick="ruOpenPublication(\'brochure\')">Открыть / PDF</button>')+
+ rp('Научная статья','<button class="btn" onclick="ruOpenPublication(\'article\')">Открыть / PDF</button>')+
+ rp('Как сохранить','Откройте сформированный документ, нажмите Ctrl+P и выберите «Сохранить в PDF». Перед публикацией проверьте источники и текст.');
 function activateRU(){
  if(RU_TABS.length!==sections.length||RU_PAGES.length!==pages.length)throw Error('RU/KK section count mismatch');
  sections.splice(0,sections.length,...RU_TABS);

@@ -464,8 +464,41 @@ function legalCases(){
  ];
  return '<div class="km2-lead"><h2>Халықаралық сот тәжірибесі</h2><p>ЕО, АҚШ, Ұлыбритания; Қазақстандағы жағдайға салыстырмалы әдіс ретінде ғана қолданылады.</p></div>'+cases.map(x=>'<section class="panel"><h3>'+esc(x[0])+'</h3><p class="sectionText">'+esc(x[1])+'</p><p><b>Біздің зерттеуге қатысы:</b> '+esc(x[2])+'</p><a href="'+x[3]+'" target="_blank" rel="noopener">Ресми шешімді ашу ↗</a></section>').join('')+'<section class="panel"><h3>Қазақстан заңнамасы</h3><p>ҚР Кәсіпкерлік кодексінің 169, 170, 172 және 174-баптары қолданылады. Нарық үлесін, келісімнің бар-жоғын және үстем жағдайды бөлек дәлелдеу қажет.</p><a href="https://adilet.zan.kz/kaz/docs/K1500000375" target="_blank" rel="noopener">Кодекс ↗</a><p><button class="btn" onclick="nav(16)">Құқықтық IRAC</button></p></section>';
 }
+
+function researchSnapshot(){
+ const ast=data.filter(x=>x.city==='Астана'),tu=turanRows.filter(x=>x.city==='Астана');
+ const shared=['2026-04-29','2026-05-29','2026-09-01'];
+ const matches=shared.flatMap(day=>shops.map(shop=>{const a=ast.find(x=>x.day===day&&x.shop===shop),b=tu.find(x=>x.day===day&&x.shop===shop);return {day,shop,a:a?.price,b:b?.price,delta:a&&b?a.price-b.price:null}}));
+ return {ast,tu,matches};
+}
+function researchDocument(kind){
+ const d=researchSnapshot(),article=kind==='article',title=article?'TASSAY мен TURAN бағалары: салыстырмалы экономикалық және құқықтық зерттеу':'TASSAY × TURAN · Зерттеу брошюрасы';
+ const rows=d.matches.map(x=>'<tr><td>'+esc(x.day)+'</td><td>'+esc(x.shop)+'</td><td>'+((x.a??'—'))+' ₸</td><td>'+((x.b??'—'))+' ₸</td><td>'+((x.delta??'—'))+' ₸</td></tr>').join('');
+ const body='<div class="mast"><small>MAQSUT NARIKBAYEV UNIVERSITY · БӘСЕКЕЛЕСТІК ҚҰҚЫҚ</small><h1>'+title+'</h1><p>Астана · газдалған су, 1 л · '+new Date().toLocaleDateString('kk-KZ')+'</p></div>'+
+ (article?'<h2>Аннотация</h2><p>Бақыланған бөлшек бағалар негізінде TASSAY мен TURAN брендтерінің бағалық айырмашылықтары және олардың бәсекелестік құқық үшін дәлелдемелік маңызы зерттеледі.</p><p><b>Түйін сөздер:</b> бәсекелестік құқығы, баға, релевантты нарық, IRAC.</p>':'')+
+ '<h2>1. Мақсат және деректер</h2><p>Астанадағы бір литрлік газдалған TASSAY және TURAN өнімдерін үш дүкенде салыстыру. Платформада '+data.length+' TASSAY бақылауы және '+turanRows.length+' TURAN бақылауы бар. Бақылаулар үздіксіз күнделікті өлшем емес, нақты күндердегі баға жазбалары.</p>'+
+ '<h2>2. Ортақ күндердегі баға салыстыруы</h2><table><thead><tr><th>Күні</th><th>Дүкен</th><th>TASSAY</th><th>TURAN</th><th>Айырма</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+ '<h2>3. Нарық үлесі және шектеулер</h2><p>2023 жылғы RG Brands есебіндегі TASSAY-дың 28% үлесі дәмі бар су санатына жатады, Астанадағы 2026 жылғы 1 л газдалған су нарығына емес. TURAN өндірушісінің жалпы түсімі өнімнің жеке сату көлеміне тең емес. Нақты сату көлемдері болмағандықтан, екі брендтің 2026 жылғы Астанадағы үлесін есептеу мүмкін емес.</p>'+
+ '<h2>4. Құқықтық IRAC</h2><p><b>Issue:</b> бағаның ұқсастығы немесе айырмасы заң бұзушылыққа дәлел бола ма? <b>Rule:</b> ҚР Кәсіпкерлік кодексінің 169, 170, 172, 174-баптары. <b>Application:</b> бөлшек бағалар белгілі, бірақ нарық үлесі, байланыс және келісім құжаттары жоқ. <b>Conclusion:</b> заң бұзушылық туралы қорытынды жасауға деректер жеткіліксіз.</p>'+
+ (article?'<h2>5. Шетелдік тәжірибемен салыстыру</h2><p>ЕО Coca-Cola (2005) міндеттемелері, АҚШ Leegin v PSKS (2007) және Ұлыбритания Tesco v OFT (2012) істері жеткізу шарттары, тік шектеулер және баға ақпаратын алмасу туралы дәлелдемелердің маңызын көрсетеді. Бұл істер Қазақстандағы жағдайға тікелей қолданылмайды.</p>':'')+
+ '<h2>Қорытынды</h2><p>Бөлшек бағаны бақылау салыстырмалы баға айырмаларын дәлелдейді, бірақ баға саясатының себебін, нарық үлесін, үстем жағдайды немесе бәсекелестікке қарсы келісімді жеке дәлелдемейді. Талдаудың келесі кезеңінде нақты сатылым, жеткізу бағалары мен акция шарттары қажет.</p>'+
+ '<h2>Дереккөздер</h2><ol><li><a href="https://adilet.zan.kz/kaz/docs/K1500000375">ҚР Кәсіпкерлік кодексі</a></li><li><a href="https://kase.kz/files/emitters/RGBK/rgbkp_2023_rus.pdf">RG Brands, 2023 жылдық есеп</a></li><li><a href="https://www.euromonitor.com/bottled-water-in-kazakhstan/report">Euromonitor, Bottled Water in Kazakhstan</a></li><li><a href="https://eur-lex.europa.eu/eli/dec/2005/670/oj/eng">ЕО, Coca-Cola</a></li><li><a href="https://www.govinfo.gov/app/details/USREPORTS-551/USREPORTS-551-877">АҚШ, Leegin v PSKS</a></li><li><a href="https://www.catribunal.org.uk/judgments/11881111-1-tesco-stores-ltd-2-tesco-holdings-ltd-3-tesco-plc-judgment-liability-2012-cat">ҰБ, Tesco</a></li></ol>'+
+ '<p class="source-note">ЖИ арқылы автоматты жасалған бастапқы жоба; авторға деректер мен сілтемелерді тексеру қажет. Онлайн платформа: https://tassay-market-monitor.onrender.com</p>';
+ return '<!doctype html><html lang="kk"><head><meta charset="utf-8"><title>'+esc(title)+'</title><style>@page{size:A4;margin:17mm}body{font:14px/1.65 Arial,sans-serif;color:#16334a;max-width:830px;margin:30px auto}h1{font-size:29px}h2{font-size:19px;margin-top:30px;color:#15687a}h1,h2{break-after:avoid}p{margin:10px 0}table{border-collapse:collapse;width:100%;font-size:12px}td,th{border:1px solid #b3c8d5;padding:7px;text-align:left}tr{break-inside:avoid}.mast{border-top:7px solid #269d9e;padding:15px 0}small,.source-note{color:#597589}.source-note{font-size:11px;border-top:1px solid #ccd;padding-top:12px}a{color:#136989;overflow-wrap:anywhere}@media print{body{margin:0}}</style></head><body>'+body+'</body></html>';
+}
+function previewResearch(kind){
+ const w=window.open('','_blank');if(!w){toast('Жаңа терезеге рұқсат беріңіз');return}
+ w.document.open();w.document.write(researchDocument(kind));w.document.close();w.focus();
+}
+function downloadResearch(kind){
+ const b=new Blob(['\ufeff'+researchDocument(kind)],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(b),a=document.createElement('a');
+ a.href=url;a.download=(kind==='article'?'tassay-turan-article':'tassay-turan-brochure')+'.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
 function academicExports(){
- return '<div class="km2-lead"><h2>Ғылыми жұмыс нәтижелері</h2><p>Бағалар, салыстырмалы кестелер, құқықтық қорытындылар мен дереккөздер негізінде брошюра немесе ғылыми мақала қалыптастыру.</p></div><section class="panel"><h3>Брошюра және мақала</h3><p>Экспорт функциясы келесі жаңартуда іске қосылады. Әзірше қолданыстағы беттерді «Қорғау» арқылы басып шығаруға болады.</p></section>';
+ return '<div class="km2-lead"><div class="kicker">ЗЕРТТЕУ НӘТИЖЕСІ</div><h2>Брошюра және ғылыми мақала</h2><p>Деректер өзгерген сайын құжат келесі рет ашылғанда жаңа мәндермен құрастырылады.</p></div>'+
+ '<section class="panel"><h3>Ақпараттық брошюра</h3><p>Бағалар, ортақ күндердегі салыстыру, дереккөздер, қорытынды және академиялық шектеулер.</p><button class="btn" onclick="previewResearch(\'brochure\')">Алдын ала қарау / PDF</button> <button class="btn outline" onclick="downloadResearch(\'brochure\')">HTML жүктеу</button></section>'+
+ '<section class="panel"><h3>Ғылыми мақаланың бастапқы жобасы</h3><p>Аннотация, салыстырмалы әдіс, IRAC, халықаралық істер және библиография.</p><button class="btn" onclick="previewResearch(\'article\')">Мақаланы қарау / PDF</button> <button class="btn outline" onclick="downloadResearch(\'article\')">Өңдеуге болатын HTML</button></section>'+
+ '<p class="km2-muted">PDF алу үшін ашылған құжатта Ctrl+P → «PDF түрінде сақтау» таңдаңыз. Бұл материалдар ғылыми журналға жіберер алдында авторлық редакцияны қажет етеді.</p>';
 }
 
 const pages=[dashboard,dynamics,priceTable,method,market,share,factors,compare,conclusions,bibliography,tassayProduct,turanProduct,turanPriceTable,turanDynamics,km2Comparison,turanShare,km2IRAC,aiSummary,legalCases,academicExports];

@@ -90,7 +90,17 @@ def render_dynamic_page(url: str) -> tuple[str, str]:
 def same_product_card(requested_url: str, response_url: str) -> bool:
     """Trust the user's exact product URL; reject redirects to other cards/cities."""
     a, b = urlparse(requested_url), urlparse(response_url)
-    uid_pattern = r'([0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12})
+    uid_pattern = r'([0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12})$'
+    ua, ub = re.search(uid_pattern, a.path, re.I), re.search(uid_pattern, b.path, re.I)
+    return (a.scheme == b.scheme == 'https'
+            and a.netloc.lower() == b.netloc.lower() == 'arzan.kz'
+            and a.path.startswith('/ru/astana/p/')
+            and b.path.startswith('/ru/astana/p/')
+            and ua is not None and ub is not None
+            and ua.group(1).lower() == ub.group(1).lower())
+
+
+def allowed_by_robots(session: requests.Session, url: str) -> bool:
     parsed = urlparse(url)
     if parsed.scheme != 'https' or parsed.netloc.lower() != 'arzan.kz':
         return False
@@ -133,92 +143,6 @@ def run() -> None:
                 try:
                     rendered_url, rendered_html = render_dynamic_page(url)
                     if not same_product_card(url, rendered_url):
-                        raise ValueError('Страница браузера перенаправила на другой город')
-                    title, offers = parse_offers(rendered_html, brand)
-                    access_mode = 'browser'
-                except Exception as browser_error:
-                    raise ValueError(
-                        f'HTML: {html_error}; браузер: {str(browser_error)[:160]}'
-                    ) from browser_error
-            added = 0
-            for shop, price in offers.items():
-                key = (day, brand, shop)
-                if key in existed:
-                    continue  # Preserve the first daily snapshot (no silent overwrites).
-                observations.append({
-                    'day': day, 'captured_at': moment, 'city': CITY, 'brand': brand,
-                    'shop': shop, 'price': price, 'currency': 'KZT', 'volume_ml': 1000,
-                    'source': 'Arzan.kz', 'source_url': res.url, 'source_product_title': title,
-                    'status': 'auto_unverified', 'evidence_url': None,
-                })
-                existed.add(key)
-                added += 1
-            item.update(status='collected', shops=offers, added=added, method=access_mode)
-        except (ValueError, requests.RequestException) as exc:
-            item.update(status='unavailable', reason=str(exc)[:300])
-        run_items.append(item)
-    archive['runs'] = (archive.get('runs') or [])[-89:] + [{'at': moment, 'city': CITY, 'sources': run_items}]
-    observations.sort(key=lambda x: (x['day'], x['brand'], x['shop']))
-    OUT.write_text(json.dumps(archive, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps({'day': day, 'results': run_items, 'total_saved': len(observations)}, ensure_ascii=False))
-    # A collector that can't reach sources still writes an explicit run log; never fake prices.
-
-
-if __name__ == '__main__':
-    run()
-
-    ua, ub = re.search(uid_pattern, a.path, re.I), re.search(uid_pattern, b.path, re.I)
-    return (a.scheme == b.scheme == 'https'
-            and a.netloc.lower() == b.netloc.lower() == 'arzan.kz'
-            and a.path.startswith('/ru/astana/p/')
-            and b.path.startswith('/ru/astana/p/')
-            and ua is not None and ub is not None
-            and ua.group(1).lower() == ub.group(1).lower())
-
-
-def allowed_by_robots(session: requests.Session, url: str) -> bool:
-    parsed = urlparse(url)
-    if parsed.scheme != 'https' or parsed.netloc.lower() != 'arzan.kz':
-        return False
-    rp = RobotFileParser()
-    try:
-        res = session.get('https://arzan.kz/robots.txt', headers=HEADERS, timeout=TIMEOUT)
-        if res.status_code != 200:
-            return False  # Safe default when usage rules cannot be read.
-        rp.parse(res.text.splitlines())
-        return rp.can_fetch(HEADERS['User-Agent'], url)
-    except requests.RequestException:
-        return False
-
-
-def run() -> None:
-    now = datetime.now(TZ)
-    day = now.strftime('%Y-%m-%d')
-    moment = now.isoformat(timespec='seconds')
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    archive = json.loads(OUT.read_text(encoding='utf-8')) if OUT.exists() else {'schema_version': 1, 'observations': [], 'runs': []}
-    observations = archive.setdefault('observations', [])
-    existed = {(r['day'], r['brand'], r['shop']) for r in observations if r.get('city') == CITY}
-    run_items = []
-    session = requests.Session()
-    for brand, url in PRODUCTS:
-        item = {'brand': brand, 'url': url, 'status': 'not_checked'}
-        try:
-            if not allowed_by_robots(session, url):
-                raise ValueError('robots.txt недоступен или не разрешает автоматический запрос')
-            res = session.get(url, headers=HEADERS, timeout=TIMEOUT)
-            res.raise_for_status()
-            if '/ru/astana/' not in urlparse(res.url).path:
-                raise ValueError('Страница перенаправила на другой город')
-            try:
-                title, offers = parse_offers(res.text, brand)
-                access_mode = 'html'
-            except ValueError as html_error:
-                # Arzan may render all price cards in the browser via JavaScript.
-                # This is normal public-page rendering, not an anti-bot workaround.
-                try:
-                    rendered_url, rendered_html = render_dynamic_page(url)
-                    if '/ru/astana/' not in urlparse(rendered_url).path:
                         raise ValueError('Страница браузера перенаправила на другой город')
                     title, offers = parse_offers(rendered_html, brand)
                     access_mode = 'browser'

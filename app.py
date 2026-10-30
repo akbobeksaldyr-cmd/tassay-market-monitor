@@ -244,3 +244,16 @@ def export_csv():
  c=db();rows=[dict(x) for x in c.execute("SELECT * FROM prices ORDER BY day,city,shop")];c.close()
  o=io.StringIO();w=csv.DictWriter(o,fieldnames=list(rows[0].keys()) if rows else ["day","city","shop","price"]);w.writeheader();w.writerows(rows)
  return Response("\ufeff"+o.getvalue(),media_type="text/csv",headers={"Content-Disposition":"attachment; filename=tassay-prices.csv"})
+
+# ARZAN ASTANA DAILY PRICE ENDPOINT v1
+@app.get("/api/auto-prices")
+def auto_prices():
+ path = Path(__file__).parent / "data" / "daily-prices.json"
+ if not path.is_file():
+  return JSONResponse({"schema_version":1,"observations":[],"runs":[]}, headers={"Cache-Control":"no-store"})
+ try:
+  result = json.loads(path.read_text(encoding="utf-8"))
+ except (OSError, ValueError):
+  raise HTTPException(503, "Daily price archive is unavailable")
+ return JSONResponse(result, headers={"Cache-Control":"no-store"})
+

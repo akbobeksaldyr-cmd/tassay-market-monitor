@@ -438,6 +438,9 @@ function km3AcademicExports(){
 pages[16]=km3NewIRAC;
 pages[17]=km3NewAIPage;
 pages[19]=km3AcademicExports;
+sections[16]=km3t('Құқықтық IRAC · A–B–C / КМ3','Правовой анализ IRAC · A–B–C / КМ3');
+sections[17]=km3t('ЖИ қолданылуы · A–B–C / КМ3','Об использовании ИИ · A–B–C / КМ3');
+sections[19]=km3t('Брошюра және мақала · A–B–C / КМ3','Брошюра и научная статья · A–B–C / КМ3');
 pages[24]=()=>km3LawLog()+km3FXPanel();
 
 

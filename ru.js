@@ -50,6 +50,24 @@ function localizeNode(root){
   for(const attr of ['placeholder','title','alt','aria-label'])if(element.hasAttribute(attr)){const v=element.getAttribute(attr),translated=localizeText(v);if(translated!==v)element.setAttribute(attr,translated)}
  }
 }
+
+/* Explicit Russian navigation. Avoid relying on a DOM text walker for sidebar titles. */
+const RU_NAV_LABELS=[
+ "Главная панель","Динамика цен","Цены и доказательства","Методология исследования",
+ "Рынок Астаны","TASSAY · Рыночная доля","Внешние факторы","Сравнение городов",
+ "Научные выводы","Источники","TASSAY · О продукте","TURAN · О продукте",
+ "TURAN · Цены и доказательства","TURAN · Динамика цен","TASSAY × TURAN · Сравнение",
+ "TURAN · Рыночная доля","Правовой анализ IRAC","Об использовании ИИ",
+ "Международная судебная практика","Брошюра и научная статья",
+ "Ессентуки №4 · Товар и производитель","Ессентуки №4 · Цены и скриншоты",
+ "Ессентуки №4 · Сравнение трёх товаров","Ессентуки №4 · Обновление TASSAY × TURAN",
+ "Ессентуки №4 · Право ЕАЭС"
+];
+if(sections.length===RU_NAV_LABELS.length){
+ sections.splice(0,sections.length,...RU_NAV_LABELS);
+}else{
+ for(let i=0;i<sections.length;i++)sections[i]=localizeText(sections[i]);
+}
 const translateOrigRender=render;
 render=function(){
  translateOrigRender();

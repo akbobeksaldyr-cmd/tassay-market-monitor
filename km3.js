@@ -133,7 +133,7 @@ function km3Plot(dates,series,mode='abs'){
    const pts=s.points.map(p=>({day:p.day,value:mode==='pct'?(p.price/s.points[0].price-1)*100:p.price}));
    return '<polyline points="'+pts.map(p=>xx(p.day)+','+yy(p.value)).join(' ')+'" fill="none" stroke="'+s.color+'" stroke-width="3.4" stroke-linejoin="round" />'+pts.map(p=>'<circle cx="'+xx(p.day)+'" cy="'+yy(p.value)+'" r="5" fill="'+s.color+'"><title>'+esc(s.name)+' · '+(p.sourceDay||p.day)+': '+(mode==='pct'?p.value.toFixed(1)+'%':p.value+' ₸')+'</title></circle>').join('');
  }).join('');
- return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="KM3 price comparison">'+[0,1,2,3,4].map(i=>{const v=min+(max-min)*i/4,y=yy(v);return '<line x1="'+left+'" x2="'+(w-right)+'" y1="'+y+'" y2="'+y+'" stroke="#567182" stroke-dasharray="4 5" opacity=".45"/><text x="6" y="'+(y+4)+'" fill="#abbeca" font-size="13">'+v.toFixed(0)+(mode==='pct'?'%':' ₸')+'</text>'}).join('')+
+ return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="Essentuki A B C price comparison">'+[0,1,2,3,4].map(i=>{const v=min+(max-min)*i/4,y=yy(v);return '<line x1="'+left+'" x2="'+(w-right)+'" y1="'+y+'" y2="'+y+'" stroke="#567182" stroke-dasharray="4 5" opacity=".45"/><text x="6" y="'+(y+4)+'" fill="#abbeca" font-size="13">'+v.toFixed(0)+(mode==='pct'?'%':' ₸')+'</text>'}).join('')+
  dates.map(d=>'<text x="'+xx(d)+'" y="'+(h-16)+'" text-anchor="middle" fill="#b4ccda" font-size="12">'+d.slice(5)+'</text>').join('')+lines+'</svg>'+
  '<div class="legend">'+series.map(s=>'<span><span class="sw" style="background:'+s.color+'"></span>'+esc(s.name)+'</span>').join('')+'</div>';
 }

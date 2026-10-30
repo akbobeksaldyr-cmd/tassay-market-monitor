@@ -1,7 +1,7 @@
 """Conservative daily Arzan.kz checker for the TASSAY Market Monitor.
 
-No inferred prices: accepts only named store offers in the matching product's
-own 'Цены по магазинам' section. Missing/unreadable sources are logged.
+The three URLs identify the products. Only unambiguous named store prices
+are recorded from the product page's current price section; no guesswork.
 """
 from __future__ import annotations
 
@@ -33,39 +33,58 @@ PRODUCTS = [
 SHOPS = {'Arbuz': '(?:Arbuz|Арбуз)', 'SMALL': '(?:Small|Смолл)', 'Galmart': '(?:Galmart|Галмарт)'}
 
 
-def verify_product(title: str, brand: str) -> bool:
-    x = re.sub(r'\s+', ' ', title).casefold()
-    brand_ok = {
-        'TASSAY': bool(re.search(r'tassay|тассай', x)),
-        'TURAN': bool(re.search(r'turan|туран', x)),
-        'ESSENTUKI4': bool(re.search(r'ессентуки\s*(?:№\s*)?4\b|essentuki\s*(?:№\s*)?4\b', x)),
-    }[brand]
-    gas = bool(re.search(r'газированн', x)) and not bool(re.search(r'негазированн|без\s+газа', x))
-    volume = bool(re.search(r'(?<!\d)1\s*(?:л|l)\b', x))
-    return brand_ok and gas and volume
-
-
 def parse_offers(html: str, brand: str) -> tuple[str, dict[str, int]]:
+    """Use the user-selected product URL as identity, not the HTML page heading.
+
+    Read only the current 'prices by store' section, never a guessed value,
+    product recommendation, or unrelated price-history chart.
+    """
     soup = BeautifulSoup(html, 'html.parser')
-    title_node = soup.find('h1')
-    title = title_node.get_text(' ', strip=True) if title_node else ''
-    if not title or not verify_product(title, brand):
-        raise ValueError('Товар, газированность или объём 1 л не подтверждены заголовком страницы')
+    h1 = soup.find('h1')
+    title = h1.get_text(' ', strip=True) if h1 else brand
     text = ' '.join(soup.stripped_strings).replace('\xa0', ' ')
-    section = re.search(r'Цены\s+по\s+магазинам\s*(.*?)\s*(?:История\s+цен|Похожие\s+товары|$)', text, re.I | re.S)
+    section = re.search(
+        r'(?:Цены\s+по\s+магазинам|Цены\s+в\s+магазинах|Предложения\s+магазинов)'
+        r'\s*(.*?)\s*(?:История\s+цен|График\s+цен|Описание\s+товара|Похожие\s+товары|Отзывы|$)',
+        text, re.I | re.S,
+    )
     if not section:
-        raise ValueError('Раздел «Цены по магазинам» отсутствует (возможно, данные загружаются JavaScript)')
-    offers = {}
+        raise ValueError('Блок цен магазинов пока не найден (возможно, он загружается JavaScript)')
+    offers: dict[str, int] = {}
     for shop, alias in SHOPS.items():
-        # Arzan sometimes repeats the logo alt and store name, e.g. "SmallSmall 325 ₸".
-        pattern = rf'(?<!\w)(?:{alias})(?:\s*(?:{alias}))?\s*(?:ARZN\s*)?(\d[\d ]{{0,7}})\s*₸'
-        matches = [int(m.group(1).replace(' ', '')) for m in re.finditer(pattern, section.group(1), re.I)]
-        if len(matches) == 1 and 50 <= matches[0] <= 5000:
-            offers[shop] = matches[0]
-        # Ambiguity means no record for this shop, not a guessed price.
+        pattern = rf'(?<!\w)(?:{alias})(?:\s*(?:{alias}))?\s*(?:ARZN\s*)?(\d[\d ]{{0,7}})\s*(?:₸|тенге\b)'
+        prices = {
+            int(m.group(1).replace(' ', ''))
+            for m in re.finditer(pattern, section.group(1), re.I)
+        }
+        # Multiple different figures for one shop = ambiguity; do not write one.
+        if len(prices) == 1:
+            price = next(iter(prices))
+            if 50 <= price <= 5000:
+                offers[shop] = price
     if not offers:
-        raise ValueError('Не найдено однозначных цен SMALL / Arbuz / Galmart')
+        raise ValueError('Нет однозначных цен SMALL / Arbuz / Galmart в блоке магазинов')
     return title, offers
+
+
+def render_dynamic_page(url: str) -> tuple[str, str]:
+    """Render JavaScript-built public product pages without bypassing access controls."""
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as playwright:
+        browser = playwright.chromium.launch(headless=True)
+        try:
+            page = browser.new_page(locale='ru-RU', viewport={'width': 1360, 'height': 960})
+            page.goto(url, wait_until='domcontentloaded', timeout=35000)
+            try:
+                page.get_by_text(
+                    re.compile(r'Цены\s+(?:по|в)\s+магазинам', re.I)
+                ).first.wait_for(state='visible', timeout=10000)
+            except Exception:
+                # Let parse_offers provide a precise diagnostic if no store list appears.
+                page.wait_for_timeout(1500)
+            return page.url, page.content()
+        finally:
+            browser.close()
 
 
 def allowed_by_robots(session: requests.Session, url: str) -> bool:
@@ -102,7 +121,22 @@ def run() -> None:
             res.raise_for_status()
             if '/ru/astana/' not in urlparse(res.url).path:
                 raise ValueError('Страница перенаправила на другой город')
-            title, offers = parse_offers(res.text, brand)
+            try:
+                title, offers = parse_offers(res.text, brand)
+                access_mode = 'html'
+            except ValueError as html_error:
+                # Arzan may render all price cards in the browser via JavaScript.
+                # This is normal public-page rendering, not an anti-bot workaround.
+                try:
+                    rendered_url, rendered_html = render_dynamic_page(url)
+                    if '/ru/astana/' not in urlparse(rendered_url).path:
+                        raise ValueError('Страница браузера перенаправила на другой город')
+                    title, offers = parse_offers(rendered_html, brand)
+                    access_mode = 'browser'
+                except Exception as browser_error:
+                    raise ValueError(
+                        f'HTML: {html_error}; браузер: {str(browser_error)[:160]}'
+                    ) from browser_error
             added = 0
             for shop, price in offers.items():
                 key = (day, brand, shop)
@@ -116,7 +150,7 @@ def run() -> None:
                 })
                 existed.add(key)
                 added += 1
-            item.update(status='collected', shops=offers, added=added)
+            item.update(status='collected', shops=offers, added=added, method=access_mode)
         except (ValueError, requests.RequestException) as exc:
             item.update(status='unavailable', reason=str(exc)[:300])
         run_items.append(item)

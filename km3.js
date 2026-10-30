@@ -22,6 +22,39 @@ const essentukiRows=[
  brand:"ESSENTUKI4",city:"Астана",day:line[0],shop,price:line[i+1],
  status:"needs_review",proof:"КМ3 · автордың кестесі; бастапқы дүкен скриншоты алынбаған"
 })));
+
+const essentukiEvidence=[
+ ["2026-05-29","29 май астана.png",{Arbuz:931,SMALL:749,Galmart:1075}],
+ ["2026-06-29","29 июнь астана.png",{Arbuz:1035,SMALL:665,Galmart:1000}],
+ ["2026-07-10","10 июль астана.png",{Arbuz:965,SMALL:749,Galmart:1075}],
+ ["2026-08-26","26 август астана.png",{Arbuz:905,SMALL:779,Galmart:1075}],
+ ["2026-09-05","5 сентябрь астана.png",{Arbuz:1019,SMALL:779,Galmart:1075}],
+ ["2026-09-26","26 сентябрь астана.png",{Arbuz:1019,SMALL:779,Galmart:1075}],
+ ["2026-10-13","13 октябрь астана.png",{Arbuz:1019,SMALL:539,Galmart:1075}],
+ ["2026-10-30","30 октябрь астана.png",{Arbuz:975,SMALL:735,Galmart:1030}]
+].map(([day,file,shown])=>({day,file,shown,url:'/evidence/'+encodeURIComponent(file)}));
+function essentukiEvidenceFor(day){
+ const e=essentukiEvidence.find(x=>x.day===day);if(!e)return null;
+ const mismatches=shops.filter(shop=>{
+  const row=essentukiRows.find(x=>x.day===day&&x.shop===shop);
+  return row&&Number(e.shown[shop])!==Number(row.price);
+ });
+ return {...e,mismatches,warning:mismatches.length>0};
+}
+function openEssentukiEvidence(day){
+ const e=essentukiEvidenceFor(day);
+ if(!e){toast(km3t('Скриншот табылмады','Скриншот не найден'));return;}
+ const diffs=e.mismatches.length?
+  km3t('Кесте мен сурет айырмасы: ','Расхождение таблицы и изображения: ')+e.mismatches.map(s=>{
+   const row=essentukiRows.find(x=>x.day===day&&x.shop===s);
+   return s+': '+row.price+' ₸ / '+e.shown[s]+' ₸';
+  }).join('; ')+'. ':'';
+ showEvidenceModal({
+  label:'Ессентуки №4 · '+fmt(day),url:e.url,
+  note:diffs+km3t('GitHub-тағы бағалар графигінің қиындысы; бренд пен 1 л газдалған түрі кадрдан расталмайды.','Фрагмент графика цен из GitHub. Бренд и соответствие газированной воде 1 л по нему не подтверждаются.')
+ });
+}
+
 const km3NewTuran=[
  {day:"2026-10-29",shop:"Arbuz",price:435},
  {day:"2026-10-29",shop:"SMALL",price:369},

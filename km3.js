@@ -23,6 +23,7 @@ const essentukiRows=[
  status:"needs_review",proof:"КМ3 · автордың кестесі; бастапқы дүкен скриншоты алынбаған"
 })));
 const km3NewTuran=[
+ {day:"2026-10-29",shop:"Arbuz",price:435},
  {day:"2026-10-29",shop:"SMALL",price:369},
  {day:"2026-10-29",shop:"Galmart",price:510},
  {day:"2026-10-30",shop:"Arbuz",price:435},
@@ -87,7 +88,7 @@ function km3Plot(dates,series,mode='abs'){
  const w=940,h=325,left=75,right=22,top=28,bottom=57,xx=d=>left+dates.indexOf(d)*(w-left-right)/Math.max(1,dates.length-1),yy=v=>top+(max-v)/(max-min)*(h-top-bottom);
  const lines=series.map(s=>{
    const pts=s.points.map(p=>({day:p.day,value:mode==='pct'?(p.price/s.points[0].price-1)*100:p.price}));
-   return '<polyline points="'+pts.map(p=>xx(p.day)+','+yy(p.value)).join(' ')+'" fill="none" stroke="'+s.color+'" stroke-width="3.4" stroke-linejoin="round" />'+pts.map(p=>'<circle cx="'+xx(p.day)+'" cy="'+yy(p.value)+'" r="5" fill="'+s.color+'"><title>'+esc(s.name)+' · '+p.day+': '+(mode==='pct'?p.value.toFixed(1)+'%':p.value+' ₸')+'</title></circle>').join('');
+   return '<polyline points="'+pts.map(p=>xx(p.day)+','+yy(p.value)).join(' ')+'" fill="none" stroke="'+s.color+'" stroke-width="3.4" stroke-linejoin="round" />'+pts.map(p=>'<circle cx="'+xx(p.day)+'" cy="'+yy(p.value)+'" r="5" fill="'+s.color+'"><title>'+esc(s.name)+' · '+(p.sourceDay||p.day)+': '+(mode==='pct'?p.value.toFixed(1)+'%':p.value+' ₸')+'</title></circle>').join('');
  }).join('');
  return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="KM3 price comparison">'+[0,1,2,3,4].map(i=>{const v=min+(max-min)*i/4,y=yy(v);return '<line x1="'+left+'" x2="'+(w-right)+'" y1="'+y+'" y2="'+y+'" stroke="#567182" stroke-dasharray="4 5" opacity=".45"/><text x="6" y="'+(y+4)+'" fill="#abbeca" font-size="13">'+v.toFixed(0)+(mode==='pct'?'%':' ₸')+'</text>'}).join('')+
  dates.map(d=>'<text x="'+xx(d)+'" y="'+(h-16)+'" text-anchor="middle" fill="#b4ccda" font-size="12">'+d.slice(5)+'</text>').join('')+lines+'</svg>'+
@@ -95,26 +96,68 @@ function km3Plot(dates,series,mode='abs'){
 }
 function km3SharedDays(){
  const a=new Set(data.filter(x=>x.city==='Астана').map(x=>x.day));
- const b=new Set(turanRows.map(x=>x.day));
+ const b=new Set(turanRows.filter(x=>x.city==='Астана').map(x=>x.day));
  return [...new Set(essentukiRows.map(x=>x.day))].filter(d=>a.has(d)&&b.has(d)).sort();
+}
+// Fixed, documented time windows. Approximate comparisons are not same-day quotes.
+// October 29 uses C's October 30 observation, repeated in the exact October 30 row.
+const KM3_PERIOD_CANDIDATES=[
+ {axis:'2026-05-29',label:'29.05',dates:{A:'2026-05-29',B:'2026-05-29',C:'2026-05-29'}},
+ {axis:'2026-07-10',label:'10–13.07',dates:{A:'2026-07-13',B:'2026-07-10',C:'2026-07-10'}},
+ {axis:'2026-08-26',label:'23–28.08',dates:{A:'2026-08-28',B:'2026-08-23',C:'2026-08-26'}},
+ {axis:'2026-09-05',label:'01–05.09',dates:{A:'2026-09-01',B:'2026-09-01',C:'2026-09-05'}},
+ {axis:'2026-10-29',label:'29–30.10',dates:{A:'2026-10-29',B:'2026-10-29',C:'2026-10-30'},repeatedC:true},
+ {axis:'2026-10-30',label:'30.10',dates:{A:'2026-10-30',B:'2026-10-30',C:'2026-10-30'}}
+];
+function km3ComparablePeriods(){
+ return KM3_PERIOD_CANDIDATES.map(p=>{
+  const dates=Object.values(p.dates).sort();
+  const gap=Math.round((Date.parse(dates[2]+'T00:00:00Z')-Date.parse(dates[0]+'T00:00:00Z'))/86400000);
+  return {...p,gap,kind:gap===0?'exact':'near'};
+ }).filter(p=>p.gap<=5&&shops.every(shop=>['A','B','C'].every(b=>km3Get(b,p.dates[b],shop))));
 }
 let km3SelectedShop='Arbuz';
 function km3Compare(){
- const common=km3SharedDays(),total=common.length,table=common.flatMap(d=>shops.map(s=>{
-  const a=km3Get('A',d,s),b=km3Get('B',d,s),c=km3Get('C',d,s);
-  if(!(a&&b&&c))return '';
-  return '<tr><td>'+fmt(d)+'</td><td>'+s+'</td><td>'+val(a.price)+'</td><td>'+val(b.price)+'</td><td>'+val(c.price)+'</td><td>'+val(c.price-a.price)+'</td></tr>';
- })).join('');
- const complete=common.filter(d=>shops.every(s=>km3Get('A',d,s)&&km3Get('B',d,s)&&km3Get('C',d,s)));
- const series=['A','B','C'].map((brand,i)=>({name:['TASSAY','TURAN','Ессентуки №4'][i],color:['#51d8dc','#ffd073','#ac9cfa'][i],points:complete.map(d=>{const r=km3Get(brand,d,km3SelectedShop);return r?{day:d,price:r.price}:null}).filter(Boolean)}));
+ const periods=km3ComparablePeriods(),exact=periods.filter(p=>p.kind==='exact'),near=periods.filter(p=>p.kind==='near');
+ const badge=p=>p.kind==='exact'?
+ '<span class="comparison-exact">'+km3t('Бір күн · дәл','Один день · точно')+'</span>':
+ '<span class="comparison-approx">'+km3t('Жуық кезең · '+p.gap+' күн','Близкий период · '+p.gap+' дн.')+'</span>';
+ const row=p=>shops.map(s=>{
+  const a=km3Get('A',p.dates.A,s),b=km3Get('B',p.dates.B,s),c=km3Get('C',p.dates.C,s);
+  const warning=p.repeatedC?'<small style="display:block;color:#dcab81">'+km3t('C: 30.10 бағасы қайталанды','C: повтор цены 30.10')+'</small>':'';
+  return '<tr class="'+(p.gap?'near':'')+'"><td><b>'+esc(p.label)+'</b><small style="display:block">'+badge(p)+warning+'</small></td>'+
+  '<td>'+fmt(p.dates.A)+'</td><td>'+fmt(p.dates.B)+'</td><td>'+fmt(p.dates.C)+'</td><td>'+s+'</td>'+
+  '<td>'+val(a.price)+'</td><td>'+val(b.price)+'</td><td>'+val(c.price)+'</td><td><b>'+val(c.price-a.price)+'</b></td></tr>';
+ }).join('');
+ const series=['A','B','C'].map((brand,i)=>({
+  name:['TASSAY','TURAN','Ессентуки №4'][i],
+  color:['#51d8dc','#ffd073','#ac9cfa'][i],
+  points:periods.map(p=>{
+   const r=km3Get(brand,p.dates[brand],km3SelectedShop);
+   return r?{day:p.axis,price:r.price,sourceDay:p.dates[brand],approx:p.gap>0}:null;
+  }).filter(Boolean)
+ }));
+ const overview='<div class="km2-stats"><div class="km2-stat"><small>'+km3t('Дәл ортақ күндер','Точные общие даты')+'</small><strong>'+exact.length+'</strong><small>'+exact.map(p=>p.label).join(' · ')+'</small></div>'+
+ '<div class="km2-stat"><small>'+km3t('Жуық кезеңдер (≤5 күн)','Близкие периоды (до 5 дней)')+'</small><strong>'+near.length+'</strong><small>'+near.map(p=>p.label).join(' · ')+'</small></div>'+
+ '<div class="km2-stat"><small>'+km3t('Барлық салыстырмалы кезең','Всего сопоставимых периодов')+'</small><strong>'+periods.length+'</strong><small>'+km3t('3 дүкен · '+(periods.length*3)+' үштік салыстыру','3 магазина · '+(periods.length*3)+' тройных сравнений')+'</small></div></div>';
+ const tableHeader='<div class="km2-table"><table><thead><tr><th>'+km3t('Кезең','Период')+'</th>'+
+ '<th>'+km3t('TASSAY күні','Дата TASSAY')+'</th><th>'+km3t('TURAN күні','Дата TURAN')+'</th><th>'+km3t('C күні','Дата C')+'</th><th>'+km3t('Дүкен','Магазин')+'</th>'+
+ '<th>TASSAY</th><th>TURAN</th><th>Ессентуки №4</th><th>C − A</th></tr></thead><tbody>';
+ const exactTable=tableHeader+exact.map(row).join('')+'</tbody></table></div>';
+ const nearTable=tableHeader+near.map(row).join('')+'</tbody></table></div>';
  return km3Title('КМ3 · A / B / C',km3t('Үш тауардың бағаларын салыстыру','Сравнение цен трёх товаров'),
- km3t('Барлық баға теңгемен, 1 литрге және Астана дүкендеріне қатысты. Ресейдегі бағалар RUB және ресми айырбас бағамы әзірге берілмеген.','Все цены приведены в тенге за 1 литр в магазинах Астаны. Цены из России в RUB и официальный обменный курс для них пока не представлены.'))+
- '<div class="km2-stats"><div class="km2-stat"><small>'+km3t('Толық ортақ күн','Полных общих дат')+'</small><strong>'+complete.length+'</strong><small>'+complete.map(d=>d.slice(5)).join(' · ')+'</small></div><div class="km2-stat"><small>'+km3t('Нақты жұптарды тексеру','Проверка сопоставимости')+'</small><strong>'+complete.length*3+'</strong><small>'+km3t('үш дүкендегі үштік салыстыру','тройных сравнений по трём магазинам')+'</small></div><div class="km2-stat"><small>'+km3t('Критерий','Требование')+'</small><strong>3</strong><small>'+km3t('үш ортақ күн қажет','нужны три общие даты')+'</small></div></div>'+
- (complete.length<3?'<div class="km2-missing"><b>'+km3t('Маңызды шектеу:','Важное ограничение:')+'</b> '+km3t('КМ3 талабындағы 3 ортақ күн әлі орындалмады: бар болғаны '+complete.length+' толық күн бар. Қосымша бір күнде үш брендтің де бағасын тіркеу қажет.','Требование КМ3 о трёх общих датах пока не выполнено: полных дат только '+complete.length+'. Нужно ещё хотя бы одно наблюдение всех трёх брендов в один день.')+'</div>':'')+
- km3Panel(km3t('Күндер мен дүкендер бойынша дәл салыстыру','Сравнение в одинаковые даты и магазины'),'<div class="km2-table"><table><thead><tr><th>'+km3t('Күні','Дата')+'</th><th>'+km3t('Дүкен','Магазин')+'</th><th>TASSAY</th><th>TURAN</th><th>Ессентуки №4</th><th>C − A</th></tr></thead><tbody>'+table+'</tbody></table></div>')+
- km3Panel(km3t('Үш брендтің графигі','График трёх брендов'),'<div class="row"><label>'+km3t('Дүкен:','Магазин:')+' <select onchange="km3SelectedShop=this.value;render()">'+shops.map(s=>'<option '+(km3SelectedShop===s?'selected':'')+'>'+s+'</option>').join('')+'</select></label></div>'+km3Plot(complete,series))+
- km3Panel(km3t('Салыстыру шекарасы','Границы сопоставления'),
- '<p>'+km3t('Астана дүкендеріндегі KZT бағаларында бағам әсері жоқ: сатып алу валютасы — теңге. Бірақ импорт құны, ҚҚС, жеткізу және жеңілдіктер тауардың сөре бағасына әсер етуі мүмкін. Үш брендтің минералдануы мен қолдану мақсаты әртүрлі болуы ықтимал. Ресейдегі RUB бағасы алынғанда ғана курс күні мен дереккөзі көрсетіліп, валюталық әсер бөлек есептеледі.','Все сравниваемые розничные цены Астаны уже выражены в KZT, поэтому влияние конвертации отсутствует. Но импортные издержки, НДС, доставка и скидки могут влиять на ценник. Минерализация и назначение товаров могут различаться. Для отдельного сравнения с российскими ценами RUB нужен официальный курс на дату каждого наблюдения.')+'</p>');
+ km3t('Екі дәл ортақ күнге қосымша 5 күнге дейінгі жақын бақылаулар енгізілді. Әр брендтің нақты күні көрсетіледі; жақын күн бағалары бір күндік баға ретінде қабылданбайды.','К двум точным общим датам добавлены наблюдения за близкие периоды с разницей до пяти дней. Для каждой марки указана её настоящая дата: приближённые цены не выдаются за одновременные.'))+
+ overview+
+ km3Panel(km3t('Дәл ортақ күндер','Точные общие даты'),exactTable)+
+ km3Panel(km3t('Жуық кезеңдер · әр тауардың күні бөлек','Близкие периоды · отдельная дата каждого товара'),
+ '<p class="km2-muted">'+km3t('Күндер аралығы: шілде ±3 күн, тамыз 5 күн, қыркүйек 4 күн, 29–30 қазан 1 күн. 29 қазан кезеңі мен 30 қазан дәл кезеңінде Ессентуки №4-тің 30 қазан бағасы бір дерек ретінде екі рет көрінеді — бұл екі тәуелсіз C бақылауы емес.','Разброс дат: июль 3 дня, август 5 дней, сентябрь 4 дня, 29–30 октября 1 день. Цена Ессентуки №4 за 30 октября повторяется в двух октябрьских сравнениях: это одно и то же наблюдение C, а не два независимых замера.')+'</p>'+nearTable)+
+ km3Panel(km3t('Үш тауардың бағалық графигі','График цен трёх товаров'),
+ '<div class="row"><label>'+km3t('Дүкен:','Магазин:')+' <select onchange="km3SelectedShop=this.value;render()">'+shops.map(s=>'<option '+(km3SelectedShop===s?'selected':'')+'>'+s+'</option>').join('')+'</select></label></div>'+
+ km3Plot(periods.map(p=>p.axis),series)+
+ '<p class="km2-muted">'+km3t('Жақын кезеңдердің нүктелері әр брендтің әртүрлі күнінде бақыланған; графикте салыстыру кезеңінің осі ғана ортақ. Нүктенің үстіне апарсаңыз, нақты күн шығады.','Точки близких периодов могут относиться к разным датам; общей является лишь ось сравнительного периода. При наведении на точку показана фактическая дата.')+'</p>')+
+ km3Panel(km3t('КМ3 талабына сәйкестік пен шектеулер','Соответствие КМ3 и ограничения'),
+ '<p>'+km3t('Тапсырма кемінде үш ортақ күнді <b>немесе бірдей кезеңді</b> талап етеді. Бұл кестеде '+exact.length+' дәл күн және '+near.length+' жақын кезең бар; кезеңдік салыстырудың ±5 күндік ережесі ашық көрсетілген. Дегенмен күннің айырмашылығы, акциялар және сатып алушыға нақты қолжетімділік қосымша тексерілуі керек.','Задание допускает три общие даты <b>или сопоставимые периоды</b>. Здесь '+exact.length+' точные даты и '+near.length+' близких периода; правило максимального разброса в 5 дней раскрыто явно. Различия дат, промоакции и реальная доступность товара требуют отдельной проверки.')+'</p>'+
+ '<p>'+km3t('Астанадағы барлық бақыланған бағалар KZT түрінде және 1 литрге берілген; Ресейдегі RUB бағасы мен оның конвертациясы бұл қатарға қосылмаған. Ессентуки №4 емдік-асханалық су болғандықтан, өзара алмастырылуы дәлелденбеген.','Все цены относятся к розничной продаже в Астане, приведены в KZT за 1 л. Российские RUB-цены и их конвертация не смешиваются с ними. Взаимозаменяемость лечебно-столовой Ессентуки №4 пока не доказана.')+'</p>');
 }
 function km3ChangePct(a,b){return a&&b&&a.price>0?((b.price-a.price)/a.price*100):null}
 function km3UpdatedAB(){
@@ -128,9 +171,9 @@ function km3UpdatedAB(){
  km3t('КМ2-дегі соңғы күндер әртүрлі: TASSAY — 26.10, TURAN — 15.10. Жаңарту күнін екеуі үшін 30.10 алдық.','Исходные последние даты КМ2 различаются: TASSAY — 26.10, TURAN — 15.10. Для нового периода обе марки сопоставляются на 30.10.'))+
  km3Panel(km3t('Алдыңғы → жаңа кезең (Астана)','Старый → новый период (Астана)'),
  '<div class="km2-table"><table><thead><tr><th>'+km3t('Дүкен','Магазин')+'</th><th>A 26.10</th><th>A 30.10</th><th>A %</th><th>B 15.10</th><th>B 30.10</th><th>B %</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
- '<p class="km2-muted">'+km3t('TASSAY бойынша 25, 29, 30 қазан (Астана), 28, 30 қазан (Алматы) енгізілді; TURAN бойынша 29 қазан SMALL/Galmart және 30 қазан үш дүкен енгізілді. Барлығы автордың кестесіне негізделген.','По TASSAY добавлены 25, 29, 30 октября (Астана) и 28, 30 октября (Алматы); по TURAN — 29 октября SMALL/Galmart и 30 октября все три магазина. Источник — таблицы автора.')+'</p>')+
- km3Panel(km3t('Қателікке күдікті бақылау','Наблюдение с вероятной ошибкой'),
- '<p><b>TURAN · Arbuz · 29.10.2026:</b> '+km3t('автор кестесінде «4345 ₸» деп жазылған. Бұл сан өзгелерден бірнеше есе жоғары, сондықтан график пен орташа бағаға енгізілмеді. Дұрыс бағаны және бастапқы дүкен скриншотын растау қажет.','в присланной таблице указано «4345 ₸». Значение многократно выше остальных, поэтому пока исключено из расчётов и графиков. Требуется уточнить цену по первичному скриншоту.')+'</p><p><b>31.10.2026:</b> '+km3t('«Ертең жіберемін» деген жазба нақты баға емес, есепке алынбады.','запись «завтра отправлю» не является ценой и не включена в наблюдения.')+'</p>');
+ '<p class="km2-muted">'+km3t('TASSAY бойынша 25, 29, 30 қазан (Астана), 28, 30 қазан (Алматы) енгізілді; TURAN бойынша 29 және 30 қазан үш дүкеннің бағалары енгізілді. Барлығы автордың кестесіне негізделген.','По TASSAY добавлены 25, 29, 30 октября (Астана) и 28, 30 октября (Алматы); по TURAN — 29 и 30 октября все три магазина. Источник — таблицы автора.')+'</p>')+
+ km3Panel(km3t('29 қазан · TURAN Arbuz: автор нақтылаған баға','29 октября · уточнённая цена TURAN Arbuz'),
+ '<p><b>TURAN · Arbuz · 29.10.2026: 435 ₸.</b> '+km3t('Автор бастапқы кестедегі «4345» қате терілгенін нақтылады. 435 ₸ ретінде енгізілді. Түпнұсқа дүкен скриншотымен тексеру әлі қажет.','Автор уточнила, что «4345» в таблице было опечаткой. Внесено 435 ₸, необходимо подтверждение скриншотом исходного магазина.')+'</p><p><b>31.10.2026:</b> '+km3t('«Ертең жіберемін» деген жазба нақты баға емес, есепке алынбады.','запись «завтра отправлю» не является ценой и не включена.')+'</p>');
 }
 function km3LawLog(){
  const updated=km3NewTuran.length+15+essentukiRows.length;
@@ -144,8 +187,8 @@ function km3LawLog(){
  '<p><b>'+km3t('Әзірге өзгерген жоқ.','На данном этапе не изменилось.')+'</b> '+km3t('Жаңа бағалар нарықтағы сауда ұсыныстарының айырмасын көрсетеді. Бірақ сатылым көлемі, нарықтың толық шекарасы, өндірушілердің келісім құжаттары мен байланысы жоқ. Шетелдік Ессентуки №4 тауарын қосу монополияны немесе заң бұзуды дәлелдемейді.','Новые цены расширяют картину розничных предложений. Но по-прежнему отсутствуют подтверждённые объёмы продаж, полные границы рынка, документы о соглашениях и контактах участников. Добавление российской Ессентуки №4 не доказывает монополии или нарушения.')+'</p>')+
  km3Panel(km3t('Өзгерістер журналы','Журнал изменений'),
  '<div class="km2-table"><table><thead><tr><th>'+km3t('Дерек','Данные')+'</th><th>'+km3t('Күн/кезең','Дата/период')+'</th><th>'+km3t('Саны','Количество')+'</th><th>'+km3t('Мәртебе','Статус')+'</th></tr></thead><tbody>'+
- [['TASSAY','2026-10-25, 28, 29, 30',15],['TURAN','2026-10-29, 30',5],['Ессентуки №4','2026-05-29 — 2026-10-30',24]].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+km3t('Автор кестесі; дүкеннен растау керек','Таблица автора; проверить в магазине')+'</td></tr>').join('')+
- '</tbody></table></div><p class="km2-muted">'+km3t('Ескі бақылаулар өшірілмеген. TURAN Arbuz 29 қазан «4345» және 31 қазан бос жолдар толықтырылған жоқ.','Исторические записи сохранены. Подозрительная цена 4345 для TURAN Arbuz за 29 октября и пустые значения 31 октября не добавлены.')+'</p>')+
+ [['TASSAY','2026-10-25, 28, 29, 30',15],['TURAN','2026-10-29, 30',6],['Ессентуки №4','2026-05-29 — 2026-10-30',24]].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+km3t('Автор кестесі; дүкеннен растау керек','Таблица автора; проверить в магазине')+'</td></tr>').join('')+
+ '</tbody></table></div><p class="km2-muted">'+km3t('Ескі бақылаулар өшірілмеген. TURAN Arbuz 29 қазан автор растаған 435 ₸ болып енгізілді; 31 қазан бос жолдар толықтырылған жоқ.','Исторические записи сохранены. Цена TURAN Arbuz за 29 октября уточнена автором как 435 ₸ и добавлена. Пустые значения 31 октября не добавлены.')+'</p>')+
  km3Panel(km3t('ЖИ туралы мәлімдеме','Декларация использования ИИ'),
  '<p>'+km3t('ЖИ платформаның бағдарламалық құрылымына, салыстырмалы есептерге, мәтіндерді аударуға және құқықтық дереккөздерді жүйелеуге көмектесті. Бағалардың бастапқы көзі — автордың ұсынған кестелері; тәуелсіз дүкен бақылауы және толық құқықтық дәлелдеме жасалған жоқ. Қателігі күмәнді мәндер автоматты түрде рас деп қабылданбайды.','ИИ помогал создавать интерфейс, сравнительные расчёты, перевод и систематизацию правовых источников. Первичный источник новых цен — таблицы автора; независимой проверки магазинов и полноты юридических доказательств не проводилось. Сомнительные значения автоматически не принимаются за достоверные.')+'</p>');
 }

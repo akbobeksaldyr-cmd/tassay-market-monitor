@@ -33,37 +33,68 @@ PRODUCTS = [
 SHOPS = {'Arbuz': '(?:Arbuz|Арбуз)', 'SMALL': '(?:Small|Смолл)', 'Galmart': '(?:Galmart|Галмарт)'}
 
 
-def parse_offers(html: str, brand: str) -> tuple[str, dict[str, int]]:
-    """Use the user-selected product URL as identity, not the HTML page heading.
+def public_price_excerpt(html: str) -> str:
+    """Short public text excerpt to diagnose page layout; no HTML or cookies."""
+    soup = BeautifulSoup(html, 'html.parser')
+    for tag in soup(['script', 'style', 'noscript']):
+        tag.decompose()
+    text = ' '.join(soup.stripped_strings).replace('\xa0', ' ')
+    match = re.search(r'Цены\s+(?:по\s+магазинам|в\s+магазинах)', text, re.I)
+    if match:
+        return text[match.start():match.start() + 1600]
+    return text[:450]
 
-    Read only the current 'prices by store' section, never a guessed value,
-    product recommendation, or unrelated price-history chart.
+
+def parse_offers(html: str, brand: str) -> tuple[str, dict[str, int]]:
+    """Read the user-specified Arzan product URL without rechecking its title.
+
+    Only accept store-labelled offers from the current store-prices section,
+    not price-history chart tooltips or product recommendations.
     """
     soup = BeautifulSoup(html, 'html.parser')
     h1 = soup.find('h1')
     title = h1.get_text(' ', strip=True) if h1 else brand
+    for tag in soup(['script', 'style', 'noscript']):
+        tag.decompose()
     text = ' '.join(soup.stripped_strings).replace('\xa0', ' ')
-    section = re.search(
+    match = re.search(
         r'(?:Цены\s+по\s+магазинам|Цены\s+в\s+магазинах|Предложения\s+магазинов)'
         r'\s*(.*?)\s*(?:История\s+цен|График\s+цен|Описание\s+товара|Похожие\s+товары|Отзывы|$)',
         text, re.I | re.S,
     )
-    if not section:
-        raise ValueError('Блок цен магазинов пока не найден (возможно, он загружается JavaScript)')
-    offers: dict[str, int] = {}
-    for shop, alias in SHOPS.items():
-        pattern = rf'(?<!\w)(?:{alias})(?:\s*(?:{alias}))?\s*(?:ARZN\s*)?(\d[\d ]{{0,7}})\s*(?:₸|тенге\b)'
-        prices = {
-            int(m.group(1).replace(' ', ''))
-            for m in re.finditer(pattern, section.group(1), re.I)
-        }
-        # Multiple different figures for one shop = ambiguity; do not write one.
-        if len(prices) == 1:
-            price = next(iter(prices))
-            if 50 <= price <= 5000:
-                offers[shop] = price
+    if not match:
+        raise ValueError('Раздел с актуальными ценами магазинов не найден')
+    section = match.group(1)
+
+    # A store card can contain repeated logos, availability labels, etc.
+    # Split at each shop label so a price never leaks from one shop to another.
+    labels = re.compile(r'Small|Смолл|Arbuz|Арбуз|Galmart|Галмарт|AyanMarket|METRO|MagnumGO|Аян', re.I)
+    chunks = list(labels.finditer(section))
+    store_name = {
+        'small': 'SMALL', 'смолл': 'SMALL',
+        'arbuz': 'Arbuz', 'арбуз': 'Arbuz',
+        'galmart': 'Galmart', 'галмарт': 'Galmart',
+    }
+    candidates = {'Arbuz': set(), 'SMALL': set(), 'Galmart': set()}
+    for index, label in enumerate(chunks):
+        shop = store_name.get(label.group().casefold())
+        if not shop:
+            continue
+        finish = chunks[index + 1].start() if index + 1 < len(chunks) else len(section)
+        fragment = section[label.end():min(finish, label.end() + 180)]
+        prices = list(re.finditer(r'(?<!\d)(\d[\d \u00a0]{0,7})\s*(?:₸|тенге\b|тг\b)', fragment, re.I))
+        if not prices:
+            continue
+        if re.search(r'нет\s+в\s+наличии|распродано', fragment[:prices[0].start()], re.I):
+            continue
+        valid = [int(p.group(1).replace(' ', '').replace('\u00a0', ''))
+                 for p in prices if 50 <= int(p.group(1).replace(' ', '').replace('\u00a0', '')) <= 5000]
+        if len(set(valid)) == 1:
+            candidates[shop].add(valid[0])
+    offers = {shop: next(iter(values)) for shop, values in candidates.items()
+              if len(values) == 1}
     if not offers:
-        raise ValueError('Нет однозначных цен SMALL / Arbuz / Galmart в блоке магазинов')
+        raise ValueError('Не найдены однозначные цены SMALL, Arbuz, Galmart в блоке магазинов')
     return title, offers
 
 
@@ -166,6 +197,16 @@ def run() -> None:
             item.update(status='collected', shops=offers, added=added, method=access_mode)
         except (ValueError, requests.RequestException) as exc:
             item.update(status='unavailable', reason=str(exc)[:300])
+            # Public, bounded rendered text for diagnosis if the layout changes.
+            if 'rendered_html' in locals() and rendered_html:
+                item['page_excerpt'] = public_price_excerpt(rendered_html)
+            elif 'res' in locals() and getattr(res, 'text', None):
+                item['page_excerpt'] = public_price_excerpt(res.text)
+        finally:
+            if 'rendered_html' in locals():
+                del rendered_html
+            if 'res' in locals():
+                del res
         run_items.append(item)
     archive['runs'] = (archive.get('runs') or [])[-89:] + [{'at': moment, 'city': CITY, 'sources': run_items}]
     observations.sort(key=lambda x: (x['day'], x['brand'], x['shop']))

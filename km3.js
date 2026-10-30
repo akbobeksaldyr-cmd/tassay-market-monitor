@@ -389,7 +389,7 @@ function km3DocGraph(){
  const colors3=['#258f9a','#ce9e4f','#9a68b8'];
  const arr=['A','B','C'].map((brand,i)=>({name:['TASSAY','TURAN','Ессентуки №4'][i],color:colors3[i],points:periods.map(p=>{
   const r=km3Get(brand,p.dates[brand],'Arbuz');
-  return r?{day:p.dates[brand],price:r.price}:null;
+  return r?{day:p.axis,sourceDay:p.dates[brand],price:r.price}:null;
  })}));
  return km3Plot(periods.map(p=>p.axis),arr);
 }

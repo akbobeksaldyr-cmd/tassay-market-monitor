@@ -50,6 +50,7 @@ render=function(){
  translateOrigRender();
  localizeNode(document.getElementById('nav'));
  localizeNode(document.getElementById('content'));
+ localizeNode(document.getElementById('title'));
  document.getElementById('loginBtn').textContent=admin?'Администратор ✓':'Вход администратора';
 };
 document.documentElement.lang='ru';
@@ -59,14 +60,15 @@ if(headerKicker)headerKicker.textContent='TASSAY · TURAN · АКАДЕМИЧЕ�
 const sidebarText=document.querySelector('#sidebar>p');if(sidebarText)sidebarText.textContent='Конкурентное право Республики Казахстан • 2026';
 localizeNode(document.querySelector('.top'));
 localizeNode(document.getElementById('evidenceDialog'));
+fmt=function(d){return new Date(d+'T00:00:00').toLocaleDateString('ru-RU',{day:'2-digit',month:'short',year:'numeric'})};
 const originalLogin=login;
 login=async function(){
  if(admin)return originalLogin();
  const password=prompt('Введите пароль администратора');if(!password)return;
  try{await api('/api/login',{method:'POST',body:JSON.stringify({password})});refresh()}catch(e){toast('Не удалось войти')}
 };
-const originalReportHTML=reportHTML;
-reportHTML=function(kind){
+const originalReportHTML=researchDocument;
+researchDocument=function(kind){
  const html=originalReportHTML(kind);
  const doc=new DOMParser().parseFromString(html,'text/html');
  const walker=doc.createTreeWalker(doc.documentElement,NodeFilter.SHOW_TEXT),nodes=[];
@@ -74,7 +76,7 @@ reportHTML=function(kind){
  for(const node of nodes){const next=localizeText(node.nodeValue);if(next!==node.nodeValue)node.nodeValue=next}
  doc.documentElement.lang='ru';return '<!doctype html>'+doc.documentElement.outerHTML;
 };
-const target=document.querySelector('main');
+const target=document.body;
 if(target){
  let working=false;
  const watcher=new MutationObserver(()=>{

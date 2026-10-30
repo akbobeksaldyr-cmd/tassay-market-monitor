@@ -481,6 +481,41 @@ function km3InsertAutoPrices(){
  }
  KM3_PERIOD_CANDIDATES.sort((a,b)=>a.axis.localeCompare(b.axis));
 }
+function km3AutoPriceGraph(){
+ const shop=km3AutoSelectedShop;
+ const dataRows=km3AutoArchive.observations.filter(r=>
+  r.city==='Астана' && r.shop===shop && r.status==='auto_unverified' &&
+  Number.isFinite(r.price) && r.price>0);
+ const ds=[...new Set(dataRows.map(r=>r.day))].sort();
+ if(!ds.length)return '<p>'+km3t('Бұл дүкен бойынша автоматты баға әлі алынған жоқ.','Для этого магазина пока нет автоматически полученных цен.')+'</p>';
+ const series=[
+  {brand:'TASSAY',name:'TASSAY',color:'#51d8dc'},
+  {brand:'TURAN',name:'TURAN',color:'#ffd073'},
+  {brand:'ESSENTUKI4',name:'Ессентуки №4',color:'#b996eb'}
+ ].map(s=>({...s,points:ds.map(d=>{
+  const r=dataRows.find(v=>v.brand===s.brand&&v.day===d);
+  return r?{day:d,price:r.price}:null;
+ }).filter(Boolean)})).filter(s=>s.points.length);
+ return '<p><b>'+km3t('Күнделікті автоматты бақылаулар графигі','График ежедневных автоматических наблюдений')+
+ '</b></p><div class="row"><label>'+km3t('Дүкен','Магазин')+
+ ' <select onchange="km3AutoSelectedShop=this.value;render()">'+shops.map(s=>
+ '<option value="'+esc(s)+'" '+(s===shop?'selected':'')+'>'+esc(s)+'</option>').join('')+
+ '</select></label></div>'+km3Plot(ds,series)+
+ '<p class="km2-muted">'+km3t('Тек Arzan.kz автоматты түрде оқылған күндер; жоқ бағалар ойдан толықтырылмайды.',
+ 'Только цены, автоматически полученные с Arzan.kz; пропуски не заполняются догадками.')+'</p>';
+}
+let km3AutoSelectedShop='Arbuz';
+function km3AutoHome(){
+ const latest=[...km3AutoArchive.observations].filter(r=>r.city==='Астана').sort((a,b)=>b.day.localeCompare(a.day)).slice(0,9);
+ if(!latest.length)return '';
+ return km3Panel(km3t('Астана · Arzan.kz күнделікті бағалары','Астана · Ежедневные цены Arzan.kz'),
+ '<p class="km2-muted">'+km3t('Автоматты бақылаулар; бағалар скриншотпен әлі расталмаған.',
+ 'Автоматические наблюдения; цены ещё не подтверждены скриншотами.')+'</p>'+
+ '<div class="km2-table"><table><thead><tr><th>'+km3t('Күн','Дата')+'</th><th>'+km3t('Тауар','Товар')+'</th><th>'+km3t('Дүкен','Магазин')+'</th><th>'+km3t('Баға','Цена')+'</th></tr></thead><tbody>'+
+ latest.map(r=>'<tr><td>'+esc(r.day)+'</td><td>'+esc(r.brand==='ESSENTUKI4'?'Ессентуки №4':r.brand)+'</td><td>'+esc(r.shop)+'</td><td>'+r.price+' ₸</td></tr>').join('')+
+ '</tbody></table></div><p><button class="btn outline" onclick="nav(22)">'+
+ km3t('Толық кесте және график','Полная таблица и график')+'</button></p>');
+}
 function km3AutoPanel(){
  const rows=km3AutoArchive.observations.filter(r=>r.city==='Астана' &&
    ['TASSAY','TURAN','ESSENTUKI4'].includes(r.brand));
@@ -492,8 +527,10 @@ function km3AutoPanel(){
   rows.slice(-45).reverse().map(r=>'<tr><td>'+esc(r.day)+'</td><td>'+esc(r.brand)+'</td><td>'+esc(r.shop)+'</td><td>'+r.price+' ₸</td><td><a href="'+esc(r.source_url)+'" target="_blank" rel="noopener noreferrer">Arzan.kz ↗</a></td><td>'+km3t('Растауды күтеді','Ожидает проверки')+'</td></tr>').join('')+
   '</tbody></table></div>'+
   (!rows.length?'<p>'+km3t('Автоматты расталмаған бағалар әзірше жоқ.','Пока нет автоматически считанных цен.')+'</p>':'');
- return km3Panel(km3t('Астана: күнделікті баға жинау','Астана: ежедневная загрузка цен'),content);
+ return km3Panel(km3t('Астана: күнделікті баға жинау','Астана: ежедневная загрузка цен'),content+km3AutoPriceGraph());
 }
+const km3OriginalDashboard=pages[0];
+pages[0]=function(){return km3OriginalDashboard()+km3AutoHome()};
 const km3OriginalCompare=pages[22];
 pages[22]=function(){return km3OriginalCompare()+km3AutoPanel()};
 const km3OriginalRender=render;

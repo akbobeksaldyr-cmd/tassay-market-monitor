@@ -58,6 +58,25 @@ def init():
     cur=c.execute("INSERT OR IGNORE INTO prices(day,city,shop,price,status,notes) VALUES(?,?,?,?,?,?)",(day,city,shop,price,"needs_review","БШ2 толықтыруы: автор берген баға; нақты скриншот/чек және акция мәртебесі қосымша тексеріледі."))
     if cur.rowcount:
      log(c,"km2_new_observation",{"day":day,"city":city,"shop":shop,"price":price,"verification":"needs_review","dataset":"2026-09-01-and-almaty-october"})
+
+ # БШ3: жаңа кезең. Әр позиция күн/қала/дүкен бойынша бір рет енгізіледі;
+ # бұрынғы админ енгізген жазбаларға тиіспейміз.
+ km3_updates={
+  "Астана":{
+   "2026-10-25":{"Arbuz":517,"SMALL":519,"Galmart":585},
+   "2026-10-29":{"Arbuz":517,"SMALL":519,"Galmart":585},
+   "2026-10-30":{"Arbuz":555,"SMALL":519,"Galmart":585}},
+  "Алматы":{
+   "2026-10-28":{"Arbuz":508,"SMALL":479,"Galmart":560},
+   "2026-10-30":{"Arbuz":545,"SMALL":479,"Galmart":560}}
+ }
+ for location,days in km3_updates.items():
+  for day,prices in days.items():
+   for shop,price in prices.items():
+    cur=c.execute("INSERT OR IGNORE INTO prices(day,city,shop,price,status,notes) VALUES(?,?,?,?,?,?)",
+      (day,location,shop,price,"needs_review","БШ3 · Автор жіберген кесте бойынша жаңа бақылау; дүкендегі түпнұсқа скриншот немесе чекпен растау қажет."))
+    if cur.rowcount:
+     log(c,"km3_author_observation",{"day":day,"city":location,"shop":shop,"price":price,"brand":"TASSAY","proof":"author table screenshot; pending store evidence"})
  if not c.execute("SELECT COUNT(*) FROM sources").fetchone()[0]:
   for t,u,k in [("ҚР Кәсіпкерлік кодексі","https://adilet.zan.kz/kaz/docs/K1500000375","заң"),("ҚР Бәсекелестікті қорғау агенттігі","https://www.gov.kz/memleket/entities/zk","ресми"),("TASSAY ресми каталогы","https://www.tassay.kz/en/catalog/gazirovannaya-vodak/","тауар")]:
    c.execute("INSERT INTO sources(title,url,kind) VALUES(?,?,?)",(t,u,k))
@@ -142,8 +161,9 @@ def product_image():
 
 PRODUCT_MEDIA = {
  "mnu-logo": "Mnu_logo.jpg",
- "tassay-card": "тассай карточка.png",
- "turan-card": "туран карточка.png",
+ "turan-card": "orig3.jpg",
+ "tassay-card": "orig.png",
+ "essentuki-card": "orig2.jpg",
 }
 @app.get("/media/{item}")
 def product_media(item: str):

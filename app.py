@@ -245,15 +245,31 @@ def export_csv():
  o=io.StringIO();w=csv.DictWriter(o,fieldnames=list(rows[0].keys()) if rows else ["day","city","shop","price"]);w.writeheader();w.writerows(rows)
  return Response("\ufeff"+o.getvalue(),media_type="text/csv",headers={"Content-Disposition":"attachment; filename=tassay-prices.csv"})
 
-# ARZAN ASTANA DAILY PRICE ENDPOINT v1
+# ARZAN ASTANA DAILY PRICE ENDPOINT v2
+# Read GitHub's public daily archive so GitHub Actions does not require a
+# Render redeploy for each new observation. The deployed snapshot is a fallback.
 @app.get("/api/auto-prices")
 def auto_prices():
- path = Path(__file__).parent / "data" / "daily-prices.json"
- if not path.is_file():
-  return JSONResponse({"schema_version":1,"observations":[],"runs":[]}, headers={"Cache-Control":"no-store"})
+ from urllib.request import Request as URLRequest, urlopen
+ from urllib.error import URLError
+ raw_url="https://raw.githubusercontent.com/akbobeksaldyr-cmd/tassay-market-monitor/main/data/daily-prices.json"
+ headers={"Cache-Control":"no-store, max-age=0"}
  try:
-  result = json.loads(path.read_text(encoding="utf-8"))
- except (OSError, ValueError):
-  raise HTTPException(503, "Daily price archive is unavailable")
- return JSONResponse(result, headers={"Cache-Control":"no-store"})
-
+  request=URLRequest(raw_url,headers={"User-Agent":"TassayMarketMonitor/1.0","Cache-Control":"no-cache"})
+  with urlopen(request,timeout=7) as upstream:
+   payload=upstream.read(4000001)
+  if len(payload)>4000000:raise ValueError("Archive too large")
+  data=json.loads(payload.decode("utf-8"))
+  if isinstance(data,dict) and data.get("schema_version")==1 and isinstance(data.get("observations"),list) and isinstance(data.get("runs"),list):
+   return JSONResponse(data,headers=headers)
+ except (URLError,OSError,ValueError,UnicodeError,TimeoutError):
+  pass
+ path=Path(__file__).parent / "data" / "daily-prices.json"
+ if path.is_file():
+  try:
+   data=json.loads(path.read_text(encoding="utf-8"))
+   if isinstance(data,dict) and isinstance(data.get("observations"),list):
+    return JSONResponse(data,headers=headers)
+  except (OSError,ValueError,UnicodeError):
+   pass
+ return JSONResponse({"schema_version":1,"observations":[],"runs":[]},headers=headers)

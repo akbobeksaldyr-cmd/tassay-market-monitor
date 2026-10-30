@@ -125,12 +125,19 @@ def render_dynamic_page(url: str) -> tuple[str, str]:
                     except Exception:
                         # If cities are not yet loaded, don't mistake another city for Astana.
                         pass
-                if not selected:
-                    raise ValueError('Arzan не загрузил выбор города Астана')
-                try:
-                    page.get_by_role('button', name=re.compile('Показать цены', re.I)).click(timeout=5000)
-                except Exception:
-                    raise ValueError('Arzan не дал подтвердить город Астана')
+                if selected:
+                    try:
+                        page.get_by_role('button', name=re.compile('Показать цены', re.I)).click(timeout=5000)
+                    except Exception as exc:
+                        raise ValueError('Arzan не дал подтвердить город Астана') from exc
+                else:
+                    # Arzan can fail to load its city list. Close the normal
+                    # intro without guessing another city; the product URL
+                    # still must stay exactly /ru/astana/p/<product-id>.
+                    try:
+                        page.get_by_role('button', name=re.compile('Пока пропустить', re.I)).click(timeout=5000)
+                    except Exception as exc:
+                        raise ValueError('Arzan не загрузил города и не позволил закрыть вступление') from exc
                 page.wait_for_timeout(1700)
             # Wait for real product-page offers, not onboarding's "цены в магазинах рядом".
             try:

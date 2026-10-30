@@ -90,4 +90,5 @@ if(target){
  });
  watcher.observe(target,{subtree:true,childList:true,characterData:true});
 }
-render();
+// The shared API refresh is asynchronous; avoid rendering before its prices arrive.
+if(data.length)render();

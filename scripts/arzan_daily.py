@@ -99,20 +99,46 @@ def parse_offers(html: str, brand: str) -> tuple[str, dict[str, int]]:
 
 
 def render_dynamic_page(url: str) -> tuple[str, str]:
-    """Render JavaScript-built public product pages without bypassing access controls."""
+    """Use the site's ordinary city-selection UI before reading Astana offers."""
     from playwright.sync_api import sync_playwright
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         try:
             page = browser.new_page(locale='ru-RU', viewport={'width': 1360, 'height': 960})
             page.goto(url, wait_until='domcontentloaded', timeout=35000)
+            # Arzan can open a first-visit "Выберите язык и город" overlay.
+            onboarding = page.get_by_text('Выберите язык и город', exact=False)
+            if onboarding.count() and onboarding.first.is_visible():
+                selected = False
+                for select in page.locator('select').all():
+                    try:
+                        if any('Астана' in x for x in select.locator('option').all_text_contents()):
+                            select.select_option(label='Астана', timeout=4000)
+                            selected = True
+                            break
+                    except Exception:
+                        pass
+                if not selected:
+                    try:
+                        page.get_by_text('Астана', exact=True).last.click(timeout=15000)
+                        selected = True
+                    except Exception:
+                        # If cities are not yet loaded, don't mistake another city for Astana.
+                        pass
+                if not selected:
+                    raise ValueError('Arzan не загрузил выбор города Астана')
+                try:
+                    page.get_by_role('button', name=re.compile('Показать цены', re.I)).click(timeout=5000)
+                except Exception:
+                    raise ValueError('Arzan не дал подтвердить город Астана')
+                page.wait_for_timeout(1700)
+            # Wait for real product-page offers, not onboarding's "цены в магазинах рядом".
             try:
                 page.get_by_text(
-                    re.compile(r'Цены\s+(?:по\s+магазинам|в\s+магазинах)', re.I)
-                ).first.wait_for(state='visible', timeout=10000)
+                    re.compile(r'^(?:Цены\s+по\s+магазинам|Цены\s+в\s+магазинах)$', re.I)
+                ).first.wait_for(state='visible', timeout=13000)
             except Exception:
-                # Let parse_offers provide a precise diagnostic if no store list appears.
-                page.wait_for_timeout(1500)
+                page.wait_for_timeout(1700)
             return page.url, page.content()
         finally:
             browser.close()

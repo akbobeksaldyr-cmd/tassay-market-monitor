@@ -22,6 +22,8 @@ jobs:
         run: |
           pip install 'requests>=2.31,<3' 'beautifulsoup4>=4.12,<5' 'playwright>=1.45,<2'
           python -m playwright install --with-deps chromium
+      - name: Check Python scripts
+        run: python -m py_compile scripts/arzan_daily.py scripts/install_arzan_integration.py
       - name: Integrate site once / update script references
         run: python scripts/install_arzan_integration.py
       - name: Collect actual public prices only

@@ -3,6 +3,11 @@ on:
   schedule:
     - cron: '7 4 * * *' # ~09:07 Astana, UTC+05:00 (GitHub schedule runs in UTC)
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/arzan_daily.py'
+      - '.github/workflows/arzan-prices.yml'
 permissions:
   contents: write
 concurrency:

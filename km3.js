@@ -427,7 +427,7 @@ downloadResearch=function(kind){
 };
 function km3AcademicExports(){
  return km3Title('KM3 · A–B–C',
- km3t('Брошюра және ғылыми мақала · КМ3','Брошюра и научная статья · КМ3'),
+ km3t('TASSAY · TURAN · Ессентуки №4: брошюра және мақала','TASSAY · TURAN · Ессентуки №4: брошюра и статья'),
  km3t('Екі құжат та A–B–C кестелерін, графикті, бағам есебін, ЕАЭО IRAC және ЖИ мәлімдемесін қамтиды.','Оба документа включают таблицы A–B–C, график, валютный расчёт, IRAC ЕАЭС и декларацию ИИ.'))+
  km3Panel(km3t('Зерттеу брошюрасы','Исследовательская брошюра'),
  '<p>'+km3t('Үш тауардың ортақ кезеңдердегі бағалары, C мәртебесі, дәлелдеме шектеулері, жаңарту журналы.','Цены трёх товаров за общие периоды, статус C, ограничения доказательств и журнал обновлений.')+'</p><button class="btn" onclick="previewResearch(\'brochure\')">'+km3t('Қарау / PDF','Предпросмотр / PDF')+'</button> <button class="btn outline" onclick="downloadResearch(\'brochure\')">HTML</button>')+
@@ -439,3 +439,9 @@ pages[16]=km3NewIRAC;
 pages[17]=km3NewAIPage;
 pages[19]=km3AcademicExports;
 pages[24]=()=>km3LawLog()+km3FXPanel();
+
+
+document.addEventListener('DOMContentLoaded',function(){
+ const kicker=document.querySelector('.header>.kicker');
+ if(kicker)kicker.textContent=km3t('TASSAY · TURAN · ЕССЕНТУКИ №4 · АКАДЕМИЯЛЫҚ ЗЕРТТЕУ','TASSAY · TURAN · ЕССЕНТУКИ №4 · АКАДЕМИЧЕСКОЕ ИССЛЕДОВАНИЕ');
+});

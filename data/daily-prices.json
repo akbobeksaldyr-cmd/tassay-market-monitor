@@ -18,6 +18,21 @@
     },
     {
       "day": "2026-10-31",
+      "captured_at": "2026-10-31T09:42:27+05:00",
+      "city": "Астана",
+      "brand": "ESSENTUKI4",
+      "shop": "SMALL",
+      "price": 735,
+      "currency": "KZT",
+      "volume_ml": 1000,
+      "source": "Arzan.kz",
+      "source_url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-essentuki-4-gazirovannaya-1l-1f15b35a-08de-4cc9-b1bd-8745c1e35006",
+      "source_product_title": "Вода минеральная Ессентуки №4 газированная 1л",
+      "status": "auto_unverified",
+      "evidence_url": null
+    },
+    {
+      "day": "2026-10-31",
       "captured_at": "2026-10-31T03:56:06+05:00",
       "city": "Астана",
       "brand": "TASSAY",
@@ -242,6 +257,46 @@
             "Arbuz": 975
           },
           "added": 0,
+          "method": "browser"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-31T09:42:27+05:00",
+      "city": "Астана",
+      "sources": [
+        {
+          "brand": "TASSAY",
+          "url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+          "status": "collected",
+          "shops": {
+            "Arbuz": 555,
+            "SMALL": 519
+          },
+          "added": 0,
+          "method": "browser"
+        },
+        {
+          "brand": "TURAN",
+          "url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-gazirovannaya-turan-1l-57cf9489-44e3-403c-ac0c-4889305c0696",
+          "status": "collected",
+          "shops": {
+            "Arbuz": 435,
+            "SMALL": 369,
+            "Galmart": 510
+          },
+          "added": 0,
+          "method": "browser"
+        },
+        {
+          "brand": "ESSENTUKI4",
+          "url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-essentuki-4-gazirovannaya-1l-1f15b35a-08de-4cc9-b1bd-8745c1e35006",
+          "status": "collected",
+          "shops": {
+            "Arbuz": 819,
+            "SMALL": 735
+          },
+          "added": 1,
           "method": "browser"
         }
       ]

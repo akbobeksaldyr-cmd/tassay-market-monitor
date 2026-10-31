@@ -273,3 +273,16 @@ def auto_prices():
   except (OSError,ValueError,UnicodeError):
    pass
  return JSONResponse({"schema_version":1,"observations":[],"runs":[]},headers=headers)
+
+# ARZAN ASTANA DAILY PRICE ENDPOINT v1
+@app.get("/api/auto-prices")
+def auto_prices():
+ path = Path(__file__).parent / "data" / "daily-prices.json"
+ if not path.is_file():
+  return JSONResponse({"schema_version":1,"observations":[],"runs":[]}, headers={"Cache-Control":"no-store"})
+ try:
+  result = json.loads(path.read_text(encoding="utf-8"))
+ except (OSError, ValueError):
+  raise HTTPException(503, "Daily price archive is unavailable")
+ return JSONResponse(result, headers={"Cache-Control":"no-store"})
+

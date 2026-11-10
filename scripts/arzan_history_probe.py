@@ -24,16 +24,16 @@ def probe_one(browser, brand, url):
     def inspect(response):
         try:
             typ=response.headers.get("content-type","")
-            if not ("json" in typ or "text" in typ) or response.status!=200:
+            if ("json" not in typ and "javascript" not in typ and "text/plain" not in typ) or response.status!=200:
                 return
-            if urlsplit(response.url).hostname not in ("arzan.kz","www.arzan.kz"):
+            if not (urlsplit(response.url).hostname or "").endswith("arzan.kz"):
                 return
             body=response.text()
-            if len(body)>400000:
+            if len(body)>700000:
                 return
             needle=re.compile(r"2026[-./]11[-./](?:0[3-9]|10)|history|chart|histor|price",re.I)
             matches=list(needle.finditer(body))
-            if not matches:
+            if not matches and "json" not in typ:
                 return
             excerpts=[]
             for m in matches[:12]:
@@ -43,7 +43,7 @@ def probe_one(browser, brand, url):
                 meta=summary(json.loads(body))
             except Exception:
                 meta={"kind":"text"}
-            entries.append({"path":urlsplit(response.url).path,"type":typ[:60],
+            entries.append({"host":urlsplit(response.url).hostname,"path":urlsplit(response.url).path,"type":typ[:60],
                             "size":len(body),"status":response.status,
                             "meta":meta,"excerpts":excerpts[:8]})
         except Exception:
@@ -66,7 +66,7 @@ def probe_one(browser, brand, url):
         info["history_words"]=[text[max(0,m.start()-120):min(len(text),m.end()+350)]
                                for m in list(re.finditer(r"истор|график|30 дней|90 дней|180 дней",text,re.I))[:8]]
         info["visible_buttons"]=page.locator("button").all_text_contents()[:45]
-        for label in ["90 дней","180 дней","90","180","История цен","График цен"]:
+        for label in ["По магазинам","90 дн.","180 дн.","30 дн.","История цен"]:
             try:
                 elt=page.get_by_text(label,exact=True)
                 if elt.count() and elt.first.is_visible():
@@ -75,7 +75,7 @@ def probe_one(browser, brand, url):
                     info.setdefault("clicked",[]).append(label)
             except Exception:
                 pass
-        info["responses"]=entries[-35:]
+        info["responses"]=entries[-60:]
         info["url_path"]=urlsplit(page.url).path
     except Exception as e:
         info["error"]=str(e)[:400]

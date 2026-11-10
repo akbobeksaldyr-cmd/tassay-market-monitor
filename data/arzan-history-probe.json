@@ -6,26 +6,6 @@
       "responses": [
         {
           "host": "arzan.kz",
-          "path": "/assets/App-BJiuV-eQ.js",
-          "type": "text/javascript",
-          "size": 432808,
-          "status": 200,
-          "meta": {
-            "kind": "text"
-          },
-          "excerpts": [
-            "Er4oOk.js\",\"assets/productSeo-Bx9t73SM.js\",\"assets/download-Mij63a2G.js\",\"assets/LineChart-D5Ex2ZqD.js\",\"assets/brandCollection-CoixYVEl.js\",\"assets/brandCollection-C1kw8Pgw.css\",\"assets/share-2-JNHi-17b.js\",\"assets/ProductPage-DfwQWFkq.css\",\"assets/TyresPage-BbWL7kZF.j",
-            "s\",\"assets/OfertaPage-CaW6Ejse.js\",\"assets/ReturnPolicyPage-DALY4cvw.js\",\"assets/CartHistoryPage-Bw75ISBo.js\",\"assets/CartSnapshotPage-DsPnUoHf.js\",\"assets/SharedCartPage-B6D90tjx.js\",\"assets/ProfilePage-Dx3X3PWc.js\",\"assets/AuthCallbackPage-Bpa_nWPJ.js\",\"assets/ReceiptsP",
-            "urn{cart:{name:e.name,is_owner:e.is_owner},total_items:e.items.length,cheapest_total_price:e.mix.subtotal,cheapest_per_product:e.mix.groups.flatMap(t=>t.items.map(n=>({...n,product:n.product,...ai(t),ext_product_ext_id:n.ext_id}))),unavailable_products:e.mix.unresolved.",
-            " stores\"})),all_stores:e.all_stores,single_store_totals:e.stores.map(t=>({...t,total_price:t.subtotal,available_count:t.exact_count+t.replacement_count,total_count:t.items.length,products:t.items.filter(n=>n.status!==\"missing\").map(n=>({...n,ext_product_ext_id:n.ext_id}",
-            "finally(()=>{La=!1}));const t=Jm();let n;try{const s=Number(localStorage.getItem(\"minprice_city_id\"));Number.isInteger(s)&&s>0&&(n=s)}catch{}const a={identity:e,event_id:crypto.randomUUID(),session_uuid:t.id,source_page:Oc(),city_id:n};return t.fresh&&Oe({event_type:\"se",
-            "th.min(2147483647,Math.max(1e3,Math.min(...n)-t)):!1}const oh=\"https://imageproxy.minprice.kz/img\",Uc=`${oh}?url=`,ih=new Set([\"arzan.kz\",\"www.arzan.kz\",\"arzan-images.ams3.cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=",
-            "\"arzan.kz\",\"www.arzan.kz\",\"arzan-images.ams3.cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=e=>{try{const t=new URL(e,\"https://minprice.kz\");return ih.has(t.hostname.toLowerCase())||typeof window<\"u\"&&t.origin===window.",
-            "cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=e=>{try{const t=new URL(e,\"https://minprice.kz\");return ih.has(t.hostname.toLowerCase())||typeof window<\"u\"&&t.origin===window.location.origin}catch{return!1}},ch=e=>{try{c"
-          ]
-        },
-        {
-          "host": "arzan.kz",
           "path": "/assets/ProductCardCartControl-cs8N7C8w.js",
           "type": "text/javascript",
           "size": 225669,
@@ -45,6 +25,26 @@
           ]
         },
         {
+          "host": "arzan.kz",
+          "path": "/assets/App-BJiuV-eQ.js",
+          "type": "text/javascript",
+          "size": 432808,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "Er4oOk.js\",\"assets/productSeo-Bx9t73SM.js\",\"assets/download-Mij63a2G.js\",\"assets/LineChart-D5Ex2ZqD.js\",\"assets/brandCollection-CoixYVEl.js\",\"assets/brandCollection-C1kw8Pgw.css\",\"assets/share-2-JNHi-17b.js\",\"assets/ProductPage-DfwQWFkq.css\",\"assets/TyresPage-BbWL7kZF.j",
+            "s\",\"assets/OfertaPage-CaW6Ejse.js\",\"assets/ReturnPolicyPage-DALY4cvw.js\",\"assets/CartHistoryPage-Bw75ISBo.js\",\"assets/CartSnapshotPage-DsPnUoHf.js\",\"assets/SharedCartPage-B6D90tjx.js\",\"assets/ProfilePage-Dx3X3PWc.js\",\"assets/AuthCallbackPage-Bpa_nWPJ.js\",\"assets/ReceiptsP",
+            "urn{cart:{name:e.name,is_owner:e.is_owner},total_items:e.items.length,cheapest_total_price:e.mix.subtotal,cheapest_per_product:e.mix.groups.flatMap(t=>t.items.map(n=>({...n,product:n.product,...ai(t),ext_product_ext_id:n.ext_id}))),unavailable_products:e.mix.unresolved.",
+            " stores\"})),all_stores:e.all_stores,single_store_totals:e.stores.map(t=>({...t,total_price:t.subtotal,available_count:t.exact_count+t.replacement_count,total_count:t.items.length,products:t.items.filter(n=>n.status!==\"missing\").map(n=>({...n,ext_product_ext_id:n.ext_id}",
+            "finally(()=>{La=!1}));const t=Jm();let n;try{const s=Number(localStorage.getItem(\"minprice_city_id\"));Number.isInteger(s)&&s>0&&(n=s)}catch{}const a={identity:e,event_id:crypto.randomUUID(),session_uuid:t.id,source_page:Oc(),city_id:n};return t.fresh&&Oe({event_type:\"se",
+            "th.min(2147483647,Math.max(1e3,Math.min(...n)-t)):!1}const oh=\"https://imageproxy.minprice.kz/img\",Uc=`${oh}?url=`,ih=new Set([\"arzan.kz\",\"www.arzan.kz\",\"arzan-images.ams3.cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=",
+            "\"arzan.kz\",\"www.arzan.kz\",\"arzan-images.ams3.cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=e=>{try{const t=new URL(e,\"https://minprice.kz\");return ih.has(t.hostname.toLowerCase())||typeof window<\"u\"&&t.origin===window.",
+            "cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=e=>{try{const t=new URL(e,\"https://minprice.kz\");return ih.has(t.hostname.toLowerCase())||typeof window<\"u\"&&t.origin===window.location.origin}catch{return!1}},ch=e=>{try{c"
+          ]
+        },
+        {
           "host": "api.arzan.kz",
           "path": "/api/session/init/",
           "type": "application/json",
@@ -54,20 +54,6 @@
             "keys": [
               "guest_uuid",
               "visitor_notice",
-              "analytics_identity"
-            ],
-            "arrays": {}
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/analytics/identity/",
-          "type": "application/json",
-          "size": 400,
-          "status": 200,
-          "meta": {
-            "keys": [
               "analytics_identity"
             ],
             "arrays": {}
@@ -144,6 +130,119 @@
         },
         {
           "host": "api.arzan.kz",
+          "path": "/api/analytics/identity/",
+          "type": "application/json",
+          "size": 400,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "analytics_identity"
+            ],
+            "arrays": {}
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/favorites/ids/",
+          "type": "application/json",
+          "size": 20,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "product_uuids"
+            ],
+            "arrays": {
+              "product_uuids": 0
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/session/init/",
+          "type": "application/json",
+          "size": 474,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "guest_uuid",
+              "visitor_notice",
+              "analytics_identity"
+            ],
+            "arrays": {}
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/favorites/brands/ids/",
+          "type": "application/json",
+          "size": 16,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "brand_ids"
+            ],
+            "arrays": {
+              "brand_ids": 0
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/store-preferences/",
+          "type": "application/json",
+          "size": 16,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "chain_ids"
+            ],
+            "arrays": {
+              "chain_ids": 0
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/shopping-address/",
+          "type": "application/json",
+          "size": 16,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "address"
+            ],
+            "arrays": {}
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/chains/",
+          "type": "application/json",
+          "size": 1786,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "chains"
+            ],
+            "arrays": {
+              "chains": 12
+            }
+          },
+          "excerpts": [
+            "/api.arzan.kz/media/chain_logos/choco.webp\",\"brand_color\":null},{\"id\":27,\"name\":\"Fix Price\",\"slug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"g",
+            "a/chain_logos/choco.webp\",\"brand_color\":null},{\"id\":27,\"name\":\"Fix Price\",\"slug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"galmart\",\"logo\":\"ht",
+            "webp\",\"brand_color\":null},{\"id\":27,\"name\":\"Fix Price\",\"slug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"galmart\",\"logo\":\"https://api.arzan.kz/m",
+            "ug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"galmart\",\"logo\":\"https://api.arzan.kz/media/chain_logos/galmart-icon-v1.png\",\"brand_color\":\"#647"
+          ]
+        },
+        {
+          "host": "api.arzan.kz",
           "path": "/api/cities/",
           "type": "application/json",
           "size": 452,
@@ -176,102 +275,22 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/session/init/",
+          "path": "/api/carts/",
           "type": "application/json",
-          "size": 474,
+          "size": 52,
           "status": 200,
           "meta": {
             "keys": [
-              "guest_uuid",
-              "visitor_notice",
-              "analytics_identity"
-            ],
-            "arrays": {}
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/favorites/ids/",
-          "type": "application/json",
-          "size": 20,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "product_uuids"
+              "count",
+              "next",
+              "previous",
+              "results"
             ],
             "arrays": {
-              "product_uuids": 0
+              "results": 0
             }
           },
           "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/favorites/brands/ids/",
-          "type": "application/json",
-          "size": 16,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "brand_ids"
-            ],
-            "arrays": {
-              "brand_ids": 0
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/shopping-address/",
-          "type": "application/json",
-          "size": 16,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "address"
-            ],
-            "arrays": {}
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/store-preferences/",
-          "type": "application/json",
-          "size": 16,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "chain_ids"
-            ],
-            "arrays": {
-              "chain_ids": 0
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/chains/",
-          "type": "application/json",
-          "size": 1786,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "chains"
-            ],
-            "arrays": {
-              "chains": 12
-            }
-          },
-          "excerpts": [
-            "/api.arzan.kz/media/chain_logos/choco.webp\",\"brand_color\":null},{\"id\":27,\"name\":\"Fix Price\",\"slug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"g",
-            "a/chain_logos/choco.webp\",\"brand_color\":null},{\"id\":27,\"name\":\"Fix Price\",\"slug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"galmart\",\"logo\":\"ht",
-            "webp\",\"brand_color\":null},{\"id\":27,\"name\":\"Fix Price\",\"slug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"galmart\",\"logo\":\"https://api.arzan.kz/m",
-            "ug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"galmart\",\"logo\":\"https://api.arzan.kz/media/chain_logos/galmart-icon-v1.png\",\"brand_color\":\"#647"
-          ]
         },
         {
           "host": "api.arzan.kz",
@@ -296,19 +315,20 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/carts/",
+          "path": "/api/categories/",
           "type": "application/json",
-          "size": 52,
+          "size": 211062,
           "status": 200,
           "meta": {
             "keys": [
-              "count",
-              "next",
-              "previous",
-              "results"
+              "version",
+              "city_id",
+              "count_scope",
+              "nodes",
+              "catalog_tree"
             ],
             "arrays": {
-              "results": 0
+              "nodes": 25
             }
           },
           "excerpts": []
@@ -317,7 +337,7 @@
           "host": "api.arzan.kz",
           "path": "/api/categories/",
           "type": "application/json",
-          "size": 211062,
+          "size": 211016,
           "status": 200,
           "meta": {
             "keys": [
@@ -409,6 +429,39 @@
         },
         {
           "host": "api.arzan.kz",
+          "path": "/api/promo-codes/",
+          "type": "application/json",
+          "size": 40,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "promo_codes",
+              "voting_enabled"
+            ],
+            "arrays": {
+              "promo_codes": 0
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/banners/",
+          "type": "application/json",
+          "size": 14,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "banners"
+            ],
+            "arrays": {
+              "banners": 0
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
           "path": "/api/products/59532c36-90e0-4575-af62-aedb6e80b501/",
           "type": "application/json",
           "size": 65935,
@@ -471,48 +524,6 @@
           "host": "api.arzan.kz",
           "path": "/api/products/59532c36-90e0-4575-af62-aedb6e80b501/similar/",
           "type": "application/json",
-          "size": 76301,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "product_uuid",
-              "results"
-            ],
-            "arrays": {
-              "results": 8
-            }
-          },
-          "excerpts": [
-            "s_count\":10,\"favorite_presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"cha",
-            "presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain",
-            "\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"",
-            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0},\"store_offers\":[{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\"",
-            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488",
-            ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.",
-            "oimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"p",
-            "_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"price\":649.0,\"p"
-          ]
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/banners/",
-          "type": "application/json",
-          "size": 14,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "banners"
-            ],
-            "arrays": {
-              "banners": 0
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/products/59532c36-90e0-4575-af62-aedb6e80b501/similar/",
-          "type": "application/json",
           "size": 60855,
           "status": 200,
           "meta": {
@@ -537,23 +548,6 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/promo-codes/",
-          "type": "application/json",
-          "size": 40,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "promo_codes",
-              "voting_enabled"
-            ],
-            "arrays": {
-              "promo_codes": 0
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
           "path": "/api/products/59532c36-90e0-4575-af62-aedb6e80b501/price-history/",
           "type": "application/json",
           "size": 29369,
@@ -570,35 +564,41 @@
             }
           },
           "excerpts": [
-            "462267,\"ext_product_title\":\"Вода Tassay газированная 1 л\",\"out_of_stock_since\":null,\"prices\":[{\"date\":\"2026-10-16\",\"datetime\":\"2026-10-16T02:59:30.191986+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_price\":601.0,\"promo_price\":null,\"is_promo\":false,\"discount_perce",
-            "\":null,\"prices\":[{\"date\":\"2026-10-16\",\"datetime\":\"2026-10-16T02:59:30.191986+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_price\":601.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:53:2",
-            "\":\"2026-10-16\",\"datetime\":\"2026-10-16T02:59:30.191986+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_price\":601.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:53:21.086952+00:00\",\"price\"",
-            "ime\":\"2026-10-16T02:59:30.191986+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_price\":601.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:53:21.086952+00:00\",\"price\":601.0,\"previous_pric",
-            "59:30.191986+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_price\":601.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:53:21.086952+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_pri",
-            "\"in_stock\":true},{\"date\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:53:21.086952+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_price\":601.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:57:",
-            "\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:53:21.086952+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_price\":601.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:57:39.280452+00:00\",\"price",
-            "ime\":\"2026-10-25T09:53:21.086952+00:00\",\"price\":601.0,\"previous_price\":null,\"regular_price\":601.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-10-25\",\"datetime\":\"2026-10-25T09:57:39.280452+00:00\",\"price\":601.0,\"previous_pri"
+            "\":\"Вода Tassay питьевая газированная, 1000 мл, Казахстан\",\"out_of_stock_since\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:03.267487+00:00\",\"price\":560.0,\"previous_price\":null,\"regular_price\":560.0,\"promo_price\":null,\"is_promo\":false,\"discount_perce",
+            "\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:03.267487+00:00\",\"price\":560.0,\"previous_price\":null,\"regular_price\":560.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:0",
+            "\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:03.267487+00:00\",\"price\":560.0,\"previous_price\":null,\"regular_price\":560.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:05.513262+00:00\",\"price\"",
+            "ime\":\"2026-05-14T09:19:03.267487+00:00\",\"price\":560.0,\"previous_price\":null,\"regular_price\":560.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:05.513262+00:00\",\"price\":585.0,\"previous_pric",
+            "19:03.267487+00:00\",\"price\":560.0,\"previous_price\":null,\"regular_price\":560.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:05.513262+00:00\",\"price\":585.0,\"previous_price\":null,\"regular_pri",
+            "\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:05.513262+00:00\",\"price\":585.0,\"previous_price\":null,\"regular_price\":585.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-10\",\"datetime\":\"2026-06-10T02:15:4",
+            "\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:05.513262+00:00\",\"price\":585.0,\"previous_price\":null,\"regular_price\":585.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-10\",\"datetime\":\"2026-06-10T02:15:42.862718+00:00\",\"price\"",
+            "ime\":\"2026-06-03T14:02:05.513262+00:00\",\"price\":585.0,\"previous_price\":null,\"regular_price\":585.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-10\",\"datetime\":\"2026-06-10T02:15:42.862718+00:00\",\"price\":585.0,\"previous_pric"
           ]
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/categories/",
+          "path": "/api/products/59532c36-90e0-4575-af62-aedb6e80b501/similar/",
           "type": "application/json",
-          "size": 211016,
+          "size": 76301,
           "status": 200,
           "meta": {
             "keys": [
-              "version",
-              "city_id",
-              "count_scope",
-              "nodes",
-              "catalog_tree"
+              "product_uuid",
+              "results"
             ],
             "arrays": {
-              "nodes": 25
+              "results": 8
             }
           },
-          "excerpts": []
+          "excerpts": [
+            "s_count\":10,\"favorite_presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"cha",
+            "presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain",
+            "\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"",
+            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0},\"store_offers\":[{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\"",
+            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488",
+            ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.",
+            "oimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"p",
+            "_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"price\":649.0,\"p"
+          ]
         },
         {
           "host": "api.arzan.kz",
@@ -615,6 +615,236 @@
           "excerpts": []
         }
       ],
+      "history_api": {
+        "days": 180,
+        "stores": [
+          {
+            "store_id": 120,
+            "store_name": "Galmart | Астана",
+            "chain_id": 43,
+            "chain_name": "Galmart",
+            "out_of_stock_since": null,
+            "prices": []
+          },
+          {
+            "store_id": 41,
+            "store_name": "Choco Рядом | ул. Гейдара Алиева, 4",
+            "chain_id": 37,
+            "chain_name": "Choco Рядом",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-10-25",
+                "datetime": "2026-10-25T09:53:21.086952+00:00",
+                "price": 601.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-25",
+                "datetime": "2026-10-25T09:57:39.280452+00:00",
+                "price": 601.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-02",
+                "datetime": "2026-11-02T17:01:53.363952+00:00",
+                "price": 601.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-02",
+                "datetime": "2026-11-02T17:09:40.648744+00:00",
+                "price": 601.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 8,
+            "store_name": "Arbuz Astana",
+            "chain_id": 10,
+            "chain_name": "Arbuz",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-10-30",
+                "datetime": "2026-10-30T02:17:34.591088+00:00",
+                "price": 555.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 39,
+            "store_name": "Яндекс Лавка | ул. Бухар Жирау, 25/1",
+            "chain_id": 32,
+            "chain_name": "Яндекс Лавка",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-02",
+                "datetime": "2026-11-02T05:55:36.521088+00:00",
+                "price": 572.0,
+                "in_stock": true,
+                "is_promo": true
+              }
+            ]
+          },
+          {
+            "store_id": 33,
+            "store_name": "METRO Астана",
+            "chain_id": 33,
+            "chain_name": "METRO",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-10-28",
+                "datetime": "2026-10-28T23:29:08.896133+00:00",
+                "price": 499.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-29",
+                "datetime": "2026-10-29T07:10:48.236284+00:00",
+                "price": 499.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 140,
+            "store_name": "AyanMarket Астана",
+            "chain_id": 45,
+            "chain_name": "AyanMarket",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-01",
+                "datetime": "2026-11-01T10:45:48.252603+00:00",
+                "price": 520.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-02",
+                "datetime": "2026-11-02T15:40:42.311855+00:00",
+                "price": 439.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-04",
+                "datetime": "2026-11-04T20:57:02.963316+00:00",
+                "price": 439.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-05",
+                "datetime": "2026-11-05T04:55:49.295534+00:00",
+                "price": 439.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-07",
+                "datetime": "2026-11-07T15:45:45.994567+00:00",
+                "price": 439.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T04:33:07.459209+00:00",
+                "price": 439.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T02:39:09.736311+00:00",
+                "price": 439.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T02:47:59.250162+00:00",
+                "price": 439.0,
+                "in_stock": true,
+                "is_promo": true
+              }
+            ]
+          },
+          {
+            "store_id": 117,
+            "store_name": "Small | ул. Ш. Айтматова, зд.44",
+            "chain_id": 42,
+            "chain_name": "Small",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-04",
+                "datetime": "2026-11-04T21:47:12.396332+00:00",
+                "price": 465.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-06",
+                "datetime": "2026-11-06T21:06:12.655161+00:00",
+                "price": 465.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-06",
+                "datetime": "2026-11-06T21:15:41.246112+00:00",
+                "price": 465.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T19:02:58.110974+00:00",
+                "price": 465.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T20:43:34.515200+00:00",
+                "price": 465.0,
+                "in_stock": true,
+                "is_promo": true
+              }
+            ]
+          },
+          {
+            "store_id": 142,
+            "store_name": "Жанұя — Караменде",
+            "chain_id": 46,
+            "chain_name": "Жанұя Оптомаркет",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T09:19:03.681248+00:00",
+                "price": 405.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          }
+        ]
+      },
       "page_text": "Добавить магазин\nПоиск низких цен...\nШтрих-код\nГлавная\nКаталог\nКорзина\nИзбранное\nАстана\nУкажите адрес\nНазад\nПоделиться\n1 л\nTassay · КАЗАХСТАН\nВода минеральная Tassay газированная 1л\n405 ₸\n\n41 ₸ / 100 мл\n\n+ В корзину\nЦены по магазинам\nУкажите адрес, чтобы увидеть ближайший филиал\nЖанұя Оптомаркет\n405 ₸\nAyanMarket\n439 ₸\nSmall (р-н Нура, ул. Ш. Айтматова, зд. 44)\n465 ₸\nMETRO\n499 ₸\nArbuz\n555 ₸\nЯндекс Лавка\n572 ₸\nGalmart\n585 ₸\nChoco Рядом\n601 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная Tassay газированная 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n305\n380\n455\n599\n499 ₸\n405 ₸\nМинимум\n405 ₸\n-8%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n1,5 л\n325 ₸\n22 ₸ / 100 мл\nВода минеральная Тuran газированная 1.5л\nGalmart\n325 ₸\nMETRO\n329 ₸\nSmall\n390 ₸\n+ В корзину\n-19%\n1,5 л\n439 ₸\n355 ₸\n24 ₸ / 100 мл\nВода минеральная RAUAN Сарыагаш... 1.5л\nArbuz\n355 ₸\n+ В корзину\n1,5 л\n360 ₸\n24 ₸ / 100 мл\nВода минеральная АСУ 7SU газированная 1.5л\nЖанұя Оптомаркет\n360 ₸\nAyanMarket\n401 ₸\nSmall\n430 ₸\n+ В корзину\n1,5 л\n366 ₸\n24 ₸ / 100 мл\nВода минеральная Alex Saryagash... 1.5л\nЖанұя Оптомаркет\n366 ₸\nMETRO\n379 ₸\nAyanMarket\n395 ₸\n+ В корзину\n1,5 л\n399 ₸\n27 ₸ / 100 мл\nВода Turan минеральная негазированная 1.5л\nMETRO\n399 ₸\nArbuz\n495 ₸\nAyanMarket\n514 ₸\n+ В корзину\n1,5 л\n403 ₸\n27 ₸ / 100 мл\nВода минеральная Асем Ай Сарыагаш... 1.5л\nAyanMarket\n403 ₸\nЯндекс Лавка\nНЕТ В НАЛИЧИИ\n489 ₸\n+ В корзину\n1 л\n269 ₸\n27 ₸ / 100 мл\nВода минеральная Small газированная 1л\nSmall\n269 ₸\n+ В корзину\narzan.kz\n\nЦены, скидки и корзина на одной витрине. Сравнивайте предложения магазинов и выбирайте выгодный вариант до покупки.\n\nО сервисе\nСкачать в App Store\nСкачать в Google Play\nМЫ В СОЦСЕТЯХ\n@arzankz\n@arzankz\nРАЗДЕЛЫ\nБлог\nПоиск\nКаталог\nПромокоды\nКорзина\nКАТЕГОРИИ\nОвощи и зелень\nФрукты и ягоды\nМолочная продукция и яйца\nБакалея\nКонсервы, быстрое приготовление, маринованные овощи\nМясо, птица, колбасные изделия\nАлкоголь\nТабачная продукция\nМАГАЗИНЫ\nArbuz\nAyanMarket\nChoco Рядом\nFix Price\nGalmart\nMagnumGO\nMETRO\nSmall\nСЕРВИС\nОферта\nПолитика возврата\nПоддержка\nГОРОДА\nАктобе\nАлматы\nАстана\nАтырау\nКараганда\nПавлодар\nШымкент\nЯЗЫК\nҚазақша\nРусский\n© 2026 ТОО Arzan APPAI · arzan.kz — цены показаны на момент обновления\nИтоговая цена уточняется на странице магазина.\n305",
       "history_words": [
         "l (р-н Нура, ул. Ш. Айтматова, зд. 44)\n465 ₸\nMETRO\n499 ₸\nArbuz\n555 ₸\nЯндекс Лавка\n572 ₸\nGalmart\n585 ₸\nChoco Рядом\n601 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная Tassay газированная 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n305\n380\n455\n599\n499 ₸\n405 ₸\nМинимум\n405 ₸\n-8%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n1,5 "
@@ -900,22 +1130,6 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/session/init/",
-          "type": "application/json",
-          "size": 474,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "guest_uuid",
-              "visitor_notice",
-              "analytics_identity"
-            ],
-            "arrays": {}
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
           "path": "/api/cities/",
           "type": "application/json",
           "size": 452,
@@ -927,52 +1141,6 @@
             "arrays": {
               "cities": 7
             }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/favorites/ids/",
-          "type": "application/json",
-          "size": 20,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "product_uuids"
-            ],
-            "arrays": {
-              "product_uuids": 0
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/favorites/brands/ids/",
-          "type": "application/json",
-          "size": 16,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "brand_ids"
-            ],
-            "arrays": {
-              "brand_ids": 0
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/shopping-address/",
-          "type": "application/json",
-          "size": 16,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "address"
-            ],
-            "arrays": {}
           },
           "excerpts": []
         },
@@ -996,6 +1164,68 @@
             "webp\",\"brand_color\":null},{\"id\":27,\"name\":\"Fix Price\",\"slug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"galmart\",\"logo\":\"https://api.arzan.kz/m",
             "ug\":\"fixprice\",\"source\":\"fixprice\",\"logo\":\"https://api.arzan.kz/media/chain_logos/fixprice.png\",\"brand_color\":\"#0057b8\"},{\"id\":43,\"name\":\"Galmart\",\"slug\":\"galmart\",\"source\":\"galmart\",\"logo\":\"https://api.arzan.kz/media/chain_logos/galmart-icon-v1.png\",\"brand_color\":\"#647"
           ]
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/favorites/ids/",
+          "type": "application/json",
+          "size": 20,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "product_uuids"
+            ],
+            "arrays": {
+              "product_uuids": 0
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/shopping-address/",
+          "type": "application/json",
+          "size": 16,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "address"
+            ],
+            "arrays": {}
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/session/init/",
+          "type": "application/json",
+          "size": 474,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "guest_uuid",
+              "visitor_notice",
+              "analytics_identity"
+            ],
+            "arrays": {}
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/favorites/brands/ids/",
+          "type": "application/json",
+          "size": 16,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "brand_ids"
+            ],
+            "arrays": {
+              "brand_ids": 0
+            }
+          },
+          "excerpts": []
         },
         {
           "host": "api.arzan.kz",
@@ -1075,26 +1305,6 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/categories/",
-          "type": "application/json",
-          "size": 211016,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "version",
-              "city_id",
-              "count_scope",
-              "nodes",
-              "catalog_tree"
-            ],
-            "arrays": {
-              "nodes": 25
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
           "path": "/api/products/57cf9489-44e3-403c-ac0c-4889305c0696/",
           "type": "application/json",
           "size": 19496,
@@ -1152,6 +1362,20 @@
             "nt_amount\":140,\"currency\":\"KZT\",\"price_per_unit\":0.309,\"in_stock\":true,\"updated_at\":\"2026-11-10T04:21:14.508566+00:00\",\"url\":\"https://api.arzan.kz/api/go/433180.CZYbrOg3LbIJAfKrVEaBsPHOTEQewVaTGsqoBD6h17o/\",\"ext_product_id\":309340,\"ext_product_title\":\"TURAN вода минеральная ",
             "qty\":1000.0,\"ext_product_pack_count\":1,\"barcodes\":[\"4870031001873\"],\"is_chain_common_price\":true,\"is_chain_min_price\":true,\"is_chain_summary\":true,\"is_store_alternative_offer\":false,\"price_store_count\":1,\"chain_store_count\":1},{\"store_id\":8,\"store_name\":\"Arbuz\",\"store_s"
           ]
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/shopping-address/",
+          "type": "application/json",
+          "size": 16,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "address"
+            ],
+            "arrays": {}
+          },
+          "excerpts": []
         },
         {
           "host": "api.arzan.kz",
@@ -1215,20 +1439,6 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/shopping-address/",
-          "type": "application/json",
-          "size": 16,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "address"
-            ],
-            "arrays": {}
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
           "path": "/api/products/57cf9489-44e3-403c-ac0c-4889305c0696/similar/",
           "type": "application/json",
           "size": 60855,
@@ -1251,32 +1461,6 @@
             "in_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":560.0,\"price_text\":\"560 ₸\"},{\"store_id\":33,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":",
             "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":22,\"ext_product_id\":295287,\"chain_id\":27,\"chain_name\":\"Fix Price\",\"chain_logo\":\"/media/chain_logos/fixprice.png\",\"chain_brand_color\":\"#005",
             ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":22,\"ext_product_id\":295287,\"chain_id\":27,\"chain_name\":\"Fix Price\",\"chain_logo\":\"/media/chain_logos/fixprice.png\",\"chain_brand_color\":\"#0057b8\",\"price\":5"
-          ]
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/products/57cf9489-44e3-403c-ac0c-4889305c0696/similar/",
-          "type": "application/json",
-          "size": 76301,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "product_uuid",
-              "results"
-            ],
-            "arrays": {
-              "results": 8
-            }
-          },
-          "excerpts": [
-            "s_count\":10,\"favorite_presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"cha",
-            "presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain",
-            "\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"",
-            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0},\"store_offers\":[{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\"",
-            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488",
-            ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.",
-            "oimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"p",
-            "_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"price\":649.0,\"p"
           ]
         },
         {
@@ -1314,6 +1498,32 @@
         },
         {
           "host": "api.arzan.kz",
+          "path": "/api/products/57cf9489-44e3-403c-ac0c-4889305c0696/similar/",
+          "type": "application/json",
+          "size": 76301,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "product_uuid",
+              "results"
+            ],
+            "arrays": {
+              "results": 8
+            }
+          },
+          "excerpts": [
+            "s_count\":10,\"favorite_presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"cha",
+            "presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain",
+            "\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"",
+            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0},\"store_offers\":[{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\"",
+            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488",
+            ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.",
+            "oimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"p",
+            "_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"price\":649.0,\"p"
+          ]
+        },
+        {
+          "host": "api.arzan.kz",
           "path": "/api/products/57cf9489-44e3-403c-ac0c-4889305c0696/price-history/",
           "type": "application/json",
           "size": 30601,
@@ -1330,15 +1540,35 @@
             }
           },
           "excerpts": [
-            "_product_title\":\"Вода Туран минеральная газированная 1 л\",\"out_of_stock_since\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:16:36.081753+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_perce",
-            "\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:16:36.081753+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:0",
-            "\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:16:36.081753+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\"",
-            "ime\":\"2026-05-14T09:16:36.081753+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\":359.0,\"previous_pric",
-            "16:36.081753+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_pri",
+            "_product_title\":\"Вода Туран минеральная газированная 1 л\",\"out_of_stock_since\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:22.244806+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_perce",
+            "\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:22.244806+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:0",
+            "\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:22.244806+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\"",
+            "ime\":\"2026-05-14T09:19:22.244806+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\":359.0,\"previous_pric",
+            "19:22.244806+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_pri",
             "\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:03:",
             "\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:03:31.426579+00:00\",\"price",
             "ime\":\"2026-05-14T18:00:07.703205+00:00\",\"price\":359.0,\"previous_price\":null,\"regular_price\":359.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:03:31.426579+00:00\",\"price\":359.0,\"previous_pri"
           ]
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/categories/",
+          "type": "application/json",
+          "size": 211016,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "version",
+              "city_id",
+              "count_scope",
+              "nodes",
+              "catalog_tree"
+            ],
+            "arrays": {
+              "nodes": 25
+            }
+          },
+          "excerpts": []
         },
         {
           "host": "api.arzan.kz",
@@ -1355,6 +1585,247 @@
           "excerpts": []
         }
       ],
+      "history_api": {
+        "days": 180,
+        "stores": [
+          {
+            "store_id": 8,
+            "store_name": "Arbuz Astana",
+            "chain_id": 10,
+            "chain_name": "Arbuz",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-01",
+                "datetime": "2026-11-01T02:29:57.565855+00:00",
+                "price": 360.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-06",
+                "datetime": "2026-11-06T15:59:54.092242+00:00",
+                "price": 360.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-07",
+                "datetime": "2026-11-07T02:21:23.737936+00:00",
+                "price": 360.0,
+                "in_stock": true,
+                "is_promo": true
+              }
+            ]
+          },
+          {
+            "store_id": 120,
+            "store_name": "Galmart | Астана",
+            "chain_id": 43,
+            "chain_name": "Galmart",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-02",
+                "datetime": "2026-11-02T06:24:40.099158+00:00",
+                "price": 455.0,
+                "in_stock": true,
+                "is_promo": true
+              }
+            ]
+          },
+          {
+            "store_id": 33,
+            "store_name": "METRO Астана",
+            "chain_id": 33,
+            "chain_name": "METRO",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-01",
+                "datetime": "2026-11-01T03:16:03.931853+00:00",
+                "price": 309.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-07",
+                "datetime": "2026-11-07T15:56:59.291147+00:00",
+                "price": 309.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T05:30:54.012919+00:00",
+                "price": 309.0,
+                "in_stock": true,
+                "is_promo": true
+              }
+            ]
+          },
+          {
+            "store_id": 4,
+            "store_name": "kaspi.kz magnum Astana",
+            "chain_id": 12,
+            "chain_name": "MagnumGO",
+            "out_of_stock_since": "2026-11-10T08:35:43.205822+00:00",
+            "prices": [
+              {
+                "date": "2026-10-29",
+                "datetime": "2026-10-29T03:25:21.240706+00:00",
+                "price": 375.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-10-29",
+                "datetime": "2026-10-29T03:35:45.731552+00:00",
+                "price": 467.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-30",
+                "datetime": "2026-10-30T02:10:30.845061+00:00",
+                "price": 467.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-30",
+                "datetime": "2026-10-30T08:28:07.517648+00:00",
+                "price": 467.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T04:33:54.906003+00:00",
+                "price": 467.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T04:41:18.973069+00:00",
+                "price": 467.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T08:35:43.205822+00:00",
+                "price": 467.0,
+                "in_stock": false,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 140,
+            "store_name": "AyanMarket Астана",
+            "chain_id": 45,
+            "chain_name": "AyanMarket",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-01",
+                "datetime": "2026-11-01T10:45:47.615654+00:00",
+                "price": 454.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-04",
+                "datetime": "2026-11-04T20:57:02.963387+00:00",
+                "price": 454.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-05",
+                "datetime": "2026-11-05T04:55:48.672109+00:00",
+                "price": 454.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-07",
+                "datetime": "2026-11-07T15:45:45.994648+00:00",
+                "price": 454.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T04:33:07.117668+00:00",
+                "price": 454.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T02:39:09.736518+00:00",
+                "price": 454.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T02:47:58.917587+00:00",
+                "price": 454.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 117,
+            "store_name": "Small | ул. Ш. Айтматова, зд.44",
+            "chain_id": 42,
+            "chain_name": "Small",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-01",
+                "datetime": "2026-11-01T21:44:55.415038+00:00",
+                "price": 465.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-06",
+                "datetime": "2026-11-06T21:06:10.718024+00:00",
+                "price": 465.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-06",
+                "datetime": "2026-11-06T21:18:53.501362+00:00",
+                "price": 465.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T19:02:56.194358+00:00",
+                "price": 465.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T20:46:49.709226+00:00",
+                "price": 465.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          }
+        ]
+      },
       "page_text": "Добавить магазин\nПоиск низких цен...\nШтрих-код\nГлавная\nКаталог\nКорзина\nИзбранное\nАстана\nУкажите адрес\nНазад\nПоделиться\n-14%\n1 л\nTURAN · КАЗАХСТАН\nВода минеральная газированная Туран 1л\n360 ₸\n309 ₸\n\n31 ₸ / 100 мл\n\n+ В корзину\nЦены по магазинам\nУкажите адрес, чтобы увидеть ближайший филиал\nMETRO\n309 ₸\nArbuz\n360 ₸\nAyanMarket\n454 ₸\nGalmart\n455 ₸\nSmall (р-н Нура, ул. Ш. Айтматова, зд. 44)\n465 ₸\nMagnumGO\nНЕТ В НАЛИЧИИ\n467 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная газированная Туран 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n209\n274\n339\n404\n469\n369 ₸\n309 ₸\nМинимум\n309 ₸\n-16%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n1,5 л\n325 ₸\n22 ₸ / 100 мл\nВода минеральная Тuran газированная 1.5л\nGalmart\n325 ₸\nMETRO\n329 ₸\nSmall\n390 ₸\n+ В корзину\n-19%\n1,5 л\n439 ₸\n355 ₸\n24 ₸ / 100 мл\nВода минеральная RAUAN Сарыагаш... 1.5л\nArbuz\n355 ₸\n+ В корзину\n1,5 л\n360 ₸\n24 ₸ / 100 мл\nВода минеральная АСУ 7SU газированная 1.5л\nЖанұя Оптомаркет\n360 ₸\nAyanMarket\n401 ₸\nSmall\n430 ₸\n+ В корзину\n1,5 л\n366 ₸\n24 ₸ / 100 мл\nВода минеральная Alex Saryagash... 1.5л\nЖанұя Оптомаркет\n366 ₸\nMETRO\n379 ₸\nAyanMarket\n395 ₸\n+ В корзину\n1,5 л\n399 ₸\n27 ₸ / 100 мл\nВода Turan минеральная негазированная 1.5л\nMETRO\n399 ₸\nArbuz\n495 ₸\nAyanMarket\n514 ₸\n+ В корзину\n1,5 л\n403 ₸\n27 ₸ / 100 мл\nВода минеральная Асем Ай Сарыагаш... 1.5л\nAyanMarket\n403 ₸\nЯндекс Лавка\nНЕТ В НАЛИЧИИ\n489 ₸\n+ В корзину\n1 л\n269 ₸\n27 ₸ / 100 мл\nВода минеральная Small газированная 1л\nSmall\n269 ₸\n+ В корзину\narzan.kz\n\nЦены, скидки и корзина на одной витрине. Сравнивайте предложения магазинов и выбирайте выгодный вариант до покупки.\n\nО сервисе\nСкачать в App Store\nСкачать в Google Play\nМЫ В СОЦСЕТЯХ\n@arzankz\n@arzankz\nРАЗДЕЛЫ\nБлог\nПоиск\nКаталог\nПромокоды\nКорзина\nКАТЕГОРИИ\nОвощи и зелень\nФрукты и ягоды\nМолочная продукция и яйца\nБакалея\nКонсервы, быстрое приготовление, маринованные овощи\nМясо, птица, колбасные изделия\nАлкоголь\nТабачная продукция\nМАГАЗИНЫ\nArbuz\nAyanMarket\nChoco Рядом\nFix Price\nGalmart\nMagnumGO\nMETRO\nSmall\nСЕРВИС\nОферта\nПолитика возврата\nПоддержка\nГОРОДА\nАктобе\nАлматы\nАстана\nАтырау\nКараганда\nПавлодар\nШымкент\nЯЗЫК\nҚазақша\nРусский\n© 2026 ТОО Arzan APPAI · arzan.kz — цены показаны на момент обновления\nИтоговая цена уточняется на странице магазина.\n209",
       "history_words": [
         "rbuz\n360 ₸\nAyanMarket\n454 ₸\nGalmart\n455 ₸\nSmall (р-н Нура, ул. Ш. Айтматова, зд. 44)\n465 ₸\nMagnumGO\nНЕТ В НАЛИЧИИ\n467 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная газированная Туран 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n209\n274\n339\n404\n469\n369 ₸\n309 ₸\nМинимум\n309 ₸\n-16%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n"
@@ -1470,26 +1941,6 @@
       "responses": [
         {
           "host": "arzan.kz",
-          "path": "/assets/ProductCardCartControl-cs8N7C8w.js",
-          "type": "text/javascript",
-          "size": 225669,
-          "status": 200,
-          "meta": {
-            "kind": "text"
-          },
-          "excerpts": [
-            "a(e,t,r,n){n===void 0&&(n={});let{window:s=document.defaultView,v5Compat:a=!1}=n,i=s.history,o=Oe.Pop,l=null,u=h();u==null&&(u=0,i.replaceState(Rt({},i.state,{idx:u}),\"\"));function h(){return(i.state||{idx:null}).idx}function d(){o=Oe.Pop;let p=h(),w=p==null?null:p-u;u=p,",
-            "t action(){return o},get location(){return e(s,i)},listen(p){if(l)throw new Error(\"A history only accepts one active listener\");return s.addEventListener(yn,d),l=p,()=>{s.removeEventListener(yn,d),l=null}},createHref(p){return t(s,p)},createURL:b,encodeLocation(p){let w=b",
-            "}}},Ji=Ri(Yi);function Xr(...e){return Ji(gs(e))}const Xi=[\"kk\",\"ru\"],Zr=\"ru\",Cs=\"minprice_lang\",kr=()=>{if(typeof window>\"u\")return null;try{const e=window.localStorage.getItem(Cs);return e===\"kk\"||e===\"ru\"?e:null}catch{return null}},$c=()=>kr()!==null;let De=kr()??Zr;",
-            " бастаңыз\":\"начните с запроса\",sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",sortLabel:e?\"Сұрыптау\":\"Сортировка\",sortRelevance:e?\"Сәйкестігі бойынша\":\"По релевантности\",sortCheaperFirst:e?\"Арзанынан\":\"Сначала дешевле\",sortExpensi",
-            "анынан\":\"Сначала дешевле\",sortExpensiveFirst:e?\"Қымбатынан\":\"Сначала дороже\",sortUnitPrice:e?\"Бірлігі арзанырақ\":\"Дешевле за единицу\",sortBestDiscount:e?\"Үлкен жеңілдік\":\"По размеру скидки\",filters:e?\"Сүзгілер\":\"Фильтры\",filtersEyebrow:e?\"Іздеуді нақтылау\":\"Уточнить выд",
-            "ading:e?\"Бағасы айтарлықтай төмен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e",
-            "ен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDis",
-            ">e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDiscounts:e?\"Жеңілдіктер жоқ\":\"Нет товаров со скидками\",tryResetFilters:e?\"Дүкен сүзгілерін тазалап көріңіз\":\"Попробуйте сбросить фильтры магазинов\",t"
-          ]
-        },
-        {
-          "host": "arzan.kz",
           "path": "/assets/App-BJiuV-eQ.js",
           "type": "text/javascript",
           "size": 432808,
@@ -1506,6 +1957,26 @@
             "th.min(2147483647,Math.max(1e3,Math.min(...n)-t)):!1}const oh=\"https://imageproxy.minprice.kz/img\",Uc=`${oh}?url=`,ih=new Set([\"arzan.kz\",\"www.arzan.kz\",\"arzan-images.ams3.cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=",
             "\"arzan.kz\",\"www.arzan.kz\",\"arzan-images.ams3.cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=e=>{try{const t=new URL(e,\"https://minprice.kz\");return ih.has(t.hostname.toLowerCase())||typeof window<\"u\"&&t.origin===window.",
             "cdn.digitaloceanspaces.com\",\"backend.minprice.kz\",\"api.arzan.kz\"]),qc=\"imageproxy.minprice.kz\",Kc=e=>{try{const t=new URL(e,\"https://minprice.kz\");return ih.has(t.hostname.toLowerCase())||typeof window<\"u\"&&t.origin===window.location.origin}catch{return!1}},ch=e=>{try{c"
+          ]
+        },
+        {
+          "host": "arzan.kz",
+          "path": "/assets/ProductCardCartControl-cs8N7C8w.js",
+          "type": "text/javascript",
+          "size": 225669,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "a(e,t,r,n){n===void 0&&(n={});let{window:s=document.defaultView,v5Compat:a=!1}=n,i=s.history,o=Oe.Pop,l=null,u=h();u==null&&(u=0,i.replaceState(Rt({},i.state,{idx:u}),\"\"));function h(){return(i.state||{idx:null}).idx}function d(){o=Oe.Pop;let p=h(),w=p==null?null:p-u;u=p,",
+            "t action(){return o},get location(){return e(s,i)},listen(p){if(l)throw new Error(\"A history only accepts one active listener\");return s.addEventListener(yn,d),l=p,()=>{s.removeEventListener(yn,d),l=null}},createHref(p){return t(s,p)},createURL:b,encodeLocation(p){let w=b",
+            "}}},Ji=Ri(Yi);function Xr(...e){return Ji(gs(e))}const Xi=[\"kk\",\"ru\"],Zr=\"ru\",Cs=\"minprice_lang\",kr=()=>{if(typeof window>\"u\")return null;try{const e=window.localStorage.getItem(Cs);return e===\"kk\"||e===\"ru\"?e:null}catch{return null}},$c=()=>kr()!==null;let De=kr()??Zr;",
+            " бастаңыз\":\"начните с запроса\",sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",sortLabel:e?\"Сұрыптау\":\"Сортировка\",sortRelevance:e?\"Сәйкестігі бойынша\":\"По релевантности\",sortCheaperFirst:e?\"Арзанынан\":\"Сначала дешевле\",sortExpensi",
+            "анынан\":\"Сначала дешевле\",sortExpensiveFirst:e?\"Қымбатынан\":\"Сначала дороже\",sortUnitPrice:e?\"Бірлігі арзанырақ\":\"Дешевле за единицу\",sortBestDiscount:e?\"Үлкен жеңілдік\":\"По размеру скидки\",filters:e?\"Сүзгілер\":\"Фильтры\",filtersEyebrow:e?\"Іздеуді нақтылау\":\"Уточнить выд",
+            "ading:e?\"Бағасы айтарлықтай төмен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e",
+            "ен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDis",
+            ">e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDiscounts:e?\"Жеңілдіктер жоқ\":\"Нет товаров со скидками\",tryResetFilters:e?\"Дүкен сүзгілерін тазалап көріңіз\":\"Попробуйте сбросить фильтры магазинов\",t"
           ]
         },
         {
@@ -1554,6 +2025,20 @@
         },
         {
           "host": "arzan.kz",
+          "path": "/assets/productSeo-Bx9t73SM.js",
+          "type": "text/javascript",
+          "size": 586,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "const u=\"almaty\";function o(c,i){const t=new Set((c||[]).filter(n=>Number(n.price)>0).map(n=>n.chain_id??n.chain_name??n.store_name));return t.size>=2||t.size===1&&i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filt",
+            "i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filter(e=>Number.isFinite(e)&&e>0),r=s.length?Math.min(...s):null,a=`${c}${i?` ${i}`:\"\"}`;return t===\"ru\"?r?`${a} — от ${r} ₸. Сравните цены в магазинах.`:`${a} — сравнение цен "
+          ]
+        },
+        {
+          "host": "arzan.kz",
           "path": "/assets/ProductPage-2zEr4oOk.js",
           "type": "text/javascript",
           "size": 42515,
@@ -1570,20 +2055,6 @@
             "Stock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"application/ld+json\",childre",
             "&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"application/ld+json\",children:JSON.stringify(p)})})},",
             "json\",children:JSON.stringify(p)})})},et=14*24*60*60*1e3,ia=t=>t.in_stock!==!1&&Ct(t.price),lt=t=>new Date(t).toLocaleDateString(\"ru-RU\",{day:\"numeric\",month:\"short\"}),oa=24*60*60*1e3,tt=t=>t.rawDate?new Date(String(t.rawDate)).getTime():NaN,ca=(t,n)=>{if(t.length===0)r"
-          ]
-        },
-        {
-          "host": "arzan.kz",
-          "path": "/assets/productSeo-Bx9t73SM.js",
-          "type": "text/javascript",
-          "size": 586,
-          "status": 200,
-          "meta": {
-            "kind": "text"
-          },
-          "excerpts": [
-            "const u=\"almaty\";function o(c,i){const t=new Set((c||[]).filter(n=>Number(n.price)>0).map(n=>n.chain_id??n.chain_name??n.store_name));return t.size>=2||t.size===1&&i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filt",
-            "i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filter(e=>Number.isFinite(e)&&e>0),r=s.length?Math.min(...s):null,a=`${c}${i?` ${i}`:\"\"}`;return t===\"ru\"?r?`${a} — от ${r} ₸. Сравните цены в магазинах.`:`${a} — сравнение цен "
           ]
         },
         {
@@ -1608,22 +2079,6 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/cities/",
-          "type": "application/json",
-          "size": 452,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "cities"
-            ],
-            "arrays": {
-              "cities": 7
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
           "path": "/api/store-preferences/",
           "type": "application/json",
           "size": 16,
@@ -1640,15 +2095,17 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/shopping-address/",
+          "path": "/api/cities/",
           "type": "application/json",
-          "size": 16,
+          "size": 452,
           "status": 200,
           "meta": {
             "keys": [
-              "address"
+              "cities"
             ],
-            "arrays": {}
+            "arrays": {
+              "cities": 7
+            }
           },
           "excerpts": []
         },
@@ -1665,38 +2122,6 @@
             "arrays": {
               "product_uuids": 0
             }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/favorites/brands/ids/",
-          "type": "application/json",
-          "size": 16,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "brand_ids"
-            ],
-            "arrays": {
-              "brand_ids": 0
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/session/init/",
-          "type": "application/json",
-          "size": 474,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "guest_uuid",
-              "visitor_notice",
-              "analytics_identity"
-            ],
-            "arrays": {}
           },
           "excerpts": []
         },
@@ -1723,6 +2148,52 @@
         },
         {
           "host": "api.arzan.kz",
+          "path": "/api/favorites/brands/ids/",
+          "type": "application/json",
+          "size": 16,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "brand_ids"
+            ],
+            "arrays": {
+              "brand_ids": 0
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/shopping-address/",
+          "type": "application/json",
+          "size": 16,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "address"
+            ],
+            "arrays": {}
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/session/init/",
+          "type": "application/json",
+          "size": 474,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "guest_uuid",
+              "visitor_notice",
+              "analytics_identity"
+            ],
+            "arrays": {}
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
           "path": "/api/store-preferences/",
           "type": "application/json",
           "size": 16,
@@ -1733,6 +2204,25 @@
             ],
             "arrays": {
               "chain_ids": 0
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
+          "path": "/api/carts/",
+          "type": "application/json",
+          "size": 52,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "count",
+              "next",
+              "previous",
+              "results"
+            ],
+            "arrays": {
+              "results": 0
             }
           },
           "excerpts": []
@@ -1760,25 +2250,6 @@
         },
         {
           "host": "api.arzan.kz",
-          "path": "/api/carts/",
-          "type": "application/json",
-          "size": 52,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "count",
-              "next",
-              "previous",
-              "results"
-            ],
-            "arrays": {
-              "results": 0
-            }
-          },
-          "excerpts": []
-        },
-        {
-          "host": "api.arzan.kz",
           "path": "/api/categories/",
           "type": "application/json",
           "size": 211062,
@@ -1799,9 +2270,29 @@
         },
         {
           "host": "api.arzan.kz",
+          "path": "/api/categories/",
+          "type": "application/json",
+          "size": 211016,
+          "status": 200,
+          "meta": {
+            "keys": [
+              "version",
+              "city_id",
+              "count_scope",
+              "nodes",
+              "catalog_tree"
+            ],
+            "arrays": {
+              "nodes": 25
+            }
+          },
+          "excerpts": []
+        },
+        {
+          "host": "api.arzan.kz",
           "path": "/api/products/1f15b35a-08de-4cc9-b1bd-8745c1e35006/similar/",
           "type": "application/json",
-          "size": 76301,
+          "size": 60855,
           "status": 200,
           "meta": {
             "keys": [
@@ -1813,14 +2304,14 @@
             }
           },
           "excerpts": [
-            "s_count\":10,\"favorite_presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"cha",
-            "presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain",
-            "\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"",
-            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0},\"store_offers\":[{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\"",
-            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488",
-            ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.",
-            "oimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"p",
-            "_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"price\":649.0,\"p"
+            "es_count\":8,\"favorite_presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":560.0,\"current_price_text\":\"560 ₸\",\"usual_price_text\":\"529 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":8,\"ext_product_id\":33704,\"chain_id\":10,\"chain_name\":\"Arbuz\",\"chain",
+            "presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":560.0,\"current_price_text\":\"560 ₸\",\"usual_price_text\":\"529 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":8,\"ext_product_id\":33704,\"chain_id\":10,\"chain_name\":\"Arbuz\",\"chain_logo\":\"/media/chain_l",
+            "\"availability\":\"available\",\"current_price\":560.0,\"current_price_text\":\"560 ₸\",\"usual_price_text\":\"529 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":8,\"ext_product_id\":33704,\"chain_id\":10,\"chain_name\":\"Arbuz\",\"chain_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_bran",
+            "\":\"Arbuz\",\"chain_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":560.0},\"store_offers\":[{\"store_id\":8,\"ext_product_id\":33704,\"chain_id\":10,\"chain_name\":\"Arbuz\",\"chain_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":5",
+            "\":\"Arbuz\",\"chain_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":560.0,\"price_text\":\"560 ₸\"},{\"store_id\":33,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#00",
+            "in_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":560.0,\"price_text\":\"560 ₸\"},{\"store_id\":33,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":",
+            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":22,\"ext_product_id\":295287,\"chain_id\":27,\"chain_name\":\"Fix Price\",\"chain_logo\":\"/media/chain_logos/fixprice.png\",\"chain_brand_color\":\"#005",
+            ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":22,\"ext_product_id\":295287,\"chain_id\":27,\"chain_name\":\"Fix Price\",\"chain_logo\":\"/media/chain_logos/fixprice.png\",\"chain_brand_color\":\"#0057b8\",\"price\":5"
           ]
         },
         {
@@ -1887,7 +2378,7 @@
           "host": "api.arzan.kz",
           "path": "/api/products/1f15b35a-08de-4cc9-b1bd-8745c1e35006/similar/",
           "type": "application/json",
-          "size": 60855,
+          "size": 76301,
           "status": 200,
           "meta": {
             "keys": [
@@ -1899,14 +2390,14 @@
             }
           },
           "excerpts": [
-            "es_count\":8,\"favorite_presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":560.0,\"current_price_text\":\"560 ₸\",\"usual_price_text\":\"529 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":8,\"ext_product_id\":33704,\"chain_id\":10,\"chain_name\":\"Arbuz\",\"chain",
-            "presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":560.0,\"current_price_text\":\"560 ₸\",\"usual_price_text\":\"529 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":8,\"ext_product_id\":33704,\"chain_id\":10,\"chain_name\":\"Arbuz\",\"chain_logo\":\"/media/chain_l",
-            "\"availability\":\"available\",\"current_price\":560.0,\"current_price_text\":\"560 ₸\",\"usual_price_text\":\"529 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":8,\"ext_product_id\":33704,\"chain_id\":10,\"chain_name\":\"Arbuz\",\"chain_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_bran",
-            "\":\"Arbuz\",\"chain_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":560.0},\"store_offers\":[{\"store_id\":8,\"ext_product_id\":33704,\"chain_id\":10,\"chain_name\":\"Arbuz\",\"chain_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":5",
-            "\":\"Arbuz\",\"chain_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":560.0,\"price_text\":\"560 ₸\"},{\"store_id\":33,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#00",
-            "in_logo\":\"/media/chain_logos/Arbuz.png\",\"chain_brand_color\":\"#00bf52\",\"price\":560.0,\"price_text\":\"560 ₸\"},{\"store_id\":33,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":",
-            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":22,\"ext_product_id\":295287,\"chain_id\":27,\"chain_name\":\"Fix Price\",\"chain_logo\":\"/media/chain_logos/fixprice.png\",\"chain_brand_color\":\"#005",
-            ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":22,\"ext_product_id\":295287,\"chain_id\":27,\"chain_name\":\"Fix Price\",\"chain_logo\":\"/media/chain_logos/fixprice.png\",\"chain_brand_color\":\"#0057b8\",\"price\":5"
+            "s_count\":10,\"favorite_presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"cha",
+            "presentation\":{\"version\":1,\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain",
+            "\"availability\":\"available\",\"current_price\":579.0,\"current_price_text\":\"579 ₸\",\"usual_price_text\":\"519 ₸\",\"discount_text\":null,\"headline_offer\":{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"",
+            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0},\"store_offers\":[{\"store_id\":32,\"ext_product_id\":309329,\"chain_id\":33,\"chain_name\":\"METRO\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\"",
+            "\",\"chain_logo\":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488",
+            ":\"/media/chain_logos/metro-icon-v1.png\",\"chain_brand_color\":\"#003d7d\",\"price\":579.0,\"price_text\":\"579 ₸\"},{\"store_id\":12,\"ext_product_id\":174200,\"chain_id\":23,\"chain_name\":\"Toimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.",
+            "oimart\",\"chain_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"p",
+            "_logo\":\"/media/chain_logos/toimart.jpg\",\"chain_brand_color\":\"#0d9488\",\"price\":635.0,\"price_text\":\"635 ₸\"},{\"store_id\":78,\"ext_product_id\":382074,\"chain_id\":42,\"chain_name\":\"Small\",\"chain_logo\":\"/media/chain_logos/Small.png\",\"chain_brand_color\":\"#db2777\",\"price\":649.0,\"p"
           ]
         },
         {
@@ -2034,35 +2525,15 @@
             }
           },
           "excerpts": [
-            "t_title\":\"Вода Ессентуки №4 минеральная газированная 1 л\",\"out_of_stock_since\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:16:56.263857+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_price\":931.0,\"promo_price\":null,\"is_promo\":false,\"discount_perce",
-            "\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:16:56.263857+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_price\":931.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:0",
-            "\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:16:56.263857+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_price\":931.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:06.445362+00:00\",\"price\"",
-            "ime\":\"2026-05-14T09:16:56.263857+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_price\":931.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:06.445362+00:00\",\"price\":931.0,\"previous_pric",
-            "16:56.263857+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_price\":931.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:06.445362+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_pri",
-            "\"in_stock\":true},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:06.445362+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_price\":931.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:07:",
-            "\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:00:06.445362+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_price\":931.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:07:37.250157+00:00\",\"price",
-            "ime\":\"2026-05-14T18:00:06.445362+00:00\",\"price\":931.0,\"previous_price\":null,\"regular_price\":931.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":false},{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T18:07:37.250157+00:00\",\"price\":931.0,\"previous_pri"
+            "а Ессентуки №4 минеральная газированная, 1000 мл, Россия\",\"out_of_stock_since\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:43.139513+00:00\",\"price\":1075.0,\"previous_price\":null,\"regular_price\":1075.0,\"promo_price\":null,\"is_promo\":false,\"discount_per",
+            "\":null,\"prices\":[{\"date\":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:43.139513+00:00\",\"price\":1075.0,\"previous_price\":null,\"regular_price\":1075.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02",
+            ":\"2026-05-14\",\"datetime\":\"2026-05-14T09:19:43.139513+00:00\",\"price\":1075.0,\"previous_price\":null,\"regular_price\":1075.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:04.684157+00:00\",\"price",
+            "me\":\"2026-05-14T09:19:43.139513+00:00\",\"price\":1075.0,\"previous_price\":null,\"regular_price\":1075.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:04.684157+00:00\",\"price\":1000.0,\"previous_pr",
+            ":43.139513+00:00\",\"price\":1075.0,\"previous_price\":null,\"regular_price\":1075.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:04.684157+00:00\",\"price\":1000.0,\"previous_price\":null,\"regular_pr",
+            "\"in_stock\":true},{\"date\":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:04.684157+00:00\",\"price\":1000.0,\"previous_price\":null,\"regular_price\":1000.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-24\",\"datetime\":\"2026-06-24T03:00",
+            ":\"2026-06-03\",\"datetime\":\"2026-06-03T14:02:04.684157+00:00\",\"price\":1000.0,\"previous_price\":null,\"regular_price\":1000.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-24\",\"datetime\":\"2026-06-24T03:00:37.653325+00:00\",\"price",
+            "me\":\"2026-06-03T14:02:04.684157+00:00\",\"price\":1000.0,\"previous_price\":null,\"regular_price\":1000.0,\"promo_price\":null,\"is_promo\":false,\"discount_percent\":null,\"in_stock\":true},{\"date\":\"2026-06-24\",\"datetime\":\"2026-06-24T03:00:37.653325+00:00\",\"price\":1000.0,\"previous_pr"
           ]
-        },
-        {
-          "host": "api.arzan.kz",
-          "path": "/api/categories/",
-          "type": "application/json",
-          "size": 211016,
-          "status": 200,
-          "meta": {
-            "keys": [
-              "version",
-              "city_id",
-              "count_scope",
-              "nodes",
-              "catalog_tree"
-            ],
-            "arrays": {
-              "nodes": 25
-            }
-          },
-          "excerpts": []
         },
         {
           "host": "api.arzan.kz",
@@ -2079,6 +2550,332 @@
           "excerpts": []
         }
       ],
+      "history_api": {
+        "days": 180,
+        "stores": [
+          {
+            "store_id": 120,
+            "store_name": "Galmart | Астана",
+            "chain_id": 43,
+            "chain_name": "Galmart",
+            "out_of_stock_since": null,
+            "prices": []
+          },
+          {
+            "store_id": 8,
+            "store_name": "Arbuz Astana",
+            "chain_id": 10,
+            "chain_name": "Arbuz",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-10-26",
+                "datetime": "2026-10-26T13:31:13.439370+00:00",
+                "price": 975.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-28",
+                "datetime": "2026-10-28T10:35:09.499893+00:00",
+                "price": 975.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-06",
+                "datetime": "2026-11-06T15:59:54.092312+00:00",
+                "price": 975.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-07",
+                "datetime": "2026-11-07T02:21:23.492050+00:00",
+                "price": 975.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 4,
+            "store_name": "kaspi.kz magnum Astana",
+            "chain_id": 12,
+            "chain_name": "MagnumGO",
+            "out_of_stock_since": "2026-11-10T08:35:41.388946+00:00",
+            "prices": [
+              {
+                "date": "2026-10-29",
+                "datetime": "2026-10-29T03:25:21.240275+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-29",
+                "datetime": "2026-10-29T03:35:47.944488+00:00",
+                "price": 999.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-30",
+                "datetime": "2026-10-30T02:10:30.844298+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-30",
+                "datetime": "2026-10-30T08:28:09.371003+00:00",
+                "price": 999.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-03",
+                "datetime": "2026-11-03T22:54:24.942876+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-04",
+                "datetime": "2026-11-04T04:03:52.478750+00:00",
+                "price": 999.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-07",
+                "datetime": "2026-11-07T14:29:42.834191+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-07",
+                "datetime": "2026-11-07T14:46:43.781033+00:00",
+                "price": 999.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T04:33:54.263345+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T05:51:05.524097+00:00",
+                "price": 999.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T06:57:25.613990+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T07:12:13.076008+00:00",
+                "price": 999.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T11:32:07.087227+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T11:37:01.002733+00:00",
+                "price": 999.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-09",
+                "datetime": "2026-11-09T17:45:34.511465+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-09",
+                "datetime": "2026-11-09T18:27:01.484128+00:00",
+                "price": 999.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T08:35:41.388946+00:00",
+                "price": 999.0,
+                "in_stock": false,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 140,
+            "store_name": "AyanMarket Астана",
+            "chain_id": 45,
+            "chain_name": "AyanMarket",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-10-28",
+                "datetime": "2026-10-28T06:33:48.198766+00:00",
+                "price": 921.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-07",
+                "datetime": "2026-11-07T15:45:45.996195+00:00",
+                "price": 921.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T04:33:15.489346+00:00",
+                "price": 921.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T02:39:09.739153+00:00",
+                "price": 921.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T02:48:08.032292+00:00",
+                "price": 921.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 117,
+            "store_name": "Small | ул. Ш. Айтматова, зд.44",
+            "chain_id": 42,
+            "chain_name": "Small",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-04",
+                "datetime": "2026-11-04T21:51:00.800950+00:00",
+                "price": 735.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-06",
+                "datetime": "2026-11-06T21:06:10.717494+00:00",
+                "price": 735.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-06",
+                "datetime": "2026-11-06T21:18:54.194319+00:00",
+                "price": 735.0,
+                "in_stock": true,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T19:02:56.193703+00:00",
+                "price": 735.0,
+                "in_stock": false,
+                "is_promo": true
+              },
+              {
+                "date": "2026-11-08",
+                "datetime": "2026-11-08T20:46:50.495274+00:00",
+                "price": 735.0,
+                "in_stock": true,
+                "is_promo": true
+              }
+            ]
+          },
+          {
+            "store_id": 142,
+            "store_name": "Жанұя — Караменде",
+            "chain_id": 46,
+            "chain_name": "Жанұя Оптомаркет",
+            "out_of_stock_since": null,
+            "prices": [
+              {
+                "date": "2026-11-10",
+                "datetime": "2026-11-10T09:19:43.421537+00:00",
+                "price": 785.0,
+                "in_stock": true,
+                "is_promo": false
+              }
+            ]
+          },
+          {
+            "store_id": 41,
+            "store_name": "Choco Рядом | ул. Гейдара Алиева, 4",
+            "chain_id": 37,
+            "chain_name": "Choco Рядом",
+            "out_of_stock_since": "2026-11-03T19:49:39.722618+00:00",
+            "prices": [
+              {
+                "date": "2026-10-25",
+                "datetime": "2026-10-25T09:53:21.086998+00:00",
+                "price": 1167.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-10-25",
+                "datetime": "2026-10-25T09:57:39.062992+00:00",
+                "price": 1167.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-02",
+                "datetime": "2026-11-02T17:01:53.363264+00:00",
+                "price": 1167.0,
+                "in_stock": false,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-02",
+                "datetime": "2026-11-02T17:09:40.368359+00:00",
+                "price": 1167.0,
+                "in_stock": true,
+                "is_promo": false
+              },
+              {
+                "date": "2026-11-03",
+                "datetime": "2026-11-03T19:49:39.722618+00:00",
+                "price": 1167.0,
+                "in_stock": false,
+                "is_promo": false
+              }
+            ]
+          }
+        ]
+      },
       "page_text": "Добавить магазин\nПоиск низких цен...\nШтрих-код\nГлавная\nКаталог\nКорзина\nИзбранное\nАстана\nУкажите адрес\nНазад\nПоделиться\n1 л\nЕссентуки · РОССИЯ\nВода минеральная Ессентуки №4 газированная 1л\n735 ₸\n\n74 ₸ / 100 мл\n\n+ В корзину\nЦены по магазинам\nУкажите адрес, чтобы увидеть ближайший филиал\nSmall (р-н Нура, ул. Ш. Айтматова, зд. 44)\n735 ₸\nЖанұя Оптомаркет\n785 ₸\nAyanMarket\n921 ₸\nArbuz\n975 ₸\nGalmart\n1 030 ₸\nMagnumGO\nНЕТ В НАЛИЧИИ\n999 ₸\nChoco Рядом\nНЕТ В НАЛИЧИИ\n1 167 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная Ессентуки №4 газированная 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n439\n539\n639\n835\n539 ₸\n735 ₸\nМинимум\n735 ₸\n+36%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n1,5 л\n325 ₸\n22 ₸ / 100 мл\nВода минеральная Тuran газированная 1.5л\nGalmart\n325 ₸\nMETRO\n329 ₸\nSmall\n390 ₸\n+ В корзину\n-19%\n1,5 л\n439 ₸\n355 ₸\n24 ₸ / 100 мл\nВода минеральная RAUAN Сарыагаш... 1.5л\nArbuz\n355 ₸\n+ В корзину\n1,5 л\n360 ₸\n24 ₸ / 100 мл\nВода минеральная АСУ 7SU газированная 1.5л\nЖанұя Оптомаркет\n360 ₸\nAyanMarket\n401 ₸\nSmall\n430 ₸\n+ В корзину\n1,5 л\n366 ₸\n24 ₸ / 100 мл\nВода минеральная Alex Saryagash... 1.5л\nЖанұя Оптомаркет\n366 ₸\nMETRO\n379 ₸\nAyanMarket\n395 ₸\n+ В корзину\n1,5 л\n399 ₸\n27 ₸ / 100 мл\nВода Turan минеральная негазированная 1.5л\nMETRO\n399 ₸\nArbuz\n495 ₸\nAyanMarket\n514 ₸\n+ В корзину\n1,5 л\n403 ₸\n27 ₸ / 100 мл\nВода минеральная Асем Ай Сарыагаш... 1.5л\nAyanMarket\n403 ₸\nЯндекс Лавка\nНЕТ В НАЛИЧИИ\n489 ₸\n+ В корзину\n1 л\n269 ₸\n27 ₸ / 100 мл\nВода минеральная Small газированная 1л\nSmall\n269 ₸\n+ В корзину\narzan.kz\n\nЦены, скидки и корзина на одной витрине. Сравнивайте предложения магазинов и выбирайте выгодный вариант до покупки.\n\nО сервисе\nСкачать в App Store\nСкачать в Google Play\nМЫ В СОЦСЕТЯХ\n@arzankz\n@arzankz\nРАЗДЕЛЫ\nБлог\nПоиск\nКаталог\nПромокоды\nКорзина\nКАТЕГОРИИ\nОвощи и зелень\nФрукты и ягоды\nМолочная продукция и яйца\nБакалея\nКонсервы, быстрое приготовление, маринованные овощи\nМясо, птица, колбасные изделия\nАлкоголь\nТабачная продукция\nМАГАЗИНЫ\nArbuz\nAyanMarket\nChoco Рядом\nFix Price\nGalmart\nMagnumGO\nMETRO\nSmall\nСЕРВИС\nОферта\nПолитика возврата\nПоддержка\nГОРОДА\nАктобе\nАлматы\nАстана\nАтырау\nКараганда\nПавлодар\nШымкент\nЯЗЫК\nҚазақша\nРусский\n© 2026 ТОО Arzan APPAI · arzan.kz — цены показаны на момент обновления\nИтоговая цена уточняется на странице магазина.\n439",
       "history_words": [
         "аркет\n785 ₸\nAyanMarket\n921 ₸\nArbuz\n975 ₸\nGalmart\n1 030 ₸\nMagnumGO\nНЕТ В НАЛИЧИИ\n999 ₸\nChoco Рядом\nНЕТ В НАЛИЧИИ\n1 167 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная Ессентуки №4 газированная 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n439\n539\n639\n835\n539 ₸\n735 ₸\nМинимум\n735 ₸\n+36%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзи"

@@ -524,7 +524,7 @@ function km3AutoPanel(){
    'Автоматические наблюдения Arzan.kz: ожидают проверки скриншотом магазина.')+'</p>'+
   (last?'<p>'+km3t('Соңғы тексеру','Последняя проверка')+': '+esc(last.at)+'</p>':'')+
   '<div class="km2-table"><table><thead><tr><th>'+km3t('Күн','Дата')+'</th><th>'+km3t('Бренд','Бренд')+'</th><th>'+km3t('Дүкен','Магазин')+'</th><th>'+km3t('Баға','Цена')+'</th><th>'+km3t('Дереккөз','Источник')+'</th><th>'+km3t('Мәртебе','Статус')+'</th></tr></thead><tbody>'+
-  rows.slice(-45).reverse().map(r=>'<tr><td>'+esc(r.day)+'</td><td>'+esc(r.brand)+'</td><td>'+esc(r.shop)+'</td><td>'+r.price+' ₸</td><td><a href="'+esc(r.source_url)+'" target="_blank" rel="noopener noreferrer">Arzan.kz ↗</a></td><td>'+km3t('Растауды күтеді','Ожидает проверки')+'</td></tr>').join('')+
+  rows.slice().reverse().map(r=>'<tr><td>'+esc(r.day)+'</td><td>'+esc(r.brand)+'</td><td>'+esc(r.shop)+'</td><td>'+r.price+' ₸</td><td><a href="'+esc(r.source_url)+'" target="_blank" rel="noopener noreferrer">Arzan.kz ↗</a></td><td>'+(r.source_method==='historical_price_history'?km3t('Баға тарихынан қалпына келтірілді','Восстановлено из истории цен'):r.source_method==='historical_price_chart_derived'?km3t('Баға тұрақтылығы бойынша есептелді','Реконструировано по стабильной цене'):km3t('Растауды күтеді','Ожидает проверки'))+'</td></tr>').join('')+
   '</tbody></table></div>'+
   (!rows.length?'<p>'+km3t('Автоматты расталмаған бағалар әзірше жоқ.','Пока нет автоматически считанных цен.')+'</p>':'');
  return km3Panel(km3t('Астана: күнделікті баға жинау','Астана: ежедневная загрузка цен'),content+km3AutoPriceGraph());

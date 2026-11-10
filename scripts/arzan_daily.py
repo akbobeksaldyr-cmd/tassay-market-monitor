@@ -74,7 +74,7 @@ def parse_offers(html: str, brand: str) -> tuple[str, dict[str, int]]:
     labels = re.compile(
         r'Small|Смолл|Arbuz|Арбуз|Galmart|Галмарт|'
         r'AyanMarket|METRO|MagnumGO|Аян|'
-        r'Жанұя\\s+Оптомаркет|Яндекс\\s+Лавка|Choco\\s+Рядом',
+        r'Жанұя\s+Оптомаркет|Яндекс\s+Лавка|Choco\s+Рядом',
         re.I,
     )
     chunks = list(labels.finditer(section))

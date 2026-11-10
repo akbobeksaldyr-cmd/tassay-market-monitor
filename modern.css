@@ -123,6 +123,18 @@ tr:hover td{background:#f4f9f7!important}
 .hero-chart{max-height:310px;overflow:hidden}
 .hero-chart svg{max-height:240px}
 .hero-chart .legend{font-size:11px}
+/* Compact tabs inside the unified evidence and dynamics sections. */
+.brand-tabs-container{background:#fff;border:1px solid #e2eaf0;border-radius:16px;padding:17px 19px;margin:16px 0 20px;box-shadow:0 6px 24px rgba(30,57,75,.03)}
+.brand-tabs-title{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#8a9ba5;margin-bottom:12px}
+.brand-tabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.brand-tab{appearance:none;border:1px solid #d8e5e8;border-radius:10px;color:#486170;background:#f8fafb;padding:11px 18px;font:750 13px/1.4 Inter,"Segoe UI",Arial,sans-serif;cursor:pointer;transition:background .18s,border .18s,box-shadow .18s}
+.brand-tab:hover{background:#edf7f4;color:#147a73;border-color:#acdbd2}
+.brand-tab.active,.brand-tab[aria-selected="true"]{background:#0b837c;color:#fff;border-color:#0b837c;box-shadow:0 5px 12px rgba(11,131,124,.12)}
+.brand-tab:focus-visible{outline:3px solid #85cec0;outline-offset:2px}
+#brand-price-page,#brand-dynamics-page{min-width:0}
+#brand-price-page>.km2-lead:first-child,#brand-dynamics-page>.km2-lead:first-child{margin-top:10px}
+#brand-price-page .panel,#brand-dynamics-page .panel{max-width:100%}
+@media(max-width:540px){.brand-tabs-container{padding:12px}.brand-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.brand-tab{font-size:12px;padding:10px 8px;text-align:center}}
 @media(max-width:1100px){main{padding:0 25px 50px!important}.overview-insight{grid-template-columns:1fr}.research-links{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:800px){aside,#sidebar{position:fixed;transform:translateX(-103%);transition:transform .22s ease;box-shadow:4px 4px 40px #132d412a!important;height:100vh;top:0}aside.open,#sidebar.open{transform:translateX(0)}main{padding:0 17px 35px!important}.top{padding:15px 0}.header{padding-top:24px}.editorial-hero{padding:28px 22px}.price-board,.legal-case-grid{grid-template-columns:1fr}.research-links{grid-template-columns:1fr}.price-card{padding:19px}.overview-heading h2{font-size:19px}}
 @media(min-width:801px){.menu{display:none!important}}

@@ -43,6 +43,18 @@ def probe_one(browser, brand, url):
                 meta=summary(json.loads(body))
             except Exception:
                 meta={"kind":"text"}
+            if urlsplit(response.url).path.endswith("/price-history/"):
+                raw=json.loads(body)
+                hist=[]
+                for store in raw.get("stores",[]):
+                    desc={k:store.get(k) for k in (
+                        "store_id","store_name","store_slug","chain_id","chain_name",
+                        "city_id","city_name","out_of_stock_since"
+                    ) if k in store}
+                    desc["prices"]=[{k:p.get(k) for k in ("date","datetime","price","in_stock","is_promo") if k in p}
+                                    for p in store.get("prices",[]) if str(p.get("date",""))>="2026-10-25"]
+                    hist.append(desc)
+                info["history_api"]={"days":raw.get("days"),"stores":hist}
             entries.append({"host":urlsplit(response.url).hostname,"path":urlsplit(response.url).path,"type":typ[:60],
                             "size":len(body),"status":response.status,
                             "meta":meta,"excerpts":excerpts[:8]})

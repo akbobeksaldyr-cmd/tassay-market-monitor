@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/arzan_daily.py'
+      - 'scripts/arzan_history_probe.py'
       - '.github/workflows/arzan-prices.yml'
 permissions:
   contents: write

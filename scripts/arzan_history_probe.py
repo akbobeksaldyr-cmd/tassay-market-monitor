@@ -75,6 +75,31 @@ def probe_one(browser, brand, url):
                     info.setdefault("clicked",[]).append(label)
             except Exception:
                 pass
+        chart=page.locator(".recharts-wrapper")
+        if chart.count():
+            item=chart.first
+            try:
+                item.scroll_into_view_if_needed(timeout=2500)
+                bb=item.bounding_box(timeout=2500)
+                info["chart_box"]={"w":round(bb["width"]),"h":round(bb["height"])} if bb else None
+                seen={}
+                if bb and bb["width"]>180:
+                    for i in range(8,143):
+                        px=bb["x"]+bb["width"]*(i/150)
+                        py=bb["y"]+bb["height"]*0.55
+                        page.mouse.move(px,py)
+                        page.wait_for_timeout(30)
+                        tooltip=page.locator(".recharts-tooltip-wrapper")
+                        try:
+                            if tooltip.count() and tooltip.first.is_visible():
+                                value=tooltip.first.inner_text(timeout=350)
+                                if value and value not in seen:
+                                    seen[value]={"offset":i/150,"text":value[:2400]}
+                        except Exception:
+                            pass
+                info["history_hover"]=list(seen.values())[-65:]
+            except Exception as exc:
+                info["hover_error"]=str(exc)[:150]
         info["responses"]=entries[-60:]
         info["url_path"]=urlsplit(page.url).path
     except Exception as e:

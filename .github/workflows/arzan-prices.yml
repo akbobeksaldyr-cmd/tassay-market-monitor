@@ -8,6 +8,7 @@ on:
     paths:
       - 'scripts/arzan_daily.py'
       - 'scripts/arzan_history_probe.py'
+      - 'scripts/backfill_arzan_history.py'
       - '.github/workflows/arzan-prices.yml'
 permissions:
   contents: write
@@ -30,7 +31,7 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Check Python scripts and parser regression tests
         run: |
-          python -m py_compile scripts/arzan_daily.py scripts/install_arzan_integration.py tests/test_arzan_daily.py
+          python -m py_compile scripts/arzan_daily.py scripts/backfill_arzan_history.py scripts/arzan_history_probe.py scripts/install_arzan_integration.py tests/test_arzan_daily.py tests/test_arzan_backfill.py
           python -m unittest discover -s tests -v
       - name: Integrate site once / update script references
         run: python scripts/install_arzan_integration.py
@@ -38,6 +39,8 @@ jobs:
         run: python -m scripts.arzan_history_probe
       - name: Collect actual public prices only
         run: python scripts/arzan_daily.py
+      - name: Restore missing Nov 3-9 shop prices from dated Arzan history
+        run: python -m scripts.backfill_arzan_history
       - name: Commit audited snapshot and site integration
         run: |
           git config user.name 'github-actions[bot]'

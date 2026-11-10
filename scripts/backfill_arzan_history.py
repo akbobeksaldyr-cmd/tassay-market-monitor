@@ -7,6 +7,7 @@ refuses ambiguous multi-branch or out-of-stock data.
 """
 from __future__ import annotations
 import json
+import re
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -50,6 +51,8 @@ def candidates(history,day):
         if not isinstance(st,dict):continue
         city=str(st.get("city_name") or "").strip().lower()
         if city and city not in ("астана","astana"):continue
+        out_since=str(st.get("out_of_stock_since") or "")[:10]
+        if out_since and out_since<=day:continue
         shop=canonical(st.get("chain_name") or st.get("store_name"))
         if shop is None:continue
         record=as_of(st.get("prices") or [],day)
@@ -65,6 +68,20 @@ def candidates(history,day):
             result[shop]=(price,max(relevant,key=lambda x:(x[1],x[2])))
     return result
 
+def chart_visible_shops(product):
+    """Retailers visibly plotted on at least one day in the target window."""
+    seen=set()
+    for tooltip in product.get("history_hover") or []:
+        value=str(tooltip.get("text") or "")
+        header=value.splitlines()[0] if value else ""
+        if not re.match(r"^[3-9]\s+нояб\.?$",header.strip(),re.I):
+            continue
+        for name in ("Arbuz","Small","Galmart"):
+            if re.search(r"\n"+name+r"\s*\n",value,re.I):
+                seen.add(canonical(name))
+    return seen
+
+
 def backfill(probe, archive):
     observations=archive.setdefault("observations",[])
     existing={(str(r.get("day")),str(r.get("brand")),str(r.get("shop")))
@@ -76,8 +93,10 @@ def backfill(probe, archive):
         if brand not in PRODUCTS:continue
         history=(product.get("history_api") or {}).get("stores")
         if not isinstance(history,list) or not history:continue
+        visible=chart_visible_shops(product)
         for day in DAYS:
             for shop,(price,ev) in candidates(history,day).items():
+                if visible and shop not in visible:continue
                 key=(day,brand,shop)
                 if key in existing:continue
                 observations.append({

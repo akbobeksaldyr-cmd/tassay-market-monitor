@@ -54,3 +54,9 @@ jobs:
           assert "min-width:244px" in Path("modern.css").read_text(encoding="utf-8")
           print("Public pages, print styling, route references and scripts: OK")
           PY
+      - name: Install runtime and Chromium for site smoke tests
+        run: |
+          pip install -r requirements.txt 'playwright>=1.45,<2'
+          python -m playwright install --with-deps chromium
+      - name: Test bilingual web UI and publication routes
+        run: python tests/smoke_public_site.py

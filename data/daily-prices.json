@@ -355,6 +355,23 @@
     },
     {
       "day": "2026-11-03",
+      "captured_at": "2026-11-10T09:34:02.096Z",
+      "city": "Астана",
+      "brand": "TASSAY",
+      "shop": "Galmart",
+      "price": 585,
+      "currency": "KZT",
+      "volume_ml": 1000,
+      "source": "Arzan.kz",
+      "source_url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+      "status": "auto_unverified",
+      "evidence_url": null,
+      "source_method": "historical_price_chart_derived",
+      "source_price_record_date": null,
+      "notes": "Реконструкция, а не отдельный дневной замер: авторская цена 30.10 — 585 ₸, актуальная Arzan.kz цена 10.11 — 585 ₸, после 25.10 в открытой истории Arzan не зафиксировано изменения цены. Проверить оригинальные исторические замеры."
+    },
+    {
+      "day": "2026-11-03",
       "captured_at": "2026-11-03T09:53:31+05:00",
       "city": "Астана",
       "brand": "TASSAY",
@@ -483,6 +500,23 @@
     },
     {
       "day": "2026-11-04",
+      "captured_at": "2026-11-10T09:34:02.096Z",
+      "city": "Астана",
+      "brand": "TASSAY",
+      "shop": "Galmart",
+      "price": 585,
+      "currency": "KZT",
+      "volume_ml": 1000,
+      "source": "Arzan.kz",
+      "source_url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+      "status": "auto_unverified",
+      "evidence_url": null,
+      "source_method": "historical_price_chart_derived",
+      "source_price_record_date": null,
+      "notes": "Реконструкция, а не отдельный дневной замер: авторская цена 30.10 — 585 ₸, актуальная Arzan.kz цена 10.11 — 585 ₸, после 25.10 в открытой истории Arzan не зафиксировано изменения цены. Проверить оригинальные исторические замеры."
+    },
+    {
+      "day": "2026-11-04",
       "captured_at": "2026-11-04T09:56:22+05:00",
       "city": "Астана",
       "brand": "TASSAY",
@@ -605,6 +639,23 @@
       "source_price_record_date": "2026-10-30",
       "source_price_record_at": "2026-10-30T02:17:34.591088+00:00",
       "notes": "Восстановлено 10.11.2026 по последнему известному событию в графике истории цен Arzan.kz; не является первичной утренней проверкой."
+    },
+    {
+      "day": "2026-11-05",
+      "captured_at": "2026-11-10T09:34:02.096Z",
+      "city": "Астана",
+      "brand": "TASSAY",
+      "shop": "Galmart",
+      "price": 585,
+      "currency": "KZT",
+      "volume_ml": 1000,
+      "source": "Arzan.kz",
+      "source_url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+      "status": "auto_unverified",
+      "evidence_url": null,
+      "source_method": "historical_price_chart_derived",
+      "source_price_record_date": null,
+      "notes": "Реконструкция, а не отдельный дневной замер: авторская цена 30.10 — 585 ₸, актуальная Arzan.kz цена 10.11 — 585 ₸, после 25.10 в открытой истории Arzan не зафиксировано изменения цены. Проверить оригинальные исторические замеры."
     },
     {
       "day": "2026-11-05",
@@ -733,6 +784,23 @@
       "source_price_record_date": "2026-10-30",
       "source_price_record_at": "2026-10-30T02:17:34.591088+00:00",
       "notes": "Восстановлено 10.11.2026 по последнему известному событию в графике истории цен Arzan.kz; не является первичной утренней проверкой."
+    },
+    {
+      "day": "2026-11-06",
+      "captured_at": "2026-11-10T09:34:02.096Z",
+      "city": "Астана",
+      "brand": "TASSAY",
+      "shop": "Galmart",
+      "price": 585,
+      "currency": "KZT",
+      "volume_ml": 1000,
+      "source": "Arzan.kz",
+      "source_url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+      "status": "auto_unverified",
+      "evidence_url": null,
+      "source_method": "historical_price_chart_derived",
+      "source_price_record_date": null,
+      "notes": "Реконструкция, а не отдельный дневной замер: авторская цена 30.10 — 585 ₸, актуальная Arzan.kz цена 10.11 — 585 ₸, после 25.10 в открытой истории Arzan не зафиксировано изменения цены. Проверить оригинальные исторические замеры."
     },
     {
       "day": "2026-11-06",
@@ -861,6 +929,23 @@
       "source_price_record_date": "2026-10-30",
       "source_price_record_at": "2026-10-30T02:17:34.591088+00:00",
       "notes": "Восстановлено 10.11.2026 по последнему известному событию в графике истории цен Arzan.kz; не является первичной утренней проверкой."
+    },
+    {
+      "day": "2026-11-07",
+      "captured_at": "2026-11-10T09:34:02.096Z",
+      "city": "Астана",
+      "brand": "TASSAY",
+      "shop": "Galmart",
+      "price": 585,
+      "currency": "KZT",
+      "volume_ml": 1000,
+      "source": "Arzan.kz",
+      "source_url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+      "status": "auto_unverified",
+      "evidence_url": null,
+      "source_method": "historical_price_chart_derived",
+      "source_price_record_date": null,
+      "notes": "Реконструкция, а не отдельный дневной замер: авторская цена 30.10 — 585 ₸, актуальная Arzan.kz цена 10.11 — 585 ₸, после 25.10 в открытой истории Arzan не зафиксировано изменения цены. Проверить оригинальные исторические замеры."
     },
     {
       "day": "2026-11-07",
@@ -987,6 +1072,23 @@
       "source_price_record_date": "2026-10-30",
       "source_price_record_at": "2026-10-30T02:17:34.591088+00:00",
       "notes": "Восстановлено 10.11.2026 по последнему известному событию в графике истории цен Arzan.kz; не является первичной утренней проверкой."
+    },
+    {
+      "day": "2026-11-08",
+      "captured_at": "2026-11-10T09:34:02.096Z",
+      "city": "Астана",
+      "brand": "TASSAY",
+      "shop": "Galmart",
+      "price": 585,
+      "currency": "KZT",
+      "volume_ml": 1000,
+      "source": "Arzan.kz",
+      "source_url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+      "status": "auto_unverified",
+      "evidence_url": null,
+      "source_method": "historical_price_chart_derived",
+      "source_price_record_date": null,
+      "notes": "Реконструкция, а не отдельный дневной замер: авторская цена 30.10 — 585 ₸, актуальная Arzan.kz цена 10.11 — 585 ₸, после 25.10 в открытой истории Arzan не зафиксировано изменения цены. Проверить оригинальные исторические замеры."
     },
     {
       "day": "2026-11-08",
@@ -1115,6 +1217,23 @@
       "source_price_record_date": "2026-10-30",
       "source_price_record_at": "2026-10-30T02:17:34.591088+00:00",
       "notes": "Восстановлено 10.11.2026 по последнему известному событию в графике истории цен Arzan.kz; не является первичной утренней проверкой."
+    },
+    {
+      "day": "2026-11-09",
+      "captured_at": "2026-11-10T09:34:02.096Z",
+      "city": "Астана",
+      "brand": "TASSAY",
+      "shop": "Galmart",
+      "price": 585,
+      "currency": "KZT",
+      "volume_ml": 1000,
+      "source": "Arzan.kz",
+      "source_url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+      "status": "auto_unverified",
+      "evidence_url": null,
+      "source_method": "historical_price_chart_derived",
+      "source_price_record_date": null,
+      "notes": "Реконструкция, а не отдельный дневной замер: авторская цена 30.10 — 585 ₸, актуальная Arzan.kz цена 10.11 — 585 ₸, после 25.10 в открытой истории Arzan не зафиксировано изменения цены. Проверить оригинальные исторические замеры."
     },
     {
       "day": "2026-11-09",

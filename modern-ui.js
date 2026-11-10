@@ -248,12 +248,12 @@
   // Used by actual buttons; switching does not add more sidebar items.
   window.selectPriceView=function(which){
     if(!Object.prototype.hasOwnProperty.call(preservedPricePages,which))which='all';
-    priceView=which;page=2;render();
+    priceView=which;page=2;document.querySelector('aside')?.classList.remove('open');render();
     window.scrollTo({top:0,behavior:'instant'});
   };
   window.selectDynamicsView=function(which){
     if(!dynamicsViews.some(([key])=>key===which))which='tassay';
-    dynamicsView=which;page=1;render();
+    dynamicsView=which;page=1;document.querySelector('aside')?.classList.remove('open');render();
     window.scrollTo({top:0,behavior:'instant'});
   };
   const oldIRAC=pages[16];

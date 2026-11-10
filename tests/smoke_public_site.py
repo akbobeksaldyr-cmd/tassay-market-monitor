@@ -73,8 +73,13 @@ def main():
                         ("Ессентуки №4","Ессентуки")
                     ]:
                         page.get_by_role("tab",name=label,exact=True).click()
+                        current=page.locator("#brand-price-page").inner_text()
+                        selected=page.locator(".brand-tab[aria-selected=true]").all_text_contents()
+                        if marker not in current:
+                            print("BRAND-TAB DIAGNOSTIC",lang,label,"selected",selected,
+                                  "text",repr(current[:500]),"errors",errors,flush=True)
                         assert page.locator(".brand-tab[aria-selected=true]").count()==1
-                        assert marker in page.locator("#brand-price-page").inner_text(),(lang,label)
+                        assert marker in current,(lang,label)
                         assert page.locator("#brand-price-page table").count()>=1,(lang,label)
                     page.get_by_role("tab",name="Все цены" if lang=="ru" else "Барлық бағалар").click()
                     assert page.locator("#brand-price-page table").count()>=1,lang

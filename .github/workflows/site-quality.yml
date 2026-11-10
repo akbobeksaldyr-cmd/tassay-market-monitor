@@ -8,6 +8,7 @@ on:
       - 'ru.html'
       - 'modern.css'
       - 'modern-ui.js'
+      - 'km3.js'
       - 'tests/smoke_public_site.py'
       - 'paper.css'
       - 'publication.html'

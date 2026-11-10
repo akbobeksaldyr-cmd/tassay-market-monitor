@@ -108,6 +108,23 @@ def russian_home():return Path(__file__).with_name("ru.html").read_text()
 def russian_script():return FileResponse(Path(__file__).with_name("ru.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=300"})
 @app.get("/km3.js")
 def km3_script():return FileResponse(Path(__file__).with_name("km3.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=120"})
+
+# Public, remote-accessible scholarly materials and editorial interface.
+@app.get("/modern.css")
+def modern_styles():return FileResponse(Path(__file__).with_name("modern.css"),media_type="text/css",headers={"Cache-Control":"public, max-age=3600"})
+
+@app.get("/modern-ui.js")
+def modern_interface():return FileResponse(Path(__file__).with_name("modern-ui.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=3600"})
+
+@app.get("/paper.css")
+def publication_styles():return FileResponse(Path(__file__).with_name("paper.css"),media_type="text/css",headers={"Cache-Control":"public, max-age=3600"})
+
+@app.get("/publication")
+def research_publication():return FileResponse(Path(__file__).with_name("publication.html"),media_type="text/html; charset=utf-8",headers={"Cache-Control":"no-store"})
+
+@app.get("/brochure")
+def research_brochure():return FileResponse(Path(__file__).with_name("brochure.html"),media_type="text/html; charset=utf-8",headers={"Cache-Control":"no-store"})
+
 EVIDENCE_FILES = [
  "1 сент астана.png",
  "1  сентябрь алматы.png",
@@ -274,15 +291,5 @@ def auto_prices():
    pass
  return JSONResponse({"schema_version":1,"observations":[],"runs":[]},headers=headers)
 
-# ARZAN ASTANA DAILY PRICE ENDPOINT v1
-@app.get("/api/auto-prices")
-def auto_prices():
- path = Path(__file__).parent / "data" / "daily-prices.json"
- if not path.is_file():
-  return JSONResponse({"schema_version":1,"observations":[],"runs":[]}, headers={"Cache-Control":"no-store"})
- try:
-  result = json.loads(path.read_text(encoding="utf-8"))
- except (OSError, ValueError):
-  raise HTTPException(503, "Daily price archive is unavailable")
- return JSONResponse(result, headers={"Cache-Control":"no-store"})
-
+# ARZAN ASTANA DAILY PRICE ENDPOINT v1 — legacy installer guard.
+# This endpoint was superseded by v2 above; do not register a duplicate route.

@@ -1,0 +1,596 @@
+{
+  "scope": "Public product page and price-history UI only",
+  "data": [
+    {
+      "brand": "TASSAY",
+      "responses": [
+        {
+          "path": "/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+          "type": "text/html",
+          "size": 5803,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "ark mode is opt-in only. -->\n  <script>\n    try {\n      if (localStorage.getItem(\"minprice_theme_mode\") === \"dark\") {\n        document.documentElement.classList.add(\"dark\");\n        document.documentElement.style.colorScheme = \"dark\";\n      }\n    } catch (e) { }\n  </scr"
+          ]
+        },
+        {
+          "path": "/assets/index-gVF8s4cD.css",
+          "type": "text/css",
+          "size": 153911,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "font-product-title: \"Merriweather Sans\", ui-sans-serif, system-ui, sans-serif;--font-price: \"Inter\", ui-sans-serif, system-ui, sans-serif;--discount-bg: 358 94% 62%;--discount-foreground: 0 0% 100%;--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 2",
+            "nt-foreground: 0 0% 100%;--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-ho",
+            "--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxur",
+            ";--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxu",
+            "00%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-",
+            ": 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% ",
+            ";--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% 42%;--luxury-",
+            "8%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% 42%;--luxury-line: 211 33% 74%;--lux"
+          ]
+        },
+        {
+          "path": "/assets/ProductCardCartControl-cs8N7C8w.js",
+          "type": "text/javascript",
+          "size": 225669,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "a(e,t,r,n){n===void 0&&(n={});let{window:s=document.defaultView,v5Compat:a=!1}=n,i=s.history,o=Oe.Pop,l=null,u=h();u==null&&(u=0,i.replaceState(Rt({},i.state,{idx:u}),\"\"));function h(){return(i.state||{idx:null}).idx}function d(){o=Oe.Pop;let p=h(),w=p==null?null:p-u;u=p,",
+            "t action(){return o},get location(){return e(s,i)},listen(p){if(l)throw new Error(\"A history only accepts one active listener\");return s.addEventListener(yn,d),l=p,()=>{s.removeEventListener(yn,d),l=null}},createHref(p){return t(s,p)},createURL:b,encodeLocation(p){let w=b",
+            "}}},Ji=Ri(Yi);function Xr(...e){return Ji(gs(e))}const Xi=[\"kk\",\"ru\"],Zr=\"ru\",Cs=\"minprice_lang\",kr=()=>{if(typeof window>\"u\")return null;try{const e=window.localStorage.getItem(Cs);return e===\"kk\"||e===\"ru\"?e:null}catch{return null}},$c=()=>kr()!==null;let De=kr()??Zr;",
+            " бастаңыз\":\"начните с запроса\",sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",sortLabel:e?\"Сұрыптау\":\"Сортировка\",sortRelevance:e?\"Сәйкестігі бойынша\":\"По релевантности\",sortCheaperFirst:e?\"Арзанынан\":\"Сначала дешевле\",sortExpensi",
+            "анынан\":\"Сначала дешевле\",sortExpensiveFirst:e?\"Қымбатынан\":\"Сначала дороже\",sortUnitPrice:e?\"Бірлігі арзанырақ\":\"Дешевле за единицу\",sortBestDiscount:e?\"Үлкен жеңілдік\":\"По размеру скидки\",filters:e?\"Сүзгілер\":\"Фильтры\",filtersEyebrow:e?\"Іздеуді нақтылау\":\"Уточнить выд",
+            "ading:e?\"Бағасы айтарлықтай төмен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e",
+            "ен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDis",
+            ">e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDiscounts:e?\"Жеңілдіктер жоқ\":\"Нет товаров со скидками\",tryResetFilters:e?\"Дүкен сүзгілерін тазалап көріңіз\":\"Попробуйте сбросить фильтры магазинов\",t"
+          ]
+        },
+        {
+          "path": "/assets/App-4qN3Qbn-.css",
+          "type": "text/css",
+          "size": 21970,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            ":1.25;font-family:var(--font-product-title)}.fav-unit{font:500 11.5px/1.2 var(--font-price);color:hsl(var(--muted-foreground));white-space:nowrap}.fav-others{display:flex;flex-wrap:nowrap;align-items:center;gap:10px;height:24px;min-width:0;overflow:hidden}.fav-other{fle",
+            "{flex:none;display:inline-flex;align-items:center;gap:5px;font:600 12px/1 var(--font-price);white-space:nowrap}.fav-logo-stack{flex:none;display:inline-flex;align-items:center;gap:4px}.fav-logo-stack.is-stacked{gap:0}.fav-logo-stack.is-stacked .fav-chain-logo+.fav-chain",
+            "adow:0 0 0 2px hsl(var(--card))}.fav-more{margin-left:5px;font:700 11px/1 var(--font-price);color:hsl(var(--muted-foreground))}.fav-price-col{flex:none;align-self:stretch;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42",
+            "n-left:5px;font:700 11px/1 var(--font-price);color:hsl(var(--muted-foreground))}.fav-price-col{flex:none;align-self:stretch;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42%}.fav-price-link{display:flex;flex-direction:c",
+            "ection:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42%}.fav-price-link{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.fav-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 ",
+            ":flex-end;gap:4px}.fav-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);w",
+            "-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);white-space:nowrap}.fav",
+            "ter;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);white-space:nowrap}.fav-arzn{display:inline-flex;align-items:cen"
+          ]
+        },
+        {
+          "path": "/assets/productSeo-Bx9t73SM.js",
+          "type": "text/javascript",
+          "size": 586,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "const u=\"almaty\";function o(c,i){const t=new Set((c||[]).filter(n=>Number(n.price)>0).map(n=>n.chain_id??n.chain_name??n.store_name));return t.size>=2||t.size===1&&i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filt",
+            "i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filter(e=>Number.isFinite(e)&&e>0),r=s.length?Math.min(...s):null,a=`${c}${i?` ${i}`:\"\"}`;return t===\"ru\"?r?`${a} — от ${r} ₸. Сравните цены в магазинах.`:`${a} — сравнение цен "
+          ]
+        },
+        {
+          "path": "/assets/ProductPage-2zEr4oOk.js",
+          "type": "text/javascript",
+          "size": 42515,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "j63a2G.js\";import{R as Gs,L as Us,C as Hs,X as Ks,Y as qs,T as Ws,a as Qe}from\"./LineChart-D5Ex2ZqD.js\";import{B as Zs,b as Vs,u as Ys,a as Xs}from\"./brandCollection-CoixYVEl.js\";import{A as Js}from\"./arrow-left-B49uGlUy.js\";import{S as Qs}from\"./share-2-JNHi-17b.js\";im",
+            "5\",children:l})]})},na=({product:t,url:n,image:u})=>{const r=(t.stores??[]).map(m=>m.price).filter(m=>typeof m==\"number\"&&m>0),h=vs(n),p={\"@context\":\"https://schema.org\",\"@type\":\"Product\",name:t.name,url:h,...u?{image:u}:{},...t.description?{description:t.description}:{",
+            "nd:{\"@type\":\"Brand\",name:t.brand}}:{}};return r.length===1?p.offers={\"@type\":\"Offer\",priceCurrency:\"KZT\",price:r[0],availability:\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Mat",
+            "name:t.brand}}:{}};return r.length===1?p.offers={\"@type\":\"Offer\",priceCurrency:\"KZT\",price:r[0],availability:\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCou",
+            ":\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"appli",
+            "Stock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"application/ld+json\",childre",
+            "&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"application/ld+json\",children:JSON.stringify(p)})})},",
+            "json\",children:JSON.stringify(p)})})},et=14*24*60*60*1e3,ia=t=>t.in_stock!==!1&&Ct(t.price),lt=t=>new Date(t).toLocaleDateString(\"ru-RU\",{day:\"numeric\",month:\"short\"}),oa=24*60*60*1e3,tt=t=>t.rawDate?new Date(String(t.rawDate)).getTime():NaN,ca=(t,n)=>{if(t.length===0)r"
+          ]
+        },
+        {
+          "path": "/assets/ProductPage-DfwQWFkq.css",
+          "type": "text/css",
+          "size": 5682,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "y-purchase{display:flex;flex-wrap:wrap;align-items:center;gap:24px 28px}.brand-story-price{display:grid;justify-items:start;gap:7px;font-size:11px}.brand-story-price strong{font-size:36px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-",
+            "and-story-price{display:grid;justify-items:start;gap:7px;font-size:11px}.brand-story-price strong{font-size:36px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-.025em}.brand-story-action{display:inline-flex;align-items:center;justify-c",
+            "ign-items:center;justify-content:space-between;gap:12px;margin-top:18px}.brand-story-price{gap:4px;min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-sto",
+            "between;gap:12px;margin-top:18px}.brand-story-price{gap:4px;min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-story-action{flex-shrink:0;min-height:44px",
+            "min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-story-action{flex-shrink:0;min-height:44px;gap:8px;padding:11px 14px;font-size:11px}.brand-story-actio",
+            "x 14px;font-size:11px}.brand-story-action svg{width:14px;height:14px}.brand-story-no-price{flex-wrap:wrap}.brand-story-collection{margin-top:40px}}@media (max-width:360px){.product-brand-story{padding:18px 18px 20px}.brand-story-description{display:none}.brand-story-tag"
+          ]
+        },
+        {
+          "path": "/assets/LineChart-D5Ex2ZqD.js",
+          "type": "text/javascript",
+          "size": 382985,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "Name,o=e.style,u=e.title,c=e.desc,l=C0(e,M0),f=i||{width:r,height:n,x:0,y:0},s=ee(\"recharts-surface\",a);return P.createElement(\"svg\",Fo({},J(l,!0,\"svg\"),{className:s,width:r,height:n,style:o,viewBox:\"\".concat(f.x,\" \").concat(f.y,\" \").concat(f.width,\" \").concat(f.height)",
+            "}var de=P.forwardRef(function(e,t){var r=e.children,n=e.className,i=k0(e,D0),a=ee(\"recharts-layer\",n);return P.createElement(\"g\",zo({className:a},J(i,!0),{ref:t}),r)}),vt=function(t,r){for(var n=arguments.length,i=new Array(n>2?n-2:0),a=2;a<n;a++)i[a-2]=arguments[a]};fu",
+            "(l,!0);return p===+p&&h===+h&&a===+a?P.createElement(\"path\",Vo({},d,{className:ee(\"recharts-symbols\",s),transform:\"translate(\".concat(p,\", \").concat(h,\")\"),d:f()})):null};Sc.registerSymbol=vw;function mr(e){\"@babel/helpers - typeof\";return mr=typeof Symbol==\"function\"&&",
+            "stroke:c,strokeDasharray:n.payload.strokeDasharray,x1:0,y1:a,x2:qe,y2:a,className:\"recharts-legend-icon\"});if(n.type===\"line\")return P.createElement(\"path\",{strokeWidth:4,fill:\"none\",stroke:c,d:\"M0,\".concat(a,\"h\").concat(u,`\n            A`).concat(o,\",\").concat(o,\",0,1,",
+            "          A`).concat(o,\",\").concat(o,\",0,1,1,\").concat(u,\",\").concat(a),className:\"recharts-legend-icon\"});if(n.type===\"rect\")return P.createElement(\"path\",{stroke:\"none\",fill:c,d:\"M0,\".concat(qe/8,\"h\").concat(qe,\"v\").concat(qe*3/4,\"h\").concat(-qe,\"z\"),className:\"rechar",
+            "M0,\".concat(qe/8,\"h\").concat(qe,\"v\").concat(qe*3/4,\"h\").concat(-qe,\"z\"),className:\"recharts-legend-icon\"});if(P.isValidElement(n.legendIcon)){var l=yw({},n);return delete l.legendIcon,P.cloneElement(n.legendIcon,l)}return P.createElement(Sc,{fill:c,cx:a,cy:a,size:qe,siz",
+            "iddle\",marginRight:4};return a.map(function(h,d){var v=h.formatter||c,y=ee(dn(dn({\"recharts-legend-item\":!0},\"legend-item-\".concat(d),!0),\"inactive\",h.inactive));if(h.type===\"none\")return null;var b=Y(h.value)?null:h.value;vt(!Y(h.value),`The name property is also requi",
+            "alue),`The name property is also required when using a function for the dataKey of a chart's cartesian components. Ex: <Bar name=\"Name of my Data\"/>`);var w=h.inactive?l:h.color;return P.createElement(\"li\",Yo({className:y,style:s,key:\"legend-item-\".concat(d)},Oi(n.props"
+          ]
+        }
+      ],
+      "page_text": "Добавить магазин\nПоиск низких цен...\nШтрих-код\nГлавная\nКаталог\nКорзина\nИзбранное\nАстана\nУкажите адрес\nНазад\nПоделиться\n1 л\nTassay · КАЗАХСТАН\nВода минеральная Tassay газированная 1л\n405 ₸\n\n41 ₸ / 100 мл\n\n+ В корзину\nЦены по магазинам\nУкажите адрес, чтобы увидеть ближайший филиал\nЖанұя Оптомаркет\n405 ₸\nAyanMarket\n439 ₸\nSmall (р-н Нура, ул. Ш. Айтматова, зд. 44)\n465 ₸\nMETRO\n499 ₸\nArbuz\n555 ₸\nЯндекс Лавка\n572 ₸\nGalmart\n585 ₸\nChoco Рядом\n601 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная Tassay газированная 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n305\n380\n455\n599\n499 ₸\n405 ₸\nМинимум\n405 ₸\n-8%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n1,5 л\n325 ₸\n22 ₸ / 100 мл\nВода минеральная Тuran газированная 1.5л\nGalmart\n325 ₸\nMETRO\n329 ₸\nSmall\n390 ₸\n+ В корзину\n-19%\n1,5 л\n439 ₸\n355 ₸\n24 ₸ / 100 мл\nВода минеральная RAUAN Сарыагаш... 1.5л\nArbuz\n355 ₸\n+ В корзину\n1,5 л\n360 ₸\n24 ₸ / 100 мл\nВода минеральная АСУ 7SU газированная 1.5л\nЖанұя Оптомаркет\n360 ₸\nAyanMarket\n401 ₸\nSmall\n430 ₸\n+ В корзину\n1,5 л\n366 ₸\n24 ₸ / 100 мл\nВода минеральная Alex Saryagash... 1.5л\nЖанұя Оптомаркет\n366 ₸\nMETRO\n379 ₸\nAyanMarket\n395 ₸\n+ В корзину\n1,5 л\n399 ₸\n27 ₸ / 100 мл\nВода Turan минеральная негазированная 1.5л\nMETRO\n399 ₸\nArbuz\n495 ₸\nAyanMarket\n514 ₸\n+ В корзину\n1,5 л\n403 ₸\n27 ₸ / 100 мл\nВода минеральная Асем Ай Сарыагаш... 1.5л\nAyanMarket\n403 ₸\nЯндекс Лавка\nНЕТ В НАЛИЧИИ\n489 ₸\n+ В корзину\n1 л\n269 ₸\n27 ₸ / 100 мл\nВода минеральная Small газированная 1л\nSmall\n269 ₸\n+ В корзину\narzan.kz\n\nЦены, скидки и корзина на одной витрине. Сравнивайте предложения магазинов и выбирайте выгодный вариант до покупки.\n\nО сервисе\nСкачать в App Store\nСкачать в Google Play\nМЫ В СОЦСЕТЯХ\n@arzankz\n@arzankz\nРАЗДЕЛЫ\nБлог\nПоиск\nКаталог\nПромокоды\nКорзина\nМАГАЗИНЫ\nArbuz\nAyanMarket\nChoco Рядом\nFix Price\nGalmart\nMagnumGO\nMETRO\nSmall\nСЕРВИС\nОферта\nПолитика возврата\nПоддержка\nГОРОДА\nАктобе\nАлматы\nАстана\nАтырау\nКараганда\nПавлодар\nШымкент\nЯЗЫК\nҚазақша\nРусский\n© 2026 ТОО Arzan APPAI · arzan.kz — цены показаны на момент обновления\nИтоговая цена уточняется на странице магазина.\n305",
+      "history_words": [
+        "l (р-н Нура, ул. Ш. Айтматова, зд. 44)\n465 ₸\nMETRO\n499 ₸\nArbuz\n555 ₸\nЯндекс Лавка\n572 ₸\nGalmart\n585 ₸\nChoco Рядом\n601 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная Tassay газированная 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n305\n380\n455\n599\n499 ₸\n405 ₸\nМинимум\n405 ₸\n-8%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n1,5 "
+      ],
+      "visible_buttons": [
+        "Добавить магазин",
+        "Поиск низких цен...",
+        "Штрих-код",
+        "АстанаУкажите адрес",
+        "",
+        "",
+        "",
+        "Назад",
+        "Поделиться",
+        "",
+        "",
+        "+ В корзину",
+        "Укажите адрес, чтобы увидеть ближайший филиал",
+        "Жанұя Оптомаркет405 ₸",
+        "AyanMarket439 ₸",
+        "Small (р-н Нура, ул. Ш. Айтматова, зд. 44)465 ₸",
+        "METRO499 ₸",
+        "Arbuz555 ₸",
+        "Яндекс Лавка572 ₸",
+        "Galmart585 ₸",
+        "Choco Рядом601 ₸",
+        "",
+        "30 дн.",
+        "90 дн.",
+        "180 дн.",
+        "Мин. цена",
+        "По магазинам",
+        "Жанұя Оптомаркет405 ₸",
+        "AyanMarket439 ₸",
+        "Small465 ₸-10%",
+        "METRO499 ₸",
+        "Arbuz555 ₸+8%",
+        "Яндекс Лавка572 ₸-9%",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину"
+      ],
+      "clicked": [
+        "История цен"
+      ],
+      "url_path": "/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501"
+    },
+    {
+      "brand": "TURAN",
+      "responses": [
+        {
+          "path": "/ru/astana/p/voda-mineralnaya-gazirovannaya-turan-1l-57cf9489-44e3-403c-ac0c-4889305c0696",
+          "type": "text/html",
+          "size": 5803,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "ark mode is opt-in only. -->\n  <script>\n    try {\n      if (localStorage.getItem(\"minprice_theme_mode\") === \"dark\") {\n        document.documentElement.classList.add(\"dark\");\n        document.documentElement.style.colorScheme = \"dark\";\n      }\n    } catch (e) { }\n  </scr"
+          ]
+        },
+        {
+          "path": "/assets/index-gVF8s4cD.css",
+          "type": "text/css",
+          "size": 153911,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "font-product-title: \"Merriweather Sans\", ui-sans-serif, system-ui, sans-serif;--font-price: \"Inter\", ui-sans-serif, system-ui, sans-serif;--discount-bg: 358 94% 62%;--discount-foreground: 0 0% 100%;--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 2",
+            "nt-foreground: 0 0% 100%;--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-ho",
+            "--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxur",
+            ";--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxu",
+            "00%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-",
+            ": 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% ",
+            ";--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% 42%;--luxury-",
+            "8%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% 42%;--luxury-line: 211 33% 74%;--lux"
+          ]
+        },
+        {
+          "path": "/assets/App-4qN3Qbn-.css",
+          "type": "text/css",
+          "size": 21970,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            ":1.25;font-family:var(--font-product-title)}.fav-unit{font:500 11.5px/1.2 var(--font-price);color:hsl(var(--muted-foreground));white-space:nowrap}.fav-others{display:flex;flex-wrap:nowrap;align-items:center;gap:10px;height:24px;min-width:0;overflow:hidden}.fav-other{fle",
+            "{flex:none;display:inline-flex;align-items:center;gap:5px;font:600 12px/1 var(--font-price);white-space:nowrap}.fav-logo-stack{flex:none;display:inline-flex;align-items:center;gap:4px}.fav-logo-stack.is-stacked{gap:0}.fav-logo-stack.is-stacked .fav-chain-logo+.fav-chain",
+            "adow:0 0 0 2px hsl(var(--card))}.fav-more{margin-left:5px;font:700 11px/1 var(--font-price);color:hsl(var(--muted-foreground))}.fav-price-col{flex:none;align-self:stretch;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42",
+            "n-left:5px;font:700 11px/1 var(--font-price);color:hsl(var(--muted-foreground))}.fav-price-col{flex:none;align-self:stretch;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42%}.fav-price-link{display:flex;flex-direction:c",
+            "ection:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42%}.fav-price-link{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.fav-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 ",
+            ":flex-end;gap:4px}.fav-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);w",
+            "-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);white-space:nowrap}.fav",
+            "ter;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);white-space:nowrap}.fav-arzn{display:inline-flex;align-items:cen"
+          ]
+        },
+        {
+          "path": "/assets/ProductCardCartControl-cs8N7C8w.js",
+          "type": "text/javascript",
+          "size": 225669,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "a(e,t,r,n){n===void 0&&(n={});let{window:s=document.defaultView,v5Compat:a=!1}=n,i=s.history,o=Oe.Pop,l=null,u=h();u==null&&(u=0,i.replaceState(Rt({},i.state,{idx:u}),\"\"));function h(){return(i.state||{idx:null}).idx}function d(){o=Oe.Pop;let p=h(),w=p==null?null:p-u;u=p,",
+            "t action(){return o},get location(){return e(s,i)},listen(p){if(l)throw new Error(\"A history only accepts one active listener\");return s.addEventListener(yn,d),l=p,()=>{s.removeEventListener(yn,d),l=null}},createHref(p){return t(s,p)},createURL:b,encodeLocation(p){let w=b",
+            "}}},Ji=Ri(Yi);function Xr(...e){return Ji(gs(e))}const Xi=[\"kk\",\"ru\"],Zr=\"ru\",Cs=\"minprice_lang\",kr=()=>{if(typeof window>\"u\")return null;try{const e=window.localStorage.getItem(Cs);return e===\"kk\"||e===\"ru\"?e:null}catch{return null}},$c=()=>kr()!==null;let De=kr()??Zr;",
+            " бастаңыз\":\"начните с запроса\",sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",sortLabel:e?\"Сұрыптау\":\"Сортировка\",sortRelevance:e?\"Сәйкестігі бойынша\":\"По релевантности\",sortCheaperFirst:e?\"Арзанынан\":\"Сначала дешевле\",sortExpensi",
+            "анынан\":\"Сначала дешевле\",sortExpensiveFirst:e?\"Қымбатынан\":\"Сначала дороже\",sortUnitPrice:e?\"Бірлігі арзанырақ\":\"Дешевле за единицу\",sortBestDiscount:e?\"Үлкен жеңілдік\":\"По размеру скидки\",filters:e?\"Сүзгілер\":\"Фильтры\",filtersEyebrow:e?\"Іздеуді нақтылау\":\"Уточнить выд",
+            "ading:e?\"Бағасы айтарлықтай төмен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e",
+            "ен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDis",
+            ">e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDiscounts:e?\"Жеңілдіктер жоқ\":\"Нет товаров со скидками\",tryResetFilters:e?\"Дүкен сүзгілерін тазалап көріңіз\":\"Попробуйте сбросить фильтры магазинов\",t"
+          ]
+        },
+        {
+          "path": "/assets/ProductPage-2zEr4oOk.js",
+          "type": "text/javascript",
+          "size": 42515,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "j63a2G.js\";import{R as Gs,L as Us,C as Hs,X as Ks,Y as qs,T as Ws,a as Qe}from\"./LineChart-D5Ex2ZqD.js\";import{B as Zs,b as Vs,u as Ys,a as Xs}from\"./brandCollection-CoixYVEl.js\";import{A as Js}from\"./arrow-left-B49uGlUy.js\";import{S as Qs}from\"./share-2-JNHi-17b.js\";im",
+            "5\",children:l})]})},na=({product:t,url:n,image:u})=>{const r=(t.stores??[]).map(m=>m.price).filter(m=>typeof m==\"number\"&&m>0),h=vs(n),p={\"@context\":\"https://schema.org\",\"@type\":\"Product\",name:t.name,url:h,...u?{image:u}:{},...t.description?{description:t.description}:{",
+            "nd:{\"@type\":\"Brand\",name:t.brand}}:{}};return r.length===1?p.offers={\"@type\":\"Offer\",priceCurrency:\"KZT\",price:r[0],availability:\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Mat",
+            "name:t.brand}}:{}};return r.length===1?p.offers={\"@type\":\"Offer\",priceCurrency:\"KZT\",price:r[0],availability:\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCou",
+            ":\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"appli",
+            "Stock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"application/ld+json\",childre",
+            "&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"application/ld+json\",children:JSON.stringify(p)})})},",
+            "json\",children:JSON.stringify(p)})})},et=14*24*60*60*1e3,ia=t=>t.in_stock!==!1&&Ct(t.price),lt=t=>new Date(t).toLocaleDateString(\"ru-RU\",{day:\"numeric\",month:\"short\"}),oa=24*60*60*1e3,tt=t=>t.rawDate?new Date(String(t.rawDate)).getTime():NaN,ca=(t,n)=>{if(t.length===0)r"
+          ]
+        },
+        {
+          "path": "/assets/ProductPage-DfwQWFkq.css",
+          "type": "text/css",
+          "size": 5682,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "y-purchase{display:flex;flex-wrap:wrap;align-items:center;gap:24px 28px}.brand-story-price{display:grid;justify-items:start;gap:7px;font-size:11px}.brand-story-price strong{font-size:36px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-",
+            "and-story-price{display:grid;justify-items:start;gap:7px;font-size:11px}.brand-story-price strong{font-size:36px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-.025em}.brand-story-action{display:inline-flex;align-items:center;justify-c",
+            "ign-items:center;justify-content:space-between;gap:12px;margin-top:18px}.brand-story-price{gap:4px;min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-sto",
+            "between;gap:12px;margin-top:18px}.brand-story-price{gap:4px;min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-story-action{flex-shrink:0;min-height:44px",
+            "min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-story-action{flex-shrink:0;min-height:44px;gap:8px;padding:11px 14px;font-size:11px}.brand-story-actio",
+            "x 14px;font-size:11px}.brand-story-action svg{width:14px;height:14px}.brand-story-no-price{flex-wrap:wrap}.brand-story-collection{margin-top:40px}}@media (max-width:360px){.product-brand-story{padding:18px 18px 20px}.brand-story-description{display:none}.brand-story-tag"
+          ]
+        },
+        {
+          "path": "/assets/productSeo-Bx9t73SM.js",
+          "type": "text/javascript",
+          "size": 586,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "const u=\"almaty\";function o(c,i){const t=new Set((c||[]).filter(n=>Number(n.price)>0).map(n=>n.chain_id??n.chain_name??n.store_name));return t.size>=2||t.size===1&&i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filt",
+            "i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filter(e=>Number.isFinite(e)&&e>0),r=s.length?Math.min(...s):null,a=`${c}${i?` ${i}`:\"\"}`;return t===\"ru\"?r?`${a} — от ${r} ₸. Сравните цены в магазинах.`:`${a} — сравнение цен "
+          ]
+        },
+        {
+          "path": "/assets/LineChart-D5Ex2ZqD.js",
+          "type": "text/javascript",
+          "size": 382985,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "Name,o=e.style,u=e.title,c=e.desc,l=C0(e,M0),f=i||{width:r,height:n,x:0,y:0},s=ee(\"recharts-surface\",a);return P.createElement(\"svg\",Fo({},J(l,!0,\"svg\"),{className:s,width:r,height:n,style:o,viewBox:\"\".concat(f.x,\" \").concat(f.y,\" \").concat(f.width,\" \").concat(f.height)",
+            "}var de=P.forwardRef(function(e,t){var r=e.children,n=e.className,i=k0(e,D0),a=ee(\"recharts-layer\",n);return P.createElement(\"g\",zo({className:a},J(i,!0),{ref:t}),r)}),vt=function(t,r){for(var n=arguments.length,i=new Array(n>2?n-2:0),a=2;a<n;a++)i[a-2]=arguments[a]};fu",
+            "(l,!0);return p===+p&&h===+h&&a===+a?P.createElement(\"path\",Vo({},d,{className:ee(\"recharts-symbols\",s),transform:\"translate(\".concat(p,\", \").concat(h,\")\"),d:f()})):null};Sc.registerSymbol=vw;function mr(e){\"@babel/helpers - typeof\";return mr=typeof Symbol==\"function\"&&",
+            "stroke:c,strokeDasharray:n.payload.strokeDasharray,x1:0,y1:a,x2:qe,y2:a,className:\"recharts-legend-icon\"});if(n.type===\"line\")return P.createElement(\"path\",{strokeWidth:4,fill:\"none\",stroke:c,d:\"M0,\".concat(a,\"h\").concat(u,`\n            A`).concat(o,\",\").concat(o,\",0,1,",
+            "          A`).concat(o,\",\").concat(o,\",0,1,1,\").concat(u,\",\").concat(a),className:\"recharts-legend-icon\"});if(n.type===\"rect\")return P.createElement(\"path\",{stroke:\"none\",fill:c,d:\"M0,\".concat(qe/8,\"h\").concat(qe,\"v\").concat(qe*3/4,\"h\").concat(-qe,\"z\"),className:\"rechar",
+            "M0,\".concat(qe/8,\"h\").concat(qe,\"v\").concat(qe*3/4,\"h\").concat(-qe,\"z\"),className:\"recharts-legend-icon\"});if(P.isValidElement(n.legendIcon)){var l=yw({},n);return delete l.legendIcon,P.cloneElement(n.legendIcon,l)}return P.createElement(Sc,{fill:c,cx:a,cy:a,size:qe,siz",
+            "iddle\",marginRight:4};return a.map(function(h,d){var v=h.formatter||c,y=ee(dn(dn({\"recharts-legend-item\":!0},\"legend-item-\".concat(d),!0),\"inactive\",h.inactive));if(h.type===\"none\")return null;var b=Y(h.value)?null:h.value;vt(!Y(h.value),`The name property is also requi",
+            "alue),`The name property is also required when using a function for the dataKey of a chart's cartesian components. Ex: <Bar name=\"Name of my Data\"/>`);var w=h.inactive?l:h.color;return P.createElement(\"li\",Yo({className:y,style:s,key:\"legend-item-\".concat(d)},Oi(n.props"
+          ]
+        }
+      ],
+      "page_text": "Добавить магазин\nПоиск низких цен...\nШтрих-код\nГлавная\nКаталог\nКорзина\nИзбранное\nАстана\nУкажите адрес\nНазад\nПоделиться\n-14%\n1 л\nTURAN · КАЗАХСТАН\nВода минеральная газированная Туран 1л\n360 ₸\n309 ₸\n\n31 ₸ / 100 мл\n\n+ В корзину\nЦены по магазинам\nУкажите адрес, чтобы увидеть ближайший филиал\nMETRO\n309 ₸\nArbuz\n360 ₸\nAyanMarket\n454 ₸\nGalmart\n455 ₸\nSmall (р-н Нура, ул. Ш. Айтматова, зд. 44)\n465 ₸\nMagnumGO\nНЕТ В НАЛИЧИИ\n467 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная газированная Туран 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n209\n274\n339\n404\n469\n369 ₸\n309 ₸\nМинимум\n309 ₸\n-16%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n1,5 л\n325 ₸\n22 ₸ / 100 мл\nВода минеральная Тuran газированная 1.5л\nGalmart\n325 ₸\nMETRO\n329 ₸\nSmall\n390 ₸\n+ В корзину\n-19%\n1,5 л\n439 ₸\n355 ₸\n24 ₸ / 100 мл\nВода минеральная RAUAN Сарыагаш... 1.5л\nArbuz\n355 ₸\n+ В корзину\n1,5 л\n360 ₸\n24 ₸ / 100 мл\nВода минеральная АСУ 7SU газированная 1.5л\nЖанұя Оптомаркет\n360 ₸\nAyanMarket\n401 ₸\nSmall\n430 ₸\n+ В корзину\n1,5 л\n366 ₸\n24 ₸ / 100 мл\nВода минеральная Alex Saryagash... 1.5л\nЖанұя Оптомаркет\n366 ₸\nMETRO\n379 ₸\nAyanMarket\n395 ₸\n+ В корзину\n1,5 л\n399 ₸\n27 ₸ / 100 мл\nВода Turan минеральная негазированная 1.5л\nMETRO\n399 ₸\nArbuz\n495 ₸\nAyanMarket\n514 ₸\n+ В корзину\n1,5 л\n403 ₸\n27 ₸ / 100 мл\nВода минеральная Асем Ай Сарыагаш... 1.5л\nAyanMarket\n403 ₸\nЯндекс Лавка\nНЕТ В НАЛИЧИИ\n489 ₸\n+ В корзину\n1 л\n269 ₸\n27 ₸ / 100 мл\nВода минеральная Small газированная 1л\nSmall\n269 ₸\n+ В корзину\narzan.kz\n\nЦены, скидки и корзина на одной витрине. Сравнивайте предложения магазинов и выбирайте выгодный вариант до покупки.\n\nО сервисе\nСкачать в App Store\nСкачать в Google Play\nМЫ В СОЦСЕТЯХ\n@arzankz\n@arzankz\nРАЗДЕЛЫ\nБлог\nПоиск\nКаталог\nПромокоды\nКорзина\nКАТЕГОРИИ\nОвощи и зелень\nФрукты и ягоды\nМолочная продукция и яйца\nБакалея\nКонсервы, быстрое приготовление, маринованные овощи\nМясо, птица, колбасные изделия\nАлкоголь\nТабачная продукция\nМАГАЗИНЫ\nArbuz\nAyanMarket\nChoco Рядом\nFix Price\nGalmart\nMagnumGO\nMETRO\nSmall\nСЕРВИС\nОферта\nПолитика возврата\nПоддержка\nГОРОДА\nАктобе\nАлматы\nАстана\nАтырау\nКараганда\nПавлодар\nШымкент\nЯЗЫК\nҚазақша\nРусский\n© 2026 ТОО Arzan APPAI · arzan.kz — цены показаны на момент обновления\nИтоговая цена уточняется на странице магазина.\n209",
+      "history_words": [
+        "rbuz\n360 ₸\nAyanMarket\n454 ₸\nGalmart\n455 ₸\nSmall (р-н Нура, ул. Ш. Айтматова, зд. 44)\n465 ₸\nMagnumGO\nНЕТ В НАЛИЧИИ\n467 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная газированная Туран 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n209\n274\n339\n404\n469\n369 ₸\n309 ₸\nМинимум\n309 ₸\n-16%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n"
+      ],
+      "visible_buttons": [
+        "Добавить магазин",
+        "Поиск низких цен...",
+        "Штрих-код",
+        "АстанаУкажите адрес",
+        "",
+        "",
+        "",
+        "Назад",
+        "Поделиться",
+        "",
+        "",
+        "+ В корзину",
+        "Укажите адрес, чтобы увидеть ближайший филиал",
+        "METRO309 ₸",
+        "Arbuz360 ₸",
+        "AyanMarket454 ₸",
+        "Galmart455 ₸",
+        "Small (р-н Нура, ул. Ш. Айтматова, зд. 44)465 ₸",
+        "MagnumGOНет в наличии467 ₸",
+        "",
+        "30 дн.",
+        "90 дн.",
+        "180 дн.",
+        "Мин. цена",
+        "По магазинам",
+        "METRO309 ₸-31%",
+        "Arbuz360 ₸-17%",
+        "AyanMarket454 ₸+12%",
+        "Galmart455 ₸-11%",
+        "Small465 ₸+26%",
+        "MagnumGO467 ₸",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину"
+      ],
+      "clicked": [
+        "История цен"
+      ],
+      "url_path": "/ru/astana/p/voda-mineralnaya-gazirovannaya-turan-1l-57cf9489-44e3-403c-ac0c-4889305c0696"
+    },
+    {
+      "brand": "ESSENTUKI4",
+      "responses": [
+        {
+          "path": "/ru/astana/p/voda-mineralnaya-essentuki-4-gazirovannaya-1l-1f15b35a-08de-4cc9-b1bd-8745c1e35006",
+          "type": "text/html",
+          "size": 5803,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "ark mode is opt-in only. -->\n  <script>\n    try {\n      if (localStorage.getItem(\"minprice_theme_mode\") === \"dark\") {\n        document.documentElement.classList.add(\"dark\");\n        document.documentElement.style.colorScheme = \"dark\";\n      }\n    } catch (e) { }\n  </scr"
+          ]
+        },
+        {
+          "path": "/assets/index-gVF8s4cD.css",
+          "type": "text/css",
+          "size": 153911,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "font-product-title: \"Merriweather Sans\", ui-sans-serif, system-ui, sans-serif;--font-price: \"Inter\", ui-sans-serif, system-ui, sans-serif;--discount-bg: 358 94% 62%;--discount-foreground: 0 0% 100%;--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 2",
+            "nt-foreground: 0 0% 100%;--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-ho",
+            "--savings-bg: 155 77% 40%;--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxur",
+            ";--savings-foreground: 0 0% 100%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxu",
+            "00%;--price-old: 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-",
+            ": 216 18% 42%;--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% ",
+            ";--price-new: 155 77% 28%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% 42%;--luxury-",
+            "8%;--chart-1: var(--brand-blue);--chart-2: var(--price-new);--chart-3: 265 65% 48%;--chart-4: 32 80% 36%;--chart-5: 338 65% 44%;--surface-hover: 204 100% 93%;--luxury-bg: 202 100% 98%;--luxury-ink: 224 64% 12%;--luxury-muted: 218 16% 42%;--luxury-line: 211 33% 74%;--lux"
+          ]
+        },
+        {
+          "path": "/assets/App-4qN3Qbn-.css",
+          "type": "text/css",
+          "size": 21970,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            ":1.25;font-family:var(--font-product-title)}.fav-unit{font:500 11.5px/1.2 var(--font-price);color:hsl(var(--muted-foreground));white-space:nowrap}.fav-others{display:flex;flex-wrap:nowrap;align-items:center;gap:10px;height:24px;min-width:0;overflow:hidden}.fav-other{fle",
+            "{flex:none;display:inline-flex;align-items:center;gap:5px;font:600 12px/1 var(--font-price);white-space:nowrap}.fav-logo-stack{flex:none;display:inline-flex;align-items:center;gap:4px}.fav-logo-stack.is-stacked{gap:0}.fav-logo-stack.is-stacked .fav-chain-logo+.fav-chain",
+            "adow:0 0 0 2px hsl(var(--card))}.fav-more{margin-left:5px;font:700 11px/1 var(--font-price);color:hsl(var(--muted-foreground))}.fav-price-col{flex:none;align-self:stretch;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42",
+            "n-left:5px;font:700 11px/1 var(--font-price);color:hsl(var(--muted-foreground))}.fav-price-col{flex:none;align-self:stretch;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42%}.fav-price-link{display:flex;flex-direction:c",
+            "ection:column;align-items:flex-end;justify-content:center;gap:6px;max-width:42%}.fav-price-link{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.fav-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 ",
+            ":flex-end;gap:4px}.fav-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);w",
+            "-best{display:inline-flex;align-items:center;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);white-space:nowrap}.fav",
+            "ter;gap:6px}.fav-best-price{color:hsl(var(--price-new));font:700 17px/1.1 var(--font-price);letter-spacing:-.02em;white-space:nowrap}.fav-old{color:hsl(var(--price-old));font:500 12px/1.2 var(--font-price);white-space:nowrap}.fav-arzn{display:inline-flex;align-items:cen"
+          ]
+        },
+        {
+          "path": "/assets/ProductCardCartControl-cs8N7C8w.js",
+          "type": "text/javascript",
+          "size": 225669,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "a(e,t,r,n){n===void 0&&(n={});let{window:s=document.defaultView,v5Compat:a=!1}=n,i=s.history,o=Oe.Pop,l=null,u=h();u==null&&(u=0,i.replaceState(Rt({},i.state,{idx:u}),\"\"));function h(){return(i.state||{idx:null}).idx}function d(){o=Oe.Pop;let p=h(),w=p==null?null:p-u;u=p,",
+            "t action(){return o},get location(){return e(s,i)},listen(p){if(l)throw new Error(\"A history only accepts one active listener\");return s.addEventListener(yn,d),l=p,()=>{s.removeEventListener(yn,d),l=null}},createHref(p){return t(s,p)},createURL:b,encodeLocation(p){let w=b",
+            "}}},Ji=Ri(Yi);function Xr(...e){return Ji(gs(e))}const Xi=[\"kk\",\"ru\"],Zr=\"ru\",Cs=\"minprice_lang\",kr=()=>{if(typeof window>\"u\")return null;try{const e=window.localStorage.getItem(Cs);return e===\"kk\"||e===\"ru\"?e:null}catch{return null}},$c=()=>kr()!==null;let De=kr()??Zr;",
+            " бастаңыз\":\"начните с запроса\",sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",sortLabel:e?\"Сұрыптау\":\"Сортировка\",sortRelevance:e?\"Сәйкестігі бойынша\":\"По релевантности\",sortCheaperFirst:e?\"Арзанынан\":\"Сначала дешевле\",sortExpensi",
+            "анынан\":\"Сначала дешевле\",sortExpensiveFirst:e?\"Қымбатынан\":\"Сначала дороже\",sortUnitPrice:e?\"Бірлігі арзанырақ\":\"Дешевле за единицу\",sortBestDiscount:e?\"Үлкен жеңілдік\":\"По размеру скидки\",filters:e?\"Сүзгілер\":\"Фильтры\",filtersEyebrow:e?\"Іздеуді нақтылау\":\"Уточнить выд",
+            "ading:e?\"Бағасы айтарлықтай төмен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e",
+            "ен тауарлар\":\"Витрина товаров, где цена заметно ниже\",priceDrops:e?\"баға төмендеуі\":\"price drops\",reset:e?\"Сүзгіні тазалау\":\"Сбросить\",itemCount:t=>e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDis",
+            ">e?`${t} тауар`:`${t} товаров`,sortByDiscount:e?\"Жеңілдік бойынша\":\"По скидке\",sortByPrice:e?\"Баға бойынша\":\"По цене\",noDiscounts:e?\"Жеңілдіктер жоқ\":\"Нет товаров со скидками\",tryResetFilters:e?\"Дүкен сүзгілерін тазалап көріңіз\":\"Попробуйте сбросить фильтры магазинов\",t"
+          ]
+        },
+        {
+          "path": "/assets/productSeo-Bx9t73SM.js",
+          "type": "text/javascript",
+          "size": 586,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "const u=\"almaty\";function o(c,i){const t=new Set((c||[]).filter(n=>Number(n.price)>0).map(n=>n.chain_id??n.chain_name??n.store_name));return t.size>=2||t.size===1&&i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filt",
+            "i===u}function m(c,i,t,n){const s=(n||[]).filter(e=>e.in_stock!==!1).map(e=>Number(e.price)).filter(e=>Number.isFinite(e)&&e>0),r=s.length?Math.min(...s):null,a=`${c}${i?` ${i}`:\"\"}`;return t===\"ru\"?r?`${a} — от ${r} ₸. Сравните цены в магазинах.`:`${a} — сравнение цен "
+          ]
+        },
+        {
+          "path": "/assets/ProductPage-DfwQWFkq.css",
+          "type": "text/css",
+          "size": 5682,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "y-purchase{display:flex;flex-wrap:wrap;align-items:center;gap:24px 28px}.brand-story-price{display:grid;justify-items:start;gap:7px;font-size:11px}.brand-story-price strong{font-size:36px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-",
+            "and-story-price{display:grid;justify-items:start;gap:7px;font-size:11px}.brand-story-price strong{font-size:36px;font-weight:600;line-height:1.2;font-variant-numeric:tabular-nums;letter-spacing:-.025em}.brand-story-action{display:inline-flex;align-items:center;justify-c",
+            "ign-items:center;justify-content:space-between;gap:12px;margin-top:18px}.brand-story-price{gap:4px;min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-sto",
+            "between;gap:12px;margin-top:18px}.brand-story-price{gap:4px;min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-story-action{flex-shrink:0;min-height:44px",
+            "min-width:0}.brand-story-price strong{font-size:28px;white-space:nowrap}.brand-story-price-label{font-size:9px}.brand-story-offers{font-size:9px;line-height:1.4}.brand-story-action{flex-shrink:0;min-height:44px;gap:8px;padding:11px 14px;font-size:11px}.brand-story-actio",
+            "x 14px;font-size:11px}.brand-story-action svg{width:14px;height:14px}.brand-story-no-price{flex-wrap:wrap}.brand-story-collection{margin-top:40px}}@media (max-width:360px){.product-brand-story{padding:18px 18px 20px}.brand-story-description{display:none}.brand-story-tag"
+          ]
+        },
+        {
+          "path": "/assets/ProductPage-2zEr4oOk.js",
+          "type": "text/javascript",
+          "size": 42515,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "j63a2G.js\";import{R as Gs,L as Us,C as Hs,X as Ks,Y as qs,T as Ws,a as Qe}from\"./LineChart-D5Ex2ZqD.js\";import{B as Zs,b as Vs,u as Ys,a as Xs}from\"./brandCollection-CoixYVEl.js\";import{A as Js}from\"./arrow-left-B49uGlUy.js\";import{S as Qs}from\"./share-2-JNHi-17b.js\";im",
+            "5\",children:l})]})},na=({product:t,url:n,image:u})=>{const r=(t.stores??[]).map(m=>m.price).filter(m=>typeof m==\"number\"&&m>0),h=vs(n),p={\"@context\":\"https://schema.org\",\"@type\":\"Product\",name:t.name,url:h,...u?{image:u}:{},...t.description?{description:t.description}:{",
+            "nd:{\"@type\":\"Brand\",name:t.brand}}:{}};return r.length===1?p.offers={\"@type\":\"Offer\",priceCurrency:\"KZT\",price:r[0],availability:\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Mat",
+            "name:t.brand}}:{}};return r.length===1?p.offers={\"@type\":\"Offer\",priceCurrency:\"KZT\",price:r[0],availability:\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCou",
+            ":\"https://schema.org/InStock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"appli",
+            "Stock\",url:h}:r.length>1&&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"application/ld+json\",childre",
+            "&(p.offers={\"@type\":\"AggregateOffer\",priceCurrency:\"KZT\",lowPrice:Math.min(...r),highPrice:Math.max(...r),offerCount:r.length,availability:\"https://schema.org/InStock\",url:h}),e.jsx(ys,{children:e.jsx(\"script\",{type:\"application/ld+json\",children:JSON.stringify(p)})})},",
+            "json\",children:JSON.stringify(p)})})},et=14*24*60*60*1e3,ia=t=>t.in_stock!==!1&&Ct(t.price),lt=t=>new Date(t).toLocaleDateString(\"ru-RU\",{day:\"numeric\",month:\"short\"}),oa=24*60*60*1e3,tt=t=>t.rawDate?new Date(String(t.rawDate)).getTime():NaN,ca=(t,n)=>{if(t.length===0)r"
+          ]
+        },
+        {
+          "path": "/assets/LineChart-D5Ex2ZqD.js",
+          "type": "text/javascript",
+          "size": 382985,
+          "status": 200,
+          "meta": {
+            "kind": "text"
+          },
+          "excerpts": [
+            "Name,o=e.style,u=e.title,c=e.desc,l=C0(e,M0),f=i||{width:r,height:n,x:0,y:0},s=ee(\"recharts-surface\",a);return P.createElement(\"svg\",Fo({},J(l,!0,\"svg\"),{className:s,width:r,height:n,style:o,viewBox:\"\".concat(f.x,\" \").concat(f.y,\" \").concat(f.width,\" \").concat(f.height)",
+            "}var de=P.forwardRef(function(e,t){var r=e.children,n=e.className,i=k0(e,D0),a=ee(\"recharts-layer\",n);return P.createElement(\"g\",zo({className:a},J(i,!0),{ref:t}),r)}),vt=function(t,r){for(var n=arguments.length,i=new Array(n>2?n-2:0),a=2;a<n;a++)i[a-2]=arguments[a]};fu",
+            "(l,!0);return p===+p&&h===+h&&a===+a?P.createElement(\"path\",Vo({},d,{className:ee(\"recharts-symbols\",s),transform:\"translate(\".concat(p,\", \").concat(h,\")\"),d:f()})):null};Sc.registerSymbol=vw;function mr(e){\"@babel/helpers - typeof\";return mr=typeof Symbol==\"function\"&&",
+            "stroke:c,strokeDasharray:n.payload.strokeDasharray,x1:0,y1:a,x2:qe,y2:a,className:\"recharts-legend-icon\"});if(n.type===\"line\")return P.createElement(\"path\",{strokeWidth:4,fill:\"none\",stroke:c,d:\"M0,\".concat(a,\"h\").concat(u,`\n            A`).concat(o,\",\").concat(o,\",0,1,",
+            "          A`).concat(o,\",\").concat(o,\",0,1,1,\").concat(u,\",\").concat(a),className:\"recharts-legend-icon\"});if(n.type===\"rect\")return P.createElement(\"path\",{stroke:\"none\",fill:c,d:\"M0,\".concat(qe/8,\"h\").concat(qe,\"v\").concat(qe*3/4,\"h\").concat(-qe,\"z\"),className:\"rechar",
+            "M0,\".concat(qe/8,\"h\").concat(qe,\"v\").concat(qe*3/4,\"h\").concat(-qe,\"z\"),className:\"recharts-legend-icon\"});if(P.isValidElement(n.legendIcon)){var l=yw({},n);return delete l.legendIcon,P.cloneElement(n.legendIcon,l)}return P.createElement(Sc,{fill:c,cx:a,cy:a,size:qe,siz",
+            "iddle\",marginRight:4};return a.map(function(h,d){var v=h.formatter||c,y=ee(dn(dn({\"recharts-legend-item\":!0},\"legend-item-\".concat(d),!0),\"inactive\",h.inactive));if(h.type===\"none\")return null;var b=Y(h.value)?null:h.value;vt(!Y(h.value),`The name property is also requi",
+            "alue),`The name property is also required when using a function for the dataKey of a chart's cartesian components. Ex: <Bar name=\"Name of my Data\"/>`);var w=h.inactive?l:h.color;return P.createElement(\"li\",Yo({className:y,style:s,key:\"legend-item-\".concat(d)},Oi(n.props"
+          ]
+        }
+      ],
+      "page_text": "Добавить магазин\nПоиск низких цен...\nШтрих-код\nГлавная\nКаталог\nКорзина\nИзбранное\nАстана\nУкажите адрес\nНазад\nПоделиться\n1 л\nЕссентуки · РОССИЯ\nВода минеральная Ессентуки №4 газированная 1л\n735 ₸\n\n74 ₸ / 100 мл\n\n+ В корзину\nЦены по магазинам\nУкажите адрес, чтобы увидеть ближайший филиал\nSmall (р-н Нура, ул. Ш. Айтматова, зд. 44)\n735 ₸\nЖанұя Оптомаркет\n785 ₸\nAyanMarket\n921 ₸\nArbuz\n975 ₸\nGalmart\n1 030 ₸\nMagnumGO\nНЕТ В НАЛИЧИИ\n999 ₸\nChoco Рядом\nНЕТ В НАЛИЧИИ\n1 167 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная Ессентуки №4 газированная 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n439\n539\n639\n835\n539 ₸\n735 ₸\nМинимум\n735 ₸\n+36%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзину\n1,5 л\n325 ₸\n22 ₸ / 100 мл\nВода минеральная Тuran газированная 1.5л\nGalmart\n325 ₸\nMETRO\n329 ₸\nSmall\n390 ₸\n+ В корзину\n-19%\n1,5 л\n439 ₸\n355 ₸\n24 ₸ / 100 мл\nВода минеральная RAUAN Сарыагаш... 1.5л\nArbuz\n355 ₸\n+ В корзину\n1,5 л\n360 ₸\n24 ₸ / 100 мл\nВода минеральная АСУ 7SU газированная 1.5л\nЖанұя Оптомаркет\n360 ₸\nAyanMarket\n401 ₸\nSmall\n430 ₸\n+ В корзину\n1,5 л\n366 ₸\n24 ₸ / 100 мл\nВода минеральная Alex Saryagash... 1.5л\nЖанұя Оптомаркет\n366 ₸\nMETRO\n379 ₸\nAyanMarket\n395 ₸\n+ В корзину\n1,5 л\n399 ₸\n27 ₸ / 100 мл\nВода Turan минеральная негазированная 1.5л\nMETRO\n399 ₸\nArbuz\n495 ₸\nAyanMarket\n514 ₸\n+ В корзину\n1,5 л\n403 ₸\n27 ₸ / 100 мл\nВода минеральная Асем Ай Сарыагаш... 1.5л\nAyanMarket\n403 ₸\nЯндекс Лавка\nНЕТ В НАЛИЧИИ\n489 ₸\n+ В корзину\n1 л\n269 ₸\n27 ₸ / 100 мл\nВода минеральная Small газированная 1л\nSmall\n269 ₸\n+ В корзину\narzan.kz\n\nЦены, скидки и корзина на одной витрине. Сравнивайте предложения магазинов и выбирайте выгодный вариант до покупки.\n\nО сервисе\nСкачать в App Store\nСкачать в Google Play\nМЫ В СОЦСЕТЯХ\n@arzankz\n@arzankz\nРАЗДЕЛЫ\nБлог\nПоиск\nКаталог\nПромокоды\nКорзина\nКАТЕГОРИИ\nОвощи и зелень\nФрукты и ягоды\nМолочная продукция и яйца\nБакалея\nКонсервы, быстрое приготовление, маринованные овощи\nМясо, птица, колбасные изделия\nАлкоголь\nТабачная продукция\nМАГАЗИНЫ\nArbuz\nAyanMarket\nChoco Рядом\nFix Price\nGalmart\nMagnumGO\nMETRO\nSmall\nСЕРВИС\nОферта\nПолитика возврата\nПоддержка\nГОРОДА\nАктобе\nАлматы\nАстана\nАтырау\nКараганда\nПавлодар\nШымкент\nЯЗЫК\nҚазақша\nРусский\n© 2026 ТОО Arzan APPAI · arzan.kz — цены показаны на момент обновления\nИтоговая цена уточняется на странице магазина.\n439",
+      "history_words": [
+        "аркет\n785 ₸\nAyanMarket\n921 ₸\nArbuz\n975 ₸\nGalmart\n1 030 ₸\nMagnumGO\nНЕТ В НАЛИЧИИ\n999 ₸\nChoco Рядом\nНЕТ В НАЛИЧИИ\n1 167 ₸\nИстория цен\n11 окт. - 10 нояб.\n\nВода минеральная Ессентуки №4 газированная 1л\n\n30 дн.\n90 дн.\n180 дн.\nМин. цена\nПо магазинам\n11 окт.\n18 окт.\n26 окт.\n2 нояб.\n10 нояб.\n439\n539\n639\n835\n539 ₸\n735 ₸\nМинимум\n735 ₸\n+36%\nПохожие товары\n8 предложений\n5 л\n560 ₸\n11 ₸ / 100 мл\nВода Turan минеральная негазированная 5л\nArbuz\n560 ₸\nMETRO\n579 ₸\nFix Price\n599 ₸\n+ В корзи"
+      ],
+      "visible_buttons": [
+        "Добавить магазин",
+        "Поиск низких цен...",
+        "Штрих-код",
+        "АстанаУкажите адрес",
+        "",
+        "",
+        "",
+        "Назад",
+        "Поделиться",
+        "",
+        "",
+        "+ В корзину",
+        "Укажите адрес, чтобы увидеть ближайший филиал",
+        "Small (р-н Нура, ул. Ш. Айтматова, зд. 44)735 ₸",
+        "Жанұя Оптомаркет785 ₸",
+        "AyanMarket921 ₸",
+        "Arbuz975 ₸",
+        "Galmart1 030 ₸",
+        "MagnumGOНет в наличии999 ₸",
+        "Choco РядомНет в наличии1 167 ₸",
+        "",
+        "30 дн.",
+        "90 дн.",
+        "180 дн.",
+        "Мин. цена",
+        "По магазинам",
+        "Small735 ₸+36%",
+        "Жанұя Оптомаркет785 ₸",
+        "AyanMarket921 ₸-4%",
+        "Arbuz975 ₸-4%",
+        "MagnumGO999 ₸",
+        "Galmart1 030 ₸-4%",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        "",
+        "+ В корзину",
+        ""
+      ],
+      "clicked": [
+        "История цен"
+      ],
+      "url_path": "/ru/astana/p/voda-mineralnaya-essentuki-4-gazirovannaya-1l-1f15b35a-08de-4cc9-b1bd-8745c1e35006"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+name: Site quality checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app.py'
+      - 'index.html'
+      - 'ru.html'
+      - 'modern.css'
+      - 'modern-ui.js'
+      - 'paper.css'
+      - 'publication.html'
+      - 'brochure.html'
+      - '.github/workflows/site-quality.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify public pages and asset references
+        run: |
+          python -m py_compile app.py
+          node --check modern-ui.js
+          python - <<'PY'
+          import re
+          import subprocess
+          from pathlib import Path
+          import tempfile
+          source=Path("app.py").read_text(encoding="utf-8")
+          assert source.count('@app.get("/api/auto-prices")')==1, "Duplicated API route"
+          for route in ("/publication","/brochure","/modern.css","/modern-ui.js","/paper.css"):
+              assert f'@app.get("{route}")' in source, route
+          for name in ("index.html","ru.html"):
+              html=Path(name).read_text(encoding="utf-8")
+              assert 'modern.css?v=20261110' in html
+              assert 'modern-ui.js?v=20261110' in html
+              assert html.count("<script")==3 if name=="ru.html" else html.count("<script")==2
+              for script in re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',html):
+                  with tempfile.NamedTemporaryFile("w",suffix=".js",encoding="utf-8") as tf:
+                      tf.write(script);tf.flush()
+                      subprocess.run(["node","--check",tf.name],check=True)
+          publication=Path("publication.html").read_text(encoding="utf-8")
+          brochure=Path("brochure.html").read_text(encoding="utf-8")
+          for name in ("Дельрус","Cochlear","Атамекен","НЛМК","Ессентуки"):
+              assert name in publication and name in brochure, name
+          assert "journals" not in publication.lower()
+          assert "@media print" in Path("paper.css").read_text(encoding="utf-8")
+          assert "min-width:244px" in Path("modern.css").read_text(encoding="utf-8")
+          print("Public pages, print styling, route references and scripts: OK")
+          PY

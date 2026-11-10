@@ -112,7 +112,7 @@ def probe_one(browser, brand, url):
                 info["history_hover"]=list(seen.values())[-65:]
             except Exception as exc:
                 info["hover_error"]=str(exc)[:150]
-        info["responses"]=entries[-60:]
+        info["responses"]=[e for e in entries if str(e.get("path","")).endswith("/price-history/")][-3:]
         info["url_path"]=urlsplit(page.url).path
     except Exception as e:
         info["error"]=str(e)[:400]
@@ -129,7 +129,7 @@ def main():
             result={"scope":"Public product page and price-history UI only",
                     "data":[probe_one(b,name,url) if allowed_by_robots(session,url) else {"brand":name,"error":"robots"} for name,url in PRODUCTS]}
         finally:b.close()
-    OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)[:180000]+"\n",encoding="utf-8")
+    OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print("Arzan public price-history probe saved",[(x["brand"],len(x.get("responses",[])),x.get("error")) for x in result["data"]])
 
 if __name__=="__main__":

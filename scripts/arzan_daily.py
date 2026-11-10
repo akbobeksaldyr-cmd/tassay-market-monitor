@@ -68,7 +68,15 @@ def parse_offers(html: str, brand: str) -> tuple[str, dict[str, int]]:
 
     # A store card can contain repeated logos, availability labels, etc.
     # Split at each shop label so a price never leaks from one shop to another.
-    labels = re.compile(r'Small|Смолл|Arbuz|Арбуз|Galmart|Галмарт|AyanMarket|METRO|MagnumGO|Аян', re.I)
+    # Split at ALL visible retailers, not just our three targets. Otherwise a
+    # neighbour's price (e.g. "Arbuz 555 ₸ Яндекс Лавка 572 ₸") is
+    # incorrectly treated as a second Arbuz price and Arbuz gets dropped.
+    labels = re.compile(
+        r'Small|Смолл|Arbuz|Арбуз|Galmart|Галмарт|'
+        r'AyanMarket|METRO|MagnumGO|Аян|'
+        r'Жанұя\\s+Оптомаркет|Яндекс\\s+Лавка|Choco\\s+Рядом',
+        re.I,
+    )
     chunks = list(labels.finditer(section))
     store_name = {
         'small': 'SMALL', 'смолл': 'SMALL',
@@ -228,11 +236,6 @@ def run() -> None:
                 existed.add(key)
                 added += 1
             item.update(status='collected', shops=offers, added=added, method=access_mode)
-            if brand == 'TASSAY' and 'Arbuz' not in offers:
-                # Public, bounded page text for diagnosing missing shop prices.
-                item['missing_arbuz_excerpt'] = public_price_excerpt(
-                    rendered_html if access_mode == 'browser' else res.text
-                )
         except (ValueError, requests.RequestException) as exc:
             item.update(status='unavailable', reason=str(exc)[:300])
             # Public, bounded rendered text for diagnosis if the layout changes.

@@ -228,6 +228,11 @@ def run() -> None:
                 existed.add(key)
                 added += 1
             item.update(status='collected', shops=offers, added=added, method=access_mode)
+            if brand == 'TASSAY' and 'Arbuz' not in offers:
+                # Public, bounded page text for diagnosing missing shop prices.
+                item['missing_arbuz_excerpt'] = public_price_excerpt(
+                    rendered_html if access_mode == 'browser' else res.text
+                )
         except (ValueError, requests.RequestException) as exc:
             item.update(status='unavailable', reason=str(exc)[:300])
             # Public, bounded rendered text for diagnosis if the layout changes.

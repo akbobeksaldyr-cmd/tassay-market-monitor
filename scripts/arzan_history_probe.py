@@ -52,7 +52,7 @@ def probe_one(browser, brand, url):
                         "city_id","city_name","out_of_stock_since"
                     ) if k in store}
                     desc["prices"]=[{k:p.get(k) for k in ("date","datetime","price","in_stock","is_promo") if k in p}
-                                    for p in store.get("prices",[]) if str(p.get("date",""))>="2026-10-25"]
+                                    for p in store.get("prices",[]) if str(p.get("date",""))>="2026-09-01"]
                     hist.append(desc)
                 info["history_api"]={"days":raw.get("days"),"stores":hist}
             entries.append({"host":urlsplit(response.url).hostname,"path":urlsplit(response.url).path,"type":typ[:60],

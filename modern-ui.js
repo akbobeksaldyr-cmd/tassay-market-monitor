@@ -7,22 +7,27 @@
   const storeOrder=['Arbuz','SMALL','Galmart'];
   const brandOrder=[['TASSAY','TASSAY','T'],['TURAN','TURAN','U'],['ESSENTUKI4','Ессентуки №4','E']];
   const sourcePdf='https://tassay-market-monitor.onrender.com/publications/eek-practice-source';
+  // Restore the research sections to the main navigation; group prices by brand.
   const primary=[
     [0,t('Шолу','Обзор')],
-    [22,t('Күнделікті бағалар','Ежедневные цены')],
+    [2,t('Бағалар және дәлелдемелер','Цены и доказательства'),"selectPriceView('all')"],
+    [1,t('Баға динамикасы','Динамика цен'),"selectDynamicsView('tassay')"],
+    [4,t('Астана нарығы','Рынок Астаны')],
+    [6,t('Сыртқы факторлар','Внешние факторы')],
+    [7,t('Қалаларды салыстыру','Сравнение городов')],
     [16,t('Құқықтық талдау','Правовой анализ')],
     [18,t('ЕЭК және ЕАЭО Соты','ЕЭК и Суд ЕАЭС')],
     [19,t('Мақала және брошюра','Статья и брошюра')],
     [9,t('Дереккөздер','Источники')]
   ];
-  const secondary=[1,2,3,4,5,6,7,8,10,11,12,13,14,15,17,20,21,23,24,25];
+  const secondary=[3,5,8,10,11,14,15,17,20,23,24,25];
   const originalRender=render;
   function modernSidebar(){
     const el=document.getElementById('nav');
     if(!el)return;
-    const btn=(i,label)=>'<button type="button" class="nav'+(page===i?' active':'')+'" onclick="nav('+i+')">'+asText(label)+'</button>';
+    const btn=(i,label,action)=>'<button type="button" class="nav'+(page===i?' active':'')+'" onclick="'+(action||('nav('+i+')'))+'">'+asText(label)+'</button>';
     el.innerHTML='<div class="mini-nav-heading">'+t('НЕГІЗГІ БӨЛІМДЕР','ОСНОВНЫЕ РАЗДЕЛЫ')+'</div>'+
-      primary.map(x=>btn(x[0],x[1])).join('')+
+      primary.map(x=>btn(x[0],x[1],x[2])).join('')+
       '<details class="research-archive" '+(secondary.includes(page)?'open':'')+'><summary>'+
       t('Барлық зерттеу материалдары','Архив и дополнительные разделы')+'</summary>'+
       secondary.map(i=>btn(i,sections[i]||t('Қосымша бөлім','Дополнительный раздел'))).join('')+'</details>'+
@@ -181,6 +186,76 @@
       'Текст подготовлен для подачи, но не опубликован и не принят редакцией. Перед отправкой необходимо проверить требования выбранного журнала, авторские реквизиты и оригинальность.')+
       '</p></section>';
   }
+  // Each brand keeps its original evidence/screenshots and detailed charts.
+  // Grouping changes navigation only; no observation data or original pages are deleted.
+  const preservedPricePages={
+    tassay:pages[2],
+    turan:pages[12],
+    essentuki:pages[21],
+    all:modernDaily
+  };
+  const preservedDynamics={
+    tassay:pages[1],
+    turan:pages[13]
+  };
+  let priceView='all';
+  let dynamicsView='tassay';
+  const priceViews=[
+    ['all',t('Барлық бағалар','Все цены')],
+    ['tassay','TASSAY'],
+    ['turan','TURAN'],
+    ['essentuki','Ессентуки №4']
+  ];
+  const dynamicsViews=[
+    ['tassay','TASSAY'],
+    ['turan','TURAN'],
+    ['essentuki','Ессентуки №4'],
+    ['all',t('Үш бренд','Три бренда')]
+  ];
+  function tabBar(options,current,callback,caption){
+    return '<div class="brand-tabs-container"><div class="brand-tabs-title">'+asText(caption)+'</div>'+
+      '<div class="brand-tabs" role="tablist" aria-label="'+asText(caption)+'">'+
+      options.map(([key,label])=>
+        '<button type="button" role="tab" aria-selected="'+(current===key?'true':'false')+
+        '" class="brand-tab'+(current===key?' active':'')+'" onclick="'+callback+'(\''+key+'\')">'+
+        asText(label)+'</button>').join('')+
+      '</div></div>';
+  }
+  pages[2]=function(){
+    return '<div class="overview-heading"><div><h2>'+t('Бағалар және дәлелдемелер','Цены и доказательства')+'</h2>'+
+      '<p>'+t('Брендті таңдаңыз: тиісті кесте, скриншоттар және дереккөздер ашылады.',
+      'Выберите бренд: откроются его таблица, скриншоты и источники.')+'</p></div></div>'+
+      tabBar(priceViews,priceView,'selectPriceView',t('Тауар бойынша ауыстыру','Переключение по брендам'))+
+      '<div id="brand-price-page">'+(preservedPricePages[priceView]||modernDaily)()+'</div>';
+  };
+  pages[1]=function(){
+    const cDetails=typeof km3CChart==='function'?km3CChart('abs'):'';
+    const content=dynamicsView==='all'?
+      '<section class="panel"><h3>'+t('Үш брендтің күнделікті динамикасы','Ежедневная динамика трёх брендов')+
+      '</h3>'+km3AutoPriceGraph()+'</section>':
+      dynamicsView==='essentuki'?
+      '<section class="panel"><h3>'+t('Ессентуки №4 · баға динамикасы','Ессентуки №4 · динамика цен')+
+      '</h3><p class="km2-muted">'+t('Тарихи бақылаулар; нақты күндерді тексеріңіз.',
+      'Исторические наблюдения; обратите внимание на реальные даты.')+
+      '</p><div id="km3CChart">'+cDetails+'</div><button class="btn outline" onclick="selectPriceView(\'essentuki\')">'+
+      t('Скриншоттар мен кесте','Скриншоты и таблица')+'</button></section>':
+      preservedDynamics[dynamicsView]();
+    return '<div class="overview-heading"><div><h2>'+t('Баға динамикасы','Динамика цен')+'</h2>'+
+      '<p>'+t('Графиктер бір-бірден көрсетіледі','Графики показаны по одному')+'</p></div></div>'+
+      tabBar(dynamicsViews,dynamicsView,'selectDynamicsView',t('Графикті таңдау','Выберите график'))+
+      '<div id="brand-dynamics-page">'+content+'</div>';
+  };
+  // Used by actual buttons; switching does not add more sidebar items.
+  window.selectPriceView=function(which){
+    if(!Object.prototype.hasOwnProperty.call(preservedPricePages,which))which='all';
+    priceView=which;page=2;render();
+    window.scrollTo({top:0,behavior:'instant'});
+  };
+  window.selectDynamicsView=function(which){
+    if(!dynamicsViews.some(([key])=>key===which))which='tassay';
+    dynamicsView=which;page=1;render();
+    window.scrollTo({top:0,behavior:'instant'});
+  };
   const oldIRAC=pages[16];
   pages[0]=modernHome;
   pages[22]=modernDaily;
@@ -194,7 +269,16 @@
   };
   render=function(){originalRender();modernSidebar()};
   const originalNav=nav;
-  nav=function(i){originalNav(i);if(typeof window!=='undefined')window.scrollTo({top:0,behavior:'instant'})};
+  nav=function(i){
+    if(i===2){priceView='tassay';i=2}
+    else if(i===12){priceView='turan';i=2}
+    else if(i===21){priceView='essentuki';i=2}
+    else if(i===22){priceView='all';i=2}
+    else if(i===1){dynamicsView='tassay'}
+    else if(i===13){dynamicsView='turan';i=1}
+    originalNav(i);
+    if(typeof window!=='undefined')window.scrollTo({top:0,behavior:'instant'});
+  };
   if(typeof document!=='undefined')document.body.classList.add('light');
   if(data.length)render();
 })();

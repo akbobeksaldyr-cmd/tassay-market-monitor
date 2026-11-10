@@ -102,18 +102,25 @@ function km3PriceTable(){
  const dates=[...new Set(essentukiRows.map(x=>x.day))].sort(),get=(d,s)=>km3Get('C',d,s);
  const lines=dates.map((day,i)=>{
   const evidence=essentukiEvidenceFor(day);
-  const badge=evidence?.warning?km3Tag(km3t('Баға айырмасы · тексеру','Расхождение цен · проверить')):km3Tag(km3t('Скриншот бар · тауарды тексеру','Есть скриншот · проверить товар'));
-  return '<tr><td>'+fmt(day)+'</td>'+shops.map(s=>'<td>'+val(get(day,s).price)+'</td>').join('')+
+  const badge=!evidence?km3Tag(km3t('Скриншот жоқ','Скриншота нет')):
+    evidence.warning?km3Tag(km3t('Баға айырмасы · тексеру','Расхождение цен · проверить')):
+    km3Tag(km3t('Скриншот бар · тауарды тексеру','Есть скриншот · проверить товар'));
+  const action=evidence?
+    '<button class="evidence-button" onclick="openEssentukiEvidence(\''+day+'\')">📷 '+km3t('Қарау','Посмотреть')+'</button>':
+    '<span class="km2-muted">—</span>';
+  return '<tr><td>'+fmt(day)+'</td>'+shops.map(shop=>{
+   const row=get(day,shop);return '<td>'+(row?val(row.price):'—')+'</td>';
+  }).join('')+
    '<td class="change-percent-cell">'+priceChangeCell(i?dates[i-1]:null,day,get)+'</td>'+
-   '<td><button class="evidence-button" onclick="openEssentukiEvidence(\''+day+'\')">📷 '+km3t('Қарау','Посмотреть')+'</button><div style="margin-top:8px">'+badge+'</div></td></tr>';
+   '<td>'+action+'<div style="margin-top:8px">'+badge+'</div></td></tr>';
  }).join('');
  const gallery='<div class="km3-evidence-gallery">'+essentukiEvidence.map(e=>
   '<button class="km3-evidence-tile" onclick="openEssentukiEvidence(\''+e.day+'\')"><img loading="lazy" src="'+e.url+'" alt="Ессентуки №4 · '+e.day+'"><strong>'+fmt(e.day)+'</strong>'+
   (essentukiEvidenceFor(e.day).warning?'<span>'+km3t('Бағалар сәйкес емес','Цены не совпадают')+'</span>':'')+'</button>'
  ).join('')+'</div>';
  return km3Title('ESSENTUKI №4 · PRICE MONITOR',km3t('Ессентуки №4 · Бағалар және скриншоттар','Ессентуки №4 · Цены и скриншоты'),
- km3t('Астана · Arbuz / SMALL / Galmart · 8 бақылау күні. Әр күнге GitHub-та скриншот табылды; өнімнің атауы кадрда көрінбейді.','Астана · Arbuz / SMALL / Galmart · 8 дат. В GitHub найдены скриншоты для каждой даты, но название товара на фрагментах не видно.'))+
- km3Panel(km3t('24 баға бақылауы · 8 күн','24 наблюдения · 8 дат'),
+ km3t('Астана · Arbuz / SMALL / Galmart. Түпнұсқа 8 күнге ғана скриншот бар; кейінгі автоматты күндер бөлек тексеруді қажет етеді.','Астана · Arbuz / SMALL / Galmart. Скриншоты есть для 8 исходных дат; более поздние автоматические наблюдения требуют отдельной проверки.'))+
+ km3Panel(km3t('Ессентуки №4 · Баға күндерінің мұрағаты','Ессентуки №4 · Архив цен по датам'),
  '<div class="km2-table"><table><thead><tr><th>'+km3t('Күні','Дата')+'</th>'+shops.map(s=>'<th>'+s+'</th>').join('')+'<th>'+km3t('Өзгеріс, %','Изменение, %')+'</th><th>'+km3t('Дәлелдеме','Доказательство')+'</th></tr></thead><tbody>'+lines+'</tbody></table></div>'+
  '<p class="km2-muted">'+km3t('Суреттер — бағалар графигінің үзінділері. 30 қазанда SMALL бағасы 735 ₸ болып түзетілді және суретпен сәйкес келеді. Galmart суретте 1030 ₸, кестеде 1075 ₸: айырманы қосымша растау қажет.','Изображения — фрагменты графика цен. Цена SMALL за 30 октября исправлена на 735 ₸ и совпадает со скриншотом. По Galmart остаётся расхождение: 1030 ₸ на скриншоте и 1075 ₸ в таблице.')+'</p>')+
  km3Panel(km3t('Ессентуки №4 · Скриншоттар мұрағаты','Ессентуки №4 · Галерея скриншотов'),gallery)+

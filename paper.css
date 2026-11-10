@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:wght@400;500;600;700&display=swap');
+:root{font-family:Manrope,"Segoe UI",Arial,sans-serif;color:#1a3543;background:#f4f8f8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f4f8f8}
+a{color:#117f79;text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer}
+.paper-nav{display:flex;align-items:center;gap:14px;justify-content:space-between;max-width:1060px;margin:auto;padding:19px 25px}
+.paper-nav a.brand{color:#174558;font-size:17px;font-weight:850;letter-spacing:-.5px}
+.paper-nav a.brand span{color:#128f84}
+.paper-nav .actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.paper-btn{display:inline-block;border:1px solid #cce0df;border-radius:9px;background:#fff;padding:10px 13px;color:#175860;font-size:12px;font-weight:750;text-align:center}
+.paper-btn.solid{background:#107e75;color:#fff;border-color:#107e75}
+.paper-shell{max-width:1050px;margin:4px auto 60px;background:#fff;border:1px solid #e0eaea;box-shadow:0 14px 70px rgba(23,63,76,.065);border-radius:16px;overflow:hidden}
+.paper-banner{background:linear-gradient(118deg,#103d4f,#126a64);color:#fff;padding:50px 68px 47px}
+.paper-banner .eyebrow{font-size:10px;font-weight:800;letter-spacing:2px;color:#bce7d8;text-transform:uppercase}
+.paper-banner h1{font-weight:800;line-height:1.2;letter-spacing:-1.7px;font-size:clamp(29px,4vw,44px);max-width:790px;margin:16px 0 23px}
+.paper-banner p{max-width:775px;color:#d6e6e6;line-height:1.65;font-size:13px}
+.paper-details{display:flex;gap:28px;flex-wrap:wrap;margin-top:25px;font-size:11px;color:#d5e8e8}
+.paper-details span{padding-left:10px;border-left:2px solid #7ac5b8}
+.paper-main{padding:52px 75px 65px}
+.paper-main article{max-width:850px;margin:0 auto}
+.paper-main p,.paper-main li{font:17px/1.87 "Source Serif 4",Georgia,serif;color:#364b56}
+.paper-main p{margin:14px 0}
+.paper-main h2{font:800 23px/1.3 Manrope,"Segoe UI",sans-serif;color:#173d49;margin:42px 0 15px;letter-spacing:-.7px}
+.paper-main h3{font:800 16px/1.4 Manrope,sans-serif;color:#195160;margin:27px 0 9px}
+.paper-main h2::before{content:"";display:block;width:34px;height:3px;background:#25a99b;margin:0 0 13px}
+.paper-main strong{color:#213e4a}
+.paper-main ul,.paper-main ol{padding-left:23px}
+.paper-main li{padding-left:5px;margin:9px 0}
+.paper-main table{width:100%;border-collapse:collapse;margin:26px 0;font:13px/1.45 Manrope,sans-serif;overflow:hidden;border-radius:9px}
+.paper-main th{background:#ecf6f3;color:#176b67;text-align:left;font-weight:800;font-size:11px}
+.paper-main th,.paper-main td{border-bottom:1px solid #e4edec;padding:14px 12px}
+.paper-main tr:nth-child(even) td{background:#f9fbfb}
+.paper-main caption{text-align:left;color:#77939c;font-size:11px;margin:0 0 8px}
+.paper-small{font:12px/1.75 Manrope,sans-serif!important;color:#758b98!important}
+.paper-stamp{display:inline-block;padding:5px 11px;border:1px solid #cde4dd;border-radius:100px;background:#eaf7f2;color:#0d7967;font-size:11px;font-weight:760}
+.abstract{padding:24px 28px;background:#f4f9f8;border-left:3px solid #1ba18f;border-radius:0 13px 13px 0;margin-bottom:22px}
+.abstract h2{margin-top:0;font-size:18px}
+.abstract h2::before{display:none}
+.abstract p{font:14px/1.85 Manrope,sans-serif;color:#48616f}
+.abstract .tags{font:12px/1.65 Manrope,sans-serif;color:#69848c;margin:16px 0 0}
+.paper-rule{border:0;border-top:1px solid #e8eeee;margin:32px 0}
+.paper-quote{border-left:3px solid #43ad9a;padding:12px 24px;background:#f7f9f8;font:16px/1.8 "Source Serif 4",Georgia,serif;color:#42616b}
+.case-highlight{border:1px solid #dce9e7;border-radius:15px;padding:20px 22px;margin:17px 0}
+.case-highlight h3{margin-top:0}
+.case-highlight .source{font:11px/1.65 Manrope,sans-serif;color:#82929a}
+.print-footer{border-top:1px solid #e3e9eb;margin-top:42px;padding-top:20px;font:11px/1.7 Manrope,sans-serif;color:#70848d}
+.brochure .paper-banner{padding:45px 56px}
+.brochure .paper-main{padding:38px 55px 45px}
+.brochure .paper-main p,.brochure .paper-main li{font:14px/1.75 Manrope,sans-serif}
+.brochure .paper-main h2{font-size:21px;margin-top:29px}
+.brochure .paper-main h2::before{width:28px}
+.brochure-figures{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:25px 0}
+.brochure-figure{padding:18px;border:1px solid #dfe9ea;background:#f8fbfb;border-radius:12px}
+.brochure-figure small{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#8798a0;font-weight:750}
+.brochure-figure strong{display:block;font-size:30px;color:#0c6a69;letter-spacing:-1.5px;margin:8px 0}
+.brochure-figure p{font-size:11px!important;color:#758b95!important;margin:0}
+.brochure-cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.brochure-cases .case-highlight{margin:0;padding:17px}
+.brochure-cases .case-highlight h3{font-size:14px;margin:0 0 10px}
+.brochure-cases .case-highlight p{font-size:12px!important;line-height:1.7}
+.brochure-cta{background:#124e54;color:#fff;border-radius:14px;padding:21px 26px;margin-top:28px}
+.brochure-cta strong{color:#fff}
+.brochure-cta p{color:#d8ecea!important;margin:8px 0}
+.brochure-cta a{color:#a1eddf}
+@media(max-width:720px){.paper-shell{border-radius:0;margin:0;border:0}.paper-banner,.brochure .paper-banner{padding:31px 24px}.paper-main,.brochure .paper-main{padding:32px 23px}.paper-main p,.paper-main li{font-size:15px}.brochure-figures{grid-template-columns:1fr}.brochure-cases{grid-template-columns:1fr}.paper-nav{padding:13px 15px}.paper-nav .actions a:nth-child(2){display:none}}
+@page{size:A4;margin:16mm 17mm}
+@media print{html,body{background:#fff!important}.paper-nav{display:none}.paper-shell{margin:0;border:0;border-radius:0;box-shadow:none;max-width:none}.paper-banner{padding:20px 0 24px;background:#fff!important;color:#123a48!important;border-bottom:3px solid #158879}.paper-banner .eyebrow,.paper-banner h1{color:#143b45!important}.paper-banner p,.paper-details{color:#4d6c75!important}.paper-main,.brochure .paper-main{padding:18px 0}.paper-main h2,.paper-main h3{break-after:avoid}.paper-main table,.paper-main li,.case-highlight,.brochure-figure{break-inside:avoid}.paper-main p{orphans:3;widows:3}.brochure-cases{grid-template-columns:repeat(2,1fr)}.print-footer{margin-top:22px}}

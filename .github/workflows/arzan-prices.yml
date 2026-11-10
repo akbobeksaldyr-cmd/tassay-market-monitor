@@ -7,8 +7,6 @@ on:
     branches: [main]
     paths:
       - 'scripts/arzan_daily.py'
-      - 'scripts/arzan_history_probe.py'
-      - 'scripts/backfill_arzan_history.py'
       - '.github/workflows/arzan-prices.yml'
 permissions:
   contents: write
@@ -31,21 +29,17 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Check Python scripts and parser regression tests
         run: |
-          python -m py_compile scripts/arzan_daily.py scripts/backfill_arzan_history.py scripts/arzan_history_probe.py scripts/install_arzan_integration.py tests/test_arzan_daily.py tests/test_arzan_backfill.py
+          python -m py_compile scripts/arzan_daily.py scripts/backfill_arzan_history.py scripts/install_arzan_integration.py tests/test_arzan_daily.py tests/test_arzan_backfill.py
           python -m unittest discover -s tests -v
       - name: Integrate site once / update script references
         run: python scripts/install_arzan_integration.py
-      - name: Probe public historical chart data (one-time repair)
-        run: python -m scripts.arzan_history_probe
       - name: Collect actual public prices only
         run: python scripts/arzan_daily.py
-      - name: Restore missing Nov 3-9 shop prices from dated Arzan history
-        run: python -m scripts.backfill_arzan_history
       - name: Commit audited snapshot and site integration
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app.py km3.js index.html ru.html data/daily-prices.json data/arzan-history-probe.json
+          git add app.py km3.js index.html ru.html data/daily-prices.json
           if ! git diff --cached --quiet; then
             git commit -m "Daily Astana price snapshot (unverified sources)"
             git push

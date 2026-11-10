@@ -50,10 +50,45 @@ def main():
                     page.goto(ORIGIN+"/"+lang,wait_until="domcontentloaded",timeout=30000)
                     page.locator(".editorial-hero").wait_for(timeout=30000)
                     assert page.locator(".price-card").count()==3,lang
-                    assert page.locator("#nav > .nav").count()==6,lang
+                    assert page.locator("#nav > .nav").count()==10,lang
                     assert page.locator(".research-archive summary").count()==1,lang
                     assert page.locator("#content .hero-chart").count()==1,lang
-                    page.locator("#nav > .nav").nth(3).click()
+                    # Restore five requested sections in the ordinary, visible navigation.
+                    labels=page.locator("#nav > .nav").all_text_contents()
+                    if lang=="ru":
+                        for text in ("Динамика цен","Цены и доказательства","Рынок Астаны",
+                                     "Внешние факторы","Сравнение городов"):
+                            assert any(text in label for label in labels),(text,labels)
+                    else:
+                        for text in ("Баға динамикасы","Бағалар және дәлелдемелер",
+                                     "Астана нарығы","Сыртқы факторлар","Қалаларды салыстыру"):
+                            assert any(text in label for label in labels),(text,labels)
+                    page.locator("#nav > .nav").nth(1).click()
+                    assert page.locator("#brand-price-page").count()==1,lang
+                    assert page.locator(".brand-tab").count()==4,lang
+                    assert page.locator(".brand-tab[aria-selected=true]").count()==1
+                    for label,marker in [
+                        ("TASSAY","TASSAY"),
+                        ("TURAN","TURAN"),
+                        ("Ессентуки №4","ESSENTUKI")
+                    ]:
+                        page.get_by_role("tab",name=label,exact=True).click()
+                        assert page.locator(".brand-tab[aria-selected=true]").count()==1
+                        assert marker in page.locator("#brand-price-page").inner_text(),(lang,label)
+                    page.get_by_role("tab",name="Все цены" if lang=="ru" else "Барлық бағалар").click()
+                    assert page.locator("#brand-price-page table").count()>=1,lang
+                    page.locator("#nav > .nav").nth(2).click()
+                    assert page.locator("#brand-dynamics-page").count()==1,lang
+                    assert page.locator(".brand-tab").count()==4,lang
+                    page.get_by_role("tab",name="Ессентуки №4").click()
+                    assert page.locator("#brand-dynamics-page svg").count()>=1
+                    page.locator("#nav > .nav").nth(3).click() # Astana market
+                    assert page.locator("#content .panel").count()>0
+                    page.locator("#nav > .nav").nth(4).click() # external factors
+                    assert page.locator("#content .panel").count()>0
+                    page.locator("#nav > .nav").nth(5).click() # city comparison
+                    assert page.locator("#content .panel").count()>0
+                    page.locator("#nav > .nav").nth(7).click() # EAEU cases
                     page.locator(".case-card").first.wait_for(timeout=5000)
                     assert page.locator(".case-card").count()==4,lang
                     assert not errors,(lang,errors)
@@ -62,6 +97,8 @@ def main():
                 mobile.goto(ORIGIN+"/ru",wait_until="domcontentloaded",timeout=30000)
                 mobile.locator(".editorial-hero").wait_for(timeout=30000)
                 assert mobile.locator(".price-card").count()==3
+                mobile.locator(".menu").click()
+                assert mobile.locator("#sidebar.open").count()==1
                 assert mobile.locator(".menu").is_visible()
                 mobile.close()
             finally:browser.close()

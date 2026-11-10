@@ -52,7 +52,7 @@ def probe_one(browser, brand, url):
                         "city_id","city_name","out_of_stock_since"
                     ) if k in store}
                     desc["prices"]=[{k:p.get(k) for k in ("date","datetime","price","in_stock","is_promo") if k in p}
-                                    for p in store.get("prices",[]) if str(p.get("date",""))>="2026-09-01"]
+                                    for p in store.get("prices",[]) if str(p.get("date",""))>="2026-09-01" or store.get("chain_name")=="Galmart"]
                     hist.append(desc)
                 info["history_api"]={"days":raw.get("days"),"stores":hist}
             entries.append({"host":urlsplit(response.url).hostname,"path":urlsplit(response.url).path,"type":typ[:60],
@@ -130,6 +130,12 @@ def main():
                     "data":[probe_one(b,name,url) if allowed_by_robots(session,url) else {"brand":name,"error":"robots"} for name,url in PRODUCTS]}
         finally:b.close()
     OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    for product in result["data"]:
+        for store in (product.get("history_api") or {}).get("stores",[]):
+            if store.get("chain_name") == "Galmart":
+                print("GALMART_PUBLIC_HISTORY", product.get("brand"),
+                      json.dumps({"out_of_stock_since":store.get("out_of_stock_since"),
+                                  "prices":store.get("prices",[])},ensure_ascii=False)[:6000])
     print("Arzan public price-history probe saved",[(x["brand"],len(x.get("responses",[])),x.get("error")) for x in result["data"]])
 
 if __name__=="__main__":

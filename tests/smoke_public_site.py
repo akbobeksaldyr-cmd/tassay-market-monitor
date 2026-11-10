@@ -70,11 +70,12 @@ def main():
                     for label,marker in [
                         ("TASSAY","TASSAY"),
                         ("TURAN","TURAN"),
-                        ("Ессентуки №4","ESSENTUKI")
+                        ("Ессентуки №4","Ессентуки")
                     ]:
                         page.get_by_role("tab",name=label,exact=True).click()
                         assert page.locator(".brand-tab[aria-selected=true]").count()==1
                         assert marker in page.locator("#brand-price-page").inner_text(),(lang,label)
+                        assert page.locator("#brand-price-page table").count()>=1,(lang,label)
                     page.get_by_role("tab",name="Все цены" if lang=="ru" else "Барлық бағалар").click()
                     assert page.locator("#brand-price-page table").count()>=1,lang
                     page.locator("#nav > .nav").nth(2).click()

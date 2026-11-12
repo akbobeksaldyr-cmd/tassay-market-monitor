@@ -47,6 +47,20 @@ def main():
         _,gallery_data=request("/api/research-history-images")
         listing=json.loads(gallery_data)
         assert set(listing["stages"])=={"BSH1","BSH2","BSH3","BSH4"}
+        for stage, filename in (
+            ("BSH1", "первый вариант.png"),
+            ("BSH2", "второй вариант.png"),
+            ("BSH3", "третий вариант.png"),
+        ):
+            assert any(item["name"] == filename for item in listing["stages"][stage]), (stage, listing)
+            status, image = request("/history-legacy-image/" + stage)
+            assert status == 200 and image.startswith(b"\\x89PNG\\r\\n\\x1a\\n"), (stage, status, len(image))
+        try:
+            request("/history-legacy-image/BSH4")
+            raise AssertionError("Unexpected screenshot for empty BSH4")
+        except urllib.error.HTTPError as exc:
+            assert exc.code == 404
+
         assert listing["origin"] in ("github","deployed_snapshot")
         with sync_playwright() as p:
             browser=p.chromium.launch(headless=True)

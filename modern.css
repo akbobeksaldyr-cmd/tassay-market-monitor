@@ -234,3 +234,46 @@ tr:hover td{background:#f4f9f7!important}
 .history-method a{font-size:13px;font-weight:750}
 @media(max-width:1060px){.history-timeline{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.history-intro{padding:25px 20px}.history-stage-detail{padding:19px}.history-detail-grid{grid-template-columns:1fr}.history-detail-wide{grid-column:1}.history-timeline{gap:8px}.history-milestone{gap:8px;padding:12px 10px}.history-numeral{width:25px;height:25px}.history-milestone-body strong{font-size:11px}.history-gallery-head{align-items:flex-start}.history-image-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.history-image-preview{height:120px}}
+
+/* БШ4 consumer survey: bilingual, anonymous aggregates */
+.survey-hero{background:linear-gradient(115deg,#124451,#11786e);border-radius:20px;padding:29px 34px;color:white;margin-bottom:18px}
+.survey-hero .hero-eyebrow{color:#c4e6e0;font-size:11px;font-weight:800}
+.survey-hero h2{font-size:clamp(24px,3vw,33px);color:#fff;line-height:1.24;margin:12px 0}
+.survey-hero p{font-size:13px;line-height:1.8;color:#d8ece9;max-width:780px}
+.survey-pill{display:inline-block;border-radius:20px;border:1px solid #85bdb4;padding:7px 12px;font-size:11px;color:#e9faf4}
+.survey-filters{display:flex;flex-wrap:wrap;gap:9px;margin:19px 0}
+.survey-filter{background:#fff;color:#315866;border:1px solid #d8e8e4;border-radius:10px;padding:11px 14px;font-size:12px;cursor:pointer;font-weight:750}
+.survey-filter.active{background:#e2f5ef;color:#116d65;border-color:#16877c}
+.survey-filter:focus-visible{outline:2px solid #188b7f;outline-offset:2px}
+.survey-metrics,.survey-price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.survey-metric{background:#fff;border:1px solid #deebe8;padding:20px;border-radius:14px;display:flex;flex-direction:column;gap:7px}
+.survey-metric strong{color:#176f6a;font-size:29px;font-weight:850}
+.survey-metric span{font-size:12px;font-weight:750;color:#274e59;line-height:1.5}
+.survey-metric small{font-size:11px;color:#708b91}
+.survey-context,.survey-note{font-size:12px;line-height:1.8;color:#5f7b86;margin:15px 0}
+.survey-chart{margin:16px 0}
+.survey-chart h3{margin:0 0 7px}
+.survey-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.survey-grid>.panel{margin:0}
+.survey-bars,.survey-pairs{display:flex;flex-direction:column;gap:16px}
+.survey-bar-label{display:flex;justify-content:space-between;gap:12px;margin-bottom:7px;font-size:12px;color:#456574;line-height:1.5}
+.survey-bar-label strong{font-size:11px;color:#176f6a;white-space:nowrap}
+.survey-bar-track,.survey-stack{background:#eaf2f0;height:12px;overflow:hidden;border-radius:20px}
+.survey-bar-fill{height:100%;border-radius:20px}
+.survey-stack{display:flex;height:14px}
+.survey-stack>span{height:100%}
+.survey-legend{display:flex;flex-wrap:wrap;gap:13px;margin:0 0 19px;font-size:11px;color:#5f7a83}
+.survey-legend span{display:flex;align-items:center;gap:7px}
+.survey-legend i{display:inline-block;width:11px;height:11px;border-radius:3px}
+.survey-price-item{border:1px solid #e1ede9;border-radius:12px;background:#f7faf9;padding:18px;display:flex;flex-direction:column;gap:10px}
+.survey-price-item strong{font-size:23px;color:#1b5260}
+.survey-price-item span{font-size:12px;line-height:1.6;color:#526e77}
+.survey-price-item small{color:#63808a;font-size:11px;font-weight:800}
+.survey-footnote{font-size:11px;color:#68838e;line-height:1.7;margin:16px 0 5px}
+.survey-law dl{display:grid;grid-template-columns:95px 1fr;gap:12px 16px;font-size:12px;line-height:1.7}
+.survey-law dt{color:#177d74;font-weight:850}
+.survey-law dd{margin:0;color:#456672}
+.survey-source p{font-size:12px;line-height:1.8;color:#516f7a}
+.survey-source-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+@media(max-width:960px){.survey-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.survey-hero{padding:24px 19px}.survey-metrics,.survey-price-grid{grid-template-columns:1fr}.survey-filter{width:100%;text-align:left}.survey-law dl{grid-template-columns:1fr;gap:4px}}

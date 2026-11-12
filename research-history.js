@@ -3,6 +3,7 @@
 (function(){
   'use strict';
   const translate=(kk,ru)=>(typeof KM3_RU!=='undefined'&&KM3_RU)?ru:kk;
+  const t=translate;
   const e=value=>(typeof esc==='function'?esc(value):String(value));
   const repo='https://github.com/akbobeksaldyr-cmd/tassay-market-monitor';
   const stages=[

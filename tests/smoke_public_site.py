@@ -1,5 +1,7 @@
 """Local deployment smoke test: public pages, scripts, and key user flows."""
 import json
+from io import BytesIO
+from PIL import Image
 import os
 import subprocess
 import time
@@ -117,6 +119,13 @@ def main():
                     img_state=first_image.evaluate("(img) => ({url:img.currentSrc,width:img.naturalWidth,height:img.naturalHeight,complete:img.complete})")
                     print("EVIDENCE_IMAGE_DIAGNOSTIC",lang,img_state,flush=True)
                     assert img_state["width"]>0 and img_state["height"]>0, (lang,img_state)
+                    # Confirm the *rendered card*, not only the file, contains visible pixels.
+                    card=page.locator(".research-proof-image").first
+                    screenshot=Image.open(BytesIO(card.screenshot())).convert("RGB")
+                    distinct=len(screenshot.quantize(colors=64).getcolors(maxcolors=100000) or [])
+                    print("EVIDENCE_VISIBLE_CARD",lang,{"colors":distinct,"size":screenshot.size},flush=True)
+                    assert distinct>=10,(lang,"Evidence rendered as an empty/flat placeholder",distinct)
+
                     samples=first_image.evaluate("""img => {
                       const canvas=document.createElement('canvas');
                       canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;

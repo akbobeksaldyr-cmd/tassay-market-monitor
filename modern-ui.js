@@ -10,17 +10,19 @@
   // Restore the research sections to the main navigation; group prices by brand.
   const primary=[
     [0,t('Шолу','Обзор')],
-    [2,t('Бағалар және дәлелдемелер','Цены и доказательства'),"selectPriceView('all')"],
+    [2,t('Бағалар','Цены'),"selectPriceView('all')"],
     [1,t('Баға динамикасы','Динамика цен'),"selectDynamicsView('tassay')"],
     [4,t('Астана нарығы','Рынок Астаны')],
     [6,t('Сыртқы факторлар','Внешние факторы')],
-    [7,t('Қалаларды салыстыру','Сравнение городов')],
+    [7,t('Дәлелдемелер','Доказательства')],
     [16,t('Құқықтық талдау','Правовой анализ')],
     [18,t('ЕЭК және ЕАЭО Соты','ЕЭК и Суд ЕАЭС')],
     [19,t('Мақала және брошюра','Статья и брошюра')],
-    [9,t('Дереккөздер','Источники')]
+    [9,t('Құқықтық дереккөздер','Правовые источники')]
   ];
   const secondary=[3,5,8,10,11,14,15,17,20,23,24,25];
+  // City-to-city comparisons are intentionally removed from public navigation.
+
   const originalRender=render;
   function modernSidebar(){
     const el=document.getElementById('nav');
@@ -54,16 +56,27 @@
       '<button class="btn" onclick="nav(22)">'+t('Бағаларды қарау','Смотреть цены')+'</button>',
       '<button class="btn outline" onclick="nav(18)">'+t('ЕЭК істерін талдау','Практика ЕЭК')+'</button>'
     ].join('');
+    const descriptions={
+      TASSAY:t('Қазақстанда өндірілетін табиғи газдалған ауыз су, 1 л.','Природная газированная питьевая вода казахстанского производства, 1 л.'),
+      TURAN:t('Қазақстандық газдалған су бренді, 1 л.','Казахстанская газированная вода, 1 л.'),
+      ESSENTUKI4:t('Ресейде өндірілетін емдік-асханалық минералды газдалған су, 1 л.','Газированная лечебно-столовая минеральная вода из России, 1 л.')
+    };
+    const productPhotos={
+      TASSAY:'/media/tassay-card',
+      TURAN:'/media/turan-card',
+      ESSENTUKI4:'/media/essentuki-card'
+    };
     const cards=brandOrder.map(([id,name,initial])=>{
       const current=latestFor(id,'Arbuz');
-      return '<article class="price-card"><div class="brand-mini"><i>'+initial+'</i>'+
+      return '<article class="price-card product-overview-card"><div class="product-overview-image"><img src="'+productPhotos[id]+'" alt="'+asText(name)+' · '+t('газдалған су 1 л','газированная вода 1 л')+'" loading="lazy"></div><div class="brand-mini"><i>'+initial+'</i>'+
        '<div><div class="label">'+t('1 л · Газдалған','1 л · Газированная')+'</div><h3>'+name+'</h3></div></div>'+
+       '<p class="product-overview-description">'+asText(descriptions[id])+'</p>'+
        '<div class="price-large">'+fPrice(current)+'</div>'+
        '<p class="price-sub">Arbuz · '+(current?asText(current.day):t('Баға жүктелуде','Данные загружаются'))+
        '</p><a href="#" onclick="nav(22);return false">'+t('Күндер мен дүкендер бойынша ↗','По дням и магазинам ↗')+'</a></article>';
     }).join('');
     return '<section class="editorial-hero"><div class="hero-eyebrow">TASSAY MARKET MONITOR / MNU</div>'+
-      '<h2>'+t('Судың бағасы. Нақты деректер. Құқықтық талдау.','Цены на воду. Проверяемые данные. Правовой анализ.')+'</h2>'+
+      '<h2 class="research-question">'+t('TASSAY, TURAN және Ессентуки №4 бір тауар нарығына жата ма?','Принадлежат ли TASSAY, TURAN и Ессентуки №4 одному товарному рынку?')+'</h2>'+
       '<p>'+t('TASSAY, TURAN және Ессентуки №4 өнімдерінің Астана нарығындағы бөлшек бағаларын бақылау. Бағалар ашық дереккөздерден жиналады, қорытынды дәлелдер мен шектеулерді ескереді.',
         'Мониторинг розничных цен TASSAY, TURAN и Ессентуки №4 в Астане. Данные собираются из открытых источников, правовые выводы учитывают ограничения доказательств.')+'</p>'+
       '<div class="row">'+links+'</div><div class="editorial-meta">'+
@@ -72,7 +85,7 @@
       '<div class="research-access"><span style="font-size:20px">↗</span><div><strong>'+
       t('Қашықтан қолжетімді зерттеу','Публичный доступ к исследованию')+'</strong><div>'+
       'https://tassay-market-monitor.onrender.com/ru · /kk</div></div></div>'+
-      '<div class="overview-heading"><div><h2>'+t('Соңғы бақылаулар','Последние наблюдения')+
+      '<div class="overview-heading"><div><h2>'+t('Зерттелетін үш тауар','Три исследуемых товара')+
       '</h2><p>'+t('Arbuz дүкені бойынша бір күнгі бағаларды салыстыру','Сравнение цен одного магазина Arbuz')+'</p></div>'+
       '<a href="#" onclick="nav(22);return false">'+t('Барлық дерек →','Все данные →')+'</a></div>'+
       '<section class="price-board">'+cards+'</section>'+

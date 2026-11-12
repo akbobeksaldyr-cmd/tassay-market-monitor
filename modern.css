@@ -181,3 +181,10 @@ tr:hover td{background:#f4f9f7!important}
 .market-calc-result strong{font-size:23px;color:#136c60}
 @media(max-width:920px){.product-overview-image{height:160px}.legal-source-grid{grid-template-columns:1fr}}
 @media(max-width:580px){.editorial-hero .research-question{font-size:28px!important}.product-overview-image{height:190px}.research-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.research-proof-image{height:105px}.research-proof-caption{flex-direction:column;align-items:flex-start}.market-form-grid{grid-template-columns:1fr}.market-formula{font-size:23px;padding:15px}.market-calculator{padding:15px}}
+
+
+/* Evidence visibility fix (2026-11-12): ensure thumbnails are painted at once. */
+.research-proof-image{position:relative;background:#fff!important;min-height:143px}
+.research-proof-image img{display:block!important;width:100%!important;height:100%!important;min-height:143px;visibility:visible!important;opacity:1!important;object-fit:contain!important;background:#fff}
+.research-proof:not(:hover) img{transform:none!important}
+@media(max-width:580px){.research-proof-image,.research-proof-image img{min-height:105px}}

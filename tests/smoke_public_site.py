@@ -36,6 +36,7 @@ def main():
           ("/brochure","Атамекен".encode()),
           ("/modern-ui.js",b"modernSidebar"),
           ("/research-sections.js",b"calculateAstanaMarketShare"),
+          ("/research-history.js",b"historyPage"),
           ("/modern.css",b"editorial-hero"),
           ("/paper.css",b"paper-banner")]:
             status,body=request(path)
@@ -43,6 +44,10 @@ def main():
         status,payload=request("/api/auto-prices")
         archive=json.loads(payload)
         assert isinstance(archive["observations"],list)
+        _,gallery_data=request("/api/research-history-images")
+        listing=json.loads(gallery_data)
+        assert set(listing["stages"])=={"BSH1","BSH2","BSH3","BSH4"}
+        assert listing["origin"] in ("github","deployed_snapshot")
         with sync_playwright() as p:
             browser=p.chromium.launch(headless=True)
             try:
@@ -53,19 +58,21 @@ def main():
                     page.goto(ORIGIN+"/"+lang,wait_until="domcontentloaded",timeout=30000)
                     page.locator(".editorial-hero").wait_for(timeout=30000)
                     assert page.locator(".price-card").count()==3,lang
-                    assert page.locator("#nav > .nav").count()==10,lang
+                    assert page.locator("#nav > .nav").count()==11,lang
                     assert page.locator(".research-archive summary").count()==1,lang
                     assert page.locator("#content .hero-chart").count()==1,lang
                     # Clear, normal navigation: no city-comparison page.
                     labels=page.locator("#nav > .nav").all_text_contents()
                     if lang=="ru":
                         for label in ("Динамика цен","Цены","Рынок Астаны",
-                                      "Внешние факторы","Доказательства","Правовые источники"):
+                                      "Внешние факторы","Доказательства","Правовые источники",
+                                      "История исследования"):
                             assert any(label in title for title in labels),(lang,label,labels)
                         assert not any("Сравнение городов" in title for title in labels),labels
                     else:
                         for label in ("Баға динамикасы","Бағалар","Астана нарығы",
-                                      "Сыртқы факторлар","Дәлелдемелер","Құқықтық дереккөздер"):
+                                      "Сыртқы факторлар","Дәлелдемелер","Құқықтық дереккөздер",
+                                      "Зерттеу тарихы"):
                             assert any(label in title for title in labels),(lang,label,labels)
                         assert not any("Қалаларды салыстыру" in title for title in labels),labels
                     # Main page: research question, 3 actual product images and descriptions.
@@ -160,6 +167,21 @@ def main():
                     page.locator("#nav > .nav").nth(7).click()
                     page.locator(".case-card").first.wait_for(timeout=5000)
                     assert page.locator(".case-card").count()==4,lang
+                    # Four historic snapshots in one new public research section.
+                    page.locator("#nav > .nav").nth(9).click()
+                    assert page.locator(".history-milestone").count()==4,lang
+                    assert page.locator(".history-stage-detail").count()==1,lang
+                    assert page.locator('.history-stage-detail a[href*="/tree/d5c5ce2b"]').count()==1,lang
+                    for index,shortsha in [(1,"064de5a915"),(2,"70d4d862e9")]:
+                        page.locator(".history-milestone").nth(index).click()
+                        assert page.locator(".history-milestone.selected").count()==1
+                        assert page.locator('.history-stage-detail a[href*="/tree/'+shortsha+'"]').count()==1,(lang,index)
+                        assert page.locator("#history-gallery").count()==1
+                        assert page.locator(".history-gallery-head a").get_attribute("href").endswith(
+                            "history-screenshots/BSH"+str(index+1))
+                    page.locator(".history-milestone").nth(3).click()
+                    assert "14.11.2026" in page.locator(".history-stage-meta").inner_text()
+                    assert page.locator('.history-stage-detail a[href$="/tree/main"]').count()==1
                     assert not errors,(lang,errors)
                     page.close()
                 mobile=browser.new_page(viewport={"width":390,"height":844},is_mobile=True,has_touch=True)

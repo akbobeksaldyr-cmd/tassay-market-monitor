@@ -1,7 +1,7 @@
 """Public BSH1–BSH4 screenshot manifest from GitHub.
 
 A 5-minute cache avoids API rate limits. Only files from explicit BSH stage
-folders and three verified legacy screenshots in repository root are shown.
+folders and four verified legacy screenshots in repository root are shown.
 Local bundled images are used when GitHub is temporarily unavailable.
 """
 from __future__ import annotations
@@ -21,6 +21,7 @@ LEGACY_FILES = {
     "BSH1": "первый вариант.png",
     "BSH2": "второй вариант.png",
     "BSH3": "третий вариант.png",
+    "BSH4": "четвертый вариант.png",
 }
 TREE_API = f"https://api.github.com/repos/{REPO}/git/trees/main?recursive=1"
 _cache: dict = {"until": 0.0, "payload": None}

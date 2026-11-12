@@ -8,6 +8,7 @@ on:
       - 'ru.html'
       - 'modern.css'
       - 'modern-ui.js'
+      - 'research-sections.js'
       - 'km3.js'
       - 'tests/smoke_public_site.py'
       - 'paper.css'
@@ -29,6 +30,7 @@ jobs:
         run: |
           python -m py_compile app.py
           node --check modern-ui.js
+          node --check research-sections.js
           python - <<'PY'
           import re
           import subprocess
@@ -36,13 +38,14 @@ jobs:
           import tempfile
           source=Path("app.py").read_text(encoding="utf-8")
           assert source.count('@app.get("/api/auto-prices")')==1, "Duplicated API route"
-          for route in ("/publication","/brochure","/modern.css","/modern-ui.js","/paper.css"):
+          for route in ("/publication","/brochure","/modern.css","/modern-ui.js","/research-sections.js","/paper.css"):
               assert f'@app.get("{route}")' in source, route
           for name in ("index.html","ru.html"):
               html=Path(name).read_text(encoding="utf-8")
-              assert 'modern.css?v=20261110-nav2' in html
-              assert 'modern-ui.js?v=20261110-nav2' in html
-              assert html.count("<script")==(4 if name=="ru.html" else 3), f"Wrong script count in {name}"
+              assert 'modern.css?v=20261112-layout3' in html
+              assert 'modern-ui.js?v=20261112-layout3' in html
+              assert 'research-sections.js?v=20261112-layout3' in html
+              assert html.count("<script")==(5 if name=="ru.html" else 4), f"Wrong script count in {name}"
               for script in re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',html):
                   with tempfile.NamedTemporaryFile("w",suffix=".js",encoding="utf-8") as tf:
                       tf.write(script);tf.flush()

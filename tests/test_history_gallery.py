@@ -3,7 +3,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from history_gallery import _remote_images, _local_images, safe_image, STAGES
+from history_gallery import _remote_images, _local_images, safe_image, STAGES, LEGACY_FILES
 
 class HistoryGalleryTests(unittest.TestCase):
     def test_rejects_traversal_and_non_image_files(self):
@@ -29,6 +29,20 @@ class HistoryGalleryTests(unittest.TestCase):
         self.assertIn("%D0",result["BSH1"][0]["url"])
         self.assertTrue(result["BSH2"][0]["url"].startswith("https://raw.githubusercontent.com/"))
         self.assertEqual(set(result),set(STAGES))
+
+    def test_original_variant_screenshots_assigned_to_correct_stages(self):
+        tree={"truncated":False,"tree":[
+            {"type":"blob","path":"первый вариант.png"},
+            {"type":"blob","path":"второй вариант.png"},
+            {"type":"blob","path":"третий вариант.png"},
+            {"type":"blob","path":"посторонний документ.png"},
+        ]}
+        out=_remote_images(tree)
+        for stage,name in LEGACY_FILES.items():
+            self.assertEqual(len(out[stage]),1)
+            self.assertEqual(out[stage][0]["name"],name)
+            self.assertEqual(out[stage][0]["url"],f"/history-legacy-image/{stage}")
+        self.assertEqual(out["BSH4"],[])
 
     def test_missing_stage_images_have_empty_placeholder_sets(self):
         result=_local_images()

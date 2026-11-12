@@ -35,6 +35,7 @@ class HistoryGalleryTests(unittest.TestCase):
             {"type":"blob","path":"первый вариант.png"},
             {"type":"blob","path":"второй вариант.png"},
             {"type":"blob","path":"третий вариант.png"},
+            {"type":"blob","path":"четвертый вариант.png"},
             {"type":"blob","path":"посторонний документ.png"},
         ]}
         out=_remote_images(tree)
@@ -42,7 +43,7 @@ class HistoryGalleryTests(unittest.TestCase):
             self.assertEqual(len(out[stage]),1)
             self.assertEqual(out[stage][0]["name"],name)
             self.assertEqual(out[stage][0]["url"],f"/history-legacy-image/{stage}")
-        self.assertEqual(out["BSH4"],[])
+        self.assertEqual(out["BSH4"][0]["name"],"четвертый вариант.png")
 
     def test_missing_stage_images_have_empty_placeholder_sets(self):
         result=_local_images()

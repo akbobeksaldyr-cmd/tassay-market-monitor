@@ -1,7 +1,7 @@
 name: Astana daily Arzan monitoring
 on:
   schedule:
-    - cron: '7 4 * * *' # ~09:07 Astana, UTC+05:00 (GitHub schedule runs in UTC)
+    - cron: '7 3 * * *' # ~08:07 Astana, UTC+05:00 (GitHub schedule runs in UTC)
   workflow_dispatch:
   push:
     branches: [main]

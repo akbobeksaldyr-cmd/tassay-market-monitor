@@ -111,6 +111,12 @@ def main():
                     page.locator("#nav > .nav").nth(5).click()
                     assert page.locator(".research-proof").count()>10,lang
                     assert page.locator("#content img").count()>10,lang
+                    first_image=page.locator(".research-proof-image img").first
+                    first_image.scroll_into_view_if_needed()
+                    first_image.evaluate("(img) => img.decode().catch(() => null)")
+                    img_state=first_image.evaluate("(img) => ({url:img.currentSrc,width:img.naturalWidth,height:img.naturalHeight,complete:img.complete})")
+                    print("EVIDENCE_IMAGE_DIAGNOSTIC",lang,img_state,flush=True)
+                    assert img_state["width"]>0 and img_state["height"]>0, (lang,img_state)
                     for brand in ("TASSAY","TURAN","Ессентуки №4"):
                         page.get_by_role("tab",name=brand,exact=True).click()
                         assert page.locator(".research-proof").count()>=6,(lang,brand)

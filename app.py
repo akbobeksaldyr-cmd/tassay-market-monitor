@@ -116,6 +116,9 @@ def modern_styles():return FileResponse(Path(__file__).with_name("modern.css"),m
 @app.get("/modern-ui.js")
 def modern_interface():return FileResponse(Path(__file__).with_name("modern-ui.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=3600"})
 
+@app.get("/research-sections.js")
+def research_sections():return FileResponse(Path(__file__).with_name("research-sections.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=3600"})
+
 @app.get("/paper.css")
 def publication_styles():return FileResponse(Path(__file__).with_name("paper.css"),media_type="text/css",headers={"Cache-Control":"public, max-age=3600"})
 

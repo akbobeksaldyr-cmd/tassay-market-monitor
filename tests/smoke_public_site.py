@@ -117,6 +117,22 @@ def main():
                     img_state=first_image.evaluate("(img) => ({url:img.currentSrc,width:img.naturalWidth,height:img.naturalHeight,complete:img.complete})")
                     print("EVIDENCE_IMAGE_DIAGNOSTIC",lang,img_state,flush=True)
                     assert img_state["width"]>0 and img_state["height"]>0, (lang,img_state)
+                    samples=first_image.evaluate("""img => {
+                      const canvas=document.createElement('canvas');
+                      canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+                      const context=canvas.getContext('2d',{willReadFrequently:true});
+                      context.drawImage(img,0,0);
+                      const d=context.getImageData(0,0,canvas.width,canvas.height).data;
+                      const colors=new Set();let transparent=0;
+                      for(let i=0;i<d.length;i+=4){
+                        colors.add([d[i],d[i+1],d[i+2],d[i+3]].join(','));
+                        if(d[i+3]===0)transparent++;
+                      }
+                      return {unique:colors.size,transparent_pct:100*transparent/(d.length/4),
+                              first:[...d.slice(0,20)]};
+                    }""")
+                    print("EVIDENCE_PIXELS",lang,samples,flush=True)
+
                     for brand in ("TASSAY","TURAN","Ессентуки №4"):
                         page.get_by_role("tab",name=brand,exact=True).click()
                         assert page.locator(".research-proof").count()>=6,(lang,brand)

@@ -1,7 +1,7 @@
 """Public BSH1–BSH4 screenshot manifest from GitHub.
 
-A 5-minute cache avoids API rate limits. Only image paths under the four
-explicitly allowed study-stage folders are exposed; no arbitrary file access.
+A 5-minute cache avoids API rate limits. Only files from explicit BSH stage
+folders and three verified legacy screenshots in repository root are shown.
 Local bundled images are used when GitHub is temporarily unavailable.
 """
 from __future__ import annotations
@@ -17,6 +17,11 @@ REPO = "akbobeksaldyr-cmd/tassay-market-monitor"
 STAGES = ("BSH1", "BSH2", "BSH3", "BSH4")
 EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
 ROOT = Path(__file__).resolve().parent / "history-screenshots"
+LEGACY_FILES = {
+    "BSH1": "первый вариант.png",
+    "BSH2": "второй вариант.png",
+    "BSH3": "третий вариант.png",
+}
 TREE_API = f"https://api.github.com/repos/{REPO}/git/trees/main?recursive=1"
 _cache: dict = {"until": 0.0, "payload": None}
 
@@ -45,6 +50,12 @@ def _local_images() -> dict:
                     "name": file.name,
                     "url": f"/history-screenshots/{stage}/{quote(file.name, safe='')}",
                 })
+    for stage, filename in LEGACY_FILES.items():
+        if (ROOT.parent / filename).is_file():
+            out[stage].insert(0, {
+                "name": filename,
+                "url": f"/history-legacy-image/{stage}",
+            })
     return out
 
 
@@ -60,6 +71,14 @@ def _remote_images(tree: dict) -> dict:
             continue
         path = entry.get("path", "")
         parts = path.split("/")
+        if len(parts) == 1:
+            for legacy_stage, legacy_name in LEGACY_FILES.items():
+                if path == legacy_name:
+                    out[legacy_stage].append({
+                        "name": legacy_name,
+                        "url": f"/history-legacy-image/{legacy_stage}",
+                    })
+            continue
         if len(parts) != 3 or parts[0] != "history-screenshots":
             continue
         stage, name = parts[1:]

@@ -54,7 +54,7 @@ def main():
         ):
             assert any(item["name"] == filename for item in listing["stages"][stage]), (stage, listing)
             status, image = request("/history-legacy-image/" + stage)
-            assert status == 200 and image.startswith(b"\\x89PNG\\r\\n\\x1a\\n"), (stage, status, len(image))
+            assert status == 200 and image.startswith(bytes.fromhex("89504e470d0a1a0a")), (stage, status, len(image))
         try:
             request("/history-legacy-image/BSH4")
             raise AssertionError("Unexpected screenshot for empty BSH4")

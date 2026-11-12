@@ -9,6 +9,10 @@ on:
       - 'modern.css'
       - 'modern-ui.js'
       - 'research-sections.js'
+      - 'research-history.js'
+      - 'history_gallery.py'
+      - 'history-screenshots/**'
+      - 'tests/test_history_gallery.py'
       - 'km3.js'
       - 'tests/smoke_public_site.py'
       - 'paper.css'
@@ -31,6 +35,9 @@ jobs:
           python -m py_compile app.py
           node --check modern-ui.js
           node --check research-sections.js
+          node --check research-history.js
+          python -m py_compile history_gallery.py
+          python tests/test_history_gallery.py
           python - <<'PY'
           import re
           import subprocess
@@ -38,14 +45,15 @@ jobs:
           import tempfile
           source=Path("app.py").read_text(encoding="utf-8")
           assert source.count('@app.get("/api/auto-prices")')==1, "Duplicated API route"
-          for route in ("/publication","/brochure","/modern.css","/modern-ui.js","/research-sections.js","/paper.css"):
+          for route in ("/publication","/brochure","/modern.css","/modern-ui.js","/research-sections.js","/research-history.js","/api/research-history-images","/paper.css"):
               assert f'@app.get("{route}")' in source, route
           for name in ("index.html","ru.html"):
               html=Path(name).read_text(encoding="utf-8")
-              assert 'modern.css?v=20261112-evidence2' in html
-              assert 'modern-ui.js?v=20261112-question4' in html
+              assert 'modern.css?v=20261113-history' in html
+              assert 'modern-ui.js?v=20261113-history' in html
               assert 'research-sections.js?v=20261112-evidence2' in html
-              assert html.count("<script")==(5 if name=="ru.html" else 4), f"Wrong script count in {name}"
+              assert 'research-history.js?v=20261113-history' in html
+              assert html.count("<script")==(6 if name=="ru.html" else 5), f"Wrong script count in {name}"
               for script in re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',html):
                   with tempfile.NamedTemporaryFile("w",suffix=".js",encoding="utf-8") as tf:
                       tf.write(script);tf.flush()

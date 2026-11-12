@@ -125,6 +125,10 @@ def history_script():
                      media_type="application/javascript",
                      headers={"Cache-Control":"public, max-age=3600"})
 
+@app.get("/survey.js")
+def survey_script():
+ return FileResponse(Path(__file__).with_name("survey.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=300"})
+
 @app.get("/api/research-history-images")
 def research_history_images():
  from history_gallery import list_study_images

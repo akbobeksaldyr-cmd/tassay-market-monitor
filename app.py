@@ -130,6 +130,18 @@ def research_history_images():
  from history_gallery import list_study_images
  return JSONResponse(list_study_images(),headers={"Cache-Control":"public, max-age=300"})
 
+@app.get("/history-legacy-image/{stage}")
+def legacy_history_screenshot(stage:str):
+ from history_gallery import LEGACY_FILES
+ filename=LEGACY_FILES.get(stage)
+ if not filename:
+  raise HTTPException(404,"Unknown study stage")
+ location=Path(__file__).parent / filename
+ if not location.is_file():
+  raise HTTPException(404,"Historical screenshot not found")
+ return FileResponse(location,media_type="image/png",
+                     headers={"Cache-Control":"public, max-age=3600"})
+
 @app.get("/history-screenshots/{stage}/{filename}")
 def bundled_history_screenshot(stage:str, filename:str):
  from history_gallery import ROOT, safe_image

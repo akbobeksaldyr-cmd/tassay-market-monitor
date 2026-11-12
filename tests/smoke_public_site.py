@@ -33,6 +33,7 @@ def main():
           ("/publication","Дельрус".encode()),
           ("/brochure","Атамекен".encode()),
           ("/modern-ui.js",b"modernSidebar"),
+          ("/research-sections.js",b"calculateAstanaMarketShare"),
           ("/modern.css",b"editorial-hero"),
           ("/paper.css",b"paper-banner")]:
             status,body=request(path)
@@ -53,48 +54,79 @@ def main():
                     assert page.locator("#nav > .nav").count()==10,lang
                     assert page.locator(".research-archive summary").count()==1,lang
                     assert page.locator("#content .hero-chart").count()==1,lang
-                    # Restore five requested sections in the ordinary, visible navigation.
+                    # Clear, normal navigation: no city-comparison page.
                     labels=page.locator("#nav > .nav").all_text_contents()
                     if lang=="ru":
-                        for text in ("Динамика цен","Цены и доказательства","Рынок Астаны",
-                                     "Внешние факторы","Сравнение городов"):
-                            assert any(text in label for label in labels),(text,labels)
+                        for label in ("Динамика цен","Цены","Рынок Астаны",
+                                      "Внешние факторы","Доказательства","Правовые источники"):
+                            assert any(label in title for title in labels),(lang,label,labels)
+                        assert not any("Сравнение городов" in title for title in labels),labels
                     else:
-                        for text in ("Баға динамикасы","Бағалар және дәлелдемелер",
-                                     "Астана нарығы","Сыртқы факторлар","Қалаларды салыстыру"):
-                            assert any(text in label for label in labels),(text,labels)
+                        for label in ("Баға динамикасы","Бағалар","Астана нарығы",
+                                      "Сыртқы факторлар","Дәлелдемелер","Құқықтық дереккөздер"):
+                            assert any(label in title for title in labels),(lang,label,labels)
+                        assert not any("Қалаларды салыстыру" in title for title in labels),labels
+                    # Main page: research question, 3 actual product images and descriptions.
+                    q=page.locator(".research-question")
+                    assert q.count()==1 and len(q.inner_text())>45,lang
+                    assert page.locator(".product-overview-image img").count()==3,lang
+                    assert page.locator(".product-overview-description").count()==3,lang
+
+                    # Price tab shows pure numeric tables without image evidence.
                     page.locator("#nav > .nav").nth(1).click()
-                    assert page.locator("#brand-price-page").count()==1,lang
+                    assert page.locator("#brand-price-page").count()==0,lang # replaced by dedicated prices page
                     assert page.locator(".brand-tab").count()==4,lang
                     assert page.locator(".brand-tab[aria-selected=true]").count()==1
-                    for label,marker in [
-                        ("TASSAY","TASSAY"),
-                        ("TURAN","TURAN"),
-                        ("Ессентуки №4","Ессентуки")
-                    ]:
+                    for label in ("TASSAY","TURAN","Ессентуки №4"):
                         page.get_by_role("tab",name=label,exact=True).click()
-                        current=page.locator("#brand-price-page").inner_text()
-                        selected=page.locator(".brand-tab[aria-selected=true]").all_text_contents()
-                        if marker not in current:
-                            print("BRAND-TAB DIAGNOSTIC",lang,label,"selected",selected,
-                                  "text",repr(current[:500]),"errors",errors,flush=True)
-                        assert page.locator(".brand-tab[aria-selected=true]").count()==1
-                        assert marker in current,(lang,label)
-                        assert page.locator("#brand-price-page table").count()>=1,(lang,label)
+                        assert page.locator(".brand-tab[aria-selected=true]").inner_text()==label
+                        assert page.locator("#content table").count()>=1,(lang,label)
+                        assert page.locator("#content img").count()==0,(lang,label)
                     page.get_by_role("tab",name="Все цены" if lang=="ru" else "Барлық бағалар").click()
-                    assert page.locator("#brand-price-page table").count()>=1,lang
+                    assert page.locator("#content table tbody tr").count()>20,lang
+
+                    # Dynamics must be preserved.
                     page.locator("#nav > .nav").nth(2).click()
                     assert page.locator("#brand-dynamics-page").count()==1,lang
                     assert page.locator(".brand-tab").count()==4,lang
                     page.get_by_role("tab",name="Ессентуки №4").click()
-                    assert page.locator("#brand-dynamics-page svg").count()>=1
-                    page.locator("#nav > .nav").nth(3).click() # Astana market
-                    assert page.locator("#content .panel").count()>0
-                    page.locator("#nav > .nav").nth(4).click() # external factors
-                    assert page.locator("#content .panel").count()>0
-                    page.locator("#nav > .nav").nth(5).click() # city comparison
-                    assert page.locator("#content .panel").count()>0
-                    page.locator("#nav > .nav").nth(7).click() # EAEU cases
+                    assert page.locator("#brand-dynamics-page svg").count()>=1,lang
+
+                    # Astana market: live calculator, formula and input validation.
+                    page.locator("#nav > .nav").nth(3).click()
+                    assert "Q" in page.locator(".market-formula").inner_text()
+                    page.locator("#market-brand-sales").fill("200")
+                    page.locator("#market-total-sales").fill("1000")
+                    page.get_by_role("button",name="Рассчитать долю" if lang=="ru" else "Үлесті есептеу").click()
+                    assert "20,00%" in page.locator("#market-calc-result").inner_text(),lang
+                    page.locator("#market-brand-sales").fill("1200")
+                    page.get_by_role("button",name="Рассчитать долю" if lang=="ru" else "Үлесті есептеу").click()
+                    assert "20,00%" not in page.locator("#market-calc-result").inner_text(),lang
+
+                    # External factors remain a normal top-level page.
+                    page.locator("#nav > .nav").nth(4).click()
+                    assert page.locator("#content .panel").count()>0,lang
+
+                    # Dedicated evidence gallery: 3 brands, all screenshot thumbnails.
+                    page.locator("#nav > .nav").nth(5).click()
+                    assert page.locator(".research-proof").count()>10,lang
+                    assert page.locator("#content img").count()>10,lang
+                    for brand in ("TASSAY","TURAN","Ессентуки №4"):
+                        page.get_by_role("tab",name=brand,exact=True).click()
+                        assert page.locator(".research-proof").count()>=6,(lang,brand)
+                    page.locator(".research-proof").first.click()
+                    assert page.locator("#evidenceDialog").is_visible(),lang
+                    page.keyboard.press("Escape")
+
+                    # Normative sources, not screenshots.
+                    page.locator("#nav > .nav").nth(9).click()
+                    assert page.locator(".legal-source-grid .case-card").count()>=4,lang
+                    assert page.locator("#content img").count()==0,lang
+                    assert "169" in page.locator("#content").inner_text(),lang
+                    assert "76" in page.locator("#content").inner_text(),lang
+
+                    # EAEU cases still present.
+                    page.locator("#nav > .nav").nth(7).click()
                     page.locator(".case-card").first.wait_for(timeout=5000)
                     assert page.locator(".case-card").count()==4,lang
                     assert not errors,(lang,errors)
@@ -108,7 +140,7 @@ def main():
                 assert mobile.locator(".menu").is_visible()
                 mobile.close()
             finally:browser.close()
-        print("PASS: Public HTTP routes, bilingual interactive navigation, responsive homepage, four case-law cards")
+        print("PASS: product photos, research question, market calculator, price tabs, full evidence gallery, legal sources, bilingual navigation")
     finally:
         proc.terminate()
         try:proc.wait(timeout=6)

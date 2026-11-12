@@ -51,15 +51,11 @@ def main():
             ("BSH1", "первый вариант.png"),
             ("BSH2", "второй вариант.png"),
             ("BSH3", "третий вариант.png"),
+            ("BSH4", "четвертый вариант.png"),
         ):
             assert any(item["name"] == filename for item in listing["stages"][stage]), (stage, listing)
             status, image = request("/history-legacy-image/" + stage)
             assert status == 200 and image.startswith(bytes.fromhex("89504e470d0a1a0a")), (stage, status, len(image))
-        try:
-            request("/history-legacy-image/BSH4")
-            raise AssertionError("Unexpected screenshot for empty BSH4")
-        except urllib.error.HTTPError as exc:
-            assert exc.code == 404
 
         assert listing["origin"] in ("github","deployed_snapshot")
         with sync_playwright() as p:

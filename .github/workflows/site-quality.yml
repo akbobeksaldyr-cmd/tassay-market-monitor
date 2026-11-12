@@ -52,7 +52,7 @@ jobs:
               assert 'modern.css?v=20261113-history' in html
               assert 'modern-ui.js?v=20261113-history' in html
               assert 'research-sections.js?v=20261112-evidence2' in html
-              assert 'research-history.js?v=20261113-history' in html
+              assert 'research-history.js?v=20261113-bsh4fix' in html
               assert html.count("<script")==(6 if name=="ru.html" else 5), f"Wrong script count in {name}"
               for script in re.findall(r'<script(?:\s[^>]*)?>([\s\S]*?)</script>',html):
                   with tempfile.NamedTemporaryFile("w",suffix=".js",encoding="utf-8") as tf:

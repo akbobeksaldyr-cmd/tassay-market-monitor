@@ -192,6 +192,10 @@ def main():
                     page.locator(".history-milestone").nth(3).click()
                     assert "14.11.2026" in page.locator(".history-stage-meta").inner_text()
                     assert page.locator('.history-stage-detail a[href$="/tree/main"]').count()==1
+                    fourth=page.locator('#history-gallery .history-image-card').filter(has_text='четвертый вариант.png')
+                    fourth.wait_for(timeout=12000)
+                    assert fourth.count()==1,lang
+                    assert '/history-screenshots/BSH4/' in fourth.get_attribute('href'),lang
                     assert not errors,(lang,errors)
                     page.close()
                 mobile=browser.new_page(viewport={"width":390,"height":844},is_mobile=True,has_touch=True)

@@ -143,13 +143,24 @@
     if(!target)return;
     const stage=stages.find(s=>s.id===selected);
     if(!stage)return;
-    if(!gallery){
+    // BSH4 is also displayed directly from its verified GitHub path if
+    // a deployed API snapshot or GitHub directory listing is temporarily stale.
+    const fromApi=gallery?.stages?.[stage.id]||[];
+    const imgs=fromApi.filter((item,i,all)=>
+      all.findIndex(previous=>previous.name===item.name)===i);
+    if(stage.id==='BSH4'){
+      const name='четвертый вариант.png';
+      const url='https://raw.githubusercontent.com/akbobeksaldyr-cmd/tassay-market-monitor/main/history-screenshots/BSH4/'+encodeURIComponent(name);
+      const existing=imgs.findIndex(item=>item.name===name);
+      if(existing<0)imgs.push({name,url});
+      else imgs[existing]={name,url};
+    }
+    if(!gallery && !imgs.length){
       if(galleryFailure)target.innerHTML=localImageHelp(stage)+
         '<p class="overview-note">'+translate('GitHub файлдар тізімін әзірге алу мүмкін болмады. Папка сілтемесін пайдаланыңыз.',
         'Не удалось получить список файлов GitHub. Используй прямую ссылку на папку.')+'</p>';
       return;
     }
-    const imgs=gallery.stages?.[stage.id]||[];
     if(!imgs.length){target.innerHTML=localImageHelp(stage);return;}
     target.innerHTML='<div class="history-image-grid">'+imgs.map(item=>{
       const href=e(item.url);

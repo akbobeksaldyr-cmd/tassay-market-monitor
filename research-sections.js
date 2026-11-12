@@ -115,7 +115,7 @@
     const all=proofItems(),subset=all.filter(x=>x.brand===names[evidenceView]);
     const thumbs=subset.map((r,i)=>
       '<button type="button" class="research-proof" onclick="openResearchProof('+i+')">'+
-      '<div class="research-proof-image"><img src="'+escTxt(r.url)+'" loading="lazy" alt="'+
+      '<div class="research-proof-image"><img src="'+escTxt(r.url)+'" loading="eager" decoding="async" alt="'+
         escTxt(r.brand+' '+r.day+' '+r.city)+'"></div>'+
       '<div class="research-proof-caption"><strong>'+escTxt(r.day)+'</strong><span>'+
       escTxt(r.city)+'</span></div></button>').join('');

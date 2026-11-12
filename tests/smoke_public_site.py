@@ -157,7 +157,7 @@ def main():
                     page.keyboard.press("Escape")
 
                     # Normative sources, not screenshots.
-                    page.locator("#nav > .nav").nth(9).click()
+                    page.locator("#nav > .nav").nth(10).click()
                     assert page.locator(".legal-source-grid .case-card").count()>=4,lang
                     assert page.locator("#content img").count()==0,lang
                     assert "169" in page.locator("#content").inner_text(),lang

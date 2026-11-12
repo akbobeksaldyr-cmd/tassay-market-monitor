@@ -119,6 +119,28 @@ def modern_interface():return FileResponse(Path(__file__).with_name("modern-ui.j
 @app.get("/research-sections.js")
 def research_sections():return FileResponse(Path(__file__).with_name("research-sections.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=3600"})
 
+@app.get("/research-history.js")
+def history_script():
+ return FileResponse(Path(__file__).with_name("research-history.js"),
+                     media_type="application/javascript",
+                     headers={"Cache-Control":"public, max-age=3600"})
+
+@app.get("/api/research-history-images")
+def research_history_images():
+ from history_gallery import list_study_images
+ return JSONResponse(list_study_images(),headers={"Cache-Control":"public, max-age=300"})
+
+@app.get("/history-screenshots/{stage}/{filename}")
+def bundled_history_screenshot(stage:str, filename:str):
+ from history_gallery import ROOT, safe_image
+ if not safe_image(stage,filename):
+  raise HTTPException(404,"Invalid image")
+ location=ROOT/stage/filename
+ if not location.is_file():
+  raise HTTPException(404,"Screenshot not found")
+ return FileResponse(location,headers={"Cache-Control":"public, max-age=3600"})
+
+
 @app.get("/paper.css")
 def publication_styles():return FileResponse(Path(__file__).with_name("paper.css"),media_type="text/css",headers={"Cache-Control":"public, max-age=3600"})
 

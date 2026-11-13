@@ -241,6 +241,19 @@ def main():
                 mobile.goto(ORIGIN+"/ru",wait_until="domcontentloaded",timeout=30000)
                 mobile.locator(".editorial-hero").wait_for(timeout=30000)
                 assert mobile.locator(".price-card").count()==3
+                assert mobile.locator(".hero-product-card").count()==3
+                assert mobile.locator(".process-abstract .process-node").count()==3
+                assert mobile.locator("#content img").count()==0
+                mobile_chart=mobile.locator(".feature-price").evaluate("""el => {
+                    const outer=el.getBoundingClientRect();
+                    return [...el.querySelectorAll('.feature-price-top, .feature-price-svg, .feature-price-legend')]
+                       .every(item => {
+                           const r=item.getBoundingClientRect();
+                           return r.left>=outer.left-3 && r.right<=outer.right+3
+                              && r.top>=outer.top-3 && r.bottom<=outer.bottom+3;
+                       });
+                }""")
+                assert mobile_chart,"Mini price chart overflowing on mobile"
                 mobile.locator(".menu").click()
                 assert mobile.locator("#sidebar.open").count()==1
                 assert mobile.locator(".menu").is_visible()

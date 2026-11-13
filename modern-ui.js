@@ -8,36 +8,34 @@
   const brandOrder=[['TASSAY','TASSAY','T'],['TURAN','TURAN','U'],['ESSENTUKI4','Ессентуки №4','E']];
   const sourcePdf='https://tassay-market-monitor.onrender.com/publications/eek-practice-source';
   // Restore the research sections to the main navigation; group prices by brand.
+  // The full-width reference layout uses a top navigation; all other views
+  // remain available from a clearly labeled additional-sections menu.
   const primary=[
     [0,t('Шолу','Обзор')],
     [2,t('Бағалар','Цены'),"selectPriceView('all')"],
-    [1,t('Баға динамикасы','Динамика цен'),"selectDynamicsView('tassay')"],
+    [1,t('Динамика','Динамика'),"selectDynamicsView('tassay')"],
     [4,t('Астана нарығы','Рынок Астаны')],
-    [27,t('Сауалнама · өзара алмастырылу','Опрос · взаимозаменяемость')],
-    [6,t('Сыртқы факторлар','Внешние факторы')],
-    [7,t('Дәлелдемелер','Доказательства')],
+    [27,t('Сауалнама','Опрос')],
     [16,t('Құқықтық талдау','Правовой анализ')],
-    [18,t('ЕЭК және ЕАЭО Соты','ЕЭК и Суд ЕАЭС')],
-    [19,t('Мақала және брошюра','Статья и брошюра')],
-    [26,t('Зерттеу тарихы · БШ1–БШ4','История исследования · БШ1–БШ4')],
-    [9,t('Құқықтық дереккөздер','Правовые источники')]
+    [26,t('БШ1–БШ4 тарихы','История БШ1–БШ4')],
+    [9,t('Дереккөздер','Источники')]
   ];
-  const secondary=[3,5,8,10,11,14,15,17,20,23,24,25];
-  // City-to-city comparisons are intentionally removed from public navigation.
+  const secondary=[6,7,18,19,3,5,8,10,11,14,15,17,20,23,24,25];
 
   const originalRender=render;
   function modernSidebar(){
     const el=document.getElementById('nav');
     if(!el)return;
-    const btn=(i,label,action)=>'<button type="button" class="nav'+(page===i?' active':'')+'" onclick="'+(action||('nav('+i+')'))+'">'+asText(label)+'</button>';
-    el.innerHTML='<div class="mini-nav-heading">'+t('НЕГІЗГІ БӨЛІМДЕР','ОСНОВНЫЕ РАЗДЕЛЫ')+'</div>'+
-      primary.map(x=>btn(x[0],x[1],x[2])).join('')+
-      '<details class="research-archive" '+(secondary.includes(page)?'open':'')+'><summary>'+
-      t('Барлық зерттеу материалдары','Архив и дополнительные разделы')+'</summary>'+
-      secondary.map(i=>btn(i,sections[i]||t('Қосымша бөлім','Дополнительный раздел'))).join('')+'</details>'+
-      '<a class="nav-resource" href="/publication">'+t('Рецензияға дайын ғылыми мақала','Научная статья для подачи')+'</a>';
+    const btn=(i,label,action)=>'<button type="button" class="nav'+(page===i?' active':'')+
+      '" onclick="'+(action||('nav('+i+')'))+'">'+asText(label)+'</button>';
+    el.innerHTML=primary.map(x=>btn(x[0],x[1],x[2])).join('')+
+      '<details class="research-archive" '+(secondary.includes(page)?'open':'')+'>'+
+      '<summary>'+t('Қосымша','Ещё')+'</summary><div class="nav-more-list">'+
+      secondary.map(i=>btn(i,sections[i]||t('Қосымша бөлім','Дополнительный раздел'))).join('')+
+      '<a class="nav-resource" href="/publication">'+t('Ғылыми мақала','Научная статья')+'</a>'+
+      '</div></details>';
     const meta=document.querySelector('aside > p');
-    if(meta)meta.textContent=t('Ашық зерттеу платформасы · 2026','Открытая исследовательская платформа · 2026');
+    if(meta)meta.textContent=t('Ашық академиялық зерттеу · 2026','Открытое академическое исследование · 2026');
   }
   const daysSorted=()=>[...new Set(km3AutoArchive.observations.filter(x=>x.city==='Астана').map(x=>x.day))].sort();
   const latestFor=(brand,shop)=>{
@@ -53,64 +51,144 @@
        'Астана · газированная вода 1 л · '+total+' записей · '+recovered+' из них восстановлены по истории цен. Розничные цены не доказывают сговор.');
   }
   function modernHome(){
-    const last=daysSorted().at(-1), stats=km3AutoArchive.observations.length;
-    const links=[
-      '<button class="btn" onclick="nav(22)">'+t('Бағаларды қарау','Смотреть цены')+'</button>',
-      '<button class="btn outline" onclick="nav(18)">'+t('ЕЭК істерін талдау','Практика ЕЭК')+'</button>'
-    ].join('');
     const descriptions={
       TASSAY:t('Қазақстанда өндірілетін табиғи газдалған ауыз су, 1 л.','Природная газированная питьевая вода казахстанского производства, 1 л.'),
-      TURAN:t('Қазақстандық газдалған су бренді, 1 л.','Казахстанская газированная вода, 1 л.'),
+      TURAN:t('Қазақстандық газдалған су, 1 л.','Казахстанская газированная вода, 1 л.'),
       ESSENTUKI4:t('Ресейде өндірілетін емдік-асханалық минералды газдалған су, 1 л.','Газированная лечебно-столовая минеральная вода из России, 1 л.')
     };
-    const productPhotos={
-      TASSAY:'/media/tassay-card',
-      TURAN:'/media/turan-card',
-      ESSENTUKI4:'/media/essentuki-card'
-    };
-    const cards=brandOrder.map(([id,name,initial])=>{
+    const photos={TASSAY:'/media/tassay-card',TURAN:'/media/turan-card',ESSENTUKI4:'/media/essentuki-card'};
+    const brands=brandOrder.map(([id,name,initial])=>{
       const current=latestFor(id,'Arbuz');
-      return '<article class="price-card product-overview-card"><div class="product-overview-image"><img src="'+productPhotos[id]+'" alt="'+asText(name)+' · '+t('газдалған су 1 л','газированная вода 1 л')+'" loading="lazy"></div><div class="brand-mini"><i>'+initial+'</i>'+
-       '<div><div class="label">'+t('1 л · Газдалған','1 л · Газированная')+'</div><h3>'+name+'</h3></div></div>'+
-       '<p class="product-overview-description">'+asText(descriptions[id])+'</p>'+
-       '<div class="price-large">'+fPrice(current)+'</div>'+
-       '<p class="price-sub">Arbuz · '+(current?asText(current.day):t('Баға жүктелуде','Данные загружаются'))+
-       '</p><a href="#" onclick="nav(22);return false">'+t('Күндер мен дүкендер бойынша ↗','По дням и магазинам ↗')+'</a></article>';
+      return '<article class="price-card product-overview-card"><div class="product-overview-image">'+
+        '<img src="'+photos[id]+'" alt="'+asText(name)+' · '+t('газдалған су 1 л','газированная вода 1 л')+'" loading="lazy"></div>'+
+        '<div class="brand-mini"><i>'+initial+'</i><div><div class="label">'+t('1 л · Газдалған','1 л · Газированная')+'</div>'+
+        '<h3>'+asText(name)+'</h3></div></div>'+
+        '<p class="product-overview-description">'+asText(descriptions[id])+'</p>'+
+        '<div class="price-large">'+fPrice(current)+'</div>'+
+        '<p class="price-sub">Arbuz · '+(current?asText(current.day):t('Баға расталмаған','Цена не подтверждена'))+'</p>'+
+        '<a href="#" onclick="nav(22);return false">'+t('Барлық бағаны көру ↗','Посмотреть все цены ↗')+'</a></article>';
     }).join('');
-    return '<section class="editorial-hero"><div class="hero-eyebrow">TASSAY MARKET MONITOR / MNU</div>'+
-      '<h2 class="research-question">'+t('TASSAY, TURAN және Ессентуки №4 бір тауар нарығында бәсекелесе ме?','Конкурируют ли TASSAY, TURAN и Ессентуки №4 на одном товарном рынке?')+'</h2>'+
-      '<p>'+t('Бағалардың салыстырмалы мониторингі, тұтынушылардың өзара алмастыру таңдауы және ҚР мен ЕАЭО бәсекелестік құқығы бойынша талдау.',
-        'Сравнительный мониторинг цен, исследование потребительской взаимозаменяемости и анализ по конкурентному праву Казахстана и ЕАЭС.')+'</p>'+
-      '<div class="row">'+links+'</div><div class="editorial-meta">'+
-      '<span>'+t('3 өнім','3 бренда')+'</span><span>Arbuz · SMALL · Galmart</span>'+
-      '<span>'+t('Күн сайынғы бақылау','Ежедневный мониторинг')+'</span></div></section>'+
-      '<div class="research-access"><span style="font-size:20px">↗</span><div><strong>'+
-      t('Қашықтан қолжетімді зерттеу','Публичный доступ к исследованию')+'</strong><div>'+
-      'https://tassay-market-monitor.onrender.com/ru · /kk</div></div></div>'+
-      '<div class="overview-heading"><div><h2>'+t('Зерттелетін үш тауар','Три исследуемых товара')+
-      '</h2><p>'+t('Arbuz дүкені бойынша бір күнгі бағаларды салыстыру','Сравнение цен одного магазина Arbuz')+'</p></div>'+
-      '<a href="#" onclick="nav(22);return false">'+t('Барлық дерек →','Все данные →')+'</a></div>'+
-      '<section class="price-board">'+cards+'</section>'+
-      '<div class="overview-insight">'+
-       '<section class="panel"><h3>'+t('Баға динамикасы · бір график','Динамика цен · один график')+'</h3>'+
-        '<div class="hero-chart">'+km3AutoPriceGraph()+'</div></section>'+
-       '<section class="panel"><h3>'+t('Зерттеудің негізгі нәтижесі','Главный вывод исследования')+'</h3>'+
-        '<p>'+t('Бағалардың әртүрлі болуы картель немесе үстемдікті теріс пайдалану фактісін өздігінен дәлелдемейді.',
-         'Разница в цене сама по себе не свидетельствует о картеле или злоупотреблении доминированием.')+'</p>'+
-        '<ul><li>'+t('Релевантты тауар нарығын анықтау керек','Необходимо определить границы товарного рынка')+'</li>'+
-        '<li>'+t('Басшылардың таныстығы дәлел емес','Знакомство руководителей не является доказательством')+'</li>'+
-        '<li>'+t('ЕЭК құзыреті трансшекаралық өлшемге тәуелді','Компетенция ЕЭК зависит от трансграничности рынка')+'</li></ul>'+
-        '<button class="btn outline" onclick="nav(16)">'+t('IRAC талдау','Открыть IRAC')+'</button></section>'+
-      '</div><p class="overview-note">'+asText(observationNote())+'</p>'+
-      '<div class="overview-heading"><div><h2>'+t('Зерттеу материалдары','Материалы исследования')+'</h2>'+
-      '<p>'+t('Негізгі материалға бір қадамда өту','Переход к разделу в один клик')+'</p></div></div>'+
-      '<section class="research-links">'+
-      '<a class="research-link" href="#" onclick="nav(18);return false"><span>⚖</span><strong>'+t('ЕЭК практикасы','Практика ЕЭК')+'</strong><small>'+
-      t('4 іс, нақты аналогия және құқықтық қорытынды','4 дела, применение по аналогии, правовой вывод')+'</small></a>'+
-      '<a class="research-link" href="/publication"><span>▤</span><strong>'+t('Ғылыми мақала','Научная статья')+'</strong><small>'+
-      t('Аңдатпа, әдіснама, нәтижелер, дереккөздер','Аннотация, методика, результаты, литература')+'</small></a>'+
-      '<a class="research-link" href="/brochure"><span>◈</span><strong>'+t('Зерттеу брошюрасы','Брошюра исследования')+'</strong><small>'+
-      t('Негізгі сандар мен қорытындылар · баспаға ыңғайлы','Ключевые цифры и выводы · готово к печати')+'</small></a></section>';
+    const productVisual=brandOrder.map(([id,name])=>
+      '<div class="landing-bottle"><img src="'+photos[id]+'" alt="'+asText(name)+
+      '" loading="eager"><span class="bottle-name">'+asText(name)+'</span></div>').join('');
+    const parts=[
+      {to:22,name:t('Баға мониторингі','Мониторинг цен'),
+       desc:t('Астанадағы дүкендер бойынша үш брендтің бағасы және уақыттық өзгерісі.',
+              'Цены трёх брендов в магазинах Астаны и их изменение по датам.'),
+       art:'<div class="feature-media feature-price"><div class="hero-chart">'+km3AutoPriceGraph()+'</div></div>'},
+      {to:27,name:t('Тұтынушылар сауалнамасы','Опрос потребителей'),
+       desc:t('20 аралық жауап: сатып алушылардың тауарларды алмастыруға дайындығы.',
+              '20 промежуточных ответов о готовности покупателей заменять бренды.'),
+       art:'<div class="feature-media feature-survey"><div class="feature-donut"><span>20<small>'+
+         t('жауап','ответов')+'</small></span></div></div>'},
+      {to:16,name:t('Құқықтық талдау','Правовой анализ'),
+       desc:t('Қазақстан және ЕАЭО құқығы, дәлелдер, қарсы уәждер және IRAC қорытындысы.',
+              'Право Казахстана и ЕАЭС, доказательства, контраргументы и вывод IRAC.'),
+       art:'<div class="feature-media feature-law"><div class="law-book"><strong>⚖</strong><span>IRAC</span></div></div>'},
+      {to:26,name:t('БШ1–БШ4 тарихы','История БШ1–БШ4'),
+       desc:t('Зерттеудің төрт кезеңі, түзетулер және бастапқы скриншоттар.',
+              'Четыре этапа исследования, корректировки и исходные скриншоты.'),
+       art:'<div class="feature-media feature-history"><div class="feature-stage-line">'+
+          ['БШ1','БШ2','БШ3','БШ4'].map(n=>'<span>'+n+'</span>').join('')+'</div></div>'}
+    ];
+    const features=parts.map(p=>
+      '<button type="button" class="feature-card" onclick="nav('+p.to+')">'+p.art+
+      '<span class="feature-info"><strong>'+p.name+'</strong><p>'+p.desc+'</p>'+
+      '<span class="feature-arrow" aria-hidden="true">↗</span></span></button>').join('');
+    const steps=[
+      {icon:'01',title:t('Бағаларды жинау','Сбор цен'),
+        desc:t('Arbuz, SMALL және Galmart дүкендеріндегі белгілі бір күндердегі ұсыныстарды және растайтын материалдарды тіркеу.',
+          'Фиксация предложений Arbuz, SMALL и Galmart за определённые даты с подтверждающими материалами.')},
+      {icon:'02',title:t('Брендтерді салыстыру','Сравнение брендов'),
+        desc:t('Бағаларды бірдей көлемге келтіру, кезеңдерді салыстыру және өзгерістерді тексеру.',
+          'Сопоставление цен за одинаковый объём и период с проверкой изменений.')},
+      {icon:'03',title:t('Өзара алмастыру сауалнамасы','Опрос о взаимозаменяемости'),
+        desc:t('Google Forms жауаптары арқылы тұтынушылардың болжамды таңдауын зерттеу; іріктеме шектеулерін көрсету.',
+          'Изучение предполагаемого переключения по Google Forms с указанием ограничений выборки.')},
+      {icon:'04',title:t('IRAC құқықтық талдауы','IRAC и правовой анализ'),
+        desc:t('Құқықтық нормалар, фактілер, балама түсіндірмелер, қажет дәлелдер және ықтимал қорғау жолдары.',
+          'Нормы, факты, альтернативные объяснения, недостающие доказательства и возможные способы защиты.')},
+      {icon:'05',title:t('БШ4 платформасын қорғау','Защита платформы БШ4'),
+        desc:t('БШ1–БШ4 тарихын, дереккөздерді және тексерілетін деректерді бір жерде сақтау.',
+          'Единая точка доступа к истории БШ1–БШ4, первоисточникам и проверяемым данным.')}
+    ];
+    const process=steps.map(s=>'<div class="process-step"><span class="process-step-icon">'+s.icon+
+      '</span><div><strong>'+s.title+'</strong><p>'+s.desc+'</p></div></div>').join('');
+    const conclusions=[
+      {icon:'≠',head:t('Баға айырмашылығы құқық бұзушылықты дәлелдемейді','Разница в цене не доказывает нарушение'),
+       body:t('Баға айырмашылығының жеткізу, сату арнасы және акция сияқты балама себептері болуы мүмкін.',
+              'Различия могут объясняться доставкой, каналом продаж, акциями и другими факторами.')},
+      {icon:'◎',head:t('Сауалнама нарықты анықтауға көмектеседі','Опрос помогает определить рынок'),
+       body:t('20 аралық жауап тауарларды ықтимал алмастыруды бағалауға көмектеседі, бірақ нарық үлесін есептемейді.',
+              '20 промежуточных ответов помогают оценить заменяемость, но не определяют рыночные доли.')},
+      {icon:'§',head:t('Қорытындыға тексерілетін деректер қажет','Выводы требуют проверяемых данных'),
+       body:t('Заңдық баға беру бастапқы деректерге, құқықтық нормаларға, қарсы уәждерге және шектеулерге сүйенеді.',
+              'Юридическая оценка опирается на первоисточники, нормы, контраргументы и ограничения.')}
+    ];
+    const summary=conclusions.map(c=>'<article class="landing-conclusion"><span class="conclusion-icon">'+
+      c.icon+'</span><strong>'+c.head+'</strong><p>'+c.body+'</p></article>').join('');
+    const usage=[['◈','Arbuz'],['▥','SMALL'],['▤','Galmart'],['◉','Google Forms'],['§','IRAC'],['⌘','GitHub / Render']];
+    return '<div class="landing-home">'+
+      '<section class="editorial-hero landing-hero"><div class="landing-copy">'+
+        '<div class="hero-eyebrow">MNU · TASSAY MARKET MONITOR · 2026</div>'+
+        '<h2 class="research-question">'+t('TASSAY, TURAN және Ессентуки №4: бәсекелестікті зерттеу',
+          'Исследование конкуренции TASSAY, TURAN и Ессентуки №4')+'</h2>'+
+        '<p>'+t('Астанадағы бағаларды салыстыру, тұтынушылардың алмастыру таңдауы және Қазақстан мен ЕАЭО бәсекелестік құқығы бойынша құқықтық бағалау.',
+          'Сравнительный мониторинг цен, анализ взаимозаменяемости и правовая оценка по конкурентному праву Казахстана и ЕАЭС.')+'</p>'+
+        '<div class="landing-actions"><button type="button" class="landing-cta" onclick="nav(22)">'+
+          t('Зерттеуді ашу','Открыть исследование')+' <span aria-hidden="true">↗</span></button>'+
+          '<button type="button" class="landing-cta landing-cta-ghost" onclick="nav(27)">'+
+          t('Сауалнама нәтижелері','Результаты опроса')+'</button></div></div>'+
+        '<div class="landing-photo-stage"><div class="landing-gridlines"></div>'+
+        '<svg viewBox="0 0 620 280" aria-hidden="true" fill="none"><path d="M0 246L80 211L152 222L235 167L307 182L385 128L473 145L554 66L620 85" stroke="#2f8575" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
+        '<path d="M0 267L80 238L152 240L235 199L307 212L385 161L473 178L554 102L620 122" stroke="#eef6ec" stroke-width="2" opacity=".8"/></svg>'+
+        '<span class="landing-visual-caption">ASTANA / 3 PRODUCTS</span>'+productVisual+'</div></section>'+
+      '<section class="landing-about" aria-labelledby="landing-about-title">'+
+        '<div><h2 id="landing-about-title">'+t('Жоба туралы','О проекте')+'</h2>'+
+        '<p>'+t('TASSAY Market Monitor — бәсекелестік құқығы пәнінің БШ4 аясында дайындалған ашық академиялық зерттеу платформасы. Зерттеу Астана қаласындағы газдалған су ұсыныстары мен тауарлардың ықтимал алмастырылуын талдайды.',
+          'TASSAY Market Monitor — открытая академическая платформа по конкурентному праву, подготовленная для БШ4. Исследование рассматривает предложения газированной воды в Астане и возможную взаимозаменяемость товаров.')+'</p>'+
+        '<p>'+t('Біз бағаларды дереккөздермен салыстырамыз, қорытындыларды қайта қараймыз және құқықтық ұстанымды IRAC құрылымымен негіздейміз.',
+          'Мы сопоставляем цены с первоисточниками, пересматриваем выводы по мере поступления данных и обосновываем правовую позицию по IRAC.')+'</p></div>'+
+        '<div class="landing-stats">'+
+          '<div class="landing-stat"><strong>3</strong><span>'+t('зерттелетін бренд','исследуемых бренда')+'</span></div>'+
+          '<div class="landing-stat"><strong>3</strong><span>'+t('салыстырылатын дүкен','сравниваемых магазина')+'</span></div>'+
+          '<div class="landing-stat"><strong>20</strong><span>'+t('аралық сауалнама жауабы','промежуточных ответов опроса')+'</span></div>'+
+          '<div class="landing-stat"><strong>4</strong><span>'+t('БШ1–БШ4 зерттеу кезеңі','этапа исследования БШ1–БШ4')+'</span></div></div></section>'+
+      '<div class="landing-usage"><span class="usage-heading">'+t('Дереккөздер мен құралдар','Источники и инструменты')+'</span>'+
+        usage.map(x=>'<span class="usage-chip"><i aria-hidden="true">'+x[0]+'</i>'+x[1]+'</span>').join('')+'</div>'+
+      '<section class="landing-section"><div class="landing-section-head"><div>'+
+        '<h2 class="landing-section-title">'+t('Зерттеудің негізгі бөлімдері','Ключевые разделы исследования')+'</h2>'+
+        '<p>'+t('Бір платформада баға, сауалнама, құқықтық ұстаным және зерттеу тарихы.',
+          'Цены, опрос, правовой анализ и история исследования на одной платформе.')+'</p></div></div>'+
+        '<div class="landing-features">'+features+'</div></section>'+
+      '<section class="landing-products"><div class="landing-section-head"><div>'+
+        '<h2 class="landing-section-title">'+t('Зерттелетін үш тауар','Три исследуемых товара')+'</h2>'+
+        '<p>'+t('Астана · бір литрлік өнімдер · Arbuz бойынша соңғы қолжетімді деректер.',
+          'Астана · позиции по 1 литру · последние доступные наблюдения по Arbuz.')+'</p></div>'+
+        '<a class="landing-small-link" href="#" onclick="nav(22);return false">'+t('Баға мұрағаты ↗','Архив цен ↗')+'</a></div>'+
+        '<div class="price-board">'+brands+'</div>'+
+        '<p class="overview-note">'+asText(observationNote())+'</p></section>'+
+      '<section class="landing-section"><div class="landing-section-head"><div>'+
+        '<h2 class="landing-section-title">'+t('Зерттеу қалай жүргізіледі','Как устроено исследование')+'</h2>'+
+        '<p>'+t('Бастапқы деректен құқықтық қорытындыға дейінгі бес қадам.',
+          'Пять шагов: от первичных данных к проверяемым правовым выводам.')+'</p></div></div>'+
+        '<div class="landing-process"><div class="landing-process-photo">'+
+          '<span class="process-tag">RESEARCH PROCESS / ASTANA</span>'+
+          '<img src="/media/tassay-card" alt="TASSAY" loading="lazy">'+
+          '<div class="process-floating"><strong>IRAC</strong><span>'+t('дерек → талдау → қорытынды','данные → анализ → вывод')+'</span></div>'+
+          '</div><div class="process-list">'+process+'</div></div></section>'+
+      '<section class="landing-section"><div class="landing-section-head"><div>'+
+        '<h2 class="landing-section-title">'+t('Аралық қорытындылар','Промежуточные выводы')+'</h2>'+
+        '<p>'+t('Күдік пен дәлелді ажырататын негізгі әдістемелік қағидалар.',
+          'Ключевые методические принципы: отделяем подозрение от доказательства.')+'</p></div></div>'+
+        '<div class="landing-conclusions">'+summary+'</div></section>'+
+      '<footer class="landing-more"><p>TASSAY Market Monitor · MNU · БШ4 · '+t('14 қараша 2026','14 ноября 2026')+
+        '<br>'+t('Деректерге шектеулер қолданылады; ғылыми-оқу жобасы.','Академический проект с ограничениями данных.')+'</p>'+
+        '<div class="research-links">'+
+          '<a class="research-link" href="/publication"><strong>'+t('Ғылыми мақала ↗','Научная статья ↗')+'</strong></a>'+
+          '<a class="research-link" href="/brochure"><strong>'+t('Брошюра ↗','Брошюра ↗')+'</strong></a>'+
+          '<a class="research-link" href="#" onclick="nav(9);return false"><strong>'+t('Дереккөздер ↗','Источники ↗')+'</strong></a>'+
+        '</div></footer></div>';
   }
   function modernDaily(){
     const obs=[...km3AutoArchive.observations].filter(x=>x.city==='Астана'&&x.status==='auto_unverified')
@@ -282,7 +360,7 @@
       'Четыре судебные аналогии из практики ЕЭК и Суда ЕАЭС разобраны в отдельном разделе.')+
       ' <button class="btn outline" onclick="nav(18)">'+t('Талдауды ашу','Открыть практику')+'</button></div></section>'+oldIRAC();
   };
-  render=function(){originalRender();modernSidebar()};
+  render=function(){document.body.classList.toggle('site-home',page===0);originalRender();modernSidebar()};
   const originalNav=nav;
   nav=function(i){
     if(i===2){priceView='tassay';i=2}

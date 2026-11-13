@@ -113,6 +113,11 @@ def km3_script():return FileResponse(Path(__file__).with_name("km3.js"),media_ty
 @app.get("/modern.css")
 def modern_styles():return FileResponse(Path(__file__).with_name("modern.css"),media_type="text/css",headers={"Cache-Control":"public, max-age=3600"})
 
+@app.get("/premium.css")
+def premium_styles():
+ return FileResponse(Path(__file__).with_name("premium.css"),media_type="text/css",
+                     headers={"Cache-Control":"public, max-age=3600"})
+
 @app.get("/modern-ui.js")
 def modern_interface():return FileResponse(Path(__file__).with_name("modern-ui.js"),media_type="application/javascript",headers={"Cache-Control":"public, max-age=3600"})
 

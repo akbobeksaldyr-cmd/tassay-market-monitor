@@ -39,6 +39,7 @@ def main():
           ("/research-history.js",b"historyPage"),
           ("/survey.js",b"downloadSurveyAggregate"),
           ("/modern.css",b"editorial-hero"),
+          ("/premium.css",b"landing-hero"),
           ("/paper.css",b"paper-banner")]:
             status,body=request(path)
             assert status==200 and needle in body,(path,status,len(body))
@@ -69,23 +70,30 @@ def main():
                     page.goto(ORIGIN+"/"+lang,wait_until="domcontentloaded",timeout=30000)
                     page.locator(".editorial-hero").wait_for(timeout=30000)
                     assert page.locator(".price-card").count()==3,lang
-                    assert page.locator("#nav > .nav").count()==12,lang
+                    assert page.locator("#nav > .nav").count()==8,lang
                     assert page.locator(".research-archive summary").count()==1,lang
                     assert page.locator("#content .hero-chart").count()==1,lang
                     # Clear, normal navigation: no city-comparison page.
                     labels=page.locator("#nav > .nav").all_text_contents()
                     if lang=="ru":
                         for label in ("Динамика цен","Цены","Рынок Астаны","Опрос",
-                                      "Внешние факторы","Доказательства","Правовые источники",
+                                      "Правовой анализ","Источники",
                                       "История исследования"):
                             assert any(label in title for title in labels),(lang,label,labels)
                         assert not any("Сравнение городов" in title for title in labels),labels
                     else:
                         for label in ("Баға динамикасы","Бағалар","Астана нарығы","Сауалнама",
-                                      "Сыртқы факторлар","Дәлелдемелер","Құқықтық дереккөздер",
+                                      "Құқықтық талдау","Дереккөздер",
                                       "Зерттеу тарихы"):
                             assert any(label in title for title in labels),(lang,label,labels)
                         assert not any("Қалаларды салыстыру" in title for title in labels),labels
+                    # Reference-style top navigation and rich landing page with real content.
+                    assert page.locator(".landing-hero").count()==1,lang
+                    assert page.locator(".landing-features .feature-card").count()==4,lang
+                    assert page.locator(".landing-stats .landing-stat").count()==4,lang
+                    assert page.locator(".landing-process .process-step").count()==5,lang
+                    assert page.locator(".landing-conclusion").count()==3,lang
+                    assert page.locator(".landing-photo-stage img").count()==3,lang
                     # Main page: research question, 3 actual product images and descriptions.
                     q=page.locator(".research-question")
                     assert q.count()==1 and len(q.inner_text())>45,lang
@@ -134,12 +142,13 @@ def main():
                     with page.expect_download() as dl:
                         page.get_by_role("button",name="Скачать агрегированные данные CSV" if lang=="ru" else "Жиынтық деректерді CSV жүктеу").click()
                     assert dl.value.suggested_filename=="tassay_survey_aggregated_2026-11-13.csv"
-                    # External factors remain a normal top-level page.
-                    page.locator("#nav > .nav").nth(5).click()
+                    # External factors remain available in the More menu.
+                    page.locator(".research-archive summary").click()
+                    page.locator('.research-archive button[onclick="nav(6)"]').click()
                     assert page.locator("#content .panel").count()>0,lang
 
                     # Dedicated evidence gallery: 3 brands, all screenshot thumbnails.
-                    page.locator("#nav > .nav").nth(6).click()
+                    page.locator('.research-archive button[onclick="nav(7)"]').click()
                     assert page.locator(".research-proof").count()>10,lang
                     assert page.locator("#content img").count()>10,lang
                     first_image=page.locator(".research-proof-image img").first
@@ -179,18 +188,19 @@ def main():
                     page.keyboard.press("Escape")
 
                     # Normative sources, not screenshots.
-                    page.locator("#nav > .nav").nth(11).click()
+                    page.locator("#nav > .nav").nth(7).click()
                     assert page.locator(".legal-source-grid .case-card").count()>=4,lang
                     assert page.locator("#content img").count()==0,lang
                     assert "169" in page.locator("#content").inner_text(),lang
                     assert "76" in page.locator("#content").inner_text(),lang
 
                     # EAEU cases still present.
-                    page.locator("#nav > .nav").nth(8).click()
+                    page.locator(".research-archive summary").click()
+                    page.locator('.research-archive button[onclick="nav(18)"]').click()
                     page.locator(".case-card").first.wait_for(timeout=5000)
                     assert page.locator(".case-card").count()==4,lang
                     # Four historic snapshots in one new public research section.
-                    page.locator("#nav > .nav").nth(10).click()
+                    page.locator("#nav > .nav").nth(6).click()
                     assert page.locator(".history-milestone").count()==4,lang
                     assert page.locator(".history-stage-detail").count()==1,lang
                     assert page.locator('.history-stage-detail a[href*="/tree/d5c5ce2b"]').count()==1,lang

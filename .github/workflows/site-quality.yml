@@ -7,6 +7,7 @@ on:
       - 'index.html'
       - 'ru.html'
       - 'modern.css'
+      - 'premium.css'
       - 'modern-ui.js'
       - 'research-sections.js'
       - 'research-history.js'
@@ -47,12 +48,13 @@ jobs:
           import tempfile
           source=Path("app.py").read_text(encoding="utf-8")
           assert source.count('@app.get("/api/auto-prices")')==1, "Duplicated API route"
-          for route in ("/publication","/brochure","/modern.css","/modern-ui.js","/research-sections.js","/research-history.js","/survey.js","/api/research-history-images","/paper.css"):
+          for route in ("/publication","/brochure","/modern.css","/premium.css","/modern-ui.js","/research-sections.js","/research-history.js","/survey.js","/api/research-history-images","/paper.css"):
               assert f'@app.get("{route}")' in source, route
           for name in ("index.html","ru.html"):
               html=Path(name).read_text(encoding="utf-8")
               assert 'modern.css?v=20261113-survey' in html
-              assert 'modern-ui.js?v=20261113-survey' in html
+              assert 'modern-ui.js?v=20261113-editorial2' in html
+              assert 'premium.css?v=20261113-editorial2' in html
               assert 'research-sections.js?v=20261113-survey' in html
               assert 'research-history.js?v=20261113-bsh4fix' in html
               assert 'survey.js?v=20261113-forms1' in html
@@ -68,6 +70,7 @@ jobs:
           assert "journals" not in publication.lower()
           assert "@media print" in Path("paper.css").read_text(encoding="utf-8")
           assert "min-width:244px" in Path("modern.css").read_text(encoding="utf-8")
+          assert ".landing-hero" in Path("premium.css").read_text(encoding="utf-8")
           print("Public pages, print styling, route references and scripts: OK")
           PY
       - name: Install runtime and Chromium for site smoke tests

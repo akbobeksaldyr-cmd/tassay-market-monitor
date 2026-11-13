@@ -21,6 +21,15 @@
         '" role="tab" aria-selected="'+(active===key?'true':'false')+'" onclick="'+fn+'(\''+key+'\')">'+escTxt(text)+'</button>').join('')+
       '</div></div>';
   }
+  const brandCode={tassay:'TASSAY',turan:'TURAN',essentuki:'ESSENTUKI4'};
+  const brandNames={TASSAY:'TASSAY',TURAN:'TURAN',ESSENTUKI4:'Ессентуки №4'};
+  const brandIndex={TASSAY:0,TURAN:1,ESSENTUKI4:2};
+  const validUrl=value=>typeof value==='string'&&/^https:\/\//.test(value)?value:null;
+
+  // One visible quote for one day + city + brand + store. We do not delete
+  // originals: edited/author records take precedence over automated captures,
+  // followed by observed automatic captures and then reconstructed history.
+  // Conflicts are retained in the internal source arrays and flagged in the UI.
   function prices(){
     const historical=[
       ...data.map(r=>({...r,brand:'TASSAY',origin:'author'})),
@@ -28,52 +37,111 @@
       ...essentukiRows.map(r=>({...r,brand:'ESSENTUKI4',origin:'author'}))
     ];
     const automatic=km3AutoArchive.observations.map(r=>({...r,origin:'auto'}));
-    return [...historical,...automatic].filter(r=>
-      r&&typeof r.day==='string'&&Number.isFinite(Number(r.price))&&
-      r.price!==''&&Number(r.price)>0&&shopsList.includes(r.shop)&&
-      (r.city||'Астана')===priceCity&&
-      (priceView==='all'||r.brand===({tassay:'TASSAY',turan:'TURAN',essentuki:'ESSENTUKI4'}[priceView]))
-    ).sort((a,b)=>b.day.localeCompare(a.day)||shopsList.indexOf(a.shop)-shopsList.indexOf(b.shop)||
-      String(a.brand).localeCompare(String(b.brand))||String(a.origin).localeCompare(String(b.origin)));
+    const grouped=new Map();
+    for(const record of [...historical,...automatic]){
+      if(!record||typeof record.day!=='string'||!/^202\d-\d{2}-\d{2}$/.test(record.day)||
+         !shopsList.includes(record.shop)||!Object.hasOwn(brandIndex,record.brand)||
+         (record.city||'Астана')!==priceCity||
+         (priceView!=='all'&&record.brand!==brandCode[priceView])||
+         !Number.isFinite(Number(record.price))||Number(record.price)<=0)continue;
+      const key=[record.day,record.city||'Астана',record.brand,record.shop].join('|');
+      const automaticRow=record.origin==='auto'||record.status==='auto_unverified';
+      const rank=automaticRow?(String(record.source_method||'').startsWith('historical')?1:2):3;
+      const candidate={...record,price:Number(record.price),_rank:rank,_key:key};
+      if(!grouped.has(key))grouped.set(key,{winner:candidate,values:[],sourceUrls:[]});
+      const group=grouped.get(key);
+      group.values.push(candidate.price);
+      for(const url of [record.source_url,record.source]){
+        if(validUrl(url)&&!group.sourceUrls.includes(url))group.sourceUrls.push(url);
+      }
+      const old=group.winner;
+      if(rank>old._rank||(rank===old._rank&&
+          String(candidate.captured_at||candidate.captured||'')>String(old.captured_at||old.captured||''))){
+        group.winner=candidate;
+      }
+    }
+    return [...grouped.values()].map(group=>({
+      ...group.winner,
+      conflictingPrices:new Set(group.values).size>1,
+      sourceUrls:group.sourceUrls
+    })).sort((a,b)=>b.day.localeCompare(a.day)||
+      brandIndex[a.brand]-brandIndex[b.brand]||
+      shopsList.indexOf(a.shop)-shopsList.indexOf(b.shop));
   }
-  function sourceTag(row){
-    if(row.source_method==='historical_price_history')
-       return t('Тарихи баға оқиғасы','Историческое событие цены');
-    if(row.source_method==='historical_price_chart_derived')
-       return t('Тарихтан есептелген','Реконструкция по истории');
-    if(row.origin==='auto')return t('Автоматты · тексерілмеген','Автоматически · не проверено');
-    return t('Авторлық бақылау','Авторское наблюдение');
+
+  // A date-matched file is a lead for verification, not automatic proof that
+  // a product, volume, store or displayed amount was correctly identified.
+  function priceScreenshot(row){
+    const found=row.brand==='ESSENTUKI4'
+      ?essentukiEvidence.find(x=>x.day===row.day&&row.city==='Астана')
+      :evidenceImages.find(x=>x.brand===row.brand&&x.day===row.day&&x.city===row.city);
+    if(found){
+      const shown=found.shown?.[row.shop];
+      return {
+        url:found.url||'/evidence/'+encodeURIComponent(found.file),
+        mismatch:shown!==undefined&&shown!==null&&Number(shown)!==row.price,
+        label:found.file
+      };
+    }
+    const image=validUrl(row.evidence_url);
+    return image?{url:image,mismatch:false,label:t('Жүктелген дәлел','Загруженный файл')}:null;
+  }
+  function evidenceCell(row){
+    const shot=priceScreenshot(row);
+    const snap=shot
+      ?'<a class="study-proof-link" target="_blank" rel="noopener noreferrer" href="'+escTxt(shot.url)+'">'+
+        (shot.mismatch?t('Скрин · баға сәйкес емес ↗','Скрин · цена отличается ↗'):
+          t('Скриншотты ашу ↗','Открыть скриншот ↗'))+'</a>'
+      :'<span class="study-proof-missing">'+
+         t('Скриншот әзірге қосылмаған','Скрин пока не добавлен')+'</span>';
+    const url=row.sourceUrls.find(x=>x.startsWith('https://arzan.kz/'));
+    const source=url?'<a class="study-proof-source" href="'+escTxt(url)+
+      '" target="_blank" rel="noopener noreferrer">Arzan.kz ↗</a>':'';
+    const warning=shot&&shot.mismatch?'<small class="study-proof-warning">'+
+      t('Сурет пен кесте айырмашылығын тексеру керек','Расхождение с изображением требует сверки')+'</small>':
+      row.conflictingPrices?'<small class="study-proof-warning">'+
+      t('Авторлық және автоматты бағалар әртүрлі','Авторская и автоматическая цены расходятся')+'</small>':'';
+    return '<div class="study-proof-cell">'+snap+source+warning+'</div>';
   }
   function priceSection(){
-    const rows=prices(),all=priceView==='all';
-    const names={TASSAY:'TASSAY',TURAN:'TURAN',ESSENTUKI4:'Ессентуки №4'};
-    const table=rows.map(r=>
-      '<tr><td>'+escTxt(r.day)+'</td><td>'+escTxt(names[r.brand]||r.brand)+'</td>'+
-      '<td>'+escTxt(r.shop)+'</td><td><strong>'+money(r.price)+'</strong></td>'+
-      '<td>'+sourceTag(r)+'</td></tr>').join('');
-    const brandHint=all?
-      t('Төменде үш өнімнің барлық бастапқы және автоматты баға жазбалары көрсетілген.',
-        'Здесь все авторские и автоматические записи трёх брендов.'):
-      t('Брендтің авторлық бақылаулары мен автоматты жазбалары бірге көрсетілген. Скриншоттар «Дәлелдемелер» бөлімінде.',
-        'Авторские и автоматические цены бренда представлены вместе. Скриншоты находятся в разделе «Доказательства».');
-    return '<div class="overview-heading"><div><h2>'+t('Бағалар','Цены')+'</h2><p>'+brandHint+
+    const rows=prices();
+    const table=rows.map(row=>
+      '<tr data-price-key="'+escTxt(row._key)+'"><td>'+escTxt(row.day)+'</td>'+
+      '<td>'+escTxt(brandNames[row.brand])+'</td><td>'+escTxt(row.shop)+'</td>'+
+      '<td><strong>'+money(row.price)+'</strong></td>'+
+      '<td>'+evidenceCell(row)+'</td></tr>').join('');
+    const distinctDates=new Set(rows.map(row=>row.day)).size;
+    const conflicts=rows.filter(row=>row.conflictingPrices).length;
+    return '<div class="overview-heading study-price-heading"><div><h2>'+
+      t('Бағалар мен дәлелдемелер','Цены и доказательства')+'</h2>'+
+      '<p>'+t('Әр күн, бренд және дүкен үшін бір баға көрсетіледі. Скриншоттар бөлек тексеріледі.',
+        'Одна цена на дату, бренд и магазин; скриншоты требуют отдельной проверки.')+
       '</p></div></div>'+
       tabs(brands,priceView,'selectPriceView',t('Брендті таңдау','Выбор бренда'))+
-      '<section class="panel"><div class="evidence-topline"><div><h3>'+
-      (all?t('Толық баға мұрағаты','Полный архив цен'):escTxt(brands.find(b=>b[0]===priceView)?.[1]))+
-      '</h3><p class="km2-muted">'+t('Тауар: газдалған су, 1 л','Продукт: газированная вода, 1 л')+
-      ' · '+rows.length+' '+t('баға жазбасы','ценовых записей')+'</p></div>'+
-      '<label>'+t('Қала','Город')+' <select id="study-price-city" onchange="setResearchPriceCity(this.value)">'+
-      ['Астана','Алматы'].map(x=>'<option '+(priceCity===x?'selected ':'')+'value="'+x+'">'+x+'</option>').join('')+
+      '<section class="panel study-price-panel"><div class="evidence-topline"><div><h3>'+
+      (priceView==='all'?t('Баға бақылаулары','Ценовые наблюдения'):
+        escTxt(brands.find(b=>b[0]===priceView)?.[1]))+'</h3>'+
+      '<p class="km2-muted">'+rows.length+' '+t('бірегей жазба','уникальных записей')+
+      ' · '+distinctDates+' '+t('күн','дат')+' · '+t('1 л газдалған су','газированная вода 1 л')+
+      '</p></div><label>'+t('Қала','Город')+
+      ' <select id="study-price-city" onchange="setResearchPriceCity(this.value)">'+
+      ['Астана','Алматы'].map(city=>'<option '+(priceCity===city?'selected ':'')+
+        'value="'+city+'">'+city+'</option>').join('')+
       '</select></label></div>'+
-      '<div class="km2-table"><table><thead><tr><th>'+t('Күні','Дата')+'</th><th>'+t('Тауар','Бренд')+
-      '</th><th>'+t('Дүкен','Магазин')+'</th><th>'+t('Баға','Цена')+
-      '</th><th>'+t('Дерек мәртебесі','Статус записи')+'</th></tr></thead><tbody>'+
+      '<div class="km2-table"><table id="study-price-table"><thead><tr><th>'+
+      t('Күні','Дата')+'</th><th>'+t('Тауар','Бренд')+'</th><th>'+
+      t('Дүкен','Магазин')+'</th><th>'+t('Баға','Цена')+'</th><th>'+
+      t('Дәлелдемелер','Доказательства')+'</th></tr></thead><tbody>'+
       (table||'<tr><td colspan="5">'+t('Бұл қала бойынша жазба жоқ','Нет записей для этого города')+'</td></tr>')+
       '</tbody></table></div>'+
-      '<p class="overview-note">'+t('Қалпына келтірілген мәндер нақты сол күнгі жеке өлшеу емес. Бастапқы жазбалар мен кейін алынған деректер арасында айырма кездесуі мүмкін; олар салыстырмай біріктірілмейді.',
-        'Восстановленные значения не являются самостоятельными замерами в соответствующие даты. При расхождении авторских и автоматических данных записи сохраняются раздельно.')+
-      '</p><button class="btn outline" onclick="nav(7)">'+t('Скриншоттарды ашу','Открыть доказательства')+'</button></section>';
+      '<p class="overview-note">'+
+      t('Авторлық баға бар жерде сол көрсетіледі; ол жоқ күндерде қолжетімді автоматты дерек қолданылады. Қалпына келтірілген бағалар сол күнгі дербес бақылау болып саналмайды. Скриншоттың болуы тауардың атауын, көлемін және сомасын автоматты растамайды.',
+        'При наличии авторской цены показывается она, иначе — доступная автоматическая запись. Реконструированная цена не является замером в указанную дату. Наличие файла не подтверждает автоматически товар, объём и сумму.')+
+      (conflicts?' '+t('Салыстыруды қажет ететін қайшылықтар: ','Расхождения между источниками: ')+
+        conflicts+'.':'')+
+      '</p><button class="btn outline" onclick="nav(7)">'+
+      t('Барлық скриншоттарды ашу','Открыть архив скриншотов')+
+      '</button></section>';
   }
   window.selectPriceView=function(value){
     priceView=brands.some(x=>x[0]===value)?value:'all';

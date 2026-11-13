@@ -116,10 +116,6 @@ def main():
                         assert appearance["transform"]=="none" and appearance["blend"]=="normal",(lang,appearance)
                         assert appearance["mask"]=="none" and appearance["webkitMask"]=="none",(lang,appearance)
                         assert appearance["background"]=="rgb(255, 255, 255)",(lang,appearance)
-                    for image in page.locator(".hero-card-image img").all():
-                        image.evaluate("(img) => img.decode().catch(() => null)")
-                        assert image.evaluate("(img) => img.naturalWidth")>0,lang
-                        assert image.evaluate("(img) => getComputedStyle(img).mixBlendMode")=="multiply",lang
                     assert page.locator(".process-abstract .process-node").count()==3,lang
                     assert page.locator(".process-abstract .process-box").count()==3,lang
                     # Photos are retained as evidence elsewhere, not on the landing.

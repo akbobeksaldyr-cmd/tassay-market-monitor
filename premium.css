@@ -474,3 +474,72 @@ button.btn.outline{border-radius:24px!important}
   .process-line{height:36px}
   .process-abstract .process-floating{right:14px!important;bottom:12px!important}
 }
+
+
+/* Evidence-led redesign: bottle photos without image-background tiles, and
+   a single in-content heading on every secondary research page. */
+body:not(.site-home) main>.header{display:none!important}
+body:not(.site-home) main>#content{padding-top:20px}
+body:not(.site-home) #content>.overview-heading:first-child{margin-top:10px!important}
+.study-price-heading{margin-bottom:21px!important}
+.study-price-panel .km2-table{overflow-x:auto;border-radius:12px}
+#study-price-table{min-width:670px}
+#study-price-table th:last-child{width:265px}
+#study-price-table tbody td{vertical-align:top}
+.study-proof-cell{display:flex;align-items:flex-start;flex-direction:column;gap:6px;min-width:165px}
+.study-proof-link{font-weight:760;color:#127368!important;text-decoration:none;border-bottom:1px solid #9bc8b7;padding-bottom:2px;font-size:12px}
+.study-proof-link:hover{color:#095f56!important}
+.study-proof-missing{font-size:12px;color:#7f8d83}
+.study-proof-source{font-size:11px!important;color:#637d74!important;text-decoration:none}
+.study-proof-warning{font-size:11px;line-height:1.45;color:#997148;font-weight:650}
+.hero-product-card{
+  min-height:316px!important;height:316px!important;
+  padding:14px 12px 15px!important;
+  gap:5px!important;justify-content:space-between!important;
+  background:linear-gradient(145deg,rgba(210,232,221,.69),rgba(171,208,193,.62))!important;
+}
+.hero-product-card.hero-product-turan{
+  background:linear-gradient(145deg,rgba(204,230,230,.78),rgba(159,198,205,.59))!important;
+}
+.hero-product-card.hero-product-essentuki4{
+  background:linear-gradient(145deg,rgba(211,235,210,.79),rgba(170,204,170,.59))!important;
+}
+.hero-product-card .hero-card-badge{flex:0 0 35px;position:relative;z-index:2}
+.hero-card-image{position:relative;z-index:1;width:100%;height:170px;flex:1 1 auto;min-height:80px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-card-image img{
+  display:block!important;width:100%;height:100%;
+  object-fit:contain;object-position:50% 50%;
+  background:transparent!important;border:0!important;
+  mix-blend-mode:multiply!important;
+  filter:contrast(1.05) saturate(1.06);
+  -webkit-mask-image:radial-gradient(ellipse 54% 65% at 50% 50%,#000 70%,transparent 100%);
+  mask-image:radial-gradient(ellipse 54% 65% at 50% 50%,#000 70%,transparent 100%);
+}
+.hero-product-tassay .hero-card-image img{transform:scale(1.2)}
+.hero-product-turan .hero-card-image img{transform:scale(1.6)}
+.hero-product-essentuki4 .hero-card-image img{transform:scale(1.55)}
+.hero-product-card .hero-card-watermark{opacity:.42!important;z-index:0!important}
+.hero-product-card .hero-card-bottom{flex:0 0 auto;position:relative;z-index:2}
+.hero-product-card .hero-card-bottom strong{font-size:clamp(17px,1.65vw,23px);line-height:1.17}
+.hero-product-card .hero-card-bottom p{font-size:10px!important;margin:6px 0 8px!important;line-height:1.35!important}
+.hero-product-card .hero-card-size{padding-top:7px!important}
+.landing-photo-stage{padding:46px 18px 19px!important}
+@media(max-width:1100px){
+  .hero-product-card{min-height:278px!important;height:278px!important}
+  .hero-card-image{height:136px}
+  .hero-product-card .hero-card-bottom strong{font-size:16px}
+}
+@media(max-width:800px){
+  .hero-product-card{min-height:242px!important;height:242px!important}
+  .hero-card-image{height:120px}
+}
+@media(max-width:600px){
+  .hero-product-card{min-height:209px!important;height:209px!important;padding:8px 6px!important}
+  .hero-product-card .hero-card-badge{flex-basis:24px}
+  .hero-card-image{height:92px;min-height:72px}
+  .hero-product-card .hero-card-bottom strong{font-size:clamp(11px,3.2vw,14px)}
+  .hero-product-card .hero-card-bottom p{font-size:8px!important;margin:5px 0!important}
+  .hero-product-card .hero-card-size{font-size:7px;padding-top:4px!important}
+  .landing-photo-stage{padding:40px 8px 15px!important;min-height:240px!important}
+  .study-price-panel .evidence-topline{align-items:flex-start}
+}

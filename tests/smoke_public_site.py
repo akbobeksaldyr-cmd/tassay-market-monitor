@@ -94,11 +94,16 @@ def main():
                     assert page.locator(".landing-process .process-step").count()==5,lang
                     assert page.locator(".landing-conclusion").count()==3,lang
                     assert page.locator(".hero-product-card").count()==3,lang
-                    assert page.locator(".landing-photo-stage img").count()==0,lang
+                    assert page.locator(".landing-photo-stage img").count()==3,lang
+                    assert page.locator(".hero-card-image img").count()==3,lang
+                    for image in page.locator(".hero-card-image img").all():
+                        image.evaluate("(img) => img.decode().catch(() => null)")
+                        assert image.evaluate("(img) => img.naturalWidth")>0,lang
+                        assert image.evaluate("(img) => getComputedStyle(img).mixBlendMode")=="multiply",lang
                     assert page.locator(".process-abstract .process-node").count()==3,lang
                     assert page.locator(".process-abstract .process-box").count()==3,lang
                     # Photos are retained as evidence elsewhere, not on the landing.
-                    assert page.locator("#content img").count()==0,lang
+                    assert page.locator("#content img").count()==3,lang
                     # The preview illustration and labels must fit inside the card.
                     assert page.locator(".feature-price-legend span").count()==3,lang
                     geometry=page.locator(".feature-price").evaluate("""el => {
@@ -120,25 +125,47 @@ def main():
                     # Price tab shows pure numeric tables without image evidence.
                     page.locator("#nav > .nav").nth(1).click()
                     assert page.locator("#brand-price-page").count()==0,lang # replaced by dedicated prices page
+                    assert page.locator("main > .header").is_hidden(),lang
+                    header_cells=page.locator("#study-price-table thead th").all_text_contents()
+                    assert ("Доказательства" if lang=="ru" else "Дәлелдемелер") in header_cells,header_cells
+                    assert not any("Статус" in h or "мәртебесі" in h for h in header_cells),header_cells
+                    keys=page.locator("#study-price-table tbody tr[data-price-key]").evaluate_all(
+                        "(rows) => rows.map(row => row.dataset.priceKey)")
+                    assert len(keys)>20 and len(keys)==len(set(keys)),(lang,len(keys),len(set(keys)))
+                    assert page.locator("#study-price-table .study-proof-link").count()>0,lang
+                    assert page.locator("#study-price-table .study-proof-missing").count()>0,lang
+                    assert page.locator("#study-price-table").get_attribute("id")=="study-price-table"
                     assert page.locator(".brand-tab").count()==4,lang
                     assert page.locator(".brand-tab[aria-selected=true]").count()==1
                     for label in ("TASSAY","TURAN","Ессентуки №4"):
                         page.get_by_role("tab",name=label,exact=True).click()
                         assert page.locator(".brand-tab[aria-selected=true]").inner_text()==label
                         assert page.locator("#content table").count()>=1,(lang,label)
+                        rows=page.locator("#study-price-table tbody tr[data-price-key]").evaluate_all(
+                            "(rs) => rs.map(r => r.dataset.priceKey)")
+                        assert rows and len(rows)==len(set(rows)),(lang,label)
                         assert page.locator("#content img").count()==0,(lang,label)
                     page.get_by_role("tab",name="Все цены" if lang=="ru" else "Барлық бағалар").click()
                     assert page.locator("#content table tbody tr").count()>20,lang
+                    page.locator("#study-price-city").select_option("Алматы")
+                    keys_almaty=page.locator("#study-price-table tbody tr[data-price-key]").evaluate_all(
+                        "(rs) => rs.map(r => r.dataset.priceKey)")
+                    assert keys_almaty and len(keys_almaty)==len(set(keys_almaty)),lang
+                    assert all("|Алматы|" in k for k in keys_almaty),lang
+                    page.locator("#study-price-city").select_option("Астана")
 
                     # Dynamics must be preserved.
                     page.locator("#nav > .nav").nth(2).click()
                     assert page.locator("#brand-dynamics-page").count()==1,lang
+                    assert page.locator("main > .header").is_hidden(),lang
+                    assert page.locator("#content .overview-heading h2").first.is_visible(),lang
                     assert page.locator(".brand-tab").count()==4,lang
                     page.get_by_role("tab",name="Ессентуки №4").click()
                     assert page.locator("#brand-dynamics-page svg").count()>=1,lang
 
                     # Astana market: live calculator, formula and input validation.
                     page.locator("#nav > .nav").nth(3).click()
+                    assert page.locator("main > .header").is_hidden(),lang
                     assert "Q" in page.locator(".market-formula").inner_text()
                     page.locator("#market-brand-sales").fill("200")
                     page.locator("#market-total-sales").fill("1000")
@@ -243,7 +270,8 @@ def main():
                 assert mobile.locator(".price-card").count()==3
                 assert mobile.locator(".hero-product-card").count()==3
                 assert mobile.locator(".process-abstract .process-node").count()==3
-                assert mobile.locator("#content img").count()==0
+                assert mobile.locator("#content img").count()==3
+                assert mobile.locator(".hero-card-image img").count()==3
                 mobile_chart=mobile.locator(".feature-price").evaluate("""el => {
                     const outer=el.getBoundingClientRect();
                     return [...el.querySelectorAll('.feature-price-top, .feature-price-svg, .feature-price-legend')]
@@ -259,7 +287,7 @@ def main():
                 assert mobile.locator(".menu").is_visible()
                 mobile.close()
             finally:browser.close()
-        print("PASS: product photos, research question, market calculator, price tabs, full evidence gallery, legal sources, bilingual navigation")
+        print("PASS: hero products, unique price table, dated evidence links, single page headings, market calculator, survey and bilingual navigation")
     finally:
         proc.terminate()
         try:proc.wait(timeout=6)

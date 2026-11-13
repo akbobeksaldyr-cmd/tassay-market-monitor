@@ -243,3 +243,234 @@ button.btn.outline{border-radius:24px!important}
 }
 @media(prefers-reduced-motion:reduce){.feature-card,.landing-cta,.landing-bottle,.landing-products .product-overview-card{transition:none!important}}
 @media print{aside#sidebar,.top,.landing-actions{display:none!important}.landing-hero{background:#f4f4f2!important;color:#111!important}.landing-hero h2,.landing-hero p{color:#111!important}.landing-section,.landing-about,.landing-hero{break-inside:avoid}}
+
+
+/* BSH4 visual refinement (Nov 2026): photo-free homepage and legible mini chart.
+   Real photos remain accessible in the evidence galleries; they are not enlarged
+   or overlaid on the landing page. */
+.hero-product-cards{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  width:100%;max-width:630px;gap:12px;align-items:stretch;
+  position:relative;z-index:3;margin:auto;padding:18px 0 15px;
+}
+.hero-product-card{
+  position:relative;isolation:isolate;overflow:hidden;
+  min-height:280px;padding:21px 17px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:20px;
+  border-radius:20px;
+  border:1px solid rgba(32,84,74,.15);
+  background:linear-gradient(165deg,rgba(234,244,237,.72),rgba(185,212,203,.60));
+  box-shadow:0 13px 28px rgba(35,79,69,.10);
+  color:#203f36;
+}
+.hero-product-card.hero-product-turan{
+  background:linear-gradient(155deg,rgba(225,237,236,.8),rgba(159,192,191,.68));
+  transform:translateY(-15px);
+}
+.hero-product-card.hero-product-essentuki4{
+  background:linear-gradient(145deg,rgba(227,240,225,.8),rgba(171,200,177,.70));
+}
+.hero-card-badge{
+  width:35px;height:35px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#285d51;color:#fff;font-size:12px;font-weight:850;
+  box-shadow:0 4px 15px rgba(38,91,73,.13);
+}
+.hero-card-watermark{
+  position:absolute;font-size:clamp(110px,10.5vw,172px);
+  line-height:1;font-weight:900;letter-spacing:-12px;color:rgba(30,96,79,.075);
+  right:-14px;top:52px;z-index:-1;pointer-events:none;user-select:none;
+}
+.hero-card-bottom{position:relative;z-index:1}
+.hero-product-card strong{
+  display:block;font-size:clamp(17px,1.65vw,25px);letter-spacing:-.8px;
+  font-weight:850;line-height:1.12;color:#1b3d34;
+  overflow-wrap:anywhere;
+}
+.hero-product-card p{
+  margin:12px 0 15px!important;font-size:11px!important;line-height:1.55!important;
+  color:#47665b!important;
+}
+.hero-card-size{
+  display:block;padding-top:12px;border-top:1px solid rgba(58,113,95,.22);
+  color:#607e70;font-size:9px;font-weight:850;letter-spacing:.65px;
+}
+.landing-photo-stage{
+  align-items:center!important;
+  padding:60px 25px 25px!important;
+  background:radial-gradient(ellipse at 49% 51%,#e1ebe4,#c1d3c8 65%,#a5bdb1 100%)!important;
+}
+.landing-photo-stage::before{
+  background:#517b6e!important;opacity:.13!important;filter:blur(26px)!important;
+}
+.landing-photo-stage>svg{bottom:18%!important;z-index:0!important;opacity:.3!important}
+.landing-visual-caption{z-index:4}
+.landing-photo-stage .landing-bottle{display:none!important}
+
+/* Product comparison has no photo backgrounds; each brand gets a discreet
+   typographic treatment instead of a zoomed, cropped bottle. */
+.landing-products .product-overview-graphic{
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  justify-content:space-between!important;gap:14px;
+  padding:25px 24px!important;isolation:isolate;position:relative;
+  overflow:hidden;
+  background:linear-gradient(126deg,#dceae8,#bfd5cd)!important;
+}
+.landing-products .product-overview-graphic::after{
+  content:"";position:absolute;z-index:-1;border:2px solid rgba(61,116,104,.16);
+  border-radius:50%;width:310px;height:310px;right:-120px;top:-150px;
+  box-shadow:0 0 0 36px rgba(241,250,245,.1),0 0 0 75px rgba(255,255,255,.1);
+}
+.landing-products .product-visual-turan{
+  background:linear-gradient(135deg,#d7e2e4,#b4cacf)!important;
+}
+.landing-products .product-visual-essentuki4{
+  background:linear-gradient(130deg,#e3ebd9,#bed1ae)!important;
+}
+.product-visual-overline{
+  font-size:10px;letter-spacing:1.5px;font-weight:850;color:#52766b;
+}
+.product-visual-wordmark{
+  display:block;font-size:clamp(31px,3.2vw,46px);
+  letter-spacing:-1.8px;line-height:1.02;font-weight:900;color:#235b52;
+  max-width:100%;overflow-wrap:anywhere;
+}
+.product-visual-rule{width:72px;height:3px;border-radius:8px;background:#367d70}
+.product-overview-graphic small{
+  font-size:11px;line-height:1.45;color:#4e6c60;font-weight:700;
+}
+.product-visual-turan .product-visual-wordmark{color:#29516a}
+.product-visual-essentuki4 .product-visual-wordmark{color:#456946}
+
+/* The full price chart contains controls/legends unsuitable for a 184px card.
+   Keep those in the real Dynamics view, and show only a compact sparkline here. */
+.feature-media.feature-price{
+  min-height:184px!important;height:184px!important;
+  display:flex!important;flex-direction:column!important;
+  justify-content:space-between!important;align-items:stretch!important;
+  gap:8px;padding:17px 15px 12px!important;
+  overflow:hidden!important;
+  background:linear-gradient(145deg,#d6e5de,#edf4ed)!important;
+}
+.feature-price-top{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  min-width:0;flex-wrap:wrap;
+  font-size:9px;font-weight:850;letter-spacing:.7px;color:#4b7064;
+  line-height:1.35;
+}
+.feature-price-top span:last-child{font-weight:650;letter-spacing:0;color:#627e74}
+.feature-price-svg{
+  display:block!important;width:100%;height:91px!important;min-height:40px;
+  max-width:100%;flex:1 1 91px;overflow:visible!important;
+}
+.feature-price-legend{
+  display:flex;align-items:center;justify-content:flex-start;
+  flex-wrap:wrap;gap:5px 10px;flex-shrink:0;
+  font-size:10px;line-height:1.2;color:#466458;
+}
+.feature-price-legend span{display:inline-flex;align-items:center;gap:4px;white-space:normal}
+.feature-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex:0 0 8px}
+.dot-tassay{background:#347e74}
+.dot-turan{background:#9d855f}
+.dot-ess{background:#7285a9}
+
+/* Process module: no product image; evidence flows through a clear methodology. */
+.landing-process-photo.process-abstract{
+  display:flex;align-items:stretch;justify-content:center;
+  padding:85px 31px 72px;
+  min-height:530px;
+  background:linear-gradient(145deg,#d4e5dc 0%,#b8d6c9 55%,#dfeae1 100%)!important;
+  overflow:hidden;
+}
+.process-abstract::before{
+  content:"";position:absolute;right:-90px;bottom:-170px;
+  width:460px;height:460px;border-radius:50%;border:1px solid rgba(33,106,84,.15);
+  box-shadow:0 0 0 65px rgba(255,255,255,.1),0 0 0 115px rgba(255,255,255,.07);
+  pointer-events:none;
+}
+.process-graphic{
+  position:relative;z-index:1;
+  width:100%;max-width:540px;
+  display:flex;flex-direction:column;justify-content:center;gap:15px;
+}
+.process-graphic-eyebrow{
+  font-size:11px;letter-spacing:1.6px;font-weight:850;color:#4d7667;
+}
+.process-nodes,.process-boxes{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;
+}
+.process-node,.process-box{
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:6px;min-width:0;min-height:76px;
+  border:1px solid rgba(240,249,242,.65);
+  border-radius:15px;
+  padding:13px 8px;text-align:center;
+  background:rgba(255,255,255,.61);color:#285b50;font-weight:850;
+  box-shadow:0 6px 18px rgba(36,90,64,.06);
+  line-height:1.25;font-size:clamp(12px,1.15vw,16px);
+  overflow-wrap:anywhere;
+}
+.process-box{
+  min-height:108px;
+  background:rgba(38,100,83,.88);color:#fff;border-color:rgba(255,255,255,.2);
+}
+.process-box small{
+  display:block;color:#d5e7da;font-weight:600;font-size:10px;
+  line-height:1.4;
+}
+.process-line{
+  margin:0 auto;width:2px;height:55px;position:relative;
+  background:linear-gradient(180deg,#3e967f,#7bac96);
+}
+.process-line>span{
+  position:absolute;left:50%;bottom:-2px;transform:translateX(-50%);
+  font-size:18px;color:#2b7968;font-weight:900;line-height:1;
+}
+.process-abstract .process-floating{
+  bottom:22px!important;right:26px!important;padding:11px 16px!important;
+}
+.process-abstract .process-floating strong{font-size:25px}
+.process-abstract .process-floating span{font-size:10px}
+
+@media(max-width:1100px){
+  .hero-product-cards{gap:9px}
+  .hero-product-card{min-height:225px;padding:13px 10px;border-radius:15px}
+  .hero-product-card strong{font-size:17px}
+  .hero-product-card p{font-size:10px!important;margin:9px 0 12px!important}
+  .feature-price-top{font-size:8px}
+  .feature-price-legend{font-size:9px;gap:5px 7px}
+}
+@media(max-width:800px){
+  .landing-photo-stage{padding:35px 18px 25px!important;min-height:270px!important}
+  .hero-product-cards{max-width:550px;gap:9px;padding:10px 0 0}
+  .hero-product-card{min-height:205px}
+  .hero-product-card.hero-product-turan{transform:translateY(-7px)}
+  .landing-process-photo.process-abstract{min-height:425px;padding:65px 18px 70px}
+}
+@media(max-width:600px){
+  .landing-photo-stage{min-height:235px!important;padding:34px 9px 18px!important}
+  .hero-product-cards{gap:7px;padding:0}
+  .hero-product-card{min-height:173px;padding:10px 8px;gap:7px;border-radius:13px}
+  .hero-card-badge{width:24px;height:24px;font-size:9px}
+  .hero-card-watermark{font-size:80px;top:34px;right:-6px;letter-spacing:-7px}
+  .hero-product-card strong{font-size:clamp(12px,3.8vw,17px);letter-spacing:-.4px}
+  .hero-product-card p{font-size:9px!important;line-height:1.25!important;margin:6px 0 8px!important}
+  .hero-card-size{font-size:7px;padding-top:7px}
+  .landing-products .product-overview-graphic{padding:20px!important}
+  .product-visual-wordmark{font-size:36px}
+  .feature-media.feature-price{min-height:135px!important;height:135px!important;padding:9px 9px 7px!important;gap:4px}
+  .feature-price-top{font-size:7px;line-height:1.25}
+  .feature-price-top span:last-child{font-size:7px}
+  .feature-price-svg{height:52px!important;flex:1 1 52px}
+  .feature-price-legend{font-size:8px;gap:3px 6px}
+  .feature-dot{width:6px;height:6px;flex-basis:6px}
+  .landing-process-photo.process-abstract{min-height:375px;padding:60px 14px 60px}
+  .process-graphic{gap:9px}
+  .process-graphic-eyebrow{font-size:9px}
+  .process-nodes,.process-boxes{gap:6px}
+  .process-node,.process-box{border-radius:11px;padding:9px 5px;min-height:61px;font-size:11px}
+  .process-box{min-height:84px}
+  .process-box small{font-size:8px}
+  .process-line{height:36px}
+  .process-abstract .process-floating{right:14px!important;bottom:12px!important}
+}

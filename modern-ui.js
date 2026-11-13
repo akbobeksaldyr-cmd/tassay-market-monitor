@@ -76,10 +76,19 @@
         '<p class="price-sub">Arbuz · '+(current?asText(current.day):t('Баға расталмаған','Цена не подтверждена'))+'</p>'+
         '<a href="#" onclick="nav(22);return false">'+t('Барлық бағаны көру ↗','Посмотреть все цены ↗')+'</a></article>';
     }).join('');
+    // Original product packaging photos are blended onto each card (no
+    // opaque white image frame); the source files remain unchanged.
+    const heroPhotos={
+      TASSAY:'/media/tassay-card',
+      TURAN:'/media/turan-card',
+      ESSENTUKI4:'/media/essentuki-card'
+    };
     const productVisual=brandOrder.map(([id,name],index)=>
       '<div class="hero-product-card hero-product-'+id.toLowerCase()+'">'+
         '<span class="hero-card-badge">0'+(index+1)+'</span>'+
         '<span class="hero-card-watermark" aria-hidden="true">'+(id==='ESSENTUKI4'?'№4':name[0])+'</span>'+
+        '<div class="hero-card-image"><img src="'+heroPhotos[id]+'" alt="'+asText(name)+
+        ' · '+asText(visualKinds[id])+'" loading="eager" decoding="async"></div>'+
         '<div class="hero-card-bottom"><strong>'+asText(name)+'</strong>'+
         '<p>'+asText(visualKinds[id])+'</p>'+
         '<span class="hero-card-size">01 L / ASTANA</span></div></div>').join('');

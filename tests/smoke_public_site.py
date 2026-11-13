@@ -76,15 +76,15 @@ def main():
                     # Clear, normal navigation: no city-comparison page.
                     labels=page.locator("#nav > .nav").all_text_contents()
                     if lang=="ru":
-                        for label in ("Динамика цен","Цены","Рынок Астаны","Опрос",
+                        for label in ("Динамика","Цены","Рынок Астаны","Опрос",
                                       "Правовой анализ","Источники",
-                                      "История исследования"):
+                                      "История БШ1–БШ4"):
                             assert any(label in title for title in labels),(lang,label,labels)
                         assert not any("Сравнение городов" in title for title in labels),labels
                     else:
-                        for label in ("Баға динамикасы","Бағалар","Астана нарығы","Сауалнама",
+                        for label in ("Динамика","Бағалар","Астана нарығы","Сауалнама",
                                       "Құқықтық талдау","Дереккөздер",
-                                      "Зерттеу тарихы"):
+                                      "БШ1–БШ4 тарихы"):
                             assert any(label in title for title in labels),(lang,label,labels)
                         assert not any("Қалаларды салыстыру" in title for title in labels),labels
                     # Reference-style top navigation and rich landing page with real content.

@@ -96,6 +96,26 @@ def main():
                     assert page.locator(".hero-product-card").count()==3,lang
                     assert page.locator(".landing-photo-stage img").count()==3,lang
                     assert page.locator(".hero-card-image img").count()==3,lang
+                    assert page.locator(".hero-card-image").count()==3,lang
+                    for photo in page.locator(".hero-card-image img").all():
+                        photo.evaluate("(img) => img.decode().catch(() => null)")
+                        appearance=photo.evaluate("""img => {
+                            const style=getComputedStyle(img);
+                            const container=getComputedStyle(img.parentElement);
+                            return {
+                                loaded: img.naturalWidth>0 && img.naturalHeight>0,
+                                fit: style.objectFit,
+                                transform: style.transform,
+                                blend: style.mixBlendMode,
+                                mask: style.maskImage,
+                                webkitMask: style.webkitMaskImage,
+                                background: container.backgroundColor
+                            };
+                        }""")
+                        assert appearance["loaded"] and appearance["fit"]=="contain", (lang,appearance)
+                        assert appearance["transform"]=="none" and appearance["blend"]=="normal",(lang,appearance)
+                        assert appearance["mask"]=="none" and appearance["webkitMask"]=="none",(lang,appearance)
+                        assert appearance["background"]=="rgb(255, 255, 255)",(lang,appearance)
                     for image in page.locator(".hero-card-image img").all():
                         image.evaluate("(img) => img.decode().catch(() => null)")
                         assert image.evaluate("(img) => img.naturalWidth")>0,lang
@@ -272,6 +292,19 @@ def main():
                 assert mobile.locator(".process-abstract .process-node").count()==3
                 assert mobile.locator("#content img").count()==3
                 assert mobile.locator(".hero-card-image img").count()==3
+                for photo in mobile.locator(".hero-card-image img").all():
+                    photo.evaluate("(img) => img.decode().catch(() => null)")
+                    settings=photo.evaluate("""img => {
+                        const style=getComputedStyle(img);
+                        const image=img.getBoundingClientRect();
+                        const box=img.parentElement.getBoundingClientRect();
+                        return {loaded:img.naturalWidth>0,fit:style.objectFit,
+                                transform:style.transform,
+                                inside:image.left>=box.left && image.right<=box.right+1
+                                  && image.top>=box.top && image.bottom<=box.bottom+1};
+                    }""")
+                    assert settings["loaded"] and settings["fit"]=="contain",settings
+                    assert settings["transform"]=="none" and settings["inside"],settings
                 mobile_chart=mobile.locator(".feature-price").evaluate("""el => {
                     const outer=el.getBoundingClientRect();
                     return [...el.querySelectorAll('.feature-price-top, .feature-price-svg, .feature-price-legend')]

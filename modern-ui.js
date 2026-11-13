@@ -56,11 +56,19 @@
       TURAN:t('Қазақстандық газдалған су, 1 л.','Казахстанская газированная вода, 1 л.'),
       ESSENTUKI4:t('Ресейде өндірілетін емдік-асханалық минералды газдалған су, 1 л.','Газированная лечебно-столовая минеральная вода из России, 1 л.')
     };
-    const photos={TASSAY:'/media/tassay-card',TURAN:'/media/turan-card',ESSENTUKI4:'/media/essentuki-card'};
+    // Landing visuals are CSS illustrations; original product images remain in evidence pages.
+    const visualKinds={
+      TASSAY:t('Газдалған ауыз су','Газированная питьевая вода'),
+      TURAN:t('Газдалған су','Газированная вода'),
+      ESSENTUKI4:t('Емдік-асханалық минералды су','Лечебно-столовая минеральная вода')
+    };
     const brands=brandOrder.map(([id,name,initial])=>{
       const current=latestFor(id,'Arbuz');
-      return '<article class="price-card product-overview-card"><div class="product-overview-image">'+
-        '<img src="'+photos[id]+'" alt="'+asText(name)+' · '+t('газдалған су 1 л','газированная вода 1 л')+'" loading="lazy"></div>'+
+      return '<article class="price-card product-overview-card"><div class="product-overview-image product-overview-graphic product-visual-'+id.toLowerCase()+'">'+
+        '<span class="product-visual-overline">MARKET STUDY / 01 L</span>'+
+        '<strong class="product-visual-wordmark">'+asText(name)+'</strong>'+
+        '<span class="product-visual-rule" aria-hidden="true"></span>'+
+        '<small>'+asText(visualKinds[id])+'</small></div>'+
         '<div class="brand-mini"><i>'+initial+'</i><div><div class="label">'+t('1 л · Газдалған','1 л · Газированная')+'</div>'+
         '<h3>'+asText(name)+'</h3></div></div>'+
         '<p class="product-overview-description">'+asText(descriptions[id])+'</p>'+
@@ -68,14 +76,32 @@
         '<p class="price-sub">Arbuz · '+(current?asText(current.day):t('Баға расталмаған','Цена не подтверждена'))+'</p>'+
         '<a href="#" onclick="nav(22);return false">'+t('Барлық бағаны көру ↗','Посмотреть все цены ↗')+'</a></article>';
     }).join('');
-    const productVisual=brandOrder.map(([id,name])=>
-      '<div class="landing-bottle"><img src="'+photos[id]+'" alt="'+asText(name)+
-      '" loading="eager"><span class="bottle-name">'+asText(name)+'</span></div>').join('');
+    const productVisual=brandOrder.map(([id,name],index)=>
+      '<div class="hero-product-card hero-product-'+id.toLowerCase()+'">'+
+        '<span class="hero-card-badge">0'+(index+1)+'</span>'+
+        '<span class="hero-card-watermark" aria-hidden="true">'+(id==='ESSENTUKI4'?'№4':name[0])+'</span>'+
+        '<div class="hero-card-bottom"><strong>'+asText(name)+'</strong>'+
+        '<p>'+asText(visualKinds[id])+'</p>'+
+        '<span class="hero-card-size">01 L / ASTANA</span></div></div>').join('');
     const parts=[
       {to:22,name:t('Баға мониторингі','Мониторинг цен'),
        desc:t('Астанадағы дүкендер бойынша үш брендтің бағасы және уақыттық өзгерісі.',
               'Цены трёх брендов в магазинах Астаны и их изменение по датам.'),
-       art:'<div class="feature-media feature-price"><div class="hero-chart">'+km3AutoPriceGraph()+'</div></div>'},
+       // The miniature card uses an intentionally compact illustration.
+       // The full, interactive graph remains in the dedicated Dynamics page.
+       art:'<div class="feature-media feature-price">'+
+         '<div class="feature-price-top"><span>ASTANA · 1 L</span><span>Arbuz / SMALL / Galmart</span></div>'+
+         '<svg class="feature-price-svg" viewBox="0 0 300 122" aria-hidden="true" preserveAspectRatio="xMidYMid meet">'+
+           '<path d="M8 30H292 M8 59H292 M8 88H292 M8 116H292" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-opacity=".58"/>'+
+           '<polyline points="8,90 51,80 93,82 135,52 176,64 218,45 263,40 292,27" fill="none" stroke="#347e74" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>'+
+           '<polyline points="8,97 51,95 93,79 135,84 176,77 218,61 263,73 292,64" fill="none" stroke="#9d855f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
+           '<polyline points="8,105 51,102 93,99 135,92 176,98 218,86 263,90 292,82" fill="none" stroke="#7285a9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>'+
+           '<circle cx="263" cy="40" r="5" fill="#347e74" stroke="#f2f7f3" stroke-width="2"/>'+
+         '</svg>'+
+         '<div class="feature-price-legend"><span><i class="feature-dot dot-tassay"></i>TASSAY</span>'+
+         '<span><i class="feature-dot dot-turan"></i>TURAN</span>'+
+         '<span><i class="feature-dot dot-ess"></i>'+t('Ессентуки №4','Ессентуки №4')+'</span></div>'+
+         '</div>'},
       {to:27,name:t('Тұтынушылар сауалнамасы','Опрос потребителей'),
        desc:t('20 аралық жауап: сатып алушылардың тауарларды алмастыруға дайындығы.',
               '20 промежуточных ответов о готовности покупателей заменять бренды.'),
@@ -142,7 +168,8 @@
         '<div class="landing-photo-stage"><div class="landing-gridlines"></div>'+
         '<svg viewBox="0 0 620 280" aria-hidden="true" fill="none"><path d="M0 246L80 211L152 222L235 167L307 182L385 128L473 145L554 66L620 85" stroke="#2f8575" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'+
         '<path d="M0 267L80 238L152 240L235 199L307 212L385 161L473 178L554 102L620 122" stroke="#eef6ec" stroke-width="2" opacity=".8"/></svg>'+
-        '<span class="landing-visual-caption">ASTANA / 3 PRODUCTS</span>'+productVisual+'</div></section>'+
+        '<span class="landing-visual-caption">ASTANA / 3 PRODUCTS</span>'+
+        '<div class="hero-product-cards">'+productVisual+'</div></div></section>'+
       '<section class="landing-about" aria-labelledby="landing-about-title">'+
         '<div><h2 id="landing-about-title">'+t('Жоба туралы','О проекте')+'</h2>'+
         '<p>'+t('TASSAY Market Monitor — бәсекелестік құқығы пәнінің БШ4 аясында дайындалған ашық академиялық зерттеу платформасы. Зерттеу Астана қаласындағы газдалған су ұсыныстары мен тауарлардың ықтимал алмастырылуын талдайды.',
@@ -172,10 +199,24 @@
         '<h2 class="landing-section-title">'+t('Зерттеу қалай жүргізіледі','Как устроено исследование')+'</h2>'+
         '<p>'+t('Бастапқы деректен құқықтық қорытындыға дейінгі бес қадам.',
           'Пять шагов: от первичных данных к проверяемым правовым выводам.')+'</p></div></div>'+
-        '<div class="landing-process"><div class="landing-process-photo">'+
+        '<div class="landing-process"><div class="landing-process-photo process-abstract">'+
           '<span class="process-tag">RESEARCH PROCESS / ASTANA</span>'+
-          '<img src="/media/tassay-card" alt="TASSAY" loading="lazy">'+
-          '<div class="process-floating"><strong>IRAC</strong><span>'+t('дерек → талдау → қорытынды','данные → анализ → вывод')+'</span></div>'+
+          '<div class="process-graphic"><div class="process-graphic-eyebrow">'+
+            t('ДЕРЕКТЕР','ДАННЫЕ')+'</div>'+
+            '<div class="process-nodes">'+
+              '<span class="process-node">Arbuz</span>'+
+              '<span class="process-node">SMALL</span>'+
+              '<span class="process-node">Galmart</span>'+
+            '</div>'+
+            '<div class="process-line" aria-hidden="true"><span>↓</span></div>'+
+            '<div class="process-graphic-eyebrow">'+t('ЗЕРТТЕУ','ИССЛЕДОВАНИЕ')+'</div>'+
+            '<div class="process-boxes">'+
+              '<span class="process-box">Google Forms<small>'+t('20 жауап','20 ответов')+'</small></span>'+
+              '<span class="process-box">IRAC<small>'+t('құқықтық талдау','правовая оценка')+'</small></span>'+
+              '<span class="process-box">БШ4<small>'+t('қорғау','защита')+'</small></span>'+
+            '</div>'+
+          '</div>'+
+          '<div class="process-floating"><strong>5</strong><span>'+t('зерттеу қадамы','этапов исследования')+'</span></div>'+
           '</div><div class="process-list">'+process+'</div></div></section>'+
       '<section class="landing-section"><div class="landing-section-head"><div>'+
         '<h2 class="landing-section-title">'+t('Аралық қорытындылар','Промежуточные выводы')+'</h2>'+

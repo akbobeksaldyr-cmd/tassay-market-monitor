@@ -72,7 +72,7 @@ def main():
                     assert page.locator(".price-card").count()==3,lang
                     assert page.locator("#nav > .nav").count()==8,lang
                     assert page.locator(".research-archive summary").count()==1,lang
-                    assert page.locator("#content .hero-chart").count()==1,lang
+                    assert page.locator("#content .feature-price-svg").count()==1,lang
                     # Clear, normal navigation: no city-comparison page.
                     labels=page.locator("#nav > .nav").all_text_contents()
                     if lang=="ru":
@@ -93,11 +93,28 @@ def main():
                     assert page.locator(".landing-stats .landing-stat").count()==4,lang
                     assert page.locator(".landing-process .process-step").count()==5,lang
                     assert page.locator(".landing-conclusion").count()==3,lang
-                    assert page.locator(".landing-photo-stage img").count()==3,lang
-                    # Main page: research question, 3 actual product images and descriptions.
+                    assert page.locator(".hero-product-card").count()==3,lang
+                    assert page.locator(".landing-photo-stage img").count()==0,lang
+                    assert page.locator(".process-abstract .process-node").count()==3,lang
+                    assert page.locator(".process-abstract .process-box").count()==3,lang
+                    # Photos are retained as evidence elsewhere, not on the landing.
+                    assert page.locator("#content img").count()==0,lang
+                    # The preview illustration and labels must fit inside the card.
+                    assert page.locator(".feature-price-legend span").count()==3,lang
+                    geometry=page.locator(".feature-price").evaluate("""el => {
+                      const outer=el.getBoundingClientRect();
+                      const nodes=[...el.querySelectorAll('.feature-price-top, .feature-price-svg, .feature-price-legend')];
+                      return {outerHeight:outer.height,overflow:nodes.some(node => {
+                        const rect=node.getBoundingClientRect();
+                        return rect.left<outer.left-2 || rect.right>outer.right+2
+                          || rect.top<outer.top-2 || rect.bottom>outer.bottom+2;
+                      })};
+                    }""")
+                    assert not geometry["overflow"],(lang,geometry)
+                    # Main page: three brands remain visible without promotional photos.
                     q=page.locator(".research-question")
                     assert q.count()==1 and len(q.inner_text())>45,lang
-                    assert page.locator(".product-overview-image img").count()==3,lang
+                    assert page.locator(".product-overview-graphic").count()==3,lang
                     assert page.locator(".product-overview-description").count()==3,lang
 
                     # Price tab shows pure numeric tables without image evidence.

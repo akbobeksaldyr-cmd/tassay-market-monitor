@@ -53,8 +53,8 @@ jobs:
           for name in ("index.html","ru.html"):
               html=Path(name).read_text(encoding="utf-8")
               assert 'modern.css?v=20261113-survey' in html
-              assert 'modern-ui.js?v=20261113-editorial2' in html
-              assert 'premium.css?v=20261113-editorial2' in html
+              assert 'modern-ui.js?v=20261113-nophotos3' in html
+              assert 'premium.css?v=20261113-nophotos3' in html
               assert 'research-sections.js?v=20261113-survey' in html
               assert 'research-history.js?v=20261113-bsh4fix' in html
               assert 'survey.js?v=20261113-forms1' in html

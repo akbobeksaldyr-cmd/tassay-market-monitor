@@ -64,7 +64,7 @@ def main():
         # 30 uploaded price-chart crops are explicitly authorized, not inferred
         # from arbitrary public file paths; every link must return actual PNG.
         js_source=Path("research-sections.js").read_text(encoding="utf-8")
-        match=re.search(r"const uploadedPriceEvidence=(\\[[\\s\\S]*?\\])\\s*\\.map\\(",js_source)
+        match=re.search(r"const uploadedPriceEvidence=(\[[\s\S]*?\])\s*\.map\(",js_source)
         assert match,"Missing new screenshot manifest"
         screenshots=json.loads(match.group(1))
         assert len(screenshots)==30,len(screenshots)

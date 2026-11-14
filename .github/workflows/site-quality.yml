@@ -55,7 +55,7 @@ jobs:
               assert 'modern.css?v=20261113-survey' in html
               assert 'modern-ui.js?v=20261113-evidence4' in html
               assert 'premium.css?v=20261114-product-photos5' in html
-              assert 'research-sections.js?v=20261113-evidence4' in html
+              assert 'research-sections.js?v=20261114-screenshots6' in html
               assert 'research-history.js?v=20261113-bsh4fix' in html
               assert 'survey.js?v=20261113-forms1' in html
               assert html.count("<script")==(7 if name=="ru.html" else 6), f"Wrong script count in {name}"

@@ -1,5 +1,7 @@
 """Local deployment smoke test: public pages, scripts, and key user flows."""
 import json
+import re
+from urllib.parse import quote, unquote
 from io import BytesIO
 from PIL import Image
 import os
@@ -59,6 +61,17 @@ def main():
             status, image = request("/history-legacy-image/" + stage)
             assert status == 200 and image.startswith(bytes.fromhex("89504e470d0a1a0a")), (stage, status, len(image))
 
+        # 30 uploaded price-chart crops are explicitly authorized, not inferred
+        # from arbitrary public file paths; every link must return actual PNG.
+        js_source=Path("research-sections.js").read_text(encoding="utf-8")
+        match=re.search(r"const uploadedPriceEvidence=(\\[[\\s\\S]*?\\])\\s*\\.map\\(",js_source)
+        assert match,"Missing new screenshot manifest"
+        screenshots=json.loads(match.group(1))
+        assert len(screenshots)==30,len(screenshots)
+        assert len({row[2] for row in screenshots})==30
+        for _,_,filename,*_ in screenshots:
+            status,image=request("/evidence/"+quote(filename))
+            assert status==200 and image.startswith(bytes.fromhex("89504e470d0a1a0a")),(filename,status)
         assert listing["origin"] in ("github","deployed_snapshot")
         with sync_playwright() as p:
             browser=p.chromium.launch(headless=True)
@@ -151,6 +164,21 @@ def main():
                     assert page.locator("#study-price-table .study-proof-link").count()>0,lang
                     assert page.locator("#study-price-table .study-proof-missing").count()>0,lang
                     assert page.locator("#study-price-table").get_attribute("id")=="study-price-table"
+                    # Every historical quote stays unique; new evidence is
+                    # selected by exact date+brand+store and mismatches are explicit.
+                    target=page.locator('tr[data-price-key="2026-11-11|Астана|ESSENTUKI4|Galmart"]')
+                    target.wait_for(timeout=12000)
+                    url=target.locator(".study-proof-link").get_attribute("href")
+                    assert unquote(url).endswith("11 ноября астана ессен.png"),(lang,url)
+                    assert "1030" in target.inner_text().replace(" ",""),lang
+                    missing=page.locator('tr[data-price-key="2026-11-11|Астана|TASSAY|Galmart"]')
+                    assert missing.locator(".study-proof-missing").count()==1,(lang,missing.inner_text())
+                    mismatch=page.locator('tr[data-price-key="2026-11-01|Астана|TURAN|SMALL"]')
+                    mismatch.wait_for(timeout=12000)
+                    assert ("не совпадает" in mismatch.inner_text().lower() or
+                            "отличается" in mismatch.inner_text().lower() or
+                            "сәйкес емес" in mismatch.inner_text().lower()),(lang,mismatch.inner_text())
+                    assert "369" in mismatch.inner_text() and "465" in mismatch.inner_text(),lang
                     assert page.locator(".brand-tab").count()==4,lang
                     assert page.locator(".brand-tab[aria-selected=true]").count()==1
                     for label in ("TASSAY","TURAN","Ессентуки №4"):
@@ -242,7 +270,7 @@ def main():
 
                     for brand in ("TASSAY","TURAN","Ессентуки №4"):
                         page.get_by_role("tab",name=brand,exact=True).click()
-                        assert page.locator(".research-proof").count()>=6,(lang,brand)
+                        assert page.locator(".research-proof").count()>=9,(lang,brand)
                     page.locator(".research-proof").first.click()
                     assert page.locator("#evidenceDialog").is_visible(),lang
                     page.keyboard.press("Escape")

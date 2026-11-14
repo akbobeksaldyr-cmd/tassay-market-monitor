@@ -170,7 +170,7 @@ def main():
                     target.wait_for(timeout=12000)
                     url=target.locator(".study-proof-link").get_attribute("href")
                     assert unquote(url).endswith("11 ноября астана ессен.png"),(lang,url)
-                    assert "1030" in target.inner_text().replace(" ",""),lang
+                    assert re.sub(r"\\D","",target.locator("td").nth(3).inner_text())=="1030",lang
                     missing=page.locator('tr[data-price-key="2026-11-11|Астана|TASSAY|Galmart"]')
                     assert missing.locator(".study-proof-missing").count()==1,(lang,missing.inner_text())
                     mismatch=page.locator('tr[data-price-key="2026-11-01|Астана|TURAN|SMALL"]')

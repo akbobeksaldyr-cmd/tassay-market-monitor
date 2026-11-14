@@ -26,6 +26,259 @@
   const brandIndex={TASSAY:0,TURAN:1,ESSENTUKI4:2};
   const validUrl=value=>typeof value==='string'&&/^https:\/\//.test(value)?value:null;
 
+  // 30 manually inspected fragments of Arzan.kz price-history charts uploaded
+  // on 14 Nov 2026. Brand and product volume are NOT visible in these crops.
+  // A price is attributed to a store only when that store appears in the crop.
+  const uploadedPriceEvidence=[
+  [
+    "TASSAY",
+    "2026-10-25",
+    "25 окт астана тассай.png",
+    517,
+    519,
+    null
+  ],
+  [
+    "TASSAY",
+    "2026-10-29",
+    "29 окт астана тассай.png",
+    517,
+    519,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-10-29",
+    "29 окт астана туран.png",
+    435,
+    369,
+    510
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-10-29",
+    "29 окт астана ессен.png",
+    975,
+    735,
+    1030
+  ],
+  [
+    "TASSAY",
+    "2026-10-30",
+    "30 окт астана тассай.png",
+    555,
+    519,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-10-30",
+    "30 окт астана туран.png",
+    435,
+    369,
+    510
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-10-30",
+    "30 окт астана ессен.png",
+    975,
+    735,
+    1030
+  ],
+  [
+    "TASSAY",
+    "2026-11-01",
+    "1 ноября астана тассай.png",
+    555,
+    519,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-11-01",
+    "1 ноября астана туран.png",
+    360,
+    465,
+    510
+  ],
+  [
+    "TASSAY",
+    "2026-11-02",
+    "2 ноября астана тассай.png",
+    555,
+    519,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-11-02",
+    "2 ноября астана туран.png",
+    360,
+    465,
+    455
+  ],
+  [
+    "TASSAY",
+    "2026-11-04",
+    "4 ноября астана тассай.png",
+    555,
+    465,
+    null
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-11-04",
+    "4 ноября астана ессен.png",
+    975,
+    735,
+    1030
+  ],
+  [
+    "TASSAY",
+    "2026-11-05",
+    "5 ноября астана тассай.png",
+    555,
+    465,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-11-05",
+    "5 ноября туран.png",
+    360,
+    465,
+    455
+  ],
+  [
+    "TASSAY",
+    "2026-11-06",
+    "6 ноября астана тассай.png",
+    555,
+    465,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-11-06",
+    "6 ноября астана туран.png",
+    360,
+    465,
+    455
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-11-06",
+    "6 ноября астана ессен.png",
+    975,
+    735,
+    1030
+  ],
+  [
+    "TURAN",
+    "2026-11-07",
+    "7 ноября астана туран.png",
+    360,
+    465,
+    455
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-11-07",
+    "7 ноября астана ессен.png",
+    975,
+    735,
+    1030
+  ],
+  [
+    "TASSAY",
+    "2026-11-08",
+    "8 ноября астана тассай.png",
+    555,
+    465,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-11-08",
+    "8 ноября астана туран.png",
+    360,
+    465,
+    455
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-11-08",
+    "8 ноября астана ессен.png",
+    975,
+    735,
+    1030
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-11-09",
+    "9 ноября астана ессен.png",
+    975,
+    735,
+    1030
+  ],
+  [
+    "TASSAY",
+    "2026-11-10",
+    "10 ноября астана тассай.png",
+    555,
+    465,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-11-10",
+    "10 ноября астана туран.png",
+    360,
+    465,
+    455
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-11-10",
+    "10 ноября астана ессен.png",
+    975,
+    735,
+    1030
+  ],
+  [
+    "TASSAY",
+    "2026-11-11",
+    "11 ноября  астана тассай.png",
+    555,
+    465,
+    null
+  ],
+  [
+    "TURAN",
+    "2026-11-11",
+    "11 ноября астана туран.png",
+    360,
+    465,
+    455
+  ],
+  [
+    "ESSENTUKI4",
+    "2026-11-11",
+    "11 ноября астана ессен.png",
+    975,
+    735,
+    1030
+  ]
+]
+    .map(([brand,day,file,arbuz,small,galmart])=>({
+      brand,day,city:'Астана',file,graphClip:true,
+      shown:Object.fromEntries([['Arbuz',arbuz],['SMALL',small],['Galmart',galmart]]
+        .filter(([_,v])=>v!==null)),
+      url:'/evidence/'+encodeURIComponent(file)
+    }));
+
+
   // One visible quote for one day + city + brand + store. We do not delete
   // originals: edited/author records take precedence over automated captures,
   // followed by observed automatic captures and then reconstructed history.
@@ -72,36 +325,51 @@
   // A date-matched file is a lead for verification, not automatic proof that
   // a product, volume, store or displayed amount was correctly identified.
   function priceScreenshot(row){
-    const found=row.brand==='ESSENTUKI4'
-      ?essentukiEvidence.find(x=>x.day===row.day&&row.city==='Астана')
-      :evidenceImages.find(x=>x.brand===row.brand&&x.day===row.day&&x.city===row.city);
+    // Match new graph crops by day, brand, city AND store; absent store = no proof.
+    const uploaded=uploadedPriceEvidence.find(e=>
+      e.day===row.day && e.brand===row.brand && e.city===row.city &&
+      Object.prototype.hasOwnProperty.call(e.shown,row.shop));
+    const original=row.brand==='ESSENTUKI4'
+      ?essentukiEvidence.find(e=>e.day===row.day&&row.city==='Астана')
+      :evidenceImages.find(e=>e.brand===row.brand&&e.day===row.day&&e.city===row.city);
+    const found=uploaded||original;
     if(found){
+      if(found.shown&&!Object.prototype.hasOwnProperty.call(found.shown,row.shop))
+        return null;
       const shown=found.shown?.[row.shop];
       return {
         url:found.url||'/evidence/'+encodeURIComponent(found.file),
-        mismatch:shown!==undefined&&shown!==null&&Number(shown)!==row.price,
-        label:found.file
+        mismatch:shown!==undefined&&Number(shown)!==row.price,
+        chartPrice:shown,file:found.file,graphClip:found.graphClip===true
       };
     }
     const image=validUrl(row.evidence_url);
-    return image?{url:image,mismatch:false,label:t('Жүктелген дәлел','Загруженный файл')}:null;
+    return image?{url:image,mismatch:false,file:'Uploaded file'}:null;
   }
   function evidenceCell(row){
     const shot=priceScreenshot(row);
+    const label=shot?.mismatch?
+      t('Баға сәйкес емес ↗','Цена на скрине отличается ↗'):
+      shot?.graphClip?t('График үзіндісі ↗','Фрагмент графика ↗'):
+      t('Скриншотты ашу ↗','Открыть скриншот ↗');
     const snap=shot
-      ?'<a class="study-proof-link" target="_blank" rel="noopener noreferrer" href="'+escTxt(shot.url)+'">'+
-        (shot.mismatch?t('Скрин · баға сәйкес емес ↗','Скрин · цена отличается ↗'):
-          t('Скриншотты ашу ↗','Открыть скриншот ↗'))+'</a>'
+      ?'<a class="study-proof-link" target="_blank" rel="noopener noreferrer" href="'+
+       escTxt(shot.url)+'" title="'+escTxt(shot.file)+'">'+label+'</a>'
       :'<span class="study-proof-missing">'+
-         t('Скриншот әзірге қосылмаған','Скрин пока не добавлен')+'</span>';
+       t('Скриншот әзірге қосылмаған','Скрин пока не добавлен')+'</span>';
     const url=row.sourceUrls.find(x=>x.startsWith('https://arzan.kz/'));
     const source=url?'<a class="study-proof-source" href="'+escTxt(url)+
       '" target="_blank" rel="noopener noreferrer">Arzan.kz ↗</a>':'';
-    const warning=shot&&shot.mismatch?'<small class="study-proof-warning">'+
-      t('Сурет пен кесте айырмашылығын тексеру керек','Расхождение с изображением требует сверки')+'</small>':
-      row.conflictingPrices?'<small class="study-proof-warning">'+
-      t('Авторлық және автоматты бағалар әртүрлі','Авторская и автоматическая цены расходятся')+'</small>':'';
-    return '<div class="study-proof-cell">'+snap+source+warning+'</div>';
+    const warnings=[];
+    if(shot?.graphClip)warnings.push(t('График үзіндісінде бренд пен көлем жоқ',
+      'На фрагменте графика не видны бренд и объём'));
+    if(shot?.mismatch)warnings.push(t('Кесте: '+row.price+' ₸; скрин: '+shot.chartPrice+' ₸ — тексеру керек',
+      'Таблица: '+row.price+' ₸; скрин: '+shot.chartPrice+' ₸ — нужна сверка'));
+    else if(row.conflictingPrices)warnings.push(t('Авторлық және автоматты бағалар әртүрлі',
+      'Авторская и автоматическая цены расходятся'));
+    return '<div class="study-proof-cell">'+snap+source+
+      warnings.map(w=>'<small class="study-proof-warning">'+escTxt(w)+'</small>').join('')+
+      '</div>';
   }
   function priceSection(){
     const rows=prices();
@@ -137,6 +405,7 @@
       '<p class="overview-note">'+
       t('Авторлық баға бар жерде сол көрсетіледі; ол жоқ күндерде қолжетімді автоматты дерек қолданылады. Қалпына келтірілген бағалар сол күнгі дербес бақылау болып саналмайды. Скриншоттың болуы тауардың атауын, көлемін және сомасын автоматты растамайды.',
         'При наличии авторской цены показывается она, иначе — доступная автоматическая запись. Реконструированная цена не является замером в указанную дату. Наличие файла не подтверждает автоматически товар, объём и сумму.')+
+      ' '+t('2026 жылғы 14 қарашада қосылған суреттер — баға тарихы графигінің үзінділері, дүкен чектері емес.','Скриншоты от 14 ноября — фрагменты графика истории цен, а не кассовые чеки.')+
       (conflicts?' '+t('Салыстыруды қажет ететін қайшылықтар: ','Расхождения между источниками: ')+
         conflicts+'.':'')+
       '</p><button class="btn outline" onclick="nav(7)">'+
@@ -173,7 +442,12 @@
       note:t('Arzan.kz бағалар графигінің қиындысы. Тауардың толық атауы мен көлемі кадрдан расталмайды.',
            'Фрагмент графика Arzan.kz. Название и объём товара не подтверждаются кадром.')
     }));
-    return [...base,...c].sort((a,b)=>b.day.localeCompare(a.day));
+    const newlyUploaded=uploadedPriceEvidence.map(r=>({
+      ...r,note:t(
+        'Arzan.kz баға тарихы графигінің үзіндісі: күн мен дүкен бағалары көрінеді; бренд пен 1 литр көлем суретте расталмайды. Файл атауы бойынша сәйкестендірілді.',
+        'Фрагмент истории цен Arzan.kz: дата и цены магазинов видны, но бренд и объём 1 л на изображении не подтверждены. Соотнесено по имени файла.')
+    }));
+    return [...base,...c,...newlyUploaded].sort((a,b)=>b.day.localeCompare(a.day));
   }
   const proofTabs=[
     ['tassay','TASSAY'],['turan','TURAN'],['essentuki','Ессентуки №4']

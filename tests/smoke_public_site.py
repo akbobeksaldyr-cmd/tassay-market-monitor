@@ -164,6 +164,9 @@ def main():
                     assert page.locator("#study-price-table .study-proof-link").count()>0,lang
                     assert page.locator("#study-price-table .study-proof-missing").count()>0,lang
                     assert page.locator("#study-price-table").get_attribute("id")=="study-price-table"
+                    assert "На фрагменте графика не видны" not in page.locator("#content").inner_text(),lang
+                    assert "бренд пен көлем жоқ" not in page.locator("#content").inner_text(),lang
+                    assert "Фрагмент графика ↗" not in page.locator("#content").inner_text(),lang
                     # Every historical quote stays unique; new evidence is
                     # selected by exact date+brand+store and mismatches are explicit.
                     target=page.locator('tr[data-price-key="2026-11-11|Астана|ESSENTUKI4|Galmart"]')
@@ -238,6 +241,8 @@ def main():
                     # Dedicated evidence gallery: 3 brands, all screenshot thumbnails.
                     page.locator('.research-archive button[onclick="nav(7)"]').click()
                     assert page.locator(".research-proof").count()>10,lang
+                    assert "не видно названия или объёма" not in page.locator("#content").inner_text(),lang
+                    assert "тауардың атауын" not in page.locator("#content").inner_text(),lang
                     assert page.locator("#content img").count()>10,lang
                     first_image=page.locator(".research-proof-image img").first
                     first_image.scroll_into_view_if_needed()

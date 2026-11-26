@@ -2809,6 +2809,33 @@
           "page_excerpt": "Just a moment..."
         }
       ]
+    },
+    {
+      "at": "2026-11-26T17:15:21+05:00",
+      "city": "Астана",
+      "sources": [
+        {
+          "brand": "TASSAY",
+          "url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+          "status": "unavailable",
+          "reason": "403 Client Error: Forbidden for url: https://arzan.kz/ru/astana/p/voda-mineralnaya-tassay-gazirovannaya-1l-59532c36-90e0-4575-af62-aedb6e80b501",
+          "page_excerpt": "Just a moment..."
+        },
+        {
+          "brand": "TURAN",
+          "url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-gazirovannaya-turan-1l-57cf9489-44e3-403c-ac0c-4889305c0696",
+          "status": "unavailable",
+          "reason": "403 Client Error: Forbidden for url: https://arzan.kz/ru/astana/p/voda-mineralnaya-gazirovannaya-turan-1l-57cf9489-44e3-403c-ac0c-4889305c0696",
+          "page_excerpt": "Just a moment..."
+        },
+        {
+          "brand": "ESSENTUKI4",
+          "url": "https://arzan.kz/ru/astana/p/voda-mineralnaya-essentuki-4-gazirovannaya-1l-1f15b35a-08de-4cc9-b1bd-8745c1e35006",
+          "status": "unavailable",
+          "reason": "403 Client Error: Forbidden for url: https://arzan.kz/ru/astana/p/voda-mineralnaya-essentuki-4-gazirovannaya-1l-1f15b35a-08de-4cc9-b1bd-8745c1e35006",
+          "page_excerpt": "Just a moment..."
+        }
+      ]
     }
   ]
 }
